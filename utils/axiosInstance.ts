@@ -1,5 +1,5 @@
 import axios from "axios";
-import Router from "next/router"; // For handling redirection
+// import Router from "next/router"; // For handling redirection
 
 // Axios instance
 const axiosInstance = axios.create({
