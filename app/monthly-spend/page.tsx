@@ -45,7 +45,7 @@ export default function Page() {
                   <input
                     id="electricity_spend"
                     className="input w-full"
-                    type="text"
+                    type="number"
                     name="electricity_spend"
                     value={formData.electricity_spend}
                     onChange={handleChange}
