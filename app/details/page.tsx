@@ -26,7 +26,7 @@ export default function Page() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/submit-details/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,50 +47,50 @@ export default function Page() {
   };
 
   return (
-      <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <StatusImage status={1} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
-      <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
+        <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
             <div className="w-full container mx-auto text-center flex flex-col gap-4">
               <form className="w-full details-form flex flex-col gap-6 items-center" onSubmit={handleSubmit}>
                 <div className='input-group'>
-                    <label htmlFor="electricity_spend" className="label">
-                      Name
-                    </label>
-                    <input
-                      className="input w-full"
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
+                  <label htmlFor="electricity_spend" className="label">
+                    Name
+                  </label>
+                  <input
+                    className="input w-full"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className='input-group'>
-                    <label htmlFor="electricity_spend" className="label">
-                      Email
-                    </label>
-                    <input
-                      className="input w-full"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
+                  <label htmlFor="electricity_spend" className="label">
+                    Email
+                  </label>
+                  <input
+                    className="input w-full"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className='input-group'>
-                    <label htmlFor="electricity_spend" className="label">
-                      Phone number
-                    </label>
-                    <input
-                      className="input w-full"
-                      type="tel"
-                      name="phone_number"
-                      value={formData.phone_number}
-                      onChange={handleChange}
-                    />
+                  <label htmlFor="electricity_spend" className="label">
+                    Phone number
+                  </label>
+                  <input
+                    className="input w-full"
+                    type="tel"
+                    name="phone_number"
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                  />
                 </div>
                 <input
                   type="submit"
@@ -102,7 +102,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-       </main>
+      </main>
     </div>
   );
 }

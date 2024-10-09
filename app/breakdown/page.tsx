@@ -84,7 +84,7 @@ export default function Page() {
     }
     else {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/calculate-quote/', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export default function Page() {
     const data =  {...formData};
     data.battery_autonomy_hours = formData.battery_autonomy_hours_only + formData.battery_autonomy_days * 24;
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/calculate-quote/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ export default function Page() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/submit-details/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
