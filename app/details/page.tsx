@@ -1,30 +1,16 @@
 "use client"; // This is a client component
 
-import { ChangeEvent, useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from "next/image";
 import StatusImage from '../components/StatusImage';
+import { useForm } from 'react-hook-form';
 
 export default function Page() {
 
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone_number: '',
-    electricity_bill: '',
-  });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { register, handleSubmit, formState: { errors }, setError, watch } = useForm();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit = async (formData: any) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
         method: 'POST',
@@ -34,6 +20,7 @@ export default function Page() {
         body: JSON.stringify(formData),
       });
 
+
       if (response.ok) {
         const data = await response.json();
         // alert('User details saved successfully!');
@@ -41,10 +28,20 @@ export default function Page() {
       } else {
         console.error('Failed to save user details');
       }
+
+      if (response.status == 400) {
+        const data = await response.json();
+
+        Object.entries(data).forEach(([key, value]) => {
+          setError(key, { type: "manual", message: value });
+        });
+      }
+
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
 
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -53,44 +50,41 @@ export default function Page() {
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
             <div className="w-full container mx-auto text-center flex flex-col gap-4">
-              <form className="w-full details-form flex flex-col gap-6 items-center" onSubmit={handleSubmit}>
+              <form className="w-full details-form flex flex-col gap-6 items-center" onSubmit={handleSubmit(onSubmit)}>
                 <div className='input-group'>
                   <label htmlFor="electricity_spend" className="label">
                     Name
                   </label>
                   <input
-                    className="input w-full"
+                    className={errors.name ? "input w-full border border-red-500" : "input w-full"}
                     type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
+                    {...register('name', { required: 'Name is required' })}
                   />
+
+                  {errors.name && <p className="text-red-500 text-xs italic">{errors?.name?.message}</p>}
                 </div>
                 <div className='input-group'>
                   <label htmlFor="electricity_spend" className="label">
                     Email
                   </label>
                   <input
-                    className="input w-full"
+                    className={errors.email ? "input w-full border border-red-500" : "input w-full"}
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
+                    {...register('email', { required: 'Email is required' })}
                   />
+                  {errors.email && <p className="text-red-500 text-xs italic">{errors?.email?.message}</p>}
                 </div>
                 <div className='input-group'>
                   <label htmlFor="electricity_spend" className="label">
                     Phone number
                   </label>
                   <input
-                    className="input w-full"
+                    className={errors.phone_number ? "input w-full border border-red-500" : "input w-full"}
                     type="tel"
-                    name="phone_number"
-                    value={formData.phone_number}
-                    onChange={handleChange}
+                    {...register('phone_number', { required: 'Phone Number is required' })}
+
                   />
+                  {errors.phone_number && <p className="text-red-500 text-xs italic">{errors?.phone_number?.message}</p>}
                 </div>
                 <input
                   type="submit"
