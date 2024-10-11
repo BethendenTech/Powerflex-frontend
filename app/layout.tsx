@@ -1,7 +1,10 @@
+"use client";
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
+import { createStore, StateMachineProvider } from "little-state-machine";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,10 +17,18 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Powerflex",
-  description: "Powerflex is a solar energy company that provides energy solutions to customers around the world. Our team of engineers and engineers are passionate about powering your home with energy.",
-};
+// export const metadata: Metadata = {
+//   title: "Powerflex",
+//   description: "Powerflex is a solar energy company that provides energy solutions to customers around the world. Our team of engineers and engineers are passionate about powering your home with energy.",
+// };
+
+createStore({
+  name: '',
+  email: '',
+  phone_number: '',
+  electricity_spend: '',
+  price_band: '',
+});
 
 export default function RootLayout({
   children,
@@ -29,10 +40,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
       >
-        <Header/>
-        <div className="flex flex-wrap">
-          {children}
-        </div>
+        <StateMachineProvider>
+          <Header />
+          <div className="flex flex-wrap">
+            {children}
+          </div>
+        </StateMachineProvider>
       </body>
     </html>
   );

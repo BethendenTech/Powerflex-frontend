@@ -7,14 +7,18 @@ import Summary from './summary';
 import StatusImage from '../components/StatusImage';
 import Tooltip from '../components/Tooltip';
 import useResizeObserver from "use-resize-observer";
+import { useStateMachine } from 'little-state-machine';
+import updateAction from '@/little-state/action';
 
 export default function Page() {
 
   const router = useRouter();
+  const { actions, state } = useStateMachine({ updateAction });
 
-  const params = useSearchParams();
-  const electricity_spend = params.get('electricity_spend');
-  const price_band = params.get('price_band');
+  console.log("state", state)
+
+  const electricity_spend = Number(state.electricity_spend);
+  const price_band = Number(state.price_band);
 
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
@@ -34,7 +38,7 @@ export default function Page() {
     number_of_batteries: 3,
     number_of_inverters: 18,
     total_cost_naira: 0,
-    total_load_kwh:0,
+    total_load_kwh: 0,
   });
 
   const [breakdownChanged, setBreakdownChanged] = useState(0);
@@ -66,7 +70,7 @@ export default function Page() {
 
   // Calculate estimate only when breakdown is changed and not when sliders are moved. Use mouseup for slider changes
   useEffect(() => {
-      calculateQuote();
+    calculateQuote();
   }, [breakdownChanged]);
 
   //Show estimate on load
@@ -75,7 +79,7 @@ export default function Page() {
   }, []);
 
   const handleNext = async () => {
-    if(!formData.additional_info) {
+    if (!formData.additional_info) {
       setFormData({
         ...formData,
         additional_info: true,
@@ -106,7 +110,7 @@ export default function Page() {
   };
 
   const calculateQuote = async () => {
-    const data =  {...formData};
+    const data = { ...formData };
     data.battery_autonomy_hours = formData.battery_autonomy_hours_only + formData.battery_autonomy_days * 24;
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
@@ -156,7 +160,7 @@ export default function Page() {
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <StatusImage status={3} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
-      <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
+        <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
             <div className="w-full container mx-auto text-center flex flex-col gap-4">
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -166,9 +170,9 @@ export default function Page() {
                   </label>
                   <div className='input-group input-group-background'>
                     <div className='flex input-group'>
-                    <Tooltip 
+                      <Tooltip
                         content={`${formData.solar_load}%`}
-                        isAlwaysOpen 
+                        isAlwaysOpen
                         left={`${((width ?? 0) - 20) * formData.solar_load / 100 + 20}px`}
                         position="top"
                       >
@@ -201,15 +205,15 @@ export default function Page() {
                   </label>
                   <div className='input-group input-group-background'>
 
-                  <div className='input-group'>
+                    <div className='input-group'>
                       <label htmlFor="battery_autonomy_hours_only" className="label !font-bold">
                         Hours
                       </label>
-                      <Tooltip 
-                          content={`${formData.battery_autonomy_hours_only} h`}
-                          isAlwaysOpen 
-                          left={`${((width ?? 0) - 20) * formData.battery_autonomy_hours_only / 24 + 20}px`}
-                          position="top"
+                      <Tooltip
+                        content={`${formData.battery_autonomy_hours_only} h`}
+                        isAlwaysOpen
+                        left={`${((width ?? 0) - 20) * formData.battery_autonomy_hours_only / 24 + 20}px`}
+                        position="top"
                       >
                         <div className='slider-container'>
                           <input
@@ -224,7 +228,7 @@ export default function Page() {
                             required
                             min="0"
                             max="24"
-                            style={{ backgroundSize: `${100 * formData.battery_autonomy_hours_only/24}% 100%` }}
+                            style={{ backgroundSize: `${100 * formData.battery_autonomy_hours_only / 24}% 100%` }}
                           />
                         </div>
                       </Tooltip>
@@ -244,9 +248,9 @@ export default function Page() {
                       <label htmlFor="battery_autonomy_hours_only" className="label !font-bold mt-[10px]">
                         Days
                       </label>
-                      <Tooltip 
+                      <Tooltip
                         content={`${formData.battery_autonomy_days} d`}
-                        isAlwaysOpen 
+                        isAlwaysOpen
                         left={`${((width ?? 0) - 20) * formData.battery_autonomy_days / 5 + 20}px`}
                         position="top"
                       >
@@ -264,10 +268,10 @@ export default function Page() {
                             required
                             min="0"
                             max="5"
-                            style={{ backgroundSize: `${100* formData.battery_autonomy_days/5}% 100%` }}
+                            style={{ backgroundSize: `${100 * formData.battery_autonomy_days / 5}% 100%` }}
                           />
-                      </div>
-                    </Tooltip>
+                        </div>
+                      </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 6 }, (_, i) => (
                           <span className='text-sm font-bold calibration-line-container'>{i}</span>
@@ -280,33 +284,32 @@ export default function Page() {
                   </div>
                 </div>
                 <div className='w-full input-group input-group-background'>
-                <div className="toggle-group flex items-center justify-between gap-4">
-                  {/* Label */}
-                  <label htmlFor="toggle" className="text-gray-700 text-sm font-medium">
-                    Include Appliance Data
-                  </label>
+                  <div className="toggle-group flex items-center justify-between gap-4">
+                    {/* Label */}
+                    <label htmlFor="toggle" className="text-gray-700 text-sm font-medium">
+                      Include Appliance Data
+                    </label>
 
-                  {/* Toggle Switch */}
-                  <div className="relative">
-                    {/* Visible Toggle Track and Thumb */}
-                    <div
-                      className={`w-11 h-6 ${isChecked ? 'bg-blue-500' : 'bg-gray-700'} rounded-full cursor-pointer transition-colors duration-300`}
-                      onClick={handleToggle}
-                    >
+                    {/* Toggle Switch */}
+                    <div className="relative">
+                      {/* Visible Toggle Track and Thumb */}
                       <div
-                        className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform ${
-                          isChecked ? 'translate-x-5' : ''
-                        }`}
-                      ></div>
+                        className={`w-11 h-6 ${isChecked ? 'bg-blue-500' : 'bg-gray-700'} rounded-full cursor-pointer transition-colors duration-300`}
+                        onClick={handleToggle}
+                      >
+                        <div
+                          className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform ${isChecked ? 'translate-x-5' : ''
+                            }`}
+                        ></div>
+                      </div>
                     </div>
                   </div>
-                </div>
                   {isChecked && (
                     <Breakdown onBreakdownChange={handleBreakdownChange} />
                   )}
                 </div>
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                  <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} /> 
+                  <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} />
                   <div
                     className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
                     rel="noopener noreferrer"
@@ -319,7 +322,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-       </main>
+      </main>
     </div>
   );
 }

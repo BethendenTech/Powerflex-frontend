@@ -1,18 +1,27 @@
 "use client"; // This is a client component
 
-import { ChangeEvent, useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import StatusImage from '../components/StatusImage';
 import { useForm } from 'react-hook-form';
+import { useStateMachine } from 'little-state-machine';
+import updateAction from '@/little-state/action';
 
 export default function Page() {
+  const { actions } = useStateMachine({ updateAction });
 
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors }, setError, watch } = useForm();
+  const { register, handleSubmit, formState: { errors }, setError, watch } = useForm({
+    defaultValues: {
+      electricity_spend: "",
+      price_band: "A"
+    }
+  });
 
   const onSubmit = async (formData: any) => {
     try {
-      router.push(`/breakdown?electricity_spend=${formData.electricity_spend}&price_band=${formData.price_band}`);
+      actions.updateAction(formData);
+
+      router.push(`/breakdown`);
     } catch (error) {
       console.error('Error:', error);
     }
