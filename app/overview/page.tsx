@@ -16,12 +16,7 @@ export default function Page() {
 
   const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
     defaultValues: {
-      additional_info: false,
-      solar_load: 50,
-      battery_autonomy_hours_only: 12,
-      battery_autonomy_days: 0,
-      battery_autonomy_hours: 0,
-      breakdowns: {}
+      finance: false,
     }
   });
 
@@ -39,7 +34,7 @@ export default function Page() {
   };
 
   const onBack = () => {
-    router.push(`/monthly-spend`);
+    router.push(`/breakdown`);
   }
 
   return (
@@ -64,15 +59,15 @@ export default function Page() {
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Electricity band group</td>
-                      <td className="text-right">{state.price_band}</td>
+                      <th className="text-right">{state.price_band}</th>
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Coverage Percentage</td>
-                      <td className="text-right">75%</td>
+                      <th className="text-right">75%</th>
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Battery Autonomy</td>
-                      <td className="text-right">{state.battery_autonomy_hours_only} Hours - {state.battery_autonomy_days} Days</td>
+                      <th className="text-right">{state.battery_autonomy_hours_only} Hours - {state.battery_autonomy_days} Days</th>
                     </tr>
                   </tbody>
                 </table>
@@ -99,6 +94,19 @@ export default function Page() {
                   </tbody>
                 </table>
 
+
+                <div className="w-full flex justify-between border rounded-lg p-3">
+                  <button type='button' className={allValues.finance ? "text-black px-4 rounded-r-lg" : "btn bg-blue-500 text-white px-4 rounded-r-lg"} onClick={() => { setValue("finance", false) }}>
+                    Outright Purchase
+                  </button>
+
+                  <button type='button' className={!allValues.finance ? "text-black px-4 rounded-r-lg" : "btn bg-blue-500 text-white px-4 rounded-r-lg"} onClick={() => { setValue("finance", true) }}>
+                    Financing
+                  </button>
+                </div>
+
+
+
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button
                     type='submit'
@@ -113,6 +121,9 @@ export default function Page() {
           </div>
         </div>
       </main>
+
+
+
     </div>
   );
 }
