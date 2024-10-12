@@ -9,29 +9,37 @@ import Tooltip from '../components/Tooltip';
 import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
+import { useForm } from 'react-hook-form';
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
 
-  console.log("state", state)
+  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    defaultValues: {
+      additional_info: false,
+      solar_load: 50,
+      battery_autonomy_hours_only: 12,
+      battery_autonomy_days: 0,
+      battery_autonomy_hours: 0,
+      breakdowns: {}
+    }
+  });
 
-  const electricity_spend = Number(state.electricity_spend);
-  const price_band = String(state.price_band);
+  const allValues = watch();
+
+  const onSubmit = async (formData: any) => {
+    try {
+      actions.updateAction(formData);
+
+      // router.push(`/breakdown`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
-
-  const [formData, setFormData] = useState({
-    electricity_spend,
-    price_band,
-    additional_info: false,
-    solar_load: 50,
-    battery_autonomy_hours_only: 12,
-    battery_autonomy_days: 0,
-    battery_autonomy_hours: 0,
-    breakdowns: {}
-  });
 
   const [quote, setQuote] = useState({
     number_of_panels: 0,
@@ -53,18 +61,9 @@ export default function Page() {
     calculateQuote();
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleBreakdownChange = (breakdowns: Object) => {
-    setFormData({
-      ...formData,
-      breakdowns,
-    });
+    setValue("breakdowns", breakdowns)
     setBreakdownChanged(breakdownChanged + 1);
   };
 
@@ -78,40 +77,11 @@ export default function Page() {
     calculateQuote();
   }, []);
 
-  const handleNext = async () => {
-    if (!formData.additional_info) {
-      setFormData({
-        ...formData,
-        additional_info: true,
-      });
-      calculateQuote();
-    }
-    else {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          // alert('User details saved successfully!');
-          router.push(`/breakdown?name=`);
-        } else {
-          console.error('Failed to save user details');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-  };
-
   const calculateQuote = async () => {
-    const data = { ...formData };
-    data.battery_autonomy_hours = formData.battery_autonomy_hours_only + formData.battery_autonomy_days * 24;
+    const data = { ...allValues }
+    data.battery_autonomy_hours = allValues.battery_autonomy_hours_only + allValues.battery_autonomy_days * 24;
+    data.electricity_spend = state.electricity_spend
+    data.price_band = state.price_band
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
         method: 'POST',
@@ -132,30 +102,6 @@ export default function Page() {
     }
   }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // alert('User details saved successfully!');
-        router.push(`/breakdown`);
-      } else {
-        console.error('Failed to save user details');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
   const onBack = () => {
     router.push(`/monthly-spend`);
   }
@@ -169,7 +115,7 @@ export default function Page() {
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
             <div className="w-full container mx-auto text-center flex flex-col gap-4">
-              <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit}>
+              <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex input-group'>
                   <label htmlFor="solar_load" className="label">
                     Solar load coverage
@@ -177,9 +123,9 @@ export default function Page() {
                   <div className='input-group input-group-background'>
                     <div className='flex input-group'>
                       <Tooltip
-                        content={`${formData.solar_load}%`}
+                        content={`${allValues.solar_load}%`}
                         isAlwaysOpen
-                        left={`${((width ?? 0) - 20) * formData.solar_load / 100 + 20}px`}
+                        left={`${((width ?? 0) - 20) * allValues.solar_load / 100 + 20}px`}
                         position="top"
                       >
                         <div className='slider-container'>
@@ -188,12 +134,11 @@ export default function Page() {
                             className="input w-full slider-input"
                             type="range"
                             name="solar_load"
-                            value={formData.solar_load}
+                            value={allValues.solar_load}
                             onMouseUp={handleMouseUp}
                             onTouchEnd={handleMouseUp}
-                            onChange={handleChange}
                             required
-                            style={{ backgroundSize: `${formData.solar_load}% 100%` }}
+                            style={{ backgroundSize: `${allValues.solar_load}% 100%` }}
                           />
                         </div>
                       </Tooltip>
@@ -216,9 +161,9 @@ export default function Page() {
                         Hours
                       </label>
                       <Tooltip
-                        content={`${formData.battery_autonomy_hours_only} h`}
+                        content={`${allValues.battery_autonomy_hours_only} h`}
                         isAlwaysOpen
-                        left={`${((width ?? 0) - 20) * formData.battery_autonomy_hours_only / 24 + 20}px`}
+                        left={`${((width ?? 0) - 20) * allValues.battery_autonomy_hours_only / 24 + 20}px`}
                         position="top"
                       >
                         <div className='slider-container'>
@@ -227,14 +172,13 @@ export default function Page() {
                             className="input w-full slider-input"
                             type="range"
                             name="battery_autonomy_hours_only"
-                            value={formData.battery_autonomy_hours_only}
+                            value={allValues.battery_autonomy_hours_only}
                             onMouseUp={handleMouseUp}
                             onTouchEnd={handleMouseUp}
-                            onChange={handleChange}
                             required
                             min="0"
                             max="24"
-                            style={{ backgroundSize: `${100 * formData.battery_autonomy_hours_only / 24}% 100%` }}
+                            style={{ backgroundSize: `${100 * allValues.battery_autonomy_hours_only / 24}% 100%` }}
                           />
                         </div>
                       </Tooltip>
@@ -255,9 +199,9 @@ export default function Page() {
                         Days
                       </label>
                       <Tooltip
-                        content={`${formData.battery_autonomy_days} d`}
+                        content={`${allValues.battery_autonomy_days} d`}
                         isAlwaysOpen
-                        left={`${((width ?? 0) - 20) * formData.battery_autonomy_days / 5 + 20}px`}
+                        left={`${((width ?? 0) - 20) * allValues.battery_autonomy_days / 5 + 20}px`}
                         position="top"
                       >
                         <div className='slider-container'>
@@ -267,14 +211,13 @@ export default function Page() {
                             className="input w-full slider-input"
                             type="range"
                             name="battery_autonomy_days"
-                            value={formData.battery_autonomy_days}
+                            value={allValues.battery_autonomy_days}
                             onMouseUp={handleMouseUp}
                             onTouchEnd={handleMouseUp}
-                            onChange={handleChange}
                             required
                             min="0"
                             max="5"
-                            style={{ backgroundSize: `${100 * formData.battery_autonomy_days / 5}% 100%` }}
+                            style={{ backgroundSize: `${100 * allValues.battery_autonomy_days / 5}% 100%` }}
                           />
                         </div>
                       </Tooltip>
@@ -285,7 +228,7 @@ export default function Page() {
                       </div>
                     </div>
                     <div className='m-auto pt-[10px] font-bold'>
-                      {formData.battery_autonomy_days} days, {formData.battery_autonomy_hours_only} hours
+                      {allValues.battery_autonomy_days} days, {allValues.battery_autonomy_hours_only} hours
                     </div>
                   </div>
                 </div>
@@ -319,7 +262,6 @@ export default function Page() {
                   <div
                     className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
                     rel="noopener noreferrer"
-                    onClick={handleNext}
                   >
                     Next
                   </div>
