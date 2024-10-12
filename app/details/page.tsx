@@ -5,43 +5,59 @@ import StatusImage from '../components/StatusImage';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
+import React from 'react';
 
 export default function Page() {
-  const { actions } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ updateAction });
 
   const router = useRouter();
 
-  const { register, handleSubmit, formState: { errors }, setError, watch } = useForm();
+  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      phone_number: "",
+    }
+  });
+
+  React.useEffect(() => {
+    if (state) {
+      setValue("name", state.name || "");
+      setValue("email", state.email || "");
+      setValue("phone_number", state.phone_number || "");
+    }
+  }, [state])
 
   const onSubmit = async (formData: any) => {
     try {
 
       actions.updateAction(formData);
+      router.push(`/monthly-spend`);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
 
-      if (response.ok) {
-        const data = await response.json();
-        // alert('User details saved successfully!');
-        router.push(`/monthly-spend`);
-      } else {
-        console.error('Failed to save user details');
-      }
+      // if (response.ok) {
+      //   const data = await response.json();
+      //   // alert('User details saved successfully!');
+      //   router.push(`/monthly-spend`);
+      // } else {
+      //   console.error('Failed to save user details');
+      // }
 
-      if (response.status == 400) {
-        const data = await response.json();
+      // if (response.status == 400) {
+      //   const data = await response.json();
 
-        Object.entries(data).forEach(([key, value]) => {
-          setError(key, { type: "manual", message: value });
-        });
-      }
+      //   Object.entries(data).forEach(([key, value]) => {
+      //     setError(key, { type: "manual", message: value });
+      //   });
+      // }
 
     } catch (error) {
       console.error('Error:', error);

@@ -5,18 +5,26 @@ import StatusImage from '../components/StatusImage';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
+import React from 'react';
 
 export default function Page() {
-  const { actions } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ updateAction });
 
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors }, setError, watch } = useForm({
+  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
     defaultValues: {
       electricity_spend: "",
       price_band: "A"
     }
   });
 
+  React.useEffect(() => {
+    if (state) {
+      setValue("electricity_spend", state.electricity_spend || "");
+      setValue("price_band", state.price_band || "A");
+    }
+  }, [state])
+  
   const onSubmit = async (formData: any) => {
     try {
       actions.updateAction(formData);
@@ -27,9 +35,13 @@ export default function Page() {
     }
   };
 
+  const onBack = () => {
+    router.push(`/details`);
+  }
 
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <button onClick={() => onBack()}>Back</button>
       <StatusImage status={2} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">

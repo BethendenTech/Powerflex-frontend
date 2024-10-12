@@ -18,7 +18,7 @@ export default function Page() {
   console.log("state", state)
 
   const electricity_spend = Number(state.electricity_spend);
-  const price_band = Number(state.price_band);
+  const price_band = String(state.price_band);
 
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
@@ -147,7 +147,7 @@ export default function Page() {
       if (response.ok) {
         const data = await response.json();
         // alert('User details saved successfully!');
-        router.push(`/breakdown?name=`);
+        router.push(`/breakdown`);
       } else {
         console.error('Failed to save user details');
       }
@@ -156,8 +156,14 @@ export default function Page() {
     }
   };
 
+  const onBack = () => {
+    router.push(`/monthly-spend`);
+  }
+
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <button onClick={() => onBack()}>Back</button>
+
       <StatusImage status={3} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
