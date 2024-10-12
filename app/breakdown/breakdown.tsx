@@ -3,13 +3,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import allElements from './allAppliances';
+import { allElements } from '@/utils/formData';
 
 interface BreakdownProps {
     onBreakdownChange: (sata: Object) => void;
-  }
+}
 
-  export default function Breakdown({ onBreakdownChange, ...props }: BreakdownProps) {
+export default function Breakdown({ onBreakdownChange, ...props }: BreakdownProps) {
 
     const router = useRouter();
     const [formData, setFormData] = useState({});
@@ -20,15 +20,15 @@ interface BreakdownProps {
             ...isCheckedObject,
             [e.target.name]: e.target.checked,
         });
-        if(!e.target.checked) {
+        if (!e.target.checked) {
             setFormData({
                 ...formData,
-                [e.target.name+'_quantity']: 0,
-                [e.target.name+'_usage']: 0,
+                [e.target.name + '_quantity']: 0,
+                [e.target.name + '_usage']: 0,
             });
         }
-    };  
-    
+    };
+
     const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setFormData({
             ...formData,
@@ -80,11 +80,11 @@ interface BreakdownProps {
                         onChange={handleSelectChange}
                         disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
                     >
-                    {Array.from({ length: 11 }, (_, i) => (
-                        <option key={props.name+i} value={i}>
-                        {i}
-                        </option>
-                    ))}
+                        {Array.from({ length: 11 }, (_, i) => (
+                            <option key={props.name + i} value={i}>
+                                {i}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <div>
@@ -95,11 +95,11 @@ interface BreakdownProps {
                         onChange={handleSelectChange}
                         disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
                     >
-                    {Array.from({ length: 25 }, (_, i) => (
-                        <option key={props.name+'u'+i} value={i}>
-                        {i}
-                        </option>
-                    ))}
+                        {Array.from({ length: 25 }, (_, i) => (
+                            <option key={props.name + 'u' + i} value={i}>
+                                {i}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <div></div>
@@ -130,11 +130,11 @@ interface BreakdownProps {
                     </span>
                 </summary>
                 <div className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
-                    <div/>
+                    <div />
                     <div className="first-col col-span-2"></div>
                     <div>Qtuantity</div>
                     <div>Hours</div>
-                    <div/>
+                    <div />
                 </div>
                 <div>
                     {props.items.map((row: any) => {
@@ -142,7 +142,8 @@ interface BreakdownProps {
                             <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
                                 {renderRow(row)}
                             </div>
-                        )}
+                        )
+                    }
                     )}
                 </div>
             </details>
@@ -151,19 +152,19 @@ interface BreakdownProps {
 
     return (
         <div className='w-full'>
-            
+
             <>
                 {allElements.map((row: any) => {
-                   if(row.type === "accordian") {
-                       return renderAccordianWithRows(row)
-                   }
-                   else {
-                       return (
+                    if (row.type === "accordian") {
+                        return renderAccordianWithRows(row)
+                    }
+                    else {
+                        return (
                             <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
                                 {renderRow(row)}
                             </div>
-                       )
-                   }
+                        )
+                    }
                 })}
             </>
         </div>

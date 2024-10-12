@@ -31,6 +31,7 @@ export default function Page() {
 
   const onSubmit = async (formData: any) => {
     try {
+      console.log('formData',formData)
       actions.updateAction(formData);
 
       // router.push(`/breakdown`);
@@ -69,12 +70,12 @@ export default function Page() {
 
   // Calculate estimate only when breakdown is changed and not when sliders are moved. Use mouseup for slider changes
   useEffect(() => {
-    calculateQuote();
+    // calculateQuote();
   }, [breakdownChanged]);
 
   //Show estimate on load
   useEffect(() => {
-    calculateQuote();
+    // calculateQuote();
   }, []);
 
   const calculateQuote = async () => {
@@ -133,13 +134,10 @@ export default function Page() {
                             id="solar_load"
                             className="input w-full slider-input"
                             type="range"
-                            name="solar_load"
-                            value={allValues.solar_load}
-                            onMouseUp={handleMouseUp}
-                            onTouchEnd={handleMouseUp}
-                            required
                             style={{ backgroundSize: `${allValues.solar_load}% 100%` }}
+                            {...register('solar_load', { required: 'Solar load is required' })}
                           />
+                          {errors.solar_load && <p className="text-red-500 text-xs italic">{errors?.solar_load?.message}</p>}
                         </div>
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
@@ -171,15 +169,13 @@ export default function Page() {
                             id="battery_autonomy_hours_only"
                             className="input w-full slider-input"
                             type="range"
-                            name="battery_autonomy_hours_only"
-                            value={allValues.battery_autonomy_hours_only}
-                            onMouseUp={handleMouseUp}
-                            onTouchEnd={handleMouseUp}
-                            required
+                            {...register('battery_autonomy_hours_only', { required: 'Battery Autonomy Hours Only is required' })}
                             min="0"
                             max="24"
                             style={{ backgroundSize: `${100 * allValues.battery_autonomy_hours_only / 24}% 100%` }}
                           />
+
+                          {errors.battery_autonomy_hours_only && <p className="text-red-500 text-xs italic">{errors?.battery_autonomy_hours_only?.message}</p>}
                         </div>
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
@@ -210,11 +206,7 @@ export default function Page() {
                             id="battery_autonomy_days"
                             className="input w-full slider-input"
                             type="range"
-                            name="battery_autonomy_days"
-                            value={allValues.battery_autonomy_days}
-                            onMouseUp={handleMouseUp}
-                            onTouchEnd={handleMouseUp}
-                            required
+                            {...register('battery_autonomy_days', { required: 'Battery Autonomy Days is required' })}
                             min="0"
                             max="5"
                             style={{ backgroundSize: `${100 * allValues.battery_autonomy_days / 5}% 100%` }}
@@ -259,12 +251,13 @@ export default function Page() {
                 </div>
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} />
-                  <div
+                  <button
+                    type='submit'
                     className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
                     rel="noopener noreferrer"
                   >
                     Next
-                  </div>
+                  </button>
                 </div>
               </form>
             </div>

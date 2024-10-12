@@ -1,4 +1,4 @@
-const allElements = [
+export const allElements = [
     {
         name: "Kitchen Appliance",
         type: "accordian",
@@ -172,5 +172,3 @@ const allElements = [
         ]
     },
 ]
-
-export default allElements;
