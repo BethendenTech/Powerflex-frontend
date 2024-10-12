@@ -31,10 +31,10 @@ export default function Page() {
 
   const onSubmit = async (formData: any) => {
     try {
-      console.log('formData',formData)
+      console.log('formData', formData)
       actions.updateAction(formData);
 
-      // router.push(`/breakdown`);
+      router.push(`/overview`);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -58,10 +58,6 @@ export default function Page() {
     setIsChecked(!isChecked);
   };
 
-  const handleMouseUp = () => {
-    calculateQuote();
-  };
-
 
   const handleBreakdownChange = (breakdowns: Object) => {
     setValue("breakdowns", breakdowns)
@@ -70,12 +66,12 @@ export default function Page() {
 
   // Calculate estimate only when breakdown is changed and not when sliders are moved. Use mouseup for slider changes
   useEffect(() => {
-    // calculateQuote();
+    calculateQuote();
   }, [breakdownChanged]);
 
   //Show estimate on load
   useEffect(() => {
-    // calculateQuote();
+    calculateQuote();
   }, []);
 
   const calculateQuote = async () => {
