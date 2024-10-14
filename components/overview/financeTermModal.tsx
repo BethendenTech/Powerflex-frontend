@@ -25,7 +25,7 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-gray-400 rounded-lg w-1/1 p-5">
+            <div className="bg-gray-200 rounded-lg w-1/1 p-2">
                 {/* Modal Content */}
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold">Edit Finance Terms</h2>

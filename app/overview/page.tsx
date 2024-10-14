@@ -109,18 +109,29 @@ export default function Page() {
 
                 {!allValues.finance && <OutRightPurchase />}
                 {allValues.finance && <FinancingPurchase />}
-                
-                
 
-                <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
+
+
+                {!allValues.finance && <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button
                     type='submit'
                     className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
                     rel="noopener noreferrer"
                   >
-                    Next
+                    Proceed to Payment
                   </button>
-                </div>
+                </div>}
+                
+                {allValues.finance && <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
+                  <button
+                    type='button'
+                    className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
+                    rel="noopener noreferrer"
+                  >
+                    Apply for Financing
+                  </button>
+                </div>}
+
               </form>
             </div>
           </div>
