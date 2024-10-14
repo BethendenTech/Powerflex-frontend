@@ -2,8 +2,8 @@
 
 import { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Breakdown from './breakdown';
-import Summary from './summary';
+import Breakdown from '../../components/breakdown/breakdown';
+import Summary from '../../components/breakdown/summary';
 import StatusImage from '../components/StatusImage';
 import Tooltip from '../components/Tooltip';
 import useResizeObserver from "use-resize-observer";

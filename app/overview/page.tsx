@@ -8,6 +8,8 @@ import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
+import { OutRightPurchase } from '@/components/overview/outrightPurchase';
+import { FinancingPurchase } from '@/components/overview/Financing';
 
 export default function Page() {
 
@@ -105,6 +107,8 @@ export default function Page() {
                   </button>
                 </div>
 
+                {!allValues.finance && <OutRightPurchase />}
+                {allValues.finance && <FinancingPurchase />}
 
 
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
