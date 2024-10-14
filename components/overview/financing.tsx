@@ -1,5 +1,10 @@
 "use client";
+
+import { useState } from "react";
+import { FinancingTermModal } from "./financeTermModal";
+
 export const FinancingPurchase = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
     return (
         <div>
             <table className="table-auto w-full">
@@ -26,6 +31,10 @@ export const FinancingPurchase = () => {
                     </tr>
                 </tbody>
             </table>
+
+            <button type='button' className='btn bg-blue-500 text-white mt-5 px-4 rounded-r-lg' onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
+
+            <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>
         </div>
     )
 }

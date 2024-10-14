@@ -9,7 +9,7 @@ import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
-import { FinancingPurchase } from '@/components/overview/Financing';
+import { FinancingPurchase } from '@/components/overview/financing';
 
 export default function Page() {
 
@@ -57,11 +57,11 @@ export default function Page() {
                   <tbody>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Monthly spend</td>
-                      <th className="text-right">{state.electricity_spend} N</th>
+                      <th className="text-right">{state?.electricity_spend}</th>
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Electricity band group</td>
-                      <th className="text-right">{state.price_band}</th>
+                      <th className="text-right">{state?.price_band}</th>
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Coverage Percentage</td>
@@ -69,7 +69,7 @@ export default function Page() {
                     </tr>
                     <tr className="border-b border-gray-300">
                       <td className="text-left">Battery Autonomy</td>
-                      <th className="text-right">{state.battery_autonomy_hours_only} Hours - {state.battery_autonomy_days} Days</th>
+                      <th className="text-right">{state?.battery_autonomy_hours_only} Hours - {state?.battery_autonomy_days} Days</th>
                     </tr>
                   </tbody>
                 </table>
@@ -109,7 +109,8 @@ export default function Page() {
 
                 {!allValues.finance && <OutRightPurchase />}
                 {allValues.finance && <FinancingPurchase />}
-
+                
+                
 
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button

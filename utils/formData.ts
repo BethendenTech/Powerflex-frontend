@@ -172,3 +172,23 @@ export const allElements = [
         ]
     },
 ]
+
+
+export const financeTermTears = [
+    {
+        label: "1 Year",
+        value: 1
+    },
+    {
+        label: "2 Years",
+        value: 2
+    },
+    {
+        label: "3 Years",
+        value: 3
+    },
+    {
+        label: "4 Years",
+        value: 4
+    },
+]

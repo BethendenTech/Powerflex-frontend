@@ -1,4 +1,5 @@
 "use client";
+
 export const OutRightPurchase = () => {
     return (
         <div>
