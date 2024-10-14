@@ -39,7 +39,7 @@ export default function Page() {
             <div className="w-full container mx-auto text-center flex flex-col gap-4">
               <form className="w-full details-form flex flex-col gap-6 items-center" onSubmit={handleSubmit}>
               <div className='input-group'>
-                  <label htmlFor="electricity_spend" className="label">
+                  <label htmlFor="electricity_spend" className="label sr-only">
                     How much do you spend on electricity each month?
                   </label>
                   <input
