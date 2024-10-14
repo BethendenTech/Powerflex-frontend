@@ -1,4 +1,4 @@
-const allElements = [
+export const allElements = [
     {
         name: "Kitchen Appliance",
         type: "accordian",
@@ -173,4 +173,25 @@ const allElements = [
     },
 ]
 
-export default allElements;
+
+export const financeTermTears = [
+    {
+        label: "1 Year",
+        value: 1
+    },
+    {
+        label: "2 Years",
+        value: 2
+    },
+    {
+        label: "3 Years",
+        value: 3
+    },
+    {
+        label: "4 Years",
+        value: 4
+    },
+]
+
+export const interestRateValue = 7.5
+export const interestTermValue = 4

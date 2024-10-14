@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "little-state-machine": "^4.8.0",
     "next": "14.2.10",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0"
   },
   "devDependencies": {
     "@types/node": "^20",
