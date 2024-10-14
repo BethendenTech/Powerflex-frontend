@@ -1,6 +1,6 @@
 "use client";
 
-import { financeTermTears } from "@/utils/formData";
+import { financeTermTears, interestRateValue, interestTermValue } from "@/utils/formData";
 import { useForm } from "react-hook-form";
 
 interface FinancingTermModalProps {
@@ -15,8 +15,8 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
         defaultValues: {
             total_cost: "",
             down_payment: "",
-            term: "",
-            interest_rate: "",
+            term: interestTermValue,
+            interest_rate: interestRateValue,
         }
     });
 

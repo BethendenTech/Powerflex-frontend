@@ -29,7 +29,7 @@ export default function Page() {
       console.log('formData', formData)
       actions.updateAction(formData);
 
-      // router.push(`/breakdown`);
+      router.push(`/payment-summary`);
     } catch (error) {
       console.error('Error:', error);
     }

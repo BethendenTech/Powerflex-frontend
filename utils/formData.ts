@@ -192,3 +192,6 @@ export const financeTermTears = [
         value: 4
     },
 ]
+
+export const interestRateValue = 7.5
+export const interestTermValue = 4

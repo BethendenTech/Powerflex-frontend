@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FinancingTermModal } from "./financeTermModal";
+import { interestRateValue, interestTermValue } from "@/utils/formData";
 
 export const FinancingPurchase = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -23,18 +24,18 @@ export const FinancingPurchase = () => {
                     </tr>
                     <tr className="border-b border-gray-300">
                         <td className="text-left">Term</td>
-                        <th className="text-right">4 Years</th>
+                        <th className="text-right">{interestTermValue} Years</th>
                     </tr>
                     <tr className="border-b border-gray-300">
                         <td className="text-left">Interest rate</td>
-                        <th className="text-right">7.5%</th>
+                        <th className="text-right">{interestRateValue}%</th>
                     </tr>
                 </tbody>
             </table>
 
             <button type='button' className='btn bg-blue-500 text-white mt-5 px-4 rounded-r-lg' onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
 
-            <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>
+            <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
         </div>
     )
 }
