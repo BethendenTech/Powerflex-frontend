@@ -10,6 +10,7 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
+import Image from 'next/image';
 
 export default function Page() {
 
@@ -41,68 +42,125 @@ export default function Page() {
 
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <button onClick={() => onBack()}>Back</button>
+      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
+        <Image
+          src="/images/collaps-arrow-right.svg"
+          alt="arrow icon"
+          width={24}
+          height={24}
+          className="mr-2"
+        />
+        Back
+      </button>
 
       <StatusImage status={4} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
-          <div className="w-full pt-4">
-            <h4 className="text-center">Overview</h4>
+          <div className="w-full pt-4 pb-4 mb-2">
+            <h4 className="heading text-center">Overview</h4>
             <div className="w-full container mx-auto flex flex-col gap-4">
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
+                <ul role="list" className="divide-y divide-gray-400">
+                  <li className="flex justify-between gap-x-6 py-2">
+                    <div className="flex min-w-0 gap-x-4">
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Monthly Spend</p>
+                      </div>
+                    </div>
+                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                      <p className="text-sm font-bold leading-6 text-gray-900">{state?.electricity_spend}</p>
+                    </div>
+                  </li>
+                  <li className="flex justify-between gap-x-6 py-2">
+                    <div className="flex min-w-0 gap-x-4">
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Electricity band group</p>
+                      </div>
+                    </div>
+                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                      <p className="text-sm font-bold leading-6 text-gray-900">{state?.price_band}</p>
+                    </div>
+                  </li>
+                  <li className="flex justify-between gap-x-6 py-2">
+                    <div className="flex min-w-0 gap-x-4">
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Coverage Percentage</p>
+                      </div>
+                    </div>
+                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                      <p className="text-sm font-bold leading-6 text-gray-900">75%</p>
+                    </div>
+                  </li>
+                  <li className="flex justify-between gap-x-6 py-2">
+                    <div className="flex min-w-0 gap-x-4">
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Battery Autonomy</p>
+                      </div>
+                    </div>
+                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                      <p className="text-sm font-bold leading-6 text-gray-900">{state?.battery_autonomy_hours_only} Hours - {state?.battery_autonomy_days} Days</p>
+                    </div>
+                  </li>
+                  <li className="flex justify-between gap-x-6 py-2"></li>
+                </ul>
 
+                <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
+                  <div className="w-full pt-4 pb-4 mb-2">
+                    <div className="w-full container mx-auto text-left flex flex-col gap-4 pb-3">
+                      <p className="text-lg font-harmonia font-bold leading-[1.3] text-left text-black">Estimated energy requirement</p>
+                    </div>
+                    <ul role="list">
+                      <li className="flex justify-between gap-x-6 py-2">
+                        <div className="flex min-w-0 gap-x-4">
+                          <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number of solar panels</p>
+                          </div>
+                        </div>
+                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
+                        </div>
+                      </li>
+                      <li className="flex justify-between gap-x-6 py-2">
+                        <div className="flex min-w-0 gap-x-4">
+                          <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number of inverters</p>
+                          </div>
+                        </div>
+                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
+                        </div>
+                      </li>
+                      <li className="flex justify-between gap-x-6 py-2">
+                        <div className="flex min-w-0 gap-x-4">
+                          <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number/size of batteries</p>
+                          </div>
+                        </div>
+                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
+                        </div>
+                      </li>
+                      <li className="flex justify-between gap-x-6 py-2">
+                        <div className="flex min-w-0 gap-x-4">
+                          <div className="min-w-0 flex-auto">
+                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Recommended battery size</p>
+                          </div>
+                        </div>
+                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
+                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr className="border-b border-gray-300">
-                      <td className="text-left">Monthly spend</td>
-                      <th className="text-right">{state?.electricity_spend}</th>
-                    </tr>
-                    <tr className="border-b border-gray-300">
-                      <td className="text-left">Electricity band group</td>
-                      <th className="text-right">{state?.price_band}</th>
-                    </tr>
-                    <tr className="border-b border-gray-300">
-                      <td className="text-left">Coverage Percentage</td>
-                      <th className="text-right">75%</th>
-                    </tr>
-                    <tr className="border-b border-gray-300">
-                      <td className="text-left">Battery Autonomy</td>
-                      <th className="text-right">{state?.battery_autonomy_hours_only} Hours - {state?.battery_autonomy_days} Days</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h5 className='font-bold'>Estimated energy requirement</h5>
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr>
-                      <td className="text-left">Number of solar panels</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Number of inverters</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Number/size of batteries</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Recommended battery size</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-                <div className="w-full flex justify-between border rounded-lg p-3">
-                  <button type='button' className={allValues.finance ? "text-black px-4 rounded-r-lg" : "btn bg-blue-500 text-white px-4 rounded-r-lg"} onClick={() => { setValue("finance", false) }}>
+                <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
+                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "text-black text-[#424242]" : "tab-btn"}`} onClick={() => { setValue("finance", false) }}>
                     Outright Purchase
                   </button>
 
-                  <button type='button' className={!allValues.finance ? "text-black px-4 rounded-r-lg" : "btn bg-blue-500 text-white px-4 rounded-r-lg"} onClick={() => { setValue("finance", true) }}>
+                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "tab-btn" : "text-black text-[#424242]"}`} onClick={() => { setValue("finance", true) }}>
                     Financing
                   </button>
                 </div>
@@ -121,7 +179,7 @@ export default function Page() {
                     Proceed to Payment
                   </button>
                 </div>}
-                
+
                 {allValues.finance && <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button
                     type='button'
