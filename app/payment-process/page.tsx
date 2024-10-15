@@ -46,6 +46,8 @@ export default function Page() {
     router.push(`/overview`);
   }
 
+  console.log("state",state)
+
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <button onClick={() => onBack()}>Back</button>
