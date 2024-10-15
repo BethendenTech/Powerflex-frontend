@@ -1,19 +1,12 @@
 "use client"; // This is a client component
 
-import { useRouter } from 'next/navigation';
 import StatusImage from '../components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 
 export default function Page() {
 
-  const router = useRouter();
   const { state } = useStateMachine({ updateAction });
-
-
-  const onBack = () => {
-    router.push(`/overview`);
-  }
 
   console.log("state", state)
 
@@ -34,7 +27,6 @@ export default function Page() {
 
                 <p>Installer will call you within the next few hours...Please continue to create your Powerflex Customer account.</p>
               </div>
-
 
             </div>
           </div>
