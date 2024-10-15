@@ -156,11 +156,11 @@ export default function Page() {
                 </div>
 
                 <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
-                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "text-black text-[#424242]" : "tab-btn"}`} onClick={() => { setValue("finance", false) }}>
+                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "text-black text-[#424242]" : "tab-btn text-white"}`} onClick={() => { setValue("finance", false) }}>
                     Outright Purchase
                   </button>
 
-                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "tab-btn" : "text-black text-[#424242]"}`} onClick={() => { setValue("finance", true) }}>
+                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "tab-btn text-white" : "text-black text-[#424242]"}`} onClick={() => { setValue("finance", true) }}>
                     Financing
                   </button>
                 </div>

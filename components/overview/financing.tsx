@@ -67,7 +67,7 @@ export const FinancingPurchase = () => {
                 </div>
             </div>
 
-            <button type='button' className={`px-7 py-2.5 mb-3 text-sm font-harmonia font-normal leading-[1.3] tab-btn`} onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
+            <button type='button' className={`px-7 py-2.5 mb-3 text-white text-sm font-harmonia font-normal leading-[1.3] tab-btn`} onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
 
             <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
 

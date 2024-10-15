@@ -11,13 +11,13 @@ export default function StatusImage(props: Status) {
 
     return (
         <div className="w-10/12 m-auto">
-            <Image
+            {totalSteps >= props.status && <Image
                 src={`/images/status-${props.status}.svg`}
                 alt="powerflex"
                 width={150}
                 height={150}
                 className="m-auto"
-            />
+            />}
 
             <div className="progress-bar mt-[10px] mb-[15px]">
                 {Array.from({ length: totalSteps }, (_, index) => {

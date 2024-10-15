@@ -64,7 +64,6 @@ export default function Page() {
                   </label>
                   <input
                     id="electricity_spend"
-                    type="number"
                     className={errors.electricity_spend ? "input w-full border border-red-500" : "input w-full"}
                     {...register('electricity_spend', { required: 'Electricity Spend is required' })}
                   />
