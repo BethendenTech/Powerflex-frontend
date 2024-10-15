@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 
-import { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
+import React, { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Breakdown from '../../components/breakdown/breakdown';
 import Summary from '../../components/breakdown/summary';
@@ -64,6 +64,22 @@ export default function Page() {
     setValue("breakdowns", breakdowns)
     setBreakdownChanged(breakdownChanged + 1);
   };
+
+
+  React.useEffect(() => {
+    if (state) {
+      setValue("additional_info", state.additional_info || false);
+      setValue("solar_load", state.solar_load || "");
+      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || "");
+      setValue("battery_autonomy_days", state.battery_autonomy_days || "");
+      setValue("battery_autonomy_hours", state.battery_autonomy_hours || "");
+      setValue("breakdowns", state.breakdowns || {});
+
+      if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
+        setIsChecked(true)
+      }
+    }
+  }, [state])
 
   // Calculate estimate only when breakdown is changed and not when sliders are moved. Use mouseup for slider changes
   useEffect(() => {

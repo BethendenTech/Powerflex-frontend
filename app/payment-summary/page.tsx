@@ -37,7 +37,7 @@ export default function Page() {
   };
 
   const onBack = () => {
-    router.push(`/breakdown`);
+    router.push(`/overview`);
   }
 
   return (
