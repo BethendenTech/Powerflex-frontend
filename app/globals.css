@@ -70,6 +70,14 @@ body {
   color: black;
 }
 
+.sub-content {
+  font-family: Harmonia Sans Pro;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.8px;
+  color: #000000;
+}
+
 .bg-img {
   width: 100%;
   max-width: 500px;

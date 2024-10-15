@@ -10,6 +10,7 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
+import Image from 'next/image';
 
 export default function Page() {
 
@@ -41,7 +42,16 @@ export default function Page() {
 
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <button onClick={() => onBack()}>Back</button>
+      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
+        <Image
+          src="/images/collaps-arrow-right.svg"
+          alt="arrow icon"
+          width={24}
+          height={24}
+          className="mr-2"
+        />
+        Back
+      </button>
 
       <StatusImage status={4} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
