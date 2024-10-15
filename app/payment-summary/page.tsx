@@ -1,8 +1,7 @@
 "use client"; // This is a client component
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import StatusImage from '../components/StatusImage';
-import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
@@ -60,37 +59,9 @@ export default function Page() {
             <div className="w-full container mx-auto flex flex-col gap-4 mt-4">
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-                <h5 className='font-harmonia text-base font-bold leading-[19.79px] text-left text-black'>Outright Purchase</h5>
-                <div className='bg-[#ffffff] rounded-[7px] p-3'>
-                  <table className="table-auto w-full">
-                    <tbody>
-                      <tr>
-                        <td className="sub-content text-left">Equipment</td>
-                        <th className="sub-content text-right">value</th>
-                      </tr>
-                    </tbody>
-                  </table>
+                <PaymentSummaryCard />
 
-                  <table className="table-auto w-full">
-                    <tbody>
-                      <tr className='pl-4 flex justify-around'>
-                        <td className="sub-content text-left">Solar panels</td>
-                        <th className="sub-content text-left">value</th>
-                      </tr>
-                      <tr className='pl-4 flex justify-around'>
-                        <td className="sub-content text-left">Inverters</td>
-                        <th className="sub-content text-left">value</th>
-                      </tr>
-                      <tr className='pl-4 flex justify-around'>
-                        <td className="sub-content text-left">Batteries</td>
-                        <th className="sub-content text-left">value</th>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <PaymentSummaryCard />
-
-
+                <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button
                     type='submit'
                     className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
@@ -102,8 +73,8 @@ export default function Page() {
               </form>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </div >
+      </main >
+    </div >
   );
 }
