@@ -6,14 +6,17 @@ import Image from "next/image";
 import { allElements } from '@/utils/formData';
 
 interface BreakdownProps {
+    breakdowns: any,
     onBreakdownChange: (sata: Object) => void;
 }
 
-export default function Breakdown({ onBreakdownChange, ...props }: BreakdownProps) {
+export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: BreakdownProps) {
 
     const router = useRouter();
     const [formData, setFormData] = useState({});
     const [isCheckedObject, setIsChecked] = useState({});
+
+    console.log('breakdowns',breakdowns)
 
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked({
@@ -39,6 +42,10 @@ export default function Breakdown({ onBreakdownChange, ...props }: BreakdownProp
     useEffect(() => {
         onBreakdownChange(formData);
     }, [formData]);
+
+    // useEffect(() => {
+    //     setFormData(breakdowns)
+    // }, [breakdowns])
 
     interface RowObject {
         name: string;

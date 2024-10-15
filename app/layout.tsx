@@ -28,6 +28,12 @@ createStore({
   phone_number: '',
   electricity_spend: '',
   price_band: '',
+  additional_info: false,
+  solar_load: 50,
+  battery_autonomy_hours_only: 12,
+  battery_autonomy_days: 0,
+  battery_autonomy_hours: 0,
+  breakdowns: {}
 });
 
 export default function RootLayout({

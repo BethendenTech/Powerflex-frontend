@@ -268,7 +268,7 @@ export default function Page() {
                     </div>
                   </div>
                   {isChecked && (
-                    <Breakdown onBreakdownChange={handleBreakdownChange} />
+                    <Breakdown onBreakdownChange={handleBreakdownChange} breakdowns={state.breakdowns} />
                   )}
                 </div>
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
