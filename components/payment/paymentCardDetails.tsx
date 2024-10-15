@@ -115,6 +115,15 @@ const PaymentCardDetails = () => {
                 {errors.postcode && <p className="text-red-500 text-sm mt-1">{errors.postcode.message}</p>}
             </div>
 
+            <table className="table-auto w-full">
+                <tbody>
+                    <tr>
+                        <th className="text-left">Due Today</th>
+                        <th className="text-right">£ {state.total_cost}</th>
+                    </tr>
+                </tbody>
+            </table>
+
             {/* Submit Button */}
             <div className="pt-4">
                 <button
@@ -124,6 +133,9 @@ const PaymentCardDetails = () => {
                     Confirm
                 </button>
             </div>
+
+
+
         </form>
     );
 };
