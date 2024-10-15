@@ -1,15 +1,9 @@
 "use client"; // This is a client component
 
-import { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import StatusImage from '../components/StatusImage';
-import Tooltip from '../components/Tooltip';
-import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
-import { useForm } from 'react-hook-form';
-import { OutRightPurchase } from '@/components/overview/outrightPurchase';
-import { FinancingPurchase } from '@/components/overview/financing';
 import PaymentMethodCard from '@/components/payment/paymentMethodCard';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import PaymentCardDetails from '@/components/payment/paymentCardDetails';
