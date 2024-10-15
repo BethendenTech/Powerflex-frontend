@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
 import PaymentMethodCard from '@/components/payment/paymentMethodCard';
+import PaymentSummaryCard from '@/components/payment/paymentSummary';
 
 export default function Page() {
 
@@ -46,7 +47,7 @@ export default function Page() {
     router.push(`/overview`);
   }
 
-  console.log("state",state)
+  console.log("state", state)
 
   return (
     <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
@@ -63,49 +64,8 @@ export default function Page() {
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
 
+                <PaymentSummaryCard />
 
-                <h5 className='font-bold'>Outright Purchase</h5>
-
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr>
-                      <td className="text-left">Equipment</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-                <table className="table-auto w-full ">
-                  <tbody>
-                    <tr className='pl-4'>
-                      <td className="text-left">Solar panels</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Inverters</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Batteries</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr>
-                      <td className="text-left">Installation</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div className='text-center'>
-                  <h5 className='font-bold'>Total Cost</h5>
-                  <h5 className='font-bold'>£5000</h5>
-                </div>
 
                 <div>
                   <PaymentMethodCard />

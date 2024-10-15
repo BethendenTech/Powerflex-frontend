@@ -10,6 +10,7 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
+import PaymentSummaryCard from '@/components/payment/paymentSummary';
 
 export default function Page() {
 
@@ -47,7 +48,7 @@ export default function Page() {
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
-            
+
             <h4 className="text-center">Payment Summary</h4>
 
             <div className="w-full container mx-auto flex flex-col gap-4">
@@ -55,48 +56,7 @@ export default function Page() {
 
 
 
-                <h5 className='font-bold'>Outright Purchase</h5>
-
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr>
-                      <td className="text-left">Equipment</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-                <table className="table-auto w-full ">
-                  <tbody>
-                    <tr className='pl-4'>
-                      <td className="text-left">Solar panels</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Inverters</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                    <tr>
-                      <td className="text-left">Batteries</td>
-                      <th className="text-left">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <table className="table-auto w-full">
-                  <tbody>
-                    <tr>
-                      <td className="text-left">Installation</td>
-                      <th className="text-right">value</th>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div className='text-center'>
-                  <h5 className='font-bold'>Total Cost</h5>
-                  <h5 className='font-bold'>£5000</h5>
-                </div>
+                <PaymentSummaryCard />
 
 
                 <button
