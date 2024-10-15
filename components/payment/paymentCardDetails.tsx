@@ -2,8 +2,10 @@ import React from "react";
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 const PaymentCardDetails = () => {
+    const router = useRouter();
     const { actions, state } = useStateMachine({ updateAction });
 
     // Set up react-hook-form
@@ -18,9 +20,10 @@ const PaymentCardDetails = () => {
     });
 
     // Handle form submission
-    const onSubmit = (data) => {
+    const onSubmit = (data:any) => {
         console.log(data);
         actions.updateAction(data);  // Pass form data to state machine action
+        router.push(`/payment-success`);
     };
 
     return (
