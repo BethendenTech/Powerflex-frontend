@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FinancingTermModal } from "./financeTermModal";
 import { interestRateValue, interestTermValue } from "@/utils/formData";
+import { BusinessOrIndividualCheckBox } from "./businessOrIndividual";
 
 export const FinancingPurchase = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -36,6 +37,8 @@ export const FinancingPurchase = () => {
             <button type='button' className='btn bg-blue-500 text-white mt-5 px-4 rounded-r-lg' onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
 
             <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+
+            <BusinessOrIndividualCheckBox />
         </div>
     )
 }
