@@ -16,7 +16,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
     const [formData, setFormData] = useState({});
     const [isCheckedObject, setIsChecked] = useState({});
 
-    console.log('breakdowns',breakdowns)
+    console.log('breakdowns', breakdowns)
 
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked({
@@ -43,9 +43,9 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
         onBreakdownChange(formData);
     }, [formData]);
 
-    // useEffect(() => {
-    //     setFormData(breakdowns)
-    // }, [breakdowns])
+    useEffect(() => {
+        setFormData(breakdowns)
+    }, [breakdowns])
 
     interface RowObject {
         name: string;
