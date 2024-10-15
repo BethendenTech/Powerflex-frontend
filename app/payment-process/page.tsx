@@ -10,6 +10,7 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
+import PaymentMethodCard from '@/components/payment/paymentMethodCard';
 
 export default function Page() {
 
@@ -19,6 +20,12 @@ export default function Page() {
   const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
     defaultValues: {
       total_cost: 1000,
+      payment_method: "credit_debit",
+      name_card: "",
+      card_number: "",
+      expiration_date: "",
+      security_code: "",
+      postcode: "",
     }
   });
 
@@ -47,7 +54,7 @@ export default function Page() {
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
           <div className="w-full pt-4">
-            
+
             <h4 className="text-center">Payment Summary</h4>
 
             <div className="w-full container mx-auto flex flex-col gap-4">
@@ -98,6 +105,10 @@ export default function Page() {
                   <h5 className='font-bold'>£5000</h5>
                 </div>
 
+                <div>
+                  <PaymentMethodCard />
+                </div>
+
 
                 <button
                   type='submit'
@@ -112,9 +123,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-
-
-
     </div>
   );
 }
