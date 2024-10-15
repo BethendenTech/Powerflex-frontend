@@ -1,6 +1,8 @@
 "use client";
 
 import { financeTermTears, interestRateValue, interestTermValue } from "@/utils/formData";
+import Image from "next/image";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface FinancingTermModalProps {
@@ -10,6 +12,8 @@ interface FinancingTermModalProps {
 
 export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps) => {
     if (!isOpen) return null;
+
+    const [isIcon, setIsIcon] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
         defaultValues: {
@@ -25,7 +29,7 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-gray-200 rounded-lg w-1/1 p-2">
+            <div className="bg-gray-200 rounded-lg w-1/1 p-5">
                 {/* Modal Content */}
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold">Edit Finance Terms</h2>
@@ -64,24 +68,39 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
 
                                 {errors.down_payment && <p className="text-red-500 text-xs italic">{errors?.down_payment?.message}</p>}
                             </div>
-                            <div className='input-group'>
+                            <div className="relative input-group">
                                 <label htmlFor="term" className="label">
                                     Term
                                 </label>
 
-                                <select
-                                    className={errors.term ? "select w-full border border-red-500" : "select w-full"}
-                                    {...register('term', { required: 'Term is required' })}
-                                >
-                                    <option value="">Select a term</option> {/* Placeholder */}
+                                <div className="relative w-full">
+                                    <select
+                                        className={`select w-full appearance-none p-4 pr-10 ${isIcon ? 'border-blue-500' : 'border-gray-300'} ${errors?.term ? 'border border-red-500' : ''}`}
+                                        onClick={() => setIsIcon(!isIcon)} // Toggle dropdown
+                                        onBlur={() => setIsIcon(false)} // Close on losing focus
+                                        {...register('term', { required: 'Term is required' })}
+                                    >
+                                        <option value="">Select a term</option> {/* Placeholder */}
+                                        {financeTermTears.map((financeTermTear) => (
+                                            <option key={financeTermTear.value} value={financeTermTear.value}>
+                                                {financeTermTear.label}
+                                            </option>
+                                        ))}
+                                    </select>
 
+                                    {/* Custom Dropdown Icon */}
+                                    <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+                                        <Image
+                                            src={isIcon ? "/images/collaps-arrow-up.svg" : "/images/collaps-arrow-down.svg"}
+                                            alt="dropdown icon"
+                                            width={24} // Adjust the size as needed
+                                            height={24}
+                                        />
+                                    </span>
+                                </div>
 
-                                    {financeTermTears && financeTermTears.map(financeTermTear => (
-                                        <option value={financeTermTear.value}>{financeTermTear.label}</option>
-                                    ))}
-                                </select>
-
-                                {errors.term && <p className="text-red-500 text-xs italic">{errors?.term?.message}</p>}
+                                {/* Error Message */}
+                                {errors?.term && <p className="text-red-500 text-xs italic">{errors.term.message}</p>}
                             </div>
                             <div className='input-group'>
                                 <label htmlFor="electricity_spend" className="label">
