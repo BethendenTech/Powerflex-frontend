@@ -8,11 +8,23 @@ import PaymentMethodCard from '@/components/payment/paymentMethodCard';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Page() {
 
   const router = useRouter();
   const { state } = useStateMachine({ updateAction });
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);  // Flag that the component is mounted on the client
+  }, []);
+
+  if (!isClient) {
+    // While waiting for the component to mount on the client, return null or a loading spinner
+    return null;
+  }
 
 
   const onBack = () => {
