@@ -164,7 +164,7 @@ export default function Page() {
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 5 }, (_, i) => (
-                          <span className='text-sm font-bold calibration-line-container'>{i * 25}%</span>
+                          <span className='text-sm text-black font-bold calibration-line-container'>{i * 25}%</span>
                         ))}
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function Page() {
                         {Array.from({ length: 25 }, (_, i) => (
                           <div className='calibration-line-container'>
                             <div className={`calibration-line ${i % 6 === 0 ? 'active' : ''}`}></div>
-                            <span className='text-sm font-bold'>
+                            <span className='text-sm font-bold text-black'>
                               {i % 12 === 0 ? i : ''}
                             </span>
                           </div>
@@ -237,11 +237,11 @@ export default function Page() {
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 6 }, (_, i) => (
-                          <span className='text-sm font-bold calibration-line-container'>{i}</span>
+                          <span className='text-sm text-black font-bold calibration-line-container'>{i}</span>
                         ))}
                       </div>
                     </div>
-                    <div className='m-auto pt-[10px] font-bold'>
+                    <div className='m-auto pt-[10px] font-bold text-black'>
                       {allValues.battery_autonomy_days} days, {allValues.battery_autonomy_hours_only} hours
                     </div>
                   </div>

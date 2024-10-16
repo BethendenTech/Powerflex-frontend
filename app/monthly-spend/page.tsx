@@ -119,7 +119,7 @@ export default function Page() {
                   type="submit"
                   className="btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
                   rel="noopener noreferrer"
-                  value="Next"
+                  value="Select coverage/autonomy"
                 />
               </form>
             </div>

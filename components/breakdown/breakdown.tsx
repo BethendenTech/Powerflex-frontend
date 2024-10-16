@@ -1,4 +1,4 @@
-"use client"; // This is a client component
+"use client";
 
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -44,8 +44,23 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
     }, [formData]);
 
     useEffect(() => {
-        setFormData(breakdowns)
-    }, [breakdowns])
+        // Initialize formData with breakdown values or default empty values
+        const initialFormData = breakdowns || {};
+        
+        allElements.forEach((element) => {
+            if (element.items) {
+                element.items.forEach((item) => {
+                    if (!(item.name in initialFormData)) {
+                        initialFormData[item.name] = false; // for checkbox
+                        initialFormData[`${item.name}_quantity`] = 0; // for quantity
+                        initialFormData[`${item.name}_usage`] = 0; // for usage
+                    }
+                });
+            }
+        });
+
+        setFormData(initialFormData);
+    }, [breakdowns]);
 
     interface RowObject {
         name: string;
@@ -73,7 +88,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                             className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
                             type='checkbox'
                             name={props.name}
-                            value={formData[props.name as keyof typeof formData]}
+                            checked={!!isCheckedObject[props.name as keyof typeof isCheckedObject]} // Fallback for undefined
                             onChange={handleCheckboxChange}
                         />
                         {props.displayName}
@@ -83,7 +98,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                     <select
                         className="select mini-select w-4/5"
                         name={`${props.name}_quantity`}
-                        value={formData[`${props.name}_quantity` as keyof typeof formData]}
+                        value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
                         onChange={handleSelectChange}
                         disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
                     >
@@ -96,9 +111,9 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                 </div>
                 <div>
                     <select
-                        className="select mini-select w-4/5"
+                        className="select mini-select w-4/5 text-black"
                         name={`${props.name}_usage`}
-                        value={formData[`${props.name}_usage` as keyof typeof formData]}
+                        value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
                         onChange={handleSelectChange}
                         disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
                     >
@@ -118,7 +133,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
         return (
             <details className="group text-sm">
                 <summary className="flex justify-between items-center p cursor-pointer list-none px-10 pb-[5px]">
-                    <p className="textg font-semibld">{props.name}</p>
+                    <p className="textg font-semibld text-black">{props.name}</p>
                     <span className="text-lg font-bold group-open:hidden">
                         <Image
                             src="/images/collaps-arrow-down.svg"
@@ -139,19 +154,18 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                 <div className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
                     <div />
                     <div className="first-col col-span-2"></div>
-                    <div>Qtuantity</div>
-                    <div>Hours</div>
+                    <div className='text-black'>Quantity</div>
+                    <div className='text-black'>Hours</div>
                     <div />
                 </div>
                 <div>
                     {props.items.map((row: any) => {
                         return (
-                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
+                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row text-black">
                                 {renderRow(row)}
                             </div>
                         )
-                    }
-                    )}
+                    })}
                 </div>
             </details>
         );
@@ -159,22 +173,19 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
 
     return (
         <div className='w-full'>
-
             <>
                 {allElements.map((row: any) => {
                     if (row.type === "accordian") {
-                        return renderAccordianWithRows(row)
-                    }
-                    else {
+                        return renderAccordianWithRows(row);
+                    } else {
                         return (
-                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
+                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row text-black">
                                 {renderRow(row)}
                             </div>
-                        )
+                        );
                     }
                 })}
             </>
         </div>
-    )
-
+    );
 }
