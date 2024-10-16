@@ -16,7 +16,7 @@ export default function Page() {
 
 
   const onBack = () => {
-    router.push(`/payment_summary`);
+    router.push(`/payment-summary`);
   }
 
   console.log("state", state)
