@@ -17,6 +17,6 @@ export const defaultLittleState = {
     security_code: '',
     postcode: '',
     total_cost: 0,
-    business_role: "business",
+    business_role: "",
     finance: false
 }

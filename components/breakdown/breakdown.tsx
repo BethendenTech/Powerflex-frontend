@@ -49,7 +49,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
             if (element.items) {
                 element.items.forEach((item) => {
                     if (!(item.name in initialFormData)) {
-                        initialFormData[item.name] = true; // for checkbox
+                        initialFormData[item.name] = false; // for checkbox
                         initialFormData[`${item.name}_quantity`] = 0; // for quantity
                         initialFormData[`${item.name}_usage`] = 0; // for usage
                     }
@@ -86,7 +86,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                             className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
                             type='checkbox'
                             name={props.name}
-                            checked={formData[props.name] || false}
+                            checked={formData[props.name]}
                             onChange={handleCheckboxChange}
                         />
                         {props.displayName}
