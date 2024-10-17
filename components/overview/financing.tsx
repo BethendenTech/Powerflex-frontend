@@ -4,11 +4,17 @@ import { useState } from "react";
 import { FinancingTermModal } from "./financeTermModal";
 import { interestRateValue, interestTermValue } from "@/utils/formData";
 import { BusinessOrIndividualCheckBox } from "./businessOrIndividual";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "@/little-state/action";
+import IndividualApplicationForm from "./individualApplicationForm";
+import BusinessApplicationForm from "./businessApplicationForm";
 interface ComponentProps {
     quote: QuoteInterface;
 }
 
 export const FinancingPurchase = ({ quote }: ComponentProps) => {
+    const { actions, state } = useStateMachine({ updateAction });
+
     const [isModalOpen, setModalOpen] = useState(false);
     return (
         <div className="mt-4">
@@ -75,6 +81,12 @@ export const FinancingPurchase = ({ quote }: ComponentProps) => {
             <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
 
             <BusinessOrIndividualCheckBox />
+
+            {state && state.business_role == "individual" && <IndividualApplicationForm />}
+            {state && state.business_role == "business" && <BusinessApplicationForm />}
+
+
+
         </div>
     )
 }

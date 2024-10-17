@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import React from "react";
+import { useForm } from "react-hook-form";
 
 const PaymentCardDetails = () => {
     const router = useRouter();
@@ -33,7 +33,6 @@ const PaymentCardDetails = () => {
 
     // Handle form submission
     const onSubmit = (data: any) => {
-        console.log(data);
         actions.updateAction(data);  // Pass form data to state machine action
         router.push(`/payment-success`);
     };

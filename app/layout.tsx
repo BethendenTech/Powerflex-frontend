@@ -41,7 +41,8 @@ createStore({
   security_code: '',
   postcode: '',
   total_cost: 0,
-  business_role: "business"
+  business_role: "business",
+  finance: false
 });
 
 export default function RootLayout({
