@@ -13,13 +13,14 @@ import { FinancingPurchase } from '@/components/overview/financing';
 import Image from 'next/image';
 import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
+import { defaultQuoteData } from '@/utils/formData';
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
 
-  const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
 
   useEffect(() => {
     calculateQuote()
@@ -96,7 +97,7 @@ export default function Page() {
 
                 <OverviewData />
 
-                <EstimatedEnergyRequirement quote={quote}/>
+                <EstimatedEnergyRequirement quote={quote} />
 
                 <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
                   <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "text-black text-[#424242]" : "tab-btn text-white"}`} onClick={() => { setValue("finance", false) }}>
@@ -108,8 +109,8 @@ export default function Page() {
                   </button>
                 </div>
 
-                {!allValues.finance && <OutRightPurchase quote={quote}/>}
-                {allValues.finance && <FinancingPurchase quote={quote}/>}
+                {!allValues.finance && <OutRightPurchase quote={quote} />}
+                {allValues.finance && <FinancingPurchase quote={quote} />}
 
 
 

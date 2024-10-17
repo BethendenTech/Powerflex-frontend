@@ -193,6 +193,24 @@ export const financeTermTears = [
     },
 ]
 
+export const defaultQuoteData = {
+    total_cost_naira: 0,
+    total_cost_usd: 0,
+    total_equipments: 0,
+    number_of_panels: 0,
+    number_of_inverters: 0,
+    number_of_batteries: 0,
+    total_cost_with_profit: 0,
+    total_load_kwh: 0,
+    load_covered_by_solar: 0,
+    total_panel_cost_usd: 0,
+    total_inverter_cost_usd: 0,
+    total_battery_cost_usd: 0,
+    total_panel_cost_naira: 0,
+    total_inverter_cost_naira: 0,
+    total_battery_cost_naira: 0,
+    miscellaneous_cost: 0,
+}
 export const interestRateValue = 7.5
 export const vatRateValue = 7.5
 export const interestTermValue = 4

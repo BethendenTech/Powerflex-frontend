@@ -1,6 +1,7 @@
 interface QuoteInterface {
     total_cost_naira: number;
     total_cost_usd: number;
+    total_equipments: number;
     number_of_panels: number;
     number_of_inverters: number;
     number_of_batteries: number;
