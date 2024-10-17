@@ -1,6 +1,8 @@
 "use client";
-
-export const OutRightPurchase = () => {
+interface ComponentProps {
+    quote: QuoteInterface;
+}
+export const OutRightPurchase = ({ quote }: ComponentProps) => {
     return (
         <div className="mt-4">
             <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
@@ -13,7 +15,7 @@ export const OutRightPurchase = () => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm font-bold leading-6 text-gray-900">£5000</p>
+                                <p className="text-sm font-bold leading-6 text-gray-900">£{quote.total_cost_naira}</p>
                             </div>
                         </li>
                         <li className="flex justify-between gap-x-6 py-2">
@@ -23,7 +25,7 @@ export const OutRightPurchase = () => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">£4500</p>
+                                <p className="text-sm leading-6 text-gray-900">£{quote.total_battery_cost_naira}</p>
                             </div>
                         </li>
                         <li className="flex justify-between gap-x-6 py-2">
@@ -33,7 +35,7 @@ export const OutRightPurchase = () => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">£500</p>
+                                <p className="text-sm leading-6 text-gray-900">£{quote.total_inverter_cost_naira}</p>
                             </div>
                         </li>
                         <li className="flex justify-between gap-x-6 py-2">
@@ -43,7 +45,7 @@ export const OutRightPurchase = () => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">{`<x>`}</p>
+                                <p className="text-sm leading-6 text-gray-900">£{quote.total_cost_with_profit}</p>
                             </div>
                         </li>
                         <li className="flex justify-between gap-x-6 py-2">
@@ -53,7 +55,7 @@ export const OutRightPurchase = () => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm font-bold leading-6 text-gray-900">£5000</p>
+                                <p className="text-sm font-bold leading-6 text-gray-900">£{quote.miscellaneous_cost}</p>
                             </div>
                         </li>
                     </ul>

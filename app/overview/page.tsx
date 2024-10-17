@@ -108,8 +108,8 @@ export default function Page() {
                   </button>
                 </div>
 
-                {!allValues.finance && <OutRightPurchase />}
-                {allValues.finance && <FinancingPurchase />}
+                {!allValues.finance && <OutRightPurchase quote={quote}/>}
+                {allValues.finance && <FinancingPurchase quote={quote}/>}
 
 
 

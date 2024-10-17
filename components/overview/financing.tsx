@@ -4,8 +4,11 @@ import { useState } from "react";
 import { FinancingTermModal } from "./financeTermModal";
 import { interestRateValue, interestTermValue } from "@/utils/formData";
 import { BusinessOrIndividualCheckBox } from "./businessOrIndividual";
+interface ComponentProps {
+    quote: QuoteInterface;
+}
 
-export const FinancingPurchase = () => {
+export const FinancingPurchase = ({ quote }: ComponentProps) => {
     const [isModalOpen, setModalOpen] = useState(false);
     return (
         <div className="mt-4">
