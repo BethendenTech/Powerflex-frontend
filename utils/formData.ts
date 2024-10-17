@@ -211,6 +211,7 @@ export const defaultQuoteData = {
     total_battery_cost_naira: 0,
     miscellaneous_cost: 0,
 }
+
 export const interestRateValue = 7.5
 export const vatRateValue = 7.5
 export const interestTermValue = 4
