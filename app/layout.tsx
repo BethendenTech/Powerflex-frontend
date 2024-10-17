@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import { createStore, StateMachineProvider } from "little-state-machine";
+import { defaultLittleState } from "@/little-state/littleStateData";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,28 +23,7 @@ const geistMono = localFont({
 //   description: "Powerflex is a solar energy company that provides energy solutions to customers around the world. Our team of engineers and engineers are passionate about powering your home with energy.",
 // };
 
-createStore({
-  name: '',
-  email: '',
-  phone_number: '',
-  electricity_spend: '',
-  price_band: '',
-  additional_info: false,
-  solar_load: 0,
-  battery_autonomy_hours_only: 0,
-  battery_autonomy_days: 0,
-  battery_autonomy_hours: 0,
-  breakdowns: {},
-  payment_method: 'credit_debit_card',
-  name_card: '',
-  card_number: '',
-  expiration_date: '',
-  security_code: '',
-  postcode: '',
-  total_cost: 0,
-  business_role: "business",
-  finance: false
-});
+createStore(defaultLittleState);
 
 export default function RootLayout({
   children,
