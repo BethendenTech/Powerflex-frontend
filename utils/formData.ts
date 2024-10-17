@@ -215,3 +215,9 @@ export const defaultQuoteData = {
 export const interestRateValue = 7.5
 export const vatRateValue = 7.5
 export const interestTermValue = 4
+
+
+export const businessRoles = [
+    { id: "business", title: 'Business' },
+    { id: "individual", title: 'Individual' },
+];
