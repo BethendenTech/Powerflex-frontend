@@ -24,7 +24,7 @@ export default function Page() {
       battery_autonomy_hours_only: 12,
       battery_autonomy_days: 0,
       battery_autonomy_hours: 0,
-      breakdowns: {}
+      breakdowns: {},
     }
   });
 
@@ -69,10 +69,10 @@ export default function Page() {
   React.useEffect(() => {
     if (state) {
       setValue("additional_info", state.additional_info || false);
-      setValue("solar_load", state.solar_load || "");
-      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || "");
-      setValue("battery_autonomy_days", state.battery_autonomy_days || "");
-      setValue("battery_autonomy_hours", state.battery_autonomy_hours || "");
+      setValue("solar_load", state.solar_load || 0);
+      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 0);
+      setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
+      setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
       setValue("breakdowns", state.breakdowns || {});
 
       if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
@@ -92,10 +92,9 @@ export default function Page() {
   }, []);
 
   const calculateQuote = async () => {
-    const data = { ...allValues }
+    let data = { ...state }
     data.battery_autonomy_hours = allValues.battery_autonomy_hours_only + allValues.battery_autonomy_days * 24;
-    data.electricity_spend = state.electricity_spend
-    data.price_band = state.price_band
+
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
         method: 'POST',

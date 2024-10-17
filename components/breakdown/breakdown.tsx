@@ -15,9 +15,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
     const router = useRouter();
     const [formData, setFormData] = useState({});
 
-    console.log('breakdowns', breakdowns)
-    console.log('formData', formData)
-
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.checked) {
             setFormData({
@@ -25,7 +22,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
             });
-        }else{
+        } else {
             setFormData({
                 ...formData,
                 [e.target.name]: e.target.checked,
@@ -47,7 +44,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
     useEffect(() => {
         // Initialize formData with breakdown values or default empty values
         const initialFormData = breakdowns || {};
-        
+
         allElements.forEach((element) => {
             if (element.items) {
                 element.items.forEach((item) => {
