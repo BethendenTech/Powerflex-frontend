@@ -1,3 +1,5 @@
+"use client";
+
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
 
@@ -7,8 +9,6 @@ interface ComponentProps {
 
 const PaymentSummaryCard = ({ quote }: ComponentProps) => {
     const { actions, state } = useStateMachine({ updateAction });
-
-    console.log('state', state)
 
     return (
         <>

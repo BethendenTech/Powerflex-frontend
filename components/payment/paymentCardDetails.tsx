@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
