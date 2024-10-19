@@ -7,15 +7,49 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
+import { useEffect, useState } from 'react';
+import { defaultQuoteData } from '@/utils/formData';
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
 
+  const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
+
+
+
+  useEffect(() => {
+    calculateQuote()
+  }, [state]);
+
+  const calculateQuote = async () => {
+    let data = { ...state }
+    data.battery_autonomy_hours = state.battery_autonomy_hours_only + state.battery_autonomy_days * 24;
+
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setQuote(data);
+      } else {
+        console.error('Failed to save user details');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
     defaultValues: {
-      total_cost: 1000,
     }
   });
 
@@ -59,7 +93,7 @@ export default function Page() {
             <div className="w-full container mx-auto flex flex-col gap-4 mt-4">
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-                <PaymentSummaryCard />
+                <PaymentSummaryCard quote={quote}/>
 
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button

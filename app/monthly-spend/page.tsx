@@ -29,7 +29,6 @@ export default function Page() {
   const onSubmit = async (formData: any) => {
     try {
       actions.updateAction(formData);
-
       router.push(`/breakdown`);
     } catch (error) {
       console.error('Error:', error);

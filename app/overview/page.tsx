@@ -1,45 +1,57 @@
 "use client"; // This is a client component
 
-import { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import StatusImage from '../components/StatusImage';
-import Tooltip from '../components/Tooltip';
-import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
-import { useForm } from 'react-hook-form';
 import { OutRightPurchase } from '@/components/overview/outrightPurchase';
 import { FinancingPurchase } from '@/components/overview/financing';
 import Image from 'next/image';
+import { OverviewData } from '@/components/overview/overview';
+import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
+import { defaultQuoteData } from '@/utils/formData';
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
-  const [isClient, setIsClient] = useState(false);
+
+  const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
 
   useEffect(() => {
-    // Component is mounted on the client side
-    setIsClient(true);
-  }, []);
+    calculateQuote()
+  }, [state]);
 
-  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
-    defaultValues: {
-      finance: false,
-    }
-  });
-
-  const allValues = watch();
-
-  const onSubmit = async (formData: any) => {
+  const calculateQuote = async () => {
+    let data = { ...state }
+    data.battery_autonomy_hours = state.battery_autonomy_hours_only + state.battery_autonomy_days * 24;
+    
     try {
-      console.log('formData', formData)
-      actions.updateAction(formData);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      router.push(`/payment-summary`);
+      if (response.ok) {
+        const data = await response.json();
+        setQuote(data);
+      } else {
+        console.error('Failed to save user details');
+      }
     } catch (error) {
       console.error('Error:', error);
     }
+  }
+
+  const handleToggle = (id: any) => {
+    let formData = {
+      finance: id
+    }
+    actions.updateAction(formData);
   };
 
   const onBack = () => {
@@ -65,149 +77,30 @@ export default function Page() {
           <div className="w-full pt-4 pb-4 mb-2">
             <h4 className="heading text-center">Overview</h4>
             <div className="w-full container mx-auto flex flex-col gap-4">
-              <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-
-                <ul role="list" className="divide-y divide-gray-400">
-                  <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                      <div className="min-w-0 flex-auto">
-                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Monthly Spend</p>
-                      </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                      <p className="text-sm font-bold leading-6 text-gray-900">{state?.electricity_spend}</p>
-                    </div>
-                  </li>
-                  <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                      <div className="min-w-0 flex-auto">
-                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Electricity band group</p>
-                      </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                      <p className="text-sm font-bold leading-6 text-gray-900">{state?.price_band}</p>
-                    </div>
-                  </li>
-                  <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                      <div className="min-w-0 flex-auto">
-                        <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Coverage Percentage</p>
-                      </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                      <p className="text-sm font-bold leading-6 text-gray-900">75%</p>
-                    </div>
-                  </li>
-                  {isClient && (
-                    <li className="flex justify-between gap-x-6 py-2">
-                      <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                          <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Battery Autonomy</p>
-                        </div>
-                      </div>
-                      <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm font-bold leading-6 text-gray-900">
-                          {state?.battery_autonomy_hours_only} Hours - {state?.battery_autonomy_days} Days
-                        </p>
-                      </div>
-                    </li>
-                  )}
-                  <li className="flex justify-between gap-x-6 py-2"></li>
-                </ul>
-
-                <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
-                  <div className="w-full pt-4 pb-4 mb-2">
-                    <div className="w-full container mx-auto text-left flex flex-col gap-4 pb-3">
-                      <p className="text-lg font-harmonia font-bold leading-[1.3] text-left text-black">Estimated energy requirement</p>
-                    </div>
-                    <ul role="list">
-                      <li className="flex justify-between gap-x-6 py-2">
-                        <div className="flex min-w-0 gap-x-4">
-                          <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number of solar panels</p>
-                          </div>
-                        </div>
-                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
-                        </div>
-                      </li>
-                      <li className="flex justify-between gap-x-6 py-2">
-                        <div className="flex min-w-0 gap-x-4">
-                          <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number of inverters</p>
-                          </div>
-                        </div>
-                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
-                        </div>
-                      </li>
-                      <li className="flex justify-between gap-x-6 py-2">
-                        <div className="flex min-w-0 gap-x-4">
-                          <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Number/size of batteries</p>
-                          </div>
-                        </div>
-                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
-                        </div>
-                      </li>
-                      <li className="flex justify-between gap-x-6 py-2">
-                        <div className="flex min-w-0 gap-x-4">
-                          <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Recommended battery size</p>
-                          </div>
-                        </div>
-                        <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                          <p className="text-sm font-bold leading-6 text-gray-900">{`<X>`}</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
-                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "text-black text-[#424242]" : "tab-btn text-white"}`} onClick={() => { setValue("finance", false) }}>
-                    Outright Purchase
-                  </button>
-
-                  <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${allValues.finance ? "tab-btn text-white" : "text-black text-[#424242]"}`} onClick={() => { setValue("finance", true) }}>
-                    Financing
-                  </button>
-                </div>
-
-                {!allValues.finance && <OutRightPurchase />}
-                {allValues.finance && <FinancingPurchase />}
 
 
+              <OverviewData />
 
-                {!allValues.finance && <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                  <button
-                    type='submit'
-                    className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                    rel="noopener noreferrer"
-                  >
-                    Proceed to Payment
-                  </button>
-                </div>}
+              <EstimatedEnergyRequirement quote={quote} />
 
-                {allValues.finance && <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                  <button
-                    type='button'
-                    className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                    rel="noopener noreferrer"
-                  >
-                    Apply for Financing
-                  </button>
-                </div>}
+              <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
+                <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${state.finance ? "text-black text-[#424242]" : "tab-btn text-white"}`} onClick={() => { handleToggle(false) }}>
+                  Outright Purchase
+                </button>
 
-              </form>
+                <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${state.finance ? "tab-btn text-white" : "text-black text-[#424242]"}`} onClick={() => { handleToggle(true) }}>
+                  Financing
+                </button>
+              </div>
+
+              {!state.finance && <OutRightPurchase quote={quote} />}
+              {state.finance && <FinancingPurchase quote={quote} />}
+
+
             </div>
           </div>
         </div>
       </main>
-
-
-
     </div>
   );
 }

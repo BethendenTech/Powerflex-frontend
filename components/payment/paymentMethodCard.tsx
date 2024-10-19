@@ -1,3 +1,5 @@
+"use client";
+
 import updateAction from '@/little-state/action';
 import { paymentMethods } from '@/utils/paymentData';
 import { useStateMachine } from 'little-state-machine';

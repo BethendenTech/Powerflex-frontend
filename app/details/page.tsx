@@ -34,30 +34,30 @@ export default function Page() {
       actions.updateAction(formData);
       router.push(`/monthly-spend`);
 
-      // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
 
-      // if (response.ok) {
-      //   const data = await response.json();
-      //   // alert('User details saved successfully!');
-      //   router.push(`/monthly-spend`);
-      // } else {
-      //   console.error('Failed to save user details');
-      // }
+      if (response.ok) {
+        const data = await response.json();
+        // alert('User details saved successfully!');
+        router.push(`/monthly-spend`);
+      } else {
+        console.error('Failed to save user details');
+      }
 
-      // if (response.status == 400) {
-      //   const data = await response.json();
+      if (response.status == 400) {
+        const data = await response.json();
 
-      //   Object.entries(data).forEach(([key, value]) => {
-      //     setError(key, { type: "manual", message: value });
-      //   });
-      // }
+        Object.entries(data).forEach(([key, value]) => {
+          setError(key, { type: "manual", message: value });
+        });
+      }
 
     } catch (error) {
       console.error('Error:', error);

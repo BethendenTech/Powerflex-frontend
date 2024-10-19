@@ -20,5 +20,7 @@ declare module 'little-state-machine' {
         security_code: string;
         postcode: string;
         total_cost: number;
+        business_role: string;
+        finance: boolean;
     }
 }

@@ -14,20 +14,18 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
 
     const router = useRouter();
     const [formData, setFormData] = useState({});
-    const [isCheckedObject, setIsChecked] = useState({});
-
-    console.log('breakdowns', breakdowns)
 
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsChecked({
-            ...isCheckedObject,
-            [e.target.name]: e.target.checked,
-        });
         if (!e.target.checked) {
             setFormData({
                 ...formData,
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.checked,
             });
         }
     };
@@ -46,7 +44,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
     useEffect(() => {
         // Initialize formData with breakdown values or default empty values
         const initialFormData = breakdowns || {};
-        
+
         allElements.forEach((element) => {
             if (element.items) {
                 element.items.forEach((item) => {
@@ -88,7 +86,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                             className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
                             type='checkbox'
                             name={props.name}
-                            checked={!!isCheckedObject[props.name as keyof typeof isCheckedObject]} // Fallback for undefined
+                            checked={formData[props.name]}
                             onChange={handleCheckboxChange}
                         />
                         {props.displayName}
@@ -100,7 +98,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                         name={`${props.name}_quantity`}
                         value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
                         onChange={handleSelectChange}
-                        disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
+                        disabled={!formData[props.name]}
                     >
                         {Array.from({ length: 11 }, (_, i) => (
                             <option key={props.name + i} value={i}>
@@ -115,7 +113,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: B
                         name={`${props.name}_usage`}
                         value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
                         onChange={handleSelectChange}
-                        disabled={!isCheckedObject[props.name as keyof typeof isCheckedObject]}
+                        disabled={!formData[props.name]}
                     >
                         {Array.from({ length: 25 }, (_, i) => (
                             <option key={props.name + 'u' + i} value={i}>
