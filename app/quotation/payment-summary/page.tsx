@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import { useRouter } from 'next/navigation';
-import StatusImage from '../components/StatusImage';
+import StatusImage from '@/components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
@@ -60,14 +60,14 @@ export default function Page() {
       console.log('formData', formData)
       actions.updateAction(formData);
 
-      router.push(`/payment-process`);
+      router.push(`/quotation/payment-process`);
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
   const onBack = () => {
-    router.push(`/overview`);
+    router.push(`/quotation/overview`);
   }
 
   return (

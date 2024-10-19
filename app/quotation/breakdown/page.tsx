@@ -2,10 +2,10 @@
 
 import React, { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Breakdown from '../../components/breakdown/breakdown';
-import Summary from '../../components/breakdown/summary';
-import StatusImage from '../components/StatusImage';
-import Tooltip from '../components/Tooltip';
+import Breakdown from '@/components/breakdown/breakdown';
+import Summary from '@/components/breakdown/summary';
+import StatusImage from '@/components/StatusImage';
+import Tooltip from '@/components/Tooltip';
 import useResizeObserver from "use-resize-observer";
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
@@ -35,7 +35,7 @@ export default function Page() {
       console.log('formData', formData)
       actions.updateAction(formData);
 
-      router.push(`/overview`);
+      router.push(`/quotation/overview`);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -116,7 +116,7 @@ export default function Page() {
   }
 
   const onBack = () => {
-    router.push(`/monthly-spend`);
+    router.push(`/quotation/monthly-spend`);
   }
 
   return (

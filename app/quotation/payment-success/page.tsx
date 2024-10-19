@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 
-import StatusImage from '../components/StatusImage';
+import StatusImage from '@/components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 

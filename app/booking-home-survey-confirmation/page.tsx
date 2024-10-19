@@ -5,7 +5,7 @@ import updateAction from '@/little-state/action';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import TruckImage from '../components/bookingImage';
+import TruckImage from '@/components/bookingImage';
 import Image from 'next/image';
 
 export default function Page() {

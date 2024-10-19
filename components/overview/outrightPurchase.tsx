@@ -26,7 +26,7 @@ export const OutRightPurchase = ({ quote }: ComponentProps) => {
             console.log('formData', formData)
             actions.updateAction(formData);
 
-            router.push(`/payment-summary`);
+            router.push(`/quotation/payment-summary`);
         } catch (error) {
             console.error('Error:', error);
         }

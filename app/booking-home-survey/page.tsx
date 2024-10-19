@@ -5,7 +5,7 @@ import updateAction from '@/little-state/action';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import TruckImage from '../components/bookingImage';
+import TruckImage from '@/components/bookingImage';
 import DatePicker from 'react-datepicker';
 
 export default function Page() {

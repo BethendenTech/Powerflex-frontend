@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import { useRouter } from 'next/navigation';
-import StatusImage from '../components/StatusImage';
+import StatusImage from '@/components/StatusImage';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
@@ -32,7 +32,7 @@ export default function Page() {
     try {
 
       actions.updateAction(formData);
-      router.push(`/monthly-spend`);
+      router.push(`/quotation/monthly-spend`);
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-details/`, {
         method: 'POST',
@@ -46,7 +46,7 @@ export default function Page() {
       if (response.ok) {
         const data = await response.json();
         // alert('User details saved successfully!');
-        router.push(`/monthly-spend`);
+        router.push(`/quotation/monthly-spend`);
       } else {
         console.error('Failed to save user details');
       }

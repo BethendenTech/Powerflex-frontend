@@ -34,7 +34,7 @@ const PaymentCardDetails = () => {
     // Handle form submission
     const onSubmit = (data: any) => {
         actions.updateAction(data);  // Pass form data to state machine action
-        router.push(`/payment-success`);
+        router.push(`/quotation/payment-success`);
     };
 
     return (
