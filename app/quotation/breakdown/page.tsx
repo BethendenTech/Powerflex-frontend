@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
-import React, { ChangeEvent, useState, useEffect, useRef, FormEvent } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
@@ -29,6 +29,11 @@ export default function Page() {
   });
 
   const allValues = watch();
+  const solar_load = watch("solar_load");
+  const breakdowns = watch("breakdowns");
+  const battery_autonomy_hours_only = watch("battery_autonomy_hours_only");
+  const battery_autonomy_days = watch("battery_autonomy_days");
+  const battery_autonomy_hours = watch("battery_autonomy_hours");
 
   const onSubmit = async (formData: any) => {
     try {
@@ -57,11 +62,9 @@ export default function Page() {
     setIsChecked(!isChecked);
   };
 
-
   const handleBreakdownChange = (breakdowns: Object) => {
     setValue("breakdowns", breakdowns)
   };
-
 
   React.useEffect(() => {
     if (state) {
@@ -78,15 +81,19 @@ export default function Page() {
     }
   }, [state])
 
-
   //Show estimate on load
   useEffect(() => {
     calculateQuote();
-  }, []);
+  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, breakdowns, battery_autonomy_hours]);
 
   const calculateQuote = async () => {
-    let data = { ...state }
-    data.battery_autonomy_hours = allValues.battery_autonomy_hours_only + allValues.battery_autonomy_days * 24;
+    let postData = {
+      electricity_spend: state.electricity_spend,
+      price_band: state.price_band,
+      solar_load: solar_load,
+      battery_autonomy_hours: battery_autonomy_hours_only + battery_autonomy_days * 24,
+      breakdowns: breakdowns
+    }
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
@@ -94,7 +101,7 @@ export default function Page() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(postData),
       });
 
       if (response.ok) {
