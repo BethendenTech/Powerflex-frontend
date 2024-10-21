@@ -15,6 +15,7 @@
     "react-datepicker": "^7.5.0",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
+    "react-paystack": "^6.0.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {

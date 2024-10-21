@@ -1,6 +1,7 @@
 import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
 import { QuotationContextType } from '@/types/quotation';
+import { defaultQuoteData } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
 import { useRouter } from 'next/navigation';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
@@ -18,13 +19,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const router = useRouter();
     const { state } = useStateMachine({ updateAction });
 
-    const [quote, setQuote] = useState({
-        number_of_panels: 0,
-        number_of_batteries: 3,
-        number_of_inverters: 18,
-        total_cost_naira: 0,
-        total_load_kwh: 0,
-    });
+    const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
 
     const calculateQuote = async () => {
         let postData = {

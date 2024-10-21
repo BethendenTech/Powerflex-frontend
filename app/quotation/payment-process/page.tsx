@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { defaultQuoteData } from '@/utils/formData';
 import useQuotation from '@/hooks/quotation';
+import PayStackPayment from '@/components/payment/payStack';
 
 export default function Page() {
 
@@ -47,7 +48,10 @@ export default function Page() {
               <PaymentSummaryCard quote={quote} />
               <PaymentMethodCard />
               {state.payment_method == "credit_debit_card" && (
-                <PaymentCardDetails />
+                <PaymentCardDetails quote={quote}/>
+              )}
+              {state.payment_method == "paystack" && (
+                <PayStackPayment quote={quote}/>
               )}
             </div>
           </div>

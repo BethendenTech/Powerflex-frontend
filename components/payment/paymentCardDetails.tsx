@@ -5,8 +5,10 @@ import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
-
-const PaymentCardDetails = () => {
+interface ComponentProps {
+    quote: QuoteInterface;
+}
+const PaymentCardDetails = ({ quote }: ComponentProps) => {
     const router = useRouter();
     const { actions, state } = useStateMachine({ updateAction });
 
@@ -144,7 +146,7 @@ const PaymentCardDetails = () => {
                                     </div>
                                 </div>
                                 <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                    <p className="text-sm font-bold leading-6 text-gray-900">£ {state.total_cost}</p>
+                                    <p className="text-sm font-bold leading-6 text-gray-900">£ {quote.total_cost_naira}</p>
                                 </div>
                             </li>
                         </ul>
