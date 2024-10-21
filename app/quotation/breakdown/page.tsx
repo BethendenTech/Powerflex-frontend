@@ -51,8 +51,6 @@ export default function Page() {
     total_load_kwh: 0,
   });
 
-  const [breakdownChanged, setBreakdownChanged] = useState(0);
-
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
@@ -62,7 +60,6 @@ export default function Page() {
 
   const handleBreakdownChange = (breakdowns: Object) => {
     setValue("breakdowns", breakdowns)
-    setBreakdownChanged(breakdownChanged + 1);
   };
 
 
@@ -81,10 +78,6 @@ export default function Page() {
     }
   }, [state])
 
-  // Calculate estimate only when breakdown is changed and not when sliders are moved. Use mouseup for slider changes
-  useEffect(() => {
-    calculateQuote();
-  }, [breakdownChanged]);
 
   //Show estimate on load
   useEffect(() => {
