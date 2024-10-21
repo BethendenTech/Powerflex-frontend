@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
 // Define the context type as an empty object or undefined initially
-const QuotationContext = createContext<QuotationContextType | undefined>(undefined);
+export const QuotationContext = createContext<QuotationContextType | undefined>(undefined);
 
 // Props for the provider component
 interface QuotationProviderProps {
@@ -16,7 +16,7 @@ interface QuotationProviderProps {
 // QuotationProvider component
 export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const router = useRouter();
-    const { actions, state } = useStateMachine({ updateAction });
+    const { state } = useStateMachine({ updateAction });
 
     const [quote, setQuote] = useState({
         number_of_panels: 0,
@@ -71,3 +71,5 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
         </QuotationContext.Provider>
     );
 };
+
+

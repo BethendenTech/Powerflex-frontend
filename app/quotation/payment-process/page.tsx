@@ -10,43 +10,14 @@ import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { defaultQuoteData } from '@/utils/formData';
+import useQuotation from '@/hooks/quotation';
 
 export default function Page() {
 
   const router = useRouter();
   const { state } = useStateMachine({ updateAction });
 
-  const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
-
-  useEffect(() => {
-    calculateQuote()
-  }, [state]);
-
-  const calculateQuote = async () => {
-    let data = { ...state }
-    data.battery_autonomy_hours = state.battery_autonomy_hours_only + state.battery_autonomy_days * 24;
-
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setQuote(data);
-      } else {
-        console.error('Failed to save user details');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
+  const { quote } = useQuotation();
 
   const onBack = () => {
     router.push(`/quotation/payment-summary`);
@@ -73,7 +44,7 @@ export default function Page() {
           <div className="w-full pt-4">
             <h4 className="heading text-center">Payment Summary</h4>
             <div className="w-full container mx-auto flex flex-col gap-4 mt-4">
-              <PaymentSummaryCard quote={quote}/>
+              <PaymentSummaryCard quote={quote} />
               <PaymentMethodCard />
               {state.payment_method == "credit_debit_card" && (
                 <PaymentCardDetails />

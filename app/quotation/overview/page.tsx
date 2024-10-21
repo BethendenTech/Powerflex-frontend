@@ -10,42 +10,14 @@ import { FinancingPurchase } from '@/components/overview/financing';
 import Image from 'next/image';
 import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
-import { defaultQuoteData } from '@/utils/formData';
+import useQuotation from '@/hooks/quotation';
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
+  const { quote } = useQuotation();
 
-  const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
-
-  useEffect(() => {
-    calculateQuote()
-  }, [state]);
-
-  const calculateQuote = async () => {
-    let data = { ...state }
-    data.battery_autonomy_hours = state.battery_autonomy_hours_only + state.battery_autonomy_days * 24;
-    
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setQuote(data);
-      } else {
-        console.error('Failed to save user details');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
 
   const handleToggle = (id: any) => {
     let formData = {
