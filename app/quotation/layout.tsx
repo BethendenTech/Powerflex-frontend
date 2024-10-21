@@ -2,6 +2,7 @@
 
 import { createStore, StateMachineProvider } from "little-state-machine";
 import { defaultLittleState } from "@/little-state/littleStateData";
+import { QuotationProvider } from "@/contexts/QuotationProvider";
 
 createStore(defaultLittleState);
 
@@ -12,7 +13,9 @@ export default function RootLayout({
 }>) {
     return (
         <StateMachineProvider>
-            {children}
+            <QuotationProvider>
+                {children}
+            </QuotationProvider>
         </StateMachineProvider>
     );
 }

@@ -18,13 +18,10 @@ const useQuotation = (quotationData?: any) => {
   };
 
   // Use SWR with dynamic data
-  const { data, error } = useSWR<Quotation>(
-    quotationData ? [url, options] : null, // Only fetch if quotationData exists
+  const { data, error, isLoading } = useSWR<Quotation>(
+    [url, options],
     fetcher
   );
-
-  const isLoading = !data && !error;
-
   return { data, error, isLoading };
 };
 
