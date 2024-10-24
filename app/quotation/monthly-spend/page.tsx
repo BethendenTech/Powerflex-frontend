@@ -64,7 +64,14 @@ export default function Page() {
                   <input
                     id="electricity_spend"
                     className={errors.electricity_spend ? "input w-full border border-red-500" : "input w-full"}
-                    {...register('electricity_spend', { required: 'Electricity Spend is required' })}
+                    {...register('electricity_spend', { 
+                      required: 'Electricity Spend is required',
+                      valueAsNumber: true, // Converts the input to a number
+                      validate: {
+                        positive: (value:any) => value > 0 || 'Electricity Spend must be a positive number',
+                        // You can add more custom validations here if needed
+                      }
+                    })}                    
                   />
                   {errors.electricity_spend && <p className="text-red-500 text-xs italic">{errors?.electricity_spend?.message}</p>}
                 </div>
