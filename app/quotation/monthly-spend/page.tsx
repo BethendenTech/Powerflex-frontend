@@ -65,7 +65,7 @@ export default function Page() {
                     id="electricity_spend"
                     className={errors.electricity_spend ? "input w-full border border-red-500" : "input w-full"}
                     {...register('electricity_spend', { 
-                      required: 'Electricity Spend is required',
+                      required: 'Please enter a valid monthly spend amount',
                       valueAsNumber: true, // Converts the input to a number
                       validate: {
                         positive: (value:any) => value > 0 || 'Electricity Spend must be a positive number',
@@ -89,7 +89,7 @@ export default function Page() {
                         type="radio"
                         className="input w-full radio-input"
                         value="A"
-                        {...register('price_band', { required: 'Please select an option' })}
+                        {...register('price_band', { required: 'Please select a valid band group.' })}
                       />
                     </div>
                     <div className="input-group items-center gap-[5px]">
