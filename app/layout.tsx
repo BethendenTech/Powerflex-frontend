@@ -3,6 +3,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
+import { NetworkProvider } from "@/contexts/NetworkContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,10 +32,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
       >
-          <Header />
+        <Header />
+        <NetworkProvider>
           <div className="flex flex-wrap">
             {children}
           </div>
+        </NetworkProvider>
       </body>
     </html>
   );
