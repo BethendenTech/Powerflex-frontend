@@ -10,7 +10,7 @@ export const defaultLittleState = {
     battery_autonomy_days: 0,
     battery_autonomy_hours: 0,
     breakdowns: {},
-    payment_method: 'credit_debit_card',
+    payment_method: 'paystack',
     name_card: '',
     card_number: '',
     expiration_date: '',
