@@ -29,11 +29,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      />
 
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </head>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
       >

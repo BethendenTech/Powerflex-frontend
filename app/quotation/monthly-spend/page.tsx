@@ -40,7 +40,7 @@ export default function Page() {
   }
 
   return (
-    <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <div>
       <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
         <Image
           src="/images/collaps-arrow-right.svg"
@@ -64,14 +64,14 @@ export default function Page() {
                   <input
                     id="electricity_spend"
                     className={errors.electricity_spend ? "input w-full border border-red-500" : "input w-full"}
-                    {...register('electricity_spend', { 
+                    {...register('electricity_spend', {
                       required: 'Please enter a valid monthly spend amount',
                       valueAsNumber: true, // Converts the input to a number
                       validate: {
-                        positive: (value:any) => value > 0 || 'Electricity Spend must be a positive number',
+                        positive: (value: any) => value > 0 || 'Electricity Spend must be a positive number',
                         // You can add more custom validations here if needed
                       }
-                    })}                    
+                    })}
                   />
                   {errors.electricity_spend && <p className="text-red-500 text-xs italic">{errors?.electricity_spend?.message}</p>}
                 </div>

@@ -27,7 +27,7 @@ export default function Page() {
   console.log("state", state)
 
   return (
-    <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <div>
       <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
         <Image
           src="/images/collaps-arrow-right.svg"

@@ -14,7 +14,9 @@ export default function RootLayout({
     return (
         <StateMachineProvider>
             <QuotationProvider>
-                {children}
+                <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+                    {children}
+                </div>
             </QuotationProvider>
         </StateMachineProvider>
     );

@@ -66,7 +66,7 @@ export default function Page() {
 
 
   return (
-    <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <div>
       <StatusImage status={1} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
         <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
