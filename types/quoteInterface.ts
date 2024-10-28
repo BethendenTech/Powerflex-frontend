@@ -14,5 +14,7 @@ interface QuoteInterface {
     total_panel_cost_naira: number;
     total_inverter_cost_naira: number;
     total_battery_cost_naira: number;
-    miscellaneous_cost: number;
+    installer_cost: number;
+    cabling_cost: number;
+    vat: number;
 }

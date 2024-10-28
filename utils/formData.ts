@@ -209,7 +209,7 @@ export const defaultQuoteData = {
     total_panel_cost_naira: 0,
     total_inverter_cost_naira: 0,
     total_battery_cost_naira: 0,
-    miscellaneous_cost: 0,
+    installer_cost: 0,
 }
 
 export const interestRateValue = 7.5
