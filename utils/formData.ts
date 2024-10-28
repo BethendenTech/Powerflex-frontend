@@ -212,7 +212,7 @@ export const defaultQuoteData = {
     installer_cost: 0,
 }
 
-export const interestRateValue = 7.5
+export const interestRateValue = 6
 export const vatRateValue = 7.5
 export const interestTermValue = 4
 

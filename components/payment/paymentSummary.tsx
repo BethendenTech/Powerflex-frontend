@@ -45,14 +45,14 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
                     <tbody>
                         <tr>
                             <td className="sub-content text-left">Installation</td>
-                            <th className="sub-content text-right">£{quote?.miscellaneous_cost}</th>
+                            <th className="sub-content text-right">₦{quote?.miscellaneous_cost}</th>
                         </tr>
                     </tbody>
                 </table>
 
                 <div className='text-center'>
                     <h5 className='font-bold text-black'>Total Cost</h5>
-                    <h5 className='font-bold text-black'>£{quote?.total_cost_naira}</h5>
+                    <h5 className='font-bold text-black'>₦{quote?.total_cost_naira}</h5>
                 </div>
             </div>
         </>
