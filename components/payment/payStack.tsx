@@ -1,5 +1,6 @@
 "use client";
 
+import { renderNaira } from "@/utils/currency";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { PaystackButton } from "react-paystack";
@@ -54,7 +55,7 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
                                 </div>
                             </div>
                             <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm font-bold leading-6 text-gray-900">₦ {quote.total_cost_naira}</p>
+                                <p className="text-sm font-bold leading-6 text-gray-900">{renderNaira(quote.total_cost_naira)}</p>
                             </div>
                         </li>
                     </ul>

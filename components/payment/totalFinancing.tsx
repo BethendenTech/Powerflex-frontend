@@ -1,3 +1,4 @@
+import { renderNaira } from "@/utils/currency";
 import { interestRateValue, interestTermValue } from "@/utils/formData";
 
 interface ComponentProps {
@@ -22,7 +23,7 @@ export const TotalFinancingSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">₦100</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(100)}</p>
                     </div>
                 </li>
                 <li className="flex justify-between gap-x-6 py-2">
@@ -32,7 +33,7 @@ export const TotalFinancingSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">₦75</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(75)}</p>
                     </div>
                 </li>
                 <li className="flex justify-between gap-x-6 py-2">

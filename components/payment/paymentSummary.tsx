@@ -1,6 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
+import { renderNaira } from "@/utils/currency";
 import { useStateMachine } from "little-state-machine";
 
 interface ComponentProps {
@@ -14,7 +15,7 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
         <>
             <h5 className='font-harmonia text-base font-bold leading-[19.79px] text-left text-black'>Outright Purchase</h5>
             <div className='bg-[#ffffff] rounded-[7px] p-3'>
-                
+
                 <table className="table-auto w-full">
                     <tbody>
                         <tr>
@@ -45,14 +46,14 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
                     <tbody>
                         <tr>
                             <td className="sub-content text-left">Installation</td>
-                            <th className="sub-content text-right">₦{quote?.miscellaneous_cost}</th>
+                            <th className="sub-content text-right">{renderNaira(quote?.miscellaneous_cost)}</th>
                         </tr>
                     </tbody>
                 </table>
 
                 <div className='text-center'>
                     <h5 className='font-bold text-black'>Total Cost</h5>
-                    <h5 className='font-bold text-black'>₦{quote?.total_cost_naira}</h5>
+                    <h5 className='font-bold text-black'>{renderNaira(quote?.total_cost_naira)}</h5>
                 </div>
             </div>
         </>

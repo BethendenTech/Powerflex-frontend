@@ -1,3 +1,4 @@
+import { renderNaira } from "@/utils/currency";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -21,7 +22,7 @@ export const TotalSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">₦{quote.total_cost_naira}</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.total_cost_naira)}</p>
                     </div>
                 </li>
                 <li className="flex justify-between gap-x-6 py-2">
@@ -31,7 +32,7 @@ export const TotalSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">₦{quote.total_inverter_cost_naira}</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.total_inverter_cost_naira)}</p>
                     </div>
                 </li>
                 <li className="flex justify-between gap-x-6 py-2">
@@ -41,7 +42,7 @@ export const TotalSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">₦{quote.cabling_cost}</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.cabling_cost)}</p>
                     </div>
                 </li>
                 <li className="flex justify-between gap-x-6 py-2">
@@ -61,7 +62,7 @@ export const TotalSummary = ({ quote }: ComponentProps) => {
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm font-bold leading-6 text-gray-900">₦{quote.total_cost_with_profit}</p>
+                        <p className="text-sm font-bold leading-6 text-gray-900">{renderNaira(quote.total_cost_with_profit)}</p>
                     </div>
                 </li>
             </ul>
