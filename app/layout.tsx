@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import { NetworkProvider } from "@/contexts/NetworkContext";
+import theme from "@/theme/theme";
+import { ThemeProvider } from "@mui/material";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,16 +38,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
-      
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
       >
-        <Header />
-        <NetworkProvider>
-          <div className="flex flex-wrap">
-            {children}
-          </div>
-        </NetworkProvider>
+        <ThemeProvider theme={theme}>
+
+          <Header />
+          <NetworkProvider>
+            <div className="flex flex-wrap">
+              {children}
+            </div>
+          </NetworkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
