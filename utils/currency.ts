@@ -8,3 +8,13 @@ export const renderNaira = (value: number) => {
         decimal: '.',     // Decimal separator
     }).format();
 }
+
+
+export const formatKWhWithCurrency = (value: number, precision: number = 2): string => {
+    return `${currency(value, {
+        symbol: '',                    // No currency symbol
+        precision: precision,
+        separator: ',',                // Thousands separator
+        decimal: '.',                  // Decimal separator
+    }).format()} kWh`;
+};

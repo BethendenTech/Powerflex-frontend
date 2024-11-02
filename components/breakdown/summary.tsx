@@ -1,4 +1,4 @@
-import { renderNaira } from "@/utils/currency";
+import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
 import React from "react";
 
 
@@ -17,7 +17,7 @@ export default function Summary(props: SummaryObject) {
                 <h3 className="text-xl font-bold text-black">Estimation</h3>
                 <div className="summary-row">
                     <div className="col text-black">Energy Consumption</div>
-                    <div className="col text-black">{props.energy?.toFixed(2)} Kwh</div>
+                    <div className="col text-black">{formatKWhWithCurrency(props.energy ?? 0)}</div>
                 </div>
                 <div className="summary-row">
                     <div className="col text-black">Total cost</div>

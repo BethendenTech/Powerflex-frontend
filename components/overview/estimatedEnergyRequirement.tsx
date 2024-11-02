@@ -1,3 +1,5 @@
+import { formatKWhWithCurrency } from "@/utils/currency";
+
 interface ComponentProps {
     quote: QuoteInterface;
 }
@@ -41,7 +43,7 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
                             <p className="text-sm font-bold leading-6 text-gray-900">{quote.number_of_batteries}</p>
                         </div>
                     </li>
-                    
+
                     <li className="flex justify-between gap-x-6 py-2">
                         <div className="flex min-w-0 gap-x-4">
                             <div className="min-w-0 flex-auto">
@@ -49,7 +51,7 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
                             </div>
                         </div>
                         <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                            <p className="text-sm font-bold leading-6 text-gray-900">{quote.total_load_kwh}</p>
+                            <p className="text-sm font-bold leading-6 text-gray-900">{formatKWhWithCurrency(quote.total_load_kwh)}</p>
                         </div>
                     </li>
                 </ul>
