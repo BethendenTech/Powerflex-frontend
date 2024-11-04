@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,13 +15,18 @@ export default function Home() {
         />
 
         <Box textAlign="center">
-          <Button LinkComponent={Link} href="/quotation/details">
-            Get a quote
-          </Button>
+          <Grid2 container spacing={2}>
+            <Grid2 size={{ xs: 'grow', md: 5 }} offset={{ md: 4 }}>
 
-          <Typography>
-            Start your journey to cleaner, more affordable energy.
-          </Typography>
+              <Button LinkComponent={Link} href="/quotation/details" fullWidth>
+                Get a quote
+              </Button>
+
+              <Typography>
+                Start your journey to cleaner, more affordable energy.
+              </Typography>
+            </Grid2>
+          </Grid2>
         </Box>
 
       </Container>

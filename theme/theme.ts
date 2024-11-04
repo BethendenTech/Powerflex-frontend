@@ -20,10 +20,8 @@ const themeOptions: ThemeOptions = {
                 root: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
                     color: 'white',
-                    height: "55px",
-                    width: '50%',
-                    borderRadius: "12px",
-                    padding: '8px 24px',
+                    borderRadius: 12,
+                    padding: 15,
                     '&:hover': {
                         background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
                     },
