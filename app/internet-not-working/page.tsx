@@ -1,5 +1,6 @@
 "use client";
 
+import { Box, Button, Container, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -10,12 +11,18 @@ export default function Page() {
     }
 
     return (
-        <div className="pb-[260px] w-full p-[25px] m-auto max-w-[580px] sm:w-full items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-            <h1>Internet Not Working</h1>
-            <p>Our system is temporarily offline. Please try again
-                later.</p>
+        <Container>
+            <Box textAlign="center" mt={4}>
+                <Box mt={2} mb={2}>
+                    <Typography component="h1" variant="h3">Internet Not Working</Typography>
+                </Box>
+                <Box mt={2} mb={2}>
+                    <Typography component="h6" variant="h6">Our system is temporarily offline. Please try again
+                        later.</Typography>
+                </Box>
 
-            <button onClick={() => handleBack()}>Go to home</button>
-        </div>
+                <Button onClick={() => handleBack()}>Go to home</Button>
+            </Box>
+        </Container>
     );
 }

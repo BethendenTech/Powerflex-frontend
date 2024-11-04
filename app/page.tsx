@@ -16,7 +16,7 @@ export default function Home() {
 
         <Box textAlign="center">
           <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 'grow', md: 5 }} offset={{ md: 4 }}>
+            <Grid2 size={{ xs: 'grow', md: 4 }} offset={{ md: 4 }}>
 
               <Button LinkComponent={Link} href="/quotation/details" fullWidth>
                 Get a quote
@@ -28,7 +28,6 @@ export default function Home() {
             </Grid2>
           </Grid2>
         </Box>
-
       </Container>
     </>
   );
