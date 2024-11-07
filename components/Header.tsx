@@ -10,11 +10,12 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+
   return (
     <header className="bg-white shadow">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <a href="/" className="text-2xl font-bold text-gray-800 m-auto md:m-0 sm:m-auto">
-        <Image
+          <Image
             src="/images/logo-blue.png"
             alt="powerflex logo"
             width={100}
