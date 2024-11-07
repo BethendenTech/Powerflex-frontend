@@ -10,6 +10,7 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+
   return (
     <header className="bg-white shadow">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">

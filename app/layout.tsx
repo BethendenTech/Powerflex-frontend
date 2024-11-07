@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { NetworkProvider } from "@/contexts/NetworkContext";
 import theme from "@/theme/theme";
 import { ThemeProvider } from "@mui/material";
+import { WebLayout } from "@/layout/web";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,12 +44,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
       >
         <ThemeProvider theme={theme}>
-
-          <Header />
           <NetworkProvider>
-            <div className="flex flex-wrap">
+            <WebLayout>
               {children}
-            </div>
+            </WebLayout>
           </NetworkProvider>
         </ThemeProvider>
       </body>
