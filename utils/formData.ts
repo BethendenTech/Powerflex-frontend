@@ -1,4 +1,4 @@
-const allElements = [
+export const allElements = [
     {
         name: "Kitchen Appliance",
         type: "accordian",
@@ -173,4 +173,51 @@ const allElements = [
     },
 ]
 
-export default allElements;
+
+export const financeTermTears = [
+    {
+        label: "1 Year",
+        value: 1
+    },
+    {
+        label: "2 Years",
+        value: 2
+    },
+    {
+        label: "3 Years",
+        value: 3
+    },
+    {
+        label: "4 Years",
+        value: 4
+    },
+]
+
+export const defaultQuoteData = {
+    total_cost_naira: 0,
+    total_cost_usd: 0,
+    total_equipments: 0,
+    number_of_panels: 0,
+    number_of_inverters: 0,
+    number_of_batteries: 0,
+    total_cost_with_profit: 0,
+    total_load_kwh: 0,
+    load_covered_by_solar: 0,
+    total_panel_cost_usd: 0,
+    total_inverter_cost_usd: 0,
+    total_battery_cost_usd: 0,
+    total_panel_cost_naira: 0,
+    total_inverter_cost_naira: 0,
+    total_battery_cost_naira: 0,
+    installer_cost: 0,
+}
+
+export const interestRateValue = 6
+export const vatRateValue = 7.5
+export const interestTermValue = 4
+
+
+export const businessRoles = [
+    { id: "business", title: 'I am a Business' },
+    { id: "individual", title: 'I am an Individual' },
+];
