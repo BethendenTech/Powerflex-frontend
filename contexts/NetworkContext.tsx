@@ -8,31 +8,10 @@ interface NetworkContextType {
 const NetworkContext = createContext<NetworkContextType | undefined>(undefined);
 
 export const NetworkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isOnline, setIsOnline] = useState<boolean>(true);
+    const [isOnline] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
-        const handleOnline = () => {
-            setIsOnline(true);
-            // Optionally, you can redirect back if coming online
-            // router.push('/');
-        };
-
-        const handleOffline = () => {
-            setIsOnline(false);
-            router.push('/internet-not-working');
-        };
-
-        window.addEventListener('online', handleOnline);
-        window.addEventListener('offline', handleOffline);
-
-        // Check initial online status
-        setIsOnline(navigator.onLine);
-
-        return () => {
-            window.removeEventListener('online', handleOnline);
-            window.removeEventListener('offline', handleOffline);
-        };
     }, [router]);
 
     return (

@@ -3,22 +3,18 @@ import Image from "next/image";
 
 
 interface Props {
-    window?: () => Window;
-    handleDrawerToggle?: () => {};
+    handleDrawerToggle?: () => void;
     navItems?: NavItemsModel[];
     mobileOpen?: boolean;
     drawerWidth?: number;
 }
 
 export const AppDrawer = (props: Props) => {
-    const { window, navItems, mobileOpen, handleDrawerToggle, drawerWidth } = props;
-
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const { navItems, mobileOpen, handleDrawerToggle, drawerWidth } = props;
 
     return (
         <nav>
             <Drawer
-                container={container}
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}

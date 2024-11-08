@@ -1,5 +1,5 @@
 interface NavItemsModel {
     title: String,
-    href: String,
+    href: any,
     type: String,
 }

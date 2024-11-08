@@ -19,7 +19,6 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const { state } = useStateMachine({ updateAction });
 
     const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
-    const [data, setData] = useState<QuoteInterface | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -47,7 +46,6 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             if (response.ok) {
                 const data = await response.json();
                 setQuote(data);
-                setData(data);
             } else {
                 console.error('Failed to save user details');
                 setError('Failed to save user details');
@@ -72,7 +70,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     ]);
 
     return (
-        <QuotationContext.Provider value={{ quote, data, error, isLoading, setQuote }}>
+        <QuotationContext.Provider value={{ quote, error, isLoading }}>
             {children}
         </QuotationContext.Provider>
     );

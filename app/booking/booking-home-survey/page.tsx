@@ -34,7 +34,7 @@ export default function Page() {
     const onSubmit = (data: any) => {
         console.log(data);
         actions.updateAction(data);  // Pass form data to state machine action
-        router.push(`/booking-home-survey-confirmation`);
+        router.push(`/booking/booking-home-survey-confirmation`);
     };
 
     return (

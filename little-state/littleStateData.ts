@@ -18,5 +18,7 @@ export const defaultLittleState: any = {
     postcode: '',
     total_cost: 0,
     business_role: "",
-    finance: false
+    finance: false,
+    address_line_1: "",
+    address_line_2: "",
 }

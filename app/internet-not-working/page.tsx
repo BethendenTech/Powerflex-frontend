@@ -21,7 +21,7 @@ export default function Page() {
                         later.</Typography>
                 </Box>
 
-                <Button onClick={() => handleBack()}>Go to home</Button>
+                <Button variant="contained" onClick={() => handleBack()}>Go to home</Button>
             </Box>
         </Container>
     );

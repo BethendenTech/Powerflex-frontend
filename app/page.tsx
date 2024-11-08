@@ -18,7 +18,7 @@ export default function Home() {
           <Grid2 container spacing={2}>
             <Grid2 size={{ xs: 'grow', md: 4 }} offset={{ md: 4 }}>
 
-              <Button LinkComponent={Link} href="/quotation/details" fullWidth>
+              <Button variant="contained" LinkComponent={Link} href="/quotation/details" fullWidth>
                 Get a quote
               </Button>
 

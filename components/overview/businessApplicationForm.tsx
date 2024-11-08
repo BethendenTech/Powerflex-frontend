@@ -182,7 +182,7 @@ const BusinessApplicationForm = () => {
                         {...register("documents", { required: "Document is required" })}
                         className={errors.documents ? "input w-full border border-red-500" : "input w-full"}
                     />
-                    {errors.bvn && <p className="text-red-500 text-sm mt-1">{errors.documents.message}</p>}
+                    {errors.documents && <p className="text-red-500 text-sm mt-1">{errors.documents.message}</p>}
                 </div>
 
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">

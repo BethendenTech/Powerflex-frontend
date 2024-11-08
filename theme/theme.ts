@@ -18,10 +18,12 @@ const themeOptions: ThemeOptions = {
         MuiButton: {
             styleOverrides: {
                 root: {
-                    background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
-                    color: 'white',
                     borderRadius: 12,
                     padding: 15,
+                },
+                containedPrimary: {
+                    background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
+                    color: 'white',
                     '&:hover': {
                         background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
                     },

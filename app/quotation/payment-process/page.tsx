@@ -22,8 +22,6 @@ export default function Page() {
     router.push(`/quotation/payment-summary`);
   }
 
-  console.log("state", state)
-
   return (
     <div>
       <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>

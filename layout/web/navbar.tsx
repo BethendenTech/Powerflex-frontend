@@ -10,8 +10,7 @@ import Link from 'next/link';
 import { Button, Stack } from '@mui/material';
 
 interface Props {
-    window?: () => Window;
-    handleDrawerToggle?: () => {};
+    handleDrawerToggle?: () => void;
     navItems?: NavItemsModel[];
     mobileOpen?: boolean;
     drawerWidth?: number;
@@ -46,15 +45,15 @@ export default function DrawerAppBar(props: Props) {
 
                 <Stack sx={{ display: { xs: 'none', sm: 'block' } }} spacing={2} direction="row">
                     {navItems && navItems.map((item, index) => {
-                        if (item.type == "link") {
+                        if (item.type == "button") {
                             return (
-                                <Typography key={`nav-${index}`} component={Link} href={item.href}>
+                                <Button variant="contained" key={`nav-link-${index}`} LinkComponent={Link} href={item.href}>
                                     {item.title}
-                                </Typography>
+                                </Button>
                             )
                         } else {
                             return (
-                                <Button key={`nav-${index}`} component={Link} href={item.href}>
+                                <Button variant="text" key={`nav-link-${index}`} LinkComponent={Link} href={item.href}>
                                     {item.title}
                                 </Button>
                             )

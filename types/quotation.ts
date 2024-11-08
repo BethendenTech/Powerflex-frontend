@@ -11,10 +11,9 @@ export interface Quotation {
 }
 
 export interface QuotationContextType {
-    data: Quotation | undefined;
     error: any;
     isLoading: boolean;
-    quote: any;
+    quote: QuoteInterface;
 }
 export interface QuoteInterface {
     total_cost_naira: number;

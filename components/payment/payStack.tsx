@@ -1,5 +1,6 @@
 "use client";
 
+import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -20,7 +21,7 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
     };
 
     // you can call this function anything
-    const handlePaystackSuccessAction = (reference) => {
+    const handlePaystackSuccessAction = (reference: any) => {
         // Implementation for whatever you want to do with reference and after success call.
         console.log(reference);
         router.push(`/quotation/payment-success`);
@@ -36,7 +37,7 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
     const componentProps = {
         ...config,
         text: 'Paystack Button Implementation',
-        onSuccess: (reference) => handlePaystackSuccessAction(reference),
+        onSuccess: (reference: any) => handlePaystackSuccessAction(reference),
         onClose: handlePaystackCloseAction,
     };
 
