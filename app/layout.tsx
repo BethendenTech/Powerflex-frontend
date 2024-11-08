@@ -2,7 +2,6 @@
 
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/Header";
 import { NetworkProvider } from "@/contexts/NetworkContext";
 import theme from "@/theme/theme";
 import { ThemeProvider } from "@mui/material";

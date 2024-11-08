@@ -1,6 +1,5 @@
 "use client"; // This is a client component
 
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import StatusImage from '@/components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
@@ -20,7 +19,7 @@ export default function Page() {
 
 
   const handleToggle = (id: any) => {
-    let formData = {
+    const formData = {
       finance: id
     }
     actions.updateAction(formData);

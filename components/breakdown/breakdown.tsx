@@ -1,19 +1,17 @@
 "use client";
 
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import { allElements } from '@/utils/formData';
 
 interface BreakdownProps {
     breakdowns: any,
-    onBreakdownChange: (sata: Object) => void;
+    onBreakdownChange: (sata: any) => void;
 }
 
-export default function Breakdown({ onBreakdownChange, breakdowns, ...props }: BreakdownProps) {
+export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownProps) {
 
-    const router = useRouter();
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState<any>({});
 
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.checked) {

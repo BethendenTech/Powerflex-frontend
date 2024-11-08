@@ -12,7 +12,7 @@ export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
 
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm({
     defaultValues: {
       electricity_spend: "",
       price_band: "A"

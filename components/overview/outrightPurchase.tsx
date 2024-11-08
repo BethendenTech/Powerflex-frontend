@@ -1,11 +1,11 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { vatRateValue } from "@/utils/formData";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { TotalSummary } from "../payment/totalSummary";
+import { QuoteInterface } from "@/types/quotation";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -14,14 +14,13 @@ interface ComponentProps {
 export const OutRightPurchase = ({ quote }: ComponentProps) => {
 
     const router = useRouter();
-    const { actions, state } = useStateMachine({ updateAction });
+    const { actions } = useStateMachine({ updateAction });
 
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { handleSubmit } = useForm({
         defaultValues: {
         }
     });
 
-    const allValues = watch();
 
     const onSubmit = async (formData: any) => {
         try {

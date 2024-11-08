@@ -7,24 +7,21 @@ import updateAction from '@/little-state/action';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
-import { useEffect, useState } from 'react';
-import { defaultQuoteData } from '@/utils/formData';
 import useQuotation from '@/hooks/quotation';
 
 export default function Page() {
 
   const router = useRouter();
-  const { actions, state } = useStateMachine({ updateAction });
+  const { actions } = useStateMachine({ updateAction });
 
   const { quote } = useQuotation();
 
 
-  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+  const { handleSubmit } = useForm({
     defaultValues: {
     }
   });
 
-  const allValues = watch();
 
   const onSubmit = async (formData: any) => {
     try {

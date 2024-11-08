@@ -2,7 +2,7 @@
 
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import TruckImage from '@/components/bookingImage';
@@ -10,12 +10,11 @@ import DatePicker from 'react-datepicker';
 
 export default function Page() {
 
-    const [startDate, setStartDate] = useState(new Date());
     const router = useRouter();
     const { actions, state } = useStateMachine({ updateAction });
 
     // Set up react-hook-form
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         defaultValues: {
             address_line_1: "",
             address_line_2: "",
@@ -105,8 +104,8 @@ export default function Page() {
                 <div className='w-full flex item-center justify-center bg-white rounded-[12px]'>
                     <DatePicker
                         showIcon
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        // selected={startDate}
+                        // onChange={(date) => setStartDate(date)}
                         icon={
                             <>
                                 <svg
@@ -140,8 +139,8 @@ export default function Page() {
                     />
                     <DatePicker
                         showIcon
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        // selected={startDate}
+                        // onChange={(date) => setStartDate(date)}
                         showTimeSelect
                         showTimeSelectOnly
                         timeIntervals={15}

@@ -17,7 +17,7 @@ export default function Page() {
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
 
-  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
     defaultValues: {
       additional_info: false,
       solar_load: 50,
@@ -46,7 +46,7 @@ export default function Page() {
     }
   };
 
-  const { ref, width, height } = useResizeObserver<HTMLDivElement>();
+  const { width } = useResizeObserver<HTMLDivElement>();
 
   const [quote, setQuote] = useState({
     number_of_panels: 0,
@@ -62,7 +62,7 @@ export default function Page() {
     setIsChecked(!isChecked);
   };
 
-  const handleBreakdownChange = (breakdowns: Object) => {
+  const handleBreakdownChange = (breakdowns: any) => {
     setValue("breakdowns", breakdowns)
   };
 
@@ -87,7 +87,7 @@ export default function Page() {
   }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, breakdowns, battery_autonomy_hours]);
 
   const calculateQuote = async () => {
-    let postData = {
+    const quoteData = {
       electricity_spend: state.electricity_spend,
       price_band: state.price_band,
       solar_load: solar_load,
@@ -101,7 +101,7 @@ export default function Page() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(postData),
+        body: JSON.stringify(quoteData),
       });
 
       if (response.ok) {
@@ -163,7 +163,7 @@ export default function Page() {
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 5 }, (_, i) => (
-                          <span className='text-sm text-black font-bold calibration-line-container'>{i * 25}%</span>
+                          <span key={`calibration-${i}`} className='text-sm text-black font-bold calibration-line-container'>{i * 25}%</span>
                         ))}
                       </div>
                     </div>
@@ -201,7 +201,7 @@ export default function Page() {
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 25 }, (_, i) => (
-                          <div className='calibration-line-container'>
+                          <div key={`calibration-${i}`} className='calibration-line-container'>
                             <div className={`calibration-line ${i % 6 === 0 ? 'active' : ''}`}></div>
                             <span className='text-sm font-bold text-black'>
                               {i % 12 === 0 ? i : ''}
@@ -223,7 +223,7 @@ export default function Page() {
                       >
                         <div className='slider-container'>
                           <input
-                            ref={ref}
+                            // ref={ref}
                             id="battery_autonomy_days"
                             className="input w-full slider-input"
                             type="range"
@@ -236,7 +236,7 @@ export default function Page() {
                       </Tooltip>
                       <div className='flex flex-row justify-between calibration-container'>
                         {Array.from({ length: 6 }, (_, i) => (
-                          <span className='text-sm text-black font-bold calibration-line-container'>{i}</span>
+                          <span key={`calibration-${i}`} className='text-sm text-black font-bold calibration-line-container'>{i}</span>
                         ))}
                       </div>
                     </div>

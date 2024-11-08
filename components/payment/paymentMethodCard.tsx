@@ -3,8 +3,7 @@
 import updateAction from '@/little-state/action';
 import { paymentMethods } from '@/utils/paymentData';
 import { useStateMachine } from 'little-state-machine';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React from 'react';
 
 const PaymentMethodCard = () => {
     const { actions, state } = useStateMachine({ updateAction });

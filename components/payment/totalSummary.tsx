@@ -1,3 +1,4 @@
+import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 
 interface ComponentProps {

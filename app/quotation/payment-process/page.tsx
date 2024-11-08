@@ -8,8 +8,6 @@ import PaymentMethodCard from '@/components/payment/paymentMethodCard';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { defaultQuoteData } from '@/utils/formData';
 import useQuotation from '@/hooks/quotation';
 import PayStackPayment from '@/components/payment/payStack';
 

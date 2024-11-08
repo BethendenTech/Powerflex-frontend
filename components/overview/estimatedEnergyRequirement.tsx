@@ -1,3 +1,4 @@
+import { QuoteInterface } from "@/types/quotation";
 import { formatKWhWithCurrency } from "@/utils/currency";
 
 interface ComponentProps {

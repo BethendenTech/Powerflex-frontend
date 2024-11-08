@@ -12,7 +12,7 @@ export default function Page() {
 
   const router = useRouter();
 
-  const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+  const { register, handleSubmit, formState: { errors }, setError, setValue } = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -44,7 +44,6 @@ export default function Page() {
 
 
       if (response.ok) {
-        const data = await response.json();
         // alert('User details saved successfully!');
         router.push(`/quotation/monthly-spend`);
       } else {
@@ -54,7 +53,7 @@ export default function Page() {
       if (response.status == 400) {
         const data = await response.json();
 
-        Object.entries(data).forEach(([key, value]) => {
+        Object.entries(data).forEach(([key, value]:any) => {
           setError(key, { type: "manual", message: value });
         });
       }

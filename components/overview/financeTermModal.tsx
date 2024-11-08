@@ -6,16 +6,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface FinancingTermModalProps {
-    isOpen: Boolean;
-    onClose: (sata: Object) => void;
+    isOpen: boolean;
+    onClose: (sata: any) => void;
 }
 
 export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps) => {
     if (!isOpen) return null;
 
-    const [isIcon, setIsIcon] = useState(false);
+    const [isIcon] = useState(false);
 
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             total_cost: "",
             down_payment: "",
@@ -24,7 +24,7 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
         }
     });
 
-    const onSubmit = async (formData: any) => {
+    const onSubmit = async () => {
     }
 
     return (
@@ -76,8 +76,6 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
                                 <div className="relative w-full">
                                     <select
                                         className={`select w-full appearance-none p-4 pr-10 ${isIcon ? 'border-blue-500' : 'border-gray-300'} ${errors?.term ? 'border border-red-500' : ''}`}
-                                        onClick={() => setIsIcon(!isIcon)} // Toggle dropdown
-                                        onBlur={() => setIsIcon(false)} // Close on losing focus
                                         {...register('term', { required: 'Term is required' })}
                                     >
                                         <option value="">Select a term</option> {/* Placeholder */}

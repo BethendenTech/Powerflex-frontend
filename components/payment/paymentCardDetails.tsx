@@ -1,6 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
+import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
@@ -14,7 +15,7 @@ const PaymentCardDetails = ({ quote }: ComponentProps) => {
     const { actions, state } = useStateMachine({ updateAction });
 
     // Set up react-hook-form
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         defaultValues: {
             name_card: "",
             card_number: "",

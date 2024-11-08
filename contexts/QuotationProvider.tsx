@@ -1,12 +1,11 @@
-import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
-import { QuotationContextType } from '@/types/quotation';
+import { QuotationContextType, QuoteInterface } from '@/types/quotation';
 import { defaultQuoteData } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
 import { useRouter } from 'next/navigation';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
-// Define the context type as an empty object or undefined initially
+// Initialize context with undefined as default, to be provided by the provider.
 export const QuotationContext = createContext<QuotationContextType | undefined>(undefined);
 
 // Props for the provider component
@@ -20,15 +19,21 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const { state } = useStateMachine({ updateAction });
 
     const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
+    const [data, setData] = useState<QuoteInterface | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const calculateQuote = async () => {
-        let postData = {
+        const postData = {
             electricity_spend: state.electricity_spend,
             price_band: state.price_band,
             solar_load: state.solar_load,
             battery_autonomy_hours: state.battery_autonomy_hours_only + state.battery_autonomy_days * 24,
-            breakdowns: state.breakdowns
-        }
+            breakdowns: state.breakdowns,
+        };
+
+        setIsLoading(true);
+        setError(null);
 
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
@@ -42,29 +47,33 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             if (response.ok) {
                 const data = await response.json();
                 setQuote(data);
+                setData(data);
             } else {
                 console.error('Failed to save user details');
-                // router.push("/")
+                setError('Failed to save user details');
+                // Uncomment to navigate to home if needed
+                // router.push("/");
             }
         } catch (error) {
             console.error('Error:', error);
+            setError('Error calculating quote');
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
         calculateQuote();
-    }, [state.solar_load, state.battery_autonomy_hours_only, state.battery_autonomy_days, state.breakdowns, state.battery_autonomy_hours]);
-
+    }, [
+        state.solar_load,
+        state.battery_autonomy_hours_only,
+        state.battery_autonomy_days,
+        state.breakdowns,
+    ]);
 
     return (
-        <QuotationContext.Provider
-            value={{
-                quote
-            }}
-        >
+        <QuotationContext.Provider value={{ quote, data, error, isLoading, setQuote }}>
             {children}
         </QuotationContext.Provider>
     );
 };
-
-

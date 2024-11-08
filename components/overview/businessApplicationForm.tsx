@@ -1,17 +1,14 @@
 "use client";
 
-import updateAction from "@/little-state/action";
-import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
-    const { actions, state } = useStateMachine({ updateAction });
-
+    
     // Set up react-hook-form with default values for the inputs
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             first_name: '',
             last_name: '',
@@ -24,7 +21,8 @@ const BusinessApplicationForm = () => {
             nearest_bus_stop: '',
             lga: '',
             state: '',
-            bvn: ''
+            bvn: '',
+            documents:""
         }
     });
 

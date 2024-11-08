@@ -1,4 +1,4 @@
-export const defaultLittleState = {
+export const defaultLittleState: any = {
     name: '',
     email: '',
     phone_number: '',

@@ -1,10 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import React from "react";
 
 const IndividualApplicationForm = () => {
-    const router = useRouter();
 
     return (
         <>

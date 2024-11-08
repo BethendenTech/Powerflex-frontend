@@ -1,11 +1,7 @@
 import { renderNaira } from "@/utils/currency";
 import { interestRateValue, interestTermValue } from "@/utils/formData";
 
-interface ComponentProps {
-    quote: QuoteInterface;
-}
-
-export const TotalFinancingSummary = ({ quote }: ComponentProps) => {
+export const TotalFinancingSummary = () => {
     return (
         <div className="border-gray-400 bg-white rounded-b p-4 flex flex-col justify-between leading-normal mb-2">
 

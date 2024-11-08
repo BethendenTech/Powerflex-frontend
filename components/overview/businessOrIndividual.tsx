@@ -9,10 +9,7 @@ export const BusinessOrIndividualCheckBox = () => {
   const { actions, state } = useStateMachine({ updateAction });
 
   const handleToggle = (id: any) => {
-    let formData = {
-      business_role: id
-    }
-    actions.updateAction(formData);
+    actions.updateAction({ business_role: id });
   };
 
   return (

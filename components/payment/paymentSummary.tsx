@@ -1,16 +1,13 @@
 "use client";
 
-import updateAction from "@/little-state/action";
+import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
-import { useStateMachine } from "little-state-machine";
 
 interface ComponentProps {
     quote: QuoteInterface;
 }
 
 const PaymentSummaryCard = ({ quote }: ComponentProps) => {
-    const { actions, state } = useStateMachine({ updateAction });
-
     return (
         <>
             <h5 className='font-harmonia text-base font-bold leading-[19.79px] text-left text-black'>Outright Purchase</h5>

@@ -193,7 +193,7 @@ export const financeTermTears = [
     },
 ]
 
-export const defaultQuoteData = {
+export const defaultQuoteData: any = {
     total_cost_naira: 0,
     total_cost_usd: 0,
     total_equipments: 0,

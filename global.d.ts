@@ -22,5 +22,7 @@ declare module 'little-state-machine' {
         total_cost: number;
         business_role: string;
         finance: boolean;
+        address_line_1: string;
+        address_line_2: string;
     }
 }

@@ -2,7 +2,7 @@ import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
 
 export const OverviewData = () => {
-    const { actions, state } = useStateMachine({ updateAction });
+    const { state } = useStateMachine({ updateAction });
 
     return (
         <ul role="list" className="divide-y divide-gray-400">
