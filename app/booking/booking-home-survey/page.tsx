@@ -24,9 +24,9 @@ export default function Page() {
 
     React.useEffect(() => {
         if (state) {
-            setValue("address_line_1", state.address_line_1 || "");
-            setValue("address_line_2", state.address_line_2 || "");
-            setValue("postcode", state.postcode || "");
+            setValue("address_line_1", state?.address_line_1 || "");
+            setValue("address_line_2", state?.address_line_2 || "");
+            setValue("postcode", state?.postcode || "");
         }
     }, [state])
 

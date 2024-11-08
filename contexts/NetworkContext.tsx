@@ -8,10 +8,16 @@ interface NetworkContextType {
 const NetworkContext = createContext<NetworkContextType | undefined>(undefined);
 
 export const NetworkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isOnline] = useState(true);
+    const [isOnline, setIsOnline] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
+        if (!navigator.onLine) {
+            router.push('/internet-not-working');
+            setIsOnline(false)
+        } else {
+            setIsOnline(true)
+        }
     }, [router]);
 
     return (

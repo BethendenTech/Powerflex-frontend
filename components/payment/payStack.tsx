@@ -4,8 +4,11 @@ import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { PaystackButton } from "react-paystack";
+import dynamic from 'next/dynamic';
 
+const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
+    ssr: false, // This ensures that the component is only rendered on the client side
+});
 interface ComponentProps {
     quote: QuoteInterface;
 }
