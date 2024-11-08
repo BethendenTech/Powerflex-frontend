@@ -1,7 +1,0 @@
-# Nixpack.toml
-[build]
-  type = "nodejs"
-  commands = ["npm install", "npm run build"]
-
-[run]
-  command = "npm start"
