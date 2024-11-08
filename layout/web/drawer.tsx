@@ -1,5 +1,6 @@
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material"
 import Image from "next/image";
+import Link from "next/link";
 
 
 interface Props {
@@ -38,7 +39,7 @@ export const AppDrawer = (props: Props) => {
                     <List>
                         {navItems && navItems.map((item, index) => (
                             <ListItem key={`nav-${index}`} disablePadding>
-                                <ListItemButton sx={{ textAlign: 'center' }}>
+                                <ListItemButton sx={{ textAlign: 'center' }} LinkComponent={Link} href={item.href}>
                                     <ListItemText primary={item.title} />
                                 </ListItemButton>
                             </ListItem>

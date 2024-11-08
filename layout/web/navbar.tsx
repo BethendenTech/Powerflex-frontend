@@ -34,7 +34,7 @@ export default function DrawerAppBar(props: Props) {
                 </IconButton>
 
 
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+                <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
                     <Image
                         src="/images/logo-blue.png"
                         alt="powerflex logo"

@@ -49,7 +49,7 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
         <>
             <DrawerAppBar navItems={navItems} handleDrawerToggle={handleDrawerToggle} />
 
-            <AppDrawer navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
+            <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
             <Container>
                 {children}
             </Container>
