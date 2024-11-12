@@ -218,6 +218,6 @@ export const interestTermValue = 4
 
 
 export const businessRoles = [
-    { id: "business", title: 'I am a Business' },
-    { id: "individual", title: 'I am an Individual' },
+    { id: "business", title: 'Business' },
+    { id: "individual", title: 'Individual' },
 ];

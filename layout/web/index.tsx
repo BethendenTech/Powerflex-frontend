@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React, { ReactNode } from "react";
 import DrawerAppBar from "./navbar";
 import { AppDrawer } from "./drawer";
@@ -49,9 +49,14 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
         <>
             <DrawerAppBar navItems={navItems} handleDrawerToggle={handleDrawerToggle} />
 
-            <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
+            <nav>
+                <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
+            </nav>
+
             <Container>
-                {children}
+                <Box component="main" sx={{ mt: 10 }}>
+                    {children}
+                </Box>
             </Container>
         </>
     );
