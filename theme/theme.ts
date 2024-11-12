@@ -1,5 +1,8 @@
 // src/theme.ts
 import { createTheme, ThemeOptions } from '@mui/material/styles';
+import ToggleButtonGroup, {
+    toggleButtonGroupClasses,
+} from '@mui/material/ToggleButtonGroup';
 
 // Define your custom theme options
 const themeOptions: ThemeOptions = {
@@ -75,7 +78,43 @@ const themeOptions: ThemeOptions = {
                     borderWidth: 1
                 }
             }
-        }
+        },
+        MuiToggleButtonGroup: {
+            styleOverrides: {
+                root: {
+                    [`& .${toggleButtonGroupClasses.grouped}`]: {
+                        border: 0,
+                        borderRadius: 12,
+                        [`&.${toggleButtonGroupClasses.disabled}`]: {
+                            border: 0,
+                        },
+                    },
+                    [`& .${toggleButtonGroupClasses.middleButton},& .${toggleButtonGroupClasses.lastButton}`]:
+                    {
+                        marginLeft: -1,
+                        borderLeft: '1px solid transparent',
+                    },
+                    backgroundColor: "white",
+                    padding: 4,
+                    borderRadius: 12,
+                    borderColor: "#ccc",
+                    borderWidth: 1
+                }
+            }
+        },
+        MuiToggleButton: {
+            styleOverrides: {
+                root: {
+                    '&.Mui-selected': {
+                        background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
+                        color: 'white',
+                        '&:hover': {
+                            background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
+                        },
+                    },
+                },
+            },
+        },
     },
 };
 
