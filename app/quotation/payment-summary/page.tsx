@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import useQuotation from '@/hooks/quotation';
+import { Button } from '@mui/material';
 
 export default function Page() {
 
@@ -40,16 +41,19 @@ export default function Page() {
 
   return (
     <div>
-      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
-        <Image
+      <Button
+        color='secondary'
+        variant="text"
+        startIcon={<Image
           src="/images/collaps-arrow-right.svg"
           alt="arrow icon"
           width={24}
           height={24}
-          className="mr-2"
-        />
+        />}
+        onClick={() => onBack()}
+      >
         Back
-      </button>
+      </Button>
 
       <StatusImage status={4} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
@@ -61,7 +65,7 @@ export default function Page() {
             <div className="w-full container mx-auto flex flex-col gap-4 mt-4">
               <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-                <PaymentSummaryCard quote={quote}/>
+                <PaymentSummaryCard quote={quote} />
 
                 <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
                   <button

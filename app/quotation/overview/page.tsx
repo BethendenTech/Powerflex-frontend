@@ -11,8 +11,9 @@ import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
 import useQuotation from '@/hooks/quotation';
 import React from 'react';
-import { ToggleButton } from '@mui/material';
+import { Button, ToggleButton } from '@mui/material';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { BackHandOutlined } from '@mui/icons-material';
 
 export default function Page() {
 
@@ -34,16 +35,21 @@ export default function Page() {
 
   return (
     <div>
-      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
-        <Image
+
+      <Button
+        color='secondary'
+        variant="text"
+        startIcon={<Image
           src="/images/collaps-arrow-right.svg"
           alt="arrow icon"
           width={24}
           height={24}
-          className="mr-2"
-        />
+        />}
+        onClick={() => onBack()}
+      >
         Back
-      </button>
+      </Button>
+
 
       <StatusImage status={4} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
