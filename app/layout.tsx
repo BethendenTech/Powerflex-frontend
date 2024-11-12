@@ -1,11 +1,11 @@
 "use client";
 
-import localFont from "next/font/local";
-import "./globals.css";
 import { NetworkProvider } from "@/contexts/NetworkContext";
+import { WebLayout } from "@/layout/web";
 import theme from "@/theme/theme";
 import { ThemeProvider } from "@mui/material";
-import { WebLayout } from "@/layout/web";
+import localFont from "next/font/local";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,7 +22,6 @@ const geistMono = localFont({
 //   title: "Powerflex",
 //   description: "Powerflex is a solar energy company that provides energy solutions to customers around the world. Our team of engineers and engineers are passionate about powering your home with energy.",
 // };
-
 
 export default function RootLayout({
   children,

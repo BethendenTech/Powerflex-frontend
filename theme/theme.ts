@@ -30,6 +30,33 @@ const themeOptions: ThemeOptions = {
                 },
             },
         },
+        MuiFormControl: {
+            styleOverrides: {
+                root: {
+                    marginTop: 5,
+                    marginBottom: 15,
+                }
+            }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    marginLeft: -10,
+                    fontSize: 20,
+                    color: "#424242"
+                }
+            }
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    'label + &': {
+                        marginTop: 15,
+                    },
+                    backgroundColor: "white"
+                },
+            }
+        }
     },
 };
 
