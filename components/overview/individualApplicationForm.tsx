@@ -4,6 +4,7 @@ import React from "react";
 
 const IndividualApplicationForm = () => {
 
+    
     return (
         <>
             <div className='gap-6 flex flex-col mt-6 pt-4'>

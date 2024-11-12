@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select } from "@mui/material";
+import { Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -249,6 +249,7 @@ const BusinessApplicationForm = () => {
                     variant="contained"
                     tabIndex={-1}
                     startIcon={<CloudUploadIcon />}
+                    color="warning"
                 >
                     Upload files
                     <VisuallyHiddenInput
@@ -258,29 +259,13 @@ const BusinessApplicationForm = () => {
                     />
                 </Button>
 
-
-                <Box
-
+                <Button
+                    fullWidth
+                    type="submit"
+                    variant='contained'
                 >
-                    <Button
-                        fullWidth
-                        type="submit"
-                        variant='contained'
-                    >
-                        Apply for Financing
-                    </Button>
-
-                </Box>
-
-                {/* <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                    <button
-                        type='submit'
-                        className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                        rel="noopener noreferrer"
-                    >
-                        Apply for Financing
-                    </button>
-                </div> */}
+                    Apply for Financing
+                </Button>
             </form>
         </div>
     );
