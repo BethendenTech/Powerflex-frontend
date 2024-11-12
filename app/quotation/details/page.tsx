@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
 import React from 'react';
-import { Box, Button, FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material';
+import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -74,9 +74,9 @@ export default function Page() {
           fullWidth
           error={!!errors.name}
         >
-          <InputLabel shrink>
+          <FormLabel>
             Name
-          </InputLabel>
+          </FormLabel>
           <OutlinedInput
             type='text'
             {...register('name', { required: 'Name is required' })}
@@ -88,9 +88,9 @@ export default function Page() {
           fullWidth
           error={!!errors.email}
         >
-          <InputLabel shrink>
+          <FormLabel>
             Email
-          </InputLabel>
+          </FormLabel>
           <OutlinedInput
             type="email"
             {...register('email', { required: 'Email is required' })}
@@ -102,9 +102,9 @@ export default function Page() {
           fullWidth
           error={!!errors.phone_number}
         >
-          <InputLabel shrink>
+          <FormLabel>
             Phone number
-          </InputLabel>
+          </FormLabel>
           <OutlinedInput
             type="tel"
             {...register('phone_number', { required: 'Phone Number is required' })}

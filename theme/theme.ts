@@ -38,12 +38,19 @@ const themeOptions: ThemeOptions = {
                 }
             }
         },
-        MuiInputLabel: {
+        MuiFormLabel: {
             styleOverrides: {
                 root: {
-                    marginLeft: -10,
-                    fontSize: 20,
-                    color: "#424242"
+                    fontWeight: "bold"
+                }
+            }
+        },
+        MuiFormControlLabel: {
+            styleOverrides: {
+                root: {
+                    "span": {
+                        fontWeight: "bold",
+                    }
                 }
             }
         },
@@ -51,10 +58,21 @@ const themeOptions: ThemeOptions = {
             styleOverrides: {
                 root: {
                     'label + &': {
-                        marginTop: 15,
+                        marginTop: 5,
                     },
                     backgroundColor: "white"
                 },
+            }
+        },
+        MuiFormGroup: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 5,
+                    borderColor: "#ccc",
+                    borderWidth: 1
+                }
             }
         }
     },
