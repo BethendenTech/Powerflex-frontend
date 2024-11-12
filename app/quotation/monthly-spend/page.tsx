@@ -30,8 +30,8 @@ export default function Page() {
   const onSubmit = async (formData: any) => {
     try {
       console.log("formData", formData)
-      // actions.updateAction(formData);
-      // router.push(`/quotation/breakdown`);
+      actions.updateAction(formData);
+      router.push(`/quotation/breakdown`);
     } catch (error) {
       console.error('Error:', error);
     }
