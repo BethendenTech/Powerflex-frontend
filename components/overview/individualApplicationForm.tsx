@@ -1,6 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
+import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -41,188 +42,245 @@ const IndividualApplicationForm = () => {
 
 
     return (
-        <>
-            <div className='gap-6 flex flex-col mt-6 pt-4'>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <h5 className="font-harmonia text-base font-bold leading-[19.79px] text-left text-black pb-4">
-                        Individual Application
-                    </h5>
+        <Box mt={5}>
+            <form onSubmit={handleSubmit(onSubmit)} >
+                <Typography>
+                    Individual Application
+                </Typography>
 
-                    {/* First Name */}
-                    <div className='input-group'>
-                        <label className="label">First Name*</label>
-                        <input
-                            type="text"
-                            {...register("first_name", { required: "First name is required" })}
-                            className={errors.first_name ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.first_name && <p className="text-red-500 text-sm mt-1">{errors.first_name.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.first_name}
+                >
+                    <FormLabel>
+                        First Name
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("first_name", { required: "First name is required" })}
+                    />
+                    <FormHelperText>{errors?.first_name?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* Last Name */}
-                    <div className='input-group'>
-                        <label className="label">Last Name*</label>
-                        <input
-                            type="text"
-                            {...register("last_name", { required: "Last name is required" })}
-                            className={errors.last_name ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.last_name && <p className="text-red-500 text-sm mt-1">{errors.last_name.message}</p>}
-                    </div>
 
-                    {/* Phone Number */}
-                    <div className='input-group'>
-                        <label className="label">Phone Number*</label>
-                        <input
-                            type="text"
-                            {...register("phone_number", { required: "Phone number is required" })}
-                            className={errors.phone_number ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.phone_number && <p className="text-red-500 text-sm mt-1">{errors.phone_number.message}</p>}
-                    </div>
 
-                    {/* Email Address */}
-                    <div className='input-group'>
-                        <label className="label">Email Address*</label>
-                        <input
-                            type="email"
-                            {...register("email", { required: "Email address is required" })}
-                            className={errors.email ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.last_name}
+                >
+                    <FormLabel>
+                        Last Name
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("last_name", { required: "Last name is required" })}
+                    />
+                    <FormHelperText>{errors?.last_name?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* House Number */}
-                    <div className='input-group'>
-                        <label className="label">House Number*</label>
-                        <input
-                            type="text"
-                            {...register("house_number", { required: "House number is required" })}
-                            className={errors.house_number ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.house_number && <p className="text-red-500 text-sm mt-1">{errors.house_number.message}</p>}
-                    </div>
 
-                    {/* Street Address */}
-                    <div className='input-group'>
-                        <label className="label">Street Address*</label>
-                        <input
-                            type="text"
-                            {...register("street_address", { required: "Street address is required" })}
-                            className={errors.street_address ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.street_address && <p className="text-red-500 text-sm mt-1">{errors.street_address.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.phone_number}
+                >
+                    <FormLabel>
+                        Phone number
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("phone_number", { required: "Phone number is required" })}
+                    />
+                    <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* Landmark */}
-                    <div className='input-group'>
-                        <label className="label">Landmark</label>
-                        <input
-                            type="text"
-                            {...register("landmark")}
-                            className={errors.landmark ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.email}
+                >
+                    <FormLabel>
+                        Email Address
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("email", { required: "Email address is required" })}
+                    />
+                    <FormHelperText>{errors?.email?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* Nearest Bus Stop */}
-                    <div className='input-group'>
-                        <label className="label">Nearest Bus Stop</label>
-                        <input
-                            type="text"
-                            {...register("nearest_bus_stop")}
-                            className={errors.nearest_bus_stop ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.house_number}
+                >
+                    <FormLabel>
+                        House Number
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("house_number", { required: "House Number is required" })}
+                    />
+                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* Town */}
-                    <div className='input-group'>
-                        <label className="label">Town*</label>
-                        <input
-                            type="text"
-                            {...register("town", { required: "Town is required" })}
-                            className={errors.town ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.town && <p className="text-red-500 text-sm mt-1">{errors.town.message}</p>}
-                    </div>
 
-                    {/* City */}
-                    <div className='input-group'>
-                        <label className="label">City*</label>
-                        <input
-                            type="text"
-                            {...register("city", { required: "City is required" })}
-                            className={errors.city ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>}
-                    </div>
 
-                    {/* State */}
-                    <div className='input-group'>
-                        <label className="label">State*</label>
-                        <input
-                            type="text"
-                            {...register("state", { required: "State is required" })}
-                            className={errors.state ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.street_address}
+                >
+                    <FormLabel>
+                        Street Address
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("street_address", { required: "Street Address is required" })}
+                    />
+                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* LGA */}
-                    <div className='input-group'>
-                        <label className="label">LGA (Local Government Area)*</label>
-                        <input
-                            type="text"
-                            {...register("lga", { required: "LGA is required" })}
-                            className={errors.lga ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.lga && <p className="text-red-500 text-sm mt-1">{errors.lga.message}</p>}
-                    </div>
 
-                    {/* Occupation */}
-                    <div className='input-group'>
-                        <label className="label">Occupation*</label>
-                        <input
-                            type="text"
-                            {...register("occupation", { required: "Occupation is required" })}
-                            className={errors.occupation ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.occupation && <p className="text-red-500 text-sm mt-1">{errors.occupation.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.landmark}
+                >
+                    <FormLabel>
+                        Landmark
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("landmark", { required: "Landmark is required" })}
+                    />
+                    <FormHelperText>{errors?.landmark?.message}</FormHelperText>
+                </FormControl>
 
-                    {/* Full Work or Business Address */}
-                    <div className='input-group'>
-                        <label className="label">Full Work or Business Address*</label>
-                        <input
-                            type="text"
-                            {...register("work_address", { required: "Work or Business address is required" })}
-                            className={errors.work_address ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.work_address && <p className="text-red-500 text-sm mt-1">{errors.work_address.message}</p>}
-                    </div>
 
-                    {/* "How did you hear about Powerflex?" */}
-                    <div className='input-group'>
-                        <label className="label">How did you hear about Powerflex?*</label>
-                        <input
-                            type="text"
-                            {...register("how_heard_about", { required: "This field is required" })}
-                            className={errors.how_heard_about ? "input w-full border border-red-500" : "input w-full"}
-                        />
-                        {errors.how_heard_about && <p className="text-red-500 text-sm mt-1">{errors.how_heard_about.message}</p>}
-                    </div>
+                <FormControl
+                    fullWidth
+                    error={!!errors.nearest_bus_stop}
+                >
+                    <FormLabel>
+                        Nearest Bus Stop
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("nearest_bus_stop", { required: "Nearest Bus Stop is required" })}
+                    />
+                    <FormHelperText>{errors?.nearest_bus_stop?.message}</FormHelperText>
+                </FormControl>
 
-                    <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                        <button
-                            type='submit'
-                            className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                            rel="noopener noreferrer"
-                        >
-                            Apply for Financing
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.town}
+                >
+                    <FormLabel>
+                        Town
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("town", { required: "Town is required" })}
+                    />
+                    <FormHelperText>{errors?.town?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.city}
+                >
+                    <FormLabel>
+                        City
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("city", { required: "City is required" })}
+                    />
+                    <FormHelperText>{errors?.city?.message}</FormHelperText>
+                </FormControl>
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.state}
+                >
+                    <FormLabel>
+                        State
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("state", { required: "State is required" })}
+                    />
+                    <FormHelperText>{errors?.state?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.lga}
+                >
+                    <FormLabel>
+                        LGA (Local Government Area)
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
+                    />
+                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
+                </FormControl>
+
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.occupation}
+                >
+                    <FormLabel>
+                        Occupation
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("occupation", { required: "Occupation is required" })}
+                    />
+                    <FormHelperText>{errors?.occupation?.message}</FormHelperText>
+                </FormControl>
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.work_address}
+                >
+                    <FormLabel>
+                        Full Work or Business Address
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("work_address", { required: "Full Work or Business Address is required" })}
+                    />
+                    <FormHelperText>{errors?.work_address?.message}</FormHelperText>
+                </FormControl>
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.how_heard_about}
+                >
+                    <FormLabel>
+                        How did you hear about Powerflex?
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("how_heard_about", { required: "this is required" })}
+                    />
+                    <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
+                </FormControl>
+
+                <Button
+                    fullWidth
+                    type="submit"
+                    variant='contained'
+                >
+                    Apply for Financing
+                </Button>
+
+            </form>
+        </Box>
     );
 };
 

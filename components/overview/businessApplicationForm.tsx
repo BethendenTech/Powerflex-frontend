@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -50,11 +50,11 @@ const BusinessApplicationForm = () => {
     };
 
     return (
-        <div className='gap-6 flex flex-col mt-6 pt-4'>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <h5 className="font-harmonia text-base font-bold leading-[19.79px] text-left text-black pb-4">
+        <Box mt={5}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Typography>
                     Business Application
-                </h5>
+                </Typography>
 
 
                 <FormControl
@@ -242,23 +242,30 @@ const BusinessApplicationForm = () => {
                 </FormControl>
 
 
-                <Button
+                <FormControl
                     fullWidth
-                    component="label"
-                    role={undefined}
-                    variant="contained"
-                    tabIndex={-1}
-                    startIcon={<CloudUploadIcon />}
-                    color="warning"
+                    error={!!errors.documents}
                 >
-                    Upload files
-                    <VisuallyHiddenInput
-                        type="file"
-                        {...register("documents")}
-                        multiple
-                    />
-                </Button>
 
+                    <Button
+                        fullWidth
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                        color="warning"
+                    >
+                        Documents
+                        <VisuallyHiddenInput
+                            type="file"
+                            {...register("documents", { required: "Documents is required" })}
+                            multiple
+                        />
+                    </Button>
+
+                    <FormHelperText>{errors?.documents?.message}</FormHelperText>
+                </FormControl>
                 <Button
                     fullWidth
                     type="submit"
@@ -267,7 +274,7 @@ const BusinessApplicationForm = () => {
                     Apply for Financing
                 </Button>
             </form>
-        </div>
+        </Box>
     );
 };
 
