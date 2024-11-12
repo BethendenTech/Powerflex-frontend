@@ -92,7 +92,7 @@ export default function Page() {
             }}
             defaultValue={watch("price_band")}
             sx={{
-              justifyContent: 'space-between', // Distribute the items across the full width
+              justifyContent: 'space-between', 
               mt: 1
             }}
           >

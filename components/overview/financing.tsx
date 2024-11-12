@@ -10,6 +10,7 @@ import BusinessApplicationForm from "./businessApplicationForm";
 import { TotalSummary } from "../payment/totalSummary";
 import { TotalFinancingSummary } from "../payment/totalFinancing";
 import { QuoteInterface } from "@/types/quotation";
+import { Button, Chip } from "@mui/material";
 interface ComponentProps {
     quote: QuoteInterface;
 }
@@ -30,7 +31,7 @@ export const FinancingPurchase = ({ quote }: ComponentProps) => {
                 </div>
             </div>
 
-            <button type='button' className={`px-7 py-2.5 mb-3 text-white text-sm font-harmonia font-normal leading-[1.3] tab-btn`} onClick={() => setModalOpen(true)}>Edit Finance Terms</button>
+            <Chip color="primary" onClick={() => setModalOpen(true)} label="Edit Finance Terms" />
 
             {isModalOpen == true && <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />}
 

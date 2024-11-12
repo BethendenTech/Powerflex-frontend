@@ -44,7 +44,7 @@ const IndividualApplicationForm = () => {
     return (
         <Box mt={5}>
             <form onSubmit={handleSubmit(onSubmit)} >
-                <Typography>
+                <Typography variant="h6">
                     Individual Application
                 </Typography>
 

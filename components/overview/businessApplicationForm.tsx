@@ -52,7 +52,7 @@ const BusinessApplicationForm = () => {
     return (
         <Box mt={5}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography>
+                <Typography variant="h6">
                     Business Application
                 </Typography>
 
