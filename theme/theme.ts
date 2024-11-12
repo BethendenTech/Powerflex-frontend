@@ -38,6 +38,14 @@ const themeOptions: ThemeOptions = {
                 }
             }
         },
+        MuiFormLabel: {
+            styleOverrides: {
+                root: {
+                    fontWeight: "bold",
+                    color: "#333"
+                }
+            }
+        },
         MuiFormControlLabel: {
             styleOverrides: {
                 root: {
