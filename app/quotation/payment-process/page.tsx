@@ -10,6 +10,7 @@ import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
 import useQuotation from '@/hooks/quotation';
 import PayStackPayment from '@/components/payment/payStack';
+import { Button } from '@mui/material';
 
 export default function Page() {
 
@@ -24,16 +25,19 @@ export default function Page() {
 
   return (
     <div>
-      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
-        <Image
+      <Button
+        color='secondary'
+        variant="text"
+        startIcon={<Image
           src="/images/collaps-arrow-right.svg"
           alt="arrow icon"
           width={24}
           height={24}
-          className="mr-2"
-        />
+        />}
+        onClick={() => onBack()}
+      >
         Back
-      </button>
+      </Button>
 
       <StatusImage status={5} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
@@ -44,10 +48,10 @@ export default function Page() {
               <PaymentSummaryCard quote={quote} />
               <PaymentMethodCard />
               {state.payment_method == "credit_debit_card" && (
-                <PaymentCardDetails quote={quote}/>
+                <PaymentCardDetails quote={quote} />
               )}
               {state.payment_method == "paystack" && (
-                <PayStackPayment quote={quote}/>
+                <PayStackPayment quote={quote} />
               )}
             </div>
           </div>

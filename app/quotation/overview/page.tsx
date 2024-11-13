@@ -10,6 +10,10 @@ import Image from 'next/image';
 import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
 import useQuotation from '@/hooks/quotation';
+import React from 'react';
+import { Button, ToggleButton } from '@mui/material';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { BackHandOutlined } from '@mui/icons-material';
 
 export default function Page() {
 
@@ -31,16 +35,21 @@ export default function Page() {
 
   return (
     <div>
-      <button className='flex items-center text-[#AEAEAE] font-bold' onClick={() => onBack()}>
-        <Image
+
+      <Button
+        color='secondary'
+        variant="text"
+        startIcon={<Image
           src="/images/collaps-arrow-right.svg"
           alt="arrow icon"
           width={24}
           height={24}
-          className="mr-2"
-        />
+        />}
+        onClick={() => onBack()}
+      >
         Back
-      </button>
+      </Button>
+
 
       <StatusImage status={4} />
       <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
@@ -54,15 +63,17 @@ export default function Page() {
 
               <EstimatedEnergyRequirement quote={quote} />
 
-              <div className="rounded-[12px] flex border-b border-gray-300 bg-[#FFFFFF] p-1" style={{ boxShadow: 'inset 0px 2px 8px 0px #00000040', justifyContent: 'space-between' }}>
-                <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${state.finance ? "text-black text-[#424242]" : "tab-btn text-white"}`} onClick={() => { handleToggle(false) }}>
-                  Outright Purchase
-                </button>
+              <ToggleButtonGroup
+                color="primary"
+                value={state.finance}
+                exclusive
+                onChange={(e, value) => handleToggle(value)}
+                fullWidth
 
-                <button type='button' className={`px-7 py-2.5 text-sm font-harmonia font-normal leading-[1.3] ${state.finance ? "tab-btn text-white" : "text-black text-[#424242]"}`} onClick={() => { handleToggle(true) }}>
-                  Financing
-                </button>
-              </div>
+              >
+                <ToggleButton value={false}>Outright Purchase</ToggleButton>
+                <ToggleButton value={true}>Financing</ToggleButton>
+              </ToggleButtonGroup>
 
               {!state.finance && <OutRightPurchase quote={quote} />}
               {state.finance && <FinancingPurchase quote={quote} />}
