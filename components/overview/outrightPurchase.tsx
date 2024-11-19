@@ -35,14 +35,9 @@ export const OutRightPurchase = ({ quote }: ComponentProps) => {
     };
 
     return (
-        <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <div className="mt-4">
-                <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
-                    <div className="w-full pt-4 pb-4 mb-2">
-                        <TotalSummary quote={quote} />
-                    </div>
-                </div>
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+
+            <TotalSummary quote={quote} isFinance={false}/>
 
             <Box position="sticky" bottom={0}>
                 <Button
