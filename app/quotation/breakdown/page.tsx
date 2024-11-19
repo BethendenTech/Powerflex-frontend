@@ -1,17 +1,17 @@
 "use client"; // This is a client component
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
 import Tooltip from '@/components/Tooltip';
-import useResizeObserver from "use-resize-observer";
-import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
-import { useForm } from 'react-hook-form';
-import Image from 'next/image';
 import { Button } from '@mui/material';
+import { useStateMachine } from 'little-state-machine';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import useResizeObserver from "use-resize-observer";
 
 export default function Page() {
 
@@ -70,8 +70,8 @@ export default function Page() {
   React.useEffect(() => {
     if (state) {
       setValue("additional_info", state.additional_info || false);
-      setValue("solar_load", state.solar_load || 0);
-      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 0);
+      setValue("solar_load", state.solar_load || 50);
+      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
       setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
       setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
       setValue("breakdowns", state.breakdowns || {});
