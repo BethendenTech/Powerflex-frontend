@@ -271,13 +271,15 @@ const IndividualApplicationForm = () => {
                     <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
                 </FormControl>
 
-                <Button
-                    fullWidth
-                    type="submit"
-                    variant='contained'
-                >
-                    Apply for Financing
-                </Button>
+                <Box position="sticky" bottom={0}>
+                    <Button
+                        fullWidth
+                        type="submit"
+                        variant='contained'
+                    >
+                        Apply for Financing
+                    </Button>
+                </Box>
 
             </form>
         </Box>

@@ -7,7 +7,7 @@ import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import React from 'react';
 import Image from 'next/image';
-import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
+import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -88,7 +88,7 @@ export default function Page() {
           fullWidth
         >
           <FormLabel>Select your electricity band group</FormLabel>
-          
+
           <RadioGroup
             row
             onChange={(e) => {
@@ -96,7 +96,7 @@ export default function Page() {
             }}
             defaultValue={watch("price_band")}
             sx={{
-              justifyContent: 'space-between', 
+              justifyContent: 'space-between',
               mt: 1
             }}
           >
@@ -124,14 +124,15 @@ export default function Page() {
           </RadioGroup>
         </FormControl>
 
-
-        <Button
-          fullWidth
-          type="submit"
-          variant='contained'
-        >
-          Select coverage/autonomy
-        </Button>
+        <Box position="sticky" bottom={0}>
+          <Button
+            fullWidth
+            type="submit"
+            variant='contained'
+          >
+            Select coverage/autonomy
+          </Button>
+        </Box>
       </form>
 
     </div>

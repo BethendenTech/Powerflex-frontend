@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { TotalSummary } from "../payment/totalSummary";
 import { QuoteInterface } from "@/types/quotation";
+import { Box, Button } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -38,20 +39,20 @@ export const OutRightPurchase = ({ quote }: ComponentProps) => {
             <div className="mt-4">
                 <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
                     <div className="w-full pt-4 pb-4 mb-2">
-                        <TotalSummary quote={quote}/>
+                        <TotalSummary quote={quote} />
                     </div>
                 </div>
             </div>
 
-            <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                <button
-                    type='submit'
-                    className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                    rel="noopener noreferrer"
+            <Box position="sticky" bottom={0}>
+                <Button
+                    fullWidth
+                    type="submit"
+                    variant='contained'
                 >
                     Proceed to Payment
-                </button>
-            </div>
+                </Button>
+            </Box>
         </form>
     )
 }

@@ -112,13 +112,15 @@ export default function Page() {
           <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
         </FormControl>
 
-        <Button
-          fullWidth
-          type="submit"
-          variant='contained'
-        >
-          Continue to quote
-        </Button>
+        <Box position="sticky" bottom={0}>
+          <Button
+            fullWidth
+            type="submit"
+            variant='contained'
+          >
+            Continue to quote
+          </Button>
+        </Box>
       </form>
 
     </Box>
