@@ -35,4 +35,6 @@ export interface QuoteInterface {
     installation_and_cabling: number;
     vat: number;
     miscellaneous_cost: number;
+    installer_commission: number;
+    installer_commission_amount: number;
 }
