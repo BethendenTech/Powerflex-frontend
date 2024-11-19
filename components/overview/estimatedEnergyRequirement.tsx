@@ -9,7 +9,7 @@ interface ComponentProps {
 export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
 
     return (
-        <Box>
+        <Box mt={2} mb={2}>
 
             <Typography sx={{ fontWeight: "bold" }}>
                 Estimated energy requirement
