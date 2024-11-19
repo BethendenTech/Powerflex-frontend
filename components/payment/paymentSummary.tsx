@@ -17,7 +17,13 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
             <CardContent>
 
 
-                <Table sx={{border:"none"}}>
+                <Table
+                    sx={{
+                        border: 'none', // Removes table border
+                        '& .MuiTableCell-root': {
+                            borderBottom: 'none', // Removes cell borders
+                        },
+                    }}>
                     <TableHead>
                         <TableRow>
                             <TableCell colSpan={2} align="left">Equipment</TableCell>
@@ -43,13 +49,12 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
                             <TableCell align="right">{quote?.number_of_batteries}</TableCell>
                             <TableCell></TableCell>
                         </TableRow>
-                    </TableBody>
-                    <TableFooter>
+
                         <TableRow>
                             <TableCell colSpan={2} align="left">Installation</TableCell>
-                            <TableCell colSpan={2} align="right">{renderNaira(quote?.installer_cost)}</TableCell>
+                            <TableCell colSpan={2} align="right">{renderNaira(quote?.installer_commission_amount)}</TableCell>
                         </TableRow>
-                    </TableFooter>
+                    </TableBody>
                 </Table>
 
                 <Box textAlign="center">
