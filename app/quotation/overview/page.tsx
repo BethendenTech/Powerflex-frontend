@@ -11,7 +11,7 @@ import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
 import useQuotation from '@/hooks/quotation';
 import React from 'react';
-import { Button, ToggleButton } from '@mui/material';
+import { Box, Button, ToggleButton, Typography } from '@mui/material';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { BackHandOutlined } from '@mui/icons-material';
 
@@ -34,7 +34,7 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <Box>
 
       <Button
         color='secondary'
@@ -52,37 +52,34 @@ export default function Page() {
 
 
       <StatusImage status={4} />
-      <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
-        <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
-          <div className="w-full pt-4 pb-4 mb-2">
-            <h4 className="heading text-center">Overview</h4>
-            <div className="w-full container mx-auto flex flex-col gap-4">
+
+      <Box>
+
+        <Typography textAlign="center" variant="h6" fontWeight="bold">
+          Overview
+        </Typography>
 
 
-              <OverviewData />
+        <OverviewData />
 
-              <EstimatedEnergyRequirement quote={quote} />
+        <EstimatedEnergyRequirement quote={quote} />
 
-              <ToggleButtonGroup
-                color="primary"
-                value={state.finance}
-                exclusive
-                onChange={(e, value) => handleToggle(value)}
-                fullWidth
+        <ToggleButtonGroup
+          color="primary"
+          value={state.finance}
+          exclusive
+          onChange={(e, value) => handleToggle(value)}
+          fullWidth
 
-              >
-                <ToggleButton value={false}>Outright Purchase</ToggleButton>
-                <ToggleButton value={true}>Financing</ToggleButton>
-              </ToggleButtonGroup>
+        >
+          <ToggleButton value={false}>Outright Purchase</ToggleButton>
+          <ToggleButton value={true}>Financing</ToggleButton>
+        </ToggleButtonGroup>
 
-              {!state.finance && <OutRightPurchase quote={quote} />}
-              {state.finance && <FinancingPurchase quote={quote} />}
+        {!state.finance && <OutRightPurchase quote={quote} />}
+        {state.finance && <FinancingPurchase quote={quote} />}
+      </Box>
 
-
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+    </Box>
   );
 }
