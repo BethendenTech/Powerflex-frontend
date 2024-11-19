@@ -31,8 +31,7 @@ export interface QuoteInterface {
     total_panel_cost_naira: number;
     total_inverter_cost_naira: number;
     total_battery_cost_naira: number;
-    installer_cost: number;
-    cabling_cost: number;
+    installation_and_cabling: number;
     vat: number;
     miscellaneous_cost: number;
 }

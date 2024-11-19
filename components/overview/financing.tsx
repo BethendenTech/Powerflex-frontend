@@ -25,7 +25,7 @@ export const FinancingPurchase = ({ quote }: ComponentProps) => {
             <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
                 <div className="w-full pt-4 pb-4 mb-2">
 
-                    <TotalFinancingSummary />
+                    {/* <TotalFinancingSummary /> */}
 
                     <TotalSummary quote={quote} />
                 </div>

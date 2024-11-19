@@ -29,23 +29,15 @@ export const TotalSummary = ({ quote }: ComponentProps) => {
                 <li className="flex justify-between gap-x-6 py-2">
                     <div className="flex min-w-0 gap-x-4">
                         <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Installation</p>
+                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Installation & Cabling</p>
                         </div>
                     </div>
                     <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.total_inverter_cost_naira)}</p>
+                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.installation_and_cabling)}</p>
                     </div>
                 </li>
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Cabling Cost</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.cabling_cost)}</p>
-                    </div>
-                </li>
+                
+                
                 <li className="flex justify-between gap-x-6 py-2">
                     <div className="flex min-w-0 gap-x-4">
                         <div className="min-w-0 flex-auto">
