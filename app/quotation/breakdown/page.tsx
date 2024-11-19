@@ -146,7 +146,7 @@ export default function Page() {
             <div className='flex input-group'>
               <Tooltip
                 content={`${allValues.solar_load}%`}
-                isAlwaysOpen
+                isAlwaysOpen={false}
                 left={`${((width ?? 0) - 20) * allValues.solar_load / 100 + 20}px`}
                 position="top"
               >
@@ -181,7 +181,7 @@ export default function Page() {
               </label>
               <Tooltip
                 content={`${allValues.battery_autonomy_hours_only} h`}
-                isAlwaysOpen
+                isAlwaysOpen={false}
                 left={`${((width ?? 0) - 20) * allValues.battery_autonomy_hours_only / 24 + 20}px`}
                 position="top"
               >
@@ -217,7 +217,7 @@ export default function Page() {
               </label>
               <Tooltip
                 content={`${allValues.battery_autonomy_days} d`}
-                isAlwaysOpen
+                isAlwaysOpen={false}
                 left={`${((width ?? 0) - 20) * allValues.battery_autonomy_days / 5 + 20}px`}
                 position="top"
               >
