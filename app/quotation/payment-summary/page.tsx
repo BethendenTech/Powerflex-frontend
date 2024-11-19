@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import useQuotation from '@/hooks/quotation';
-import { Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 export default function Page() {
 
@@ -40,7 +40,7 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <Box>
       <Button
         color='secondary'
         variant="text"
@@ -56,31 +56,30 @@ export default function Page() {
       </Button>
 
       <StatusImage status={4} />
-      <main className="w-full flex flex-col gap-8 row-start-2 items-center sm:items-center">
-        <div className="w-full flex gap-4 items-center flex-col sm:flex-row">
-          <div className="w-full pt-4">
 
-            <h4 className="heading text-center">Payment Summary</h4>
+      <Box>
+        <Typography textAlign="center" variant="h6">
+          Payment Summary
+        </Typography>
 
-            <div className="w-full container mx-auto flex flex-col gap-4 mt-4">
-              <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-                <PaymentSummaryCard quote={quote} />
+          <PaymentSummaryCard quote={quote} />
 
-                <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                  <button
-                    type='submit'
-                    className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5"
-                    rel="noopener noreferrer"
-                  >
-                    Confirm
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div >
-      </main >
-    </div >
+
+          <Box position="sticky" bottom={0}>
+            <Button
+              fullWidth
+              type="submit"
+              variant='contained'
+            >
+              Confirm
+            </Button>
+          </Box>
+
+        </form>
+
+      </Box>
+    </Box>
   );
 }

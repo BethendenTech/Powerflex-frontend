@@ -3,8 +3,9 @@
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { Component } from "react";
 import dynamic from 'next/dynamic';
+import { Box, Button } from "@mui/material";
 
 const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
     ssr: false, // This ensures that the component is only rendered on the client side
@@ -37,39 +38,22 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
         console.log('closed')
     }
 
-    const componentProps = {
-        ...config,
-        text: 'Paystack Button Implementation',
-        onSuccess: (reference: any) => handlePaystackSuccessAction(reference),
-        onClose: handlePaystackCloseAction,
-    };
 
     return (
-        <>
-            <div className='gap-6 flex flex-col mt-6 pt-1'>
-                <h5 className="font-harmonia text-base font-bold leading-[19.79px] text-left text-black">PayStack Payment</h5>
 
-                {/* Submit Button */}
-                <div className="m-auto max-w-[570px] bottom-fixed fixed bottom-0 w-full p-5 pb-[10px]">
-                    <ul role="list">
-                        <li className="flex justify-between gap-x-6 py-2">
-                            <div className="flex min-w-0 gap-x-4">
-                                <div className="min-w-0 flex-auto">
-                                    <p className="text-sm font-harmonia font-bold leading-[1.3] text-black">Due Today</p>
-                                </div>
-                            </div>
-                            <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm font-bold leading-6 text-gray-900">{renderNaira(quote.total_cost_naira)}</p>
-                            </div>
-                        </li>
-                    </ul>
+        <Box position="sticky" bottom={0}>
+            <Button
+                {...config}
+                text="Pay Now"
+                variant="contained"
+                fullWidth
+                className="MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+                onSuccess={(reference: any) => handlePaystackSuccessAction(reference)}
+                onClose={handlePaystackCloseAction}
+                component={PaystackButton}
+            />
+        </Box>
 
-
-                    <PaystackButton className="mt-[15px] btn self-center w-full text-white flex items-center justify-center text-xl sm:text-base px-4 sm:px-5" {...componentProps} />
-
-                </div>
-            </div>
-        </>
     );
 };
 

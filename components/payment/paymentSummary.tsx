@@ -2,6 +2,7 @@
 
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
+import { Box, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableFooter, TableHead, TableRow, Typography } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -9,51 +10,59 @@ interface ComponentProps {
 
 const PaymentSummaryCard = ({ quote }: ComponentProps) => {
     return (
-        <>
-            <h5 className='font-harmonia text-base font-bold leading-[19.79px] text-left text-black'>Outright Purchase</h5>
-            <div className='bg-[#ffffff] rounded-[7px] p-3'>
+        <Card sx={{ mt: 2, mb: 2 }}>
+            <CardHeader
+                title="Outright Purchase"
+            />
+            <CardContent>
 
-                <table className="table-auto w-full">
-                    <tbody>
-                        <tr>
-                            <td className="sub-content text-left">Equipment</td>
-                            <th className="sub-content text-right">{quote?.total_equipments}</th>
-                        </tr>
-                    </tbody>
-                </table>
 
-                <table className="table-auto w-full">
-                    <tbody>
-                        <tr className='pl-4 flex justify-around'>
-                            <td className="sub-content text-left">Solar panels</td>
-                            <th className="sub-content text-left">{quote?.number_of_panels}</th>
-                        </tr>
-                        <tr className='pl-4 flex justify-around'>
-                            <td className="sub-content text-left">Inverters</td>
-                            <th className="sub-content text-left">{quote?.number_of_inverters}</th>
-                        </tr>
-                        <tr className='pl-4 flex justify-around'>
-                            <td className="sub-content text-left">Batteries</td>
-                            <th className="sub-content text-left">{quote?.number_of_batteries}</th>
-                        </tr>
-                    </tbody>
-                </table>
+                <Table sx={{border:"none"}}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell colSpan={2} align="left">Equipment</TableCell>
+                            <TableCell colSpan={2} align="right">{quote?.total_equipments}</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell></TableCell>
+                            <TableCell align="left">Solar panels</TableCell>
+                            <TableCell align="right">{quote?.number_of_panels}</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell></TableCell>
+                            <TableCell align="left">Inverters</TableCell>
+                            <TableCell align="right">{quote?.number_of_inverters}</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell></TableCell>
+                            <TableCell align="left">Batteries</TableCell>
+                            <TableCell align="right">{quote?.number_of_batteries}</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TableCell colSpan={2} align="left">Installation</TableCell>
+                            <TableCell colSpan={2} align="right">{renderNaira(quote?.installer_cost)}</TableCell>
+                        </TableRow>
+                    </TableFooter>
+                </Table>
 
-                <table className="table-auto w-full">
-                    <tbody>
-                        <tr>
-                            <td className="sub-content text-left">Installation</td>
-                            <th className="sub-content text-right">{renderNaira(quote?.miscellaneous_cost)}</th>
-                        </tr>
-                    </tbody>
-                </table>
+                <Box textAlign="center">
+                    <Typography variant="h5" component="h5">
+                        Total Cost
+                    </Typography>
+                    <Typography variant="h5" component="h5">
+                        {renderNaira(quote?.total_cost_naira)}
+                    </Typography>
+                </Box>
 
-                <div className='text-center'>
-                    <h5 className='font-bold text-black'>Total Cost</h5>
-                    <h5 className='font-bold text-black'>{renderNaira(quote?.total_cost_naira)}</h5>
-                </div>
-            </div>
-        </>
+            </CardContent>
+        </Card>
     )
 }
 
