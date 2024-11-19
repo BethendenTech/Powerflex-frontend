@@ -1,72 +1,41 @@
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
+import { Box, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
+    isFinance: boolean;
 }
 
-export const TotalSummary = ({ quote }: ComponentProps) => {
+export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
     return (
-        <div className="border-gray-400 bg-white rounded-b p-4 flex flex-col justify-between leading-normal mb-2">
+        <Card sx={{ mt: 2, mb: 2 }}>
 
-            <div className="pb-2">
-                <p className="text-sm text-gray-600 flex items-center">
-                    Payment Summary
-                </p>
-            </div>
+            <CardContent>
 
-            <ul role="list">
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Equipment</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.total_cost_naira)}</p>
-                    </div>
-                </li>
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Installation</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.total_inverter_cost_naira)}</p>
-                    </div>
-                </li>
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">Cabling Cost</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{renderNaira(quote.cabling_cost)}</p>
-                    </div>
-                </li>
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-normal leading-[1.3] text-black">VAT</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">{quote.vat}%</p>
-                    </div>
-                </li>
-                <li className="flex justify-between gap-x-6 py-2">
-                    <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-harmonia font-bold leading-[1.3] text-black">Due Today</p>
-                        </div>
-                    </div>
-                    <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm font-bold leading-6 text-gray-900">{renderNaira(quote.total_cost_with_profit)}</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align="left">Equipment</TableCell>
+                            <TableCell align="right">{renderNaira(quote.total_cost_naira)}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align="left">Installation & Cabling</TableCell>
+                            <TableCell align="right">{renderNaira(quote.installation_and_cabling)}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align="left">VAT</TableCell>
+                            <TableCell align="right">{quote.vat}%</TableCell>
+                        </TableRow>
+
+                        <TableRow>
+                            <TableCell align="left" sx={{ fontWeight: "bold" }}>Due Today</TableCell>
+                            <TableCell align="right" sx={{ fontWeight: "bold" }}>{isFinance ? renderNaira(quote.total_cost_with_profit_financing) : renderNaira(quote.total_cost_with_profit_outright)}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+
+            </CardContent>
+        </Card>
     )
 }
