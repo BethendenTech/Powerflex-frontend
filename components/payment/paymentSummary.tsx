@@ -49,7 +49,7 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
                         <tbody>
                             <tr>
                                 <td className="sub-content text-left">Installation</td>
-                                <th className="sub-content text-right">{renderNaira(quote?.miscellaneous_cost)}</th>
+                                <th className="sub-content text-right">{renderNaira(quote?.installer_cost)}</th>
                             </tr>
                         </tbody>
                     </table>
