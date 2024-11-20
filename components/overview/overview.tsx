@@ -19,12 +19,15 @@ export const OverviewData = () => {
                     </TableRow>
                     <TableRow>
                         <TableCell colSpan={2} align="left">Coverage Percentage</TableCell>
-                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>75%</TableCell>
+                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>{state?.solar_load}%</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell colSpan={2} align="left">Battery Autonomy</TableCell>
                         <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>
-                            {state?.battery_autonomy_hours_only} Hours - {state?.battery_autonomy_days} Days
+                            {state?.battery_autonomy_days && `${state?.battery_autonomy_days} Days`}
+                            {" "}
+                            {state?.battery_autonomy_hours_only && `${state?.battery_autonomy_hours_only} Hours`}
+
                         </TableCell>
                     </TableRow>
                 </TableBody>
