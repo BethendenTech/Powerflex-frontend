@@ -58,7 +58,7 @@ export default function Page() {
       <StatusImage status={4} />
 
       <Box>
-        <Typography textAlign="center" variant="h6">
+        <Typography textAlign="center" variant="h6" fontWeight="bold">
           Payment Summary
         </Typography>
 
