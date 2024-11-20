@@ -57,12 +57,13 @@ const IndividualApplicationForm = () => {
 
     return (
         <Box mt={5}>
-            <form onSubmit={handleSubmit(onSubmit)} >
-                <Typography variant="h6">
-                    Individual Application
-                </Typography>
+            <Typography variant="h6">
+                Individual Application
+            </Typography>
 
-                {showIframe && <SentiFlexIframeComponent />}
+            {showIframe && <SentiFlexIframeComponent />}
+
+            {!showIframe && <form onSubmit={handleSubmit(onSubmit)} >
 
                 <FormControl
                     fullWidth
@@ -297,7 +298,7 @@ const IndividualApplicationForm = () => {
                     </Button>
                 </Box>
 
-            </form>
+            </form>}
         </Box>
     );
 };
