@@ -98,7 +98,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         onChange={handleSelectChange}
                         disabled={!formData[props.name]}
                     >
-                        {Array.from({ length: 11 }, (_, i) => (
+                        {Array.from({ length: 51 }, (_, i) => (
                             <option key={props.name + i} value={i}>
                                 {i}
                             </option>
