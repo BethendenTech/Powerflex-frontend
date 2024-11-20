@@ -260,6 +260,7 @@ const BusinessApplicationForm = () => {
                         {...register("bvn", { required: "BVN (Bank Verification Number) is required" })}
                     />
                     <FormHelperText>{errors?.bvn?.message}</FormHelperText>
+                    <FormHelperText>Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.</FormHelperText>
                 </FormControl>
 
 
