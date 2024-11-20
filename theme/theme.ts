@@ -71,16 +71,6 @@ const themeOptions: ThemeOptions = {
                 },
             }
         },
-        MuiFormGroup: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: "white",
-                    borderRadius: 5,
-                    borderColor: "#ccc",
-                    borderWidth: 1
-                }
-            }
-        },
         MuiToggleButtonGroup: {
             styleOverrides: {
                 root: {

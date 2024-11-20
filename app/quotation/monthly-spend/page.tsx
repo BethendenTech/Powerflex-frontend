@@ -97,7 +97,12 @@ export default function Page() {
             defaultValue={watch("price_band")}
             sx={{
               justifyContent: 'space-between',
-              mt: 1
+              mt: 1,
+              backgroundColor: "white",
+              borderRadius: 2,
+              borderColor: "#ccc",
+              borderWidth: 1,
+              paddingTop: 1
             }}
           >
             <FormControlLabel
