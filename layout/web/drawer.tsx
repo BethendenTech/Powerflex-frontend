@@ -28,9 +28,10 @@ export const AppDrawer = (props: Props) => {
                 }}
             >
                 <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+                    
                     <Image
                         src="/images/logo-blue.png"
-                        alt="powerflex logo"
+                        alt="PowerFlex"
                         width={100}
                         height={100}
                     />

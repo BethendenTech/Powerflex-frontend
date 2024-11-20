@@ -53,8 +53,8 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
                 <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
             </nav>
 
-            <Container maxWidth="xl">
-                <Box component="main" sx={{ mt: 10 }}>
+            <Container>
+                <Box component="main" mt={8}>
                     <Grid2 container>
                         <Grid2 size={{ xs: 'grow', md: 6 }} offset={{ md: 3 }}>
                             {children}
