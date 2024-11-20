@@ -42,7 +42,7 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <Box>
       <Button
         color='secondary'
         variant="text"
@@ -135,6 +135,6 @@ export default function Page() {
         </Box>
       </form>
 
-    </div>
+    </Box>
   );
 }
