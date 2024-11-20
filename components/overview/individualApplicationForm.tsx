@@ -288,7 +288,7 @@ const IndividualApplicationForm = () => {
                     <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
                 </FormControl>
 
-                <Box position="sticky" bottom={0}>
+                <Box position="sticky" bottom={0} mt={2}>
                     <Button
                         fullWidth
                         type="submit"

@@ -11,6 +11,7 @@ export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
     return (
         <Box sx={{ mt: 2, mb: 2 }}>
             <Table
+                size="small"
                 sx={{
                     border: 'none', // Removes table border
                     '& .MuiTableCell-root': {

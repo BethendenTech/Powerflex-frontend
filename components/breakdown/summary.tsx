@@ -1,4 +1,5 @@
 import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
+import { Card, CardContent, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
 import React from "react";
 
 
@@ -12,18 +13,31 @@ interface SummaryObject {
 
 export default function Summary(props: SummaryObject) {
     return (
-        <div className="shadow rounded-lg p-[14px] summary w-full m-auto">
-            <div className="flex flex-col items-center">
-                <h3 className="text-xl font-bold text-black">Estimation</h3>
-                <div className="summary-row">
-                    <div className="col text-black">Energy Consumption</div>
-                    <div className="col text-black">{formatKWhWithCurrency(props.energy ?? 0)}</div>
-                </div>
-                <div className="summary-row">
-                    <div className="col text-black">Total cost</div>
-                    <div className="col text-black">{renderNaira(props.cost ?? 0)}</div>
-                </div>
-            </div>
-        </div>
+        <Card
+            sx={{
+                backgroundColor: '#F2F2F4',
+                boxShadow:"1px 1px 5px #333"
+            }}
+        >
+            <CardContent>
+                <Typography textAlign="center" variant="h6" fontWeight="bold">Estimation</Typography>
+
+                <Table
+                    size="small"
+
+                >
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align="left">Energy Consumption</TableCell>
+                            <TableCell align="right">{formatKWhWithCurrency(props.energy ?? 0)}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align="left">Total cost</TableCell>
+                            <TableCell align="right">{renderNaira(props.cost ?? 0)}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </CardContent>
+        </Card>
     );
 }

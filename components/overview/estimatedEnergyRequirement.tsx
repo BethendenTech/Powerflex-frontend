@@ -1,6 +1,6 @@
 import { QuoteInterface } from "@/types/quotation";
 import { formatKWhWithCurrency } from "@/utils/currency";
-import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
+import { Box, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -10,12 +10,8 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
 
     return (
         <Box mt={2} mb={2}>
-
-            <Typography sx={{ fontWeight: "bold" }}>
-                Estimated energy requirement
-            </Typography>
-
             <Table
+                size="small"
                 sx={{
                     border: 'none', // Removes table border
                     '& .MuiTableCell-root': {
@@ -23,6 +19,15 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
                     },
                 }}
             >
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
+                            <Typography fontWeight="bold">
+                                Estimated energy requirement
+                            </Typography>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
                 <TableBody>
                     <TableRow>
                         <TableCell align="left">Number of solar panels</TableCell>

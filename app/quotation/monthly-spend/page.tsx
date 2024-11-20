@@ -42,7 +42,7 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <Box>
       <Button
         color='secondary'
         variant="text"
@@ -97,7 +97,12 @@ export default function Page() {
             defaultValue={watch("price_band")}
             sx={{
               justifyContent: 'space-between',
-              mt: 1
+              mt: 1,
+              backgroundColor: "white",
+              borderRadius: 2,
+              borderColor: "#ccc",
+              borderWidth: 1,
+              paddingTop: 1
             }}
           >
             <FormControlLabel
@@ -124,7 +129,7 @@ export default function Page() {
           </RadioGroup>
         </FormControl>
 
-        <Box position="sticky" bottom={0}>
+        <Box position="sticky" bottom={0} mt={2}>
           <Button
             fullWidth
             type="submit"
@@ -135,6 +140,6 @@ export default function Page() {
         </Box>
       </form>
 
-    </div>
+    </Box>
   );
 }

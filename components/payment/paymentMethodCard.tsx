@@ -2,7 +2,7 @@
 
 import updateAction from '@/little-state/action';
 import { paymentMethods } from '@/utils/paymentData';
-import { Box, FormControlLabel, List, ListItem, Radio, RadioGroup, Typography } from '@mui/material';
+import { Box, Divider, FormControl, FormControlLabel, FormLabel, List, ListItem, Radio, RadioGroup, Typography } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import React from 'react';
 
@@ -18,38 +18,44 @@ const PaymentMethodCard = () => {
 
     return (
         <Box>
-            <Typography variant="h6" fontWeight="bold">
-                Payment Method
-            </Typography>
 
-            <List
+
+            <FormControl
+                fullWidth
             >
+                <FormLabel>Payment Method</FormLabel>
+
                 <RadioGroup
+
                     name="payment"
                     value={state.payment_method}
                     onChange={(event) => onChangeMethod(event.target.value)}
+                    sx={{
+                        mt: 1,
+                        backgroundColor: "white",
+                        borderRadius: 2,
+                        borderColor: "#ccc",
+                        borderWidth: 1,
+                        paddingTop: 1,
+                        paddingLeft: 2
+                    }}
                 >
                     {paymentMethods &&
                         paymentMethods.map((paymentMethod) => (
-                            <ListItem
-                                key={paymentMethod.value}
-                               
-                                onClick={() => onChangeMethod(paymentMethod.value)}
-                            >
+                            <>
                                 <FormControlLabel
                                     value={paymentMethod.value}
                                     control={<Radio />}
-                                    label={
-                                        <Typography variant="body1" fontWeight="bold">
-                                            {paymentMethod.label}
-                                        </Typography>
-                                    }
-                                    sx={{ margin: 0 }}
+                                    label={paymentMethod.label}
+                                    labelPlacement="end"
                                 />
-                            </ListItem>
+                                <Divider />
+                            </>
                         ))}
                 </RadioGroup>
-            </List>
+            </FormControl>
+
+
         </Box>
     );
 };

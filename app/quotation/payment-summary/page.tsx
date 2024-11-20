@@ -58,7 +58,7 @@ export default function Page() {
       <StatusImage status={4} />
 
       <Box>
-        <Typography textAlign="center" variant="h6">
+        <Typography textAlign="center" variant="h6" fontWeight="bold">
           Payment Summary
         </Typography>
 
@@ -67,7 +67,7 @@ export default function Page() {
           <PaymentSummaryCard quote={quote} />
 
 
-          <Box position="sticky" bottom={0}>
+          <Box position="sticky" bottom={0} mt={2}>
             <Button
               fullWidth
               type="submit"
