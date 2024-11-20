@@ -39,8 +39,8 @@ const themeOptions: ThemeOptions = {
         MuiFormControl: {
             styleOverrides: {
                 root: {
-                    marginTop: 1,
-                    marginBottom: 1,
+                    marginTop: 5,
+                    marginBottom: 5,
                 }
             }
         },
