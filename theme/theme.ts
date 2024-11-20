@@ -16,6 +16,9 @@ const themeOptions: ThemeOptions = {
     },
     typography: {
         fontFamily: 'Roboto, Arial, sans-serif',
+        allVariants: {
+            color: '#333', // Global text color
+        },
     },
     components: {
         MuiButton: {
