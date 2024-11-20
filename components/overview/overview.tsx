@@ -24,9 +24,9 @@ export const OverviewData = () => {
                     <TableRow>
                         <TableCell colSpan={2} align="left">Battery Autonomy</TableCell>
                         <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>
-                            {state?.battery_autonomy_days && `${state?.battery_autonomy_days} Days`}
+                            {state?.battery_autonomy_days && state?.battery_autonomy_days != 0 && `${state?.battery_autonomy_days} Day(s)`}
                             {" "}
-                            {state?.battery_autonomy_hours_only && `${state?.battery_autonomy_hours_only} Hours`}
+                            {state?.battery_autonomy_hours_only && state?.battery_autonomy_hours_only != 0 && `${state?.battery_autonomy_hours_only} Hour(s)`}
 
                         </TableCell>
                     </TableRow>
