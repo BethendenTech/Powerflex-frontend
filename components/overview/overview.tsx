@@ -7,7 +7,7 @@ export const OverviewData = () => {
 
     return (
         <Box mt={2} mb={2}>
-            <Table>
+            <Table size="small">
                 <TableBody>
                     <TableRow>
                         <TableCell colSpan={2} align="left">Monthly Spend</TableCell>

@@ -1,6 +1,6 @@
 // src/theme.ts
 import { createTheme, ThemeOptions } from '@mui/material/styles';
-import ToggleButtonGroup, {
+import {
     toggleButtonGroupClasses,
 } from '@mui/material/ToggleButtonGroup';
 
@@ -25,7 +25,7 @@ const themeOptions: ThemeOptions = {
             styleOverrides: {
                 root: {
                     borderRadius: 12,
-                    padding: 15,
+                    padding: 12,
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
@@ -39,8 +39,8 @@ const themeOptions: ThemeOptions = {
         MuiFormControl: {
             styleOverrides: {
                 root: {
-                    marginTop: 5,
-                    marginBottom: 15,
+                    marginTop: 1,
+                    marginBottom: 1,
                 }
             }
         },
@@ -75,7 +75,6 @@ const themeOptions: ThemeOptions = {
             styleOverrides: {
                 root: {
                     backgroundColor: "white",
-                    padding: 10,
                     borderRadius: 5,
                     borderColor: "#ccc",
                     borderWidth: 1
