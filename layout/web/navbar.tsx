@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Stack } from '@mui/material';
@@ -18,7 +17,6 @@ interface Props {
 
 export default function DrawerAppBar(props: Props) {
     const { handleDrawerToggle, navItems } = props;
-
 
     return (
         <AppBar component="nav" color='inherit'>
@@ -37,7 +35,7 @@ export default function DrawerAppBar(props: Props) {
                 <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
                     <Image
                         src="/images/logo-blue.png"
-                        alt="powerflex logo"
+                        alt="PowerFlex"
                         width={100}
                         height={100}
                     />
