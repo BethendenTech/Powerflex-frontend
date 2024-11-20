@@ -112,7 +112,7 @@ export default function Page() {
           <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
         </FormControl>
 
-        <Box position="sticky" bottom={0}>
+        <Box position="sticky" bottom={0} mt={2}>
           <Button
             fullWidth
             type="submit"

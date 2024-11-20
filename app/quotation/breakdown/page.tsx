@@ -272,7 +272,7 @@ export default function Page() {
         </div>
 
 
-        <Box position="sticky" bottom={0}>
+        <Box position="sticky" bottom={0} mt={2}>
           <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} />
 
           <Button

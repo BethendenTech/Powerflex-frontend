@@ -124,7 +124,7 @@ export default function Page() {
           </RadioGroup>
         </FormControl>
 
-        <Box position="sticky" bottom={0}>
+        <Box position="sticky" bottom={0} mt={2}>
           <Button
             fullWidth
             type="submit"

@@ -41,7 +41,7 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
 
     return (
 
-        <Box position="sticky" bottom={0}>
+        <Box position="sticky" bottom={0} mt={2}>
             <Button
                 {...config}
                 text="Pay Now"
