@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { FinancingTermModal } from "./financeTermModal";
-import { BusinessOrIndividualCheckBox } from "./businessOrIndividual";
+
+import { BusinessOrIndividualCheckBox } from "../businessOrIndividual";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
-import IndividualApplicationForm from "./individualApplicationForm";
-import BusinessApplicationForm from "./businessApplicationForm";
-import { TotalSummary } from "../payment/totalSummary";
+import IndividualApplicationForm from "../individualApplicationForm";
+import BusinessApplicationForm from "../businessApplicationForm";
+import { TotalSummary } from "../../payment/totalSummary";
 import { QuoteInterface } from "@/types/quotation";
 import { Box } from "@mui/material";
+import { FinancingTermModal } from "./financeTermModal";
+
 interface ComponentProps {
     quote: QuoteInterface;
 }
