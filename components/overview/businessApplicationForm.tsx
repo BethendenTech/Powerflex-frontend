@@ -23,13 +23,14 @@ const BusinessApplicationForm = () => {
     const router = useRouter();
 
     // Set up react-hook-form with default values for the inputs
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({
         defaultValues: {
             first_name: '',
             last_name: '',
             phone_number: '',
             email: '',
             role: 'Director',
+            other_role: '',
             business_name: '',
             house_number: '',
             street_name: '',
@@ -40,6 +41,9 @@ const BusinessApplicationForm = () => {
             documents: ""
         }
     });
+
+
+    const role = watch("role");
 
     // Handle form submission
     const onSubmit = (data: any) => {
@@ -56,6 +60,38 @@ const BusinessApplicationForm = () => {
                     Business Application
                 </Typography>
 
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.role}
+                >
+                    <FormLabel>
+                        Role
+                    </FormLabel>
+                    <Select
+                        type='text'
+                        {...register("role", { required: "Role is required" })}
+                    >
+                        <MenuItem value="director">Director</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
+                    </Select>
+                    <FormHelperText>{errors?.role?.message}</FormHelperText>
+                </FormControl>
+
+
+                {role == "other" && <FormControl
+                    fullWidth
+                    error={!!errors.other_role}
+                >
+                    <FormLabel>
+                        Please type your role?
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("other_role", { required: "This field is required" })}
+                    />
+                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
+                </FormControl>}
 
                 <FormControl
                     fullWidth
@@ -118,22 +154,7 @@ const BusinessApplicationForm = () => {
                 </FormControl>
 
 
-                <FormControl
-                    fullWidth
-                    error={!!errors.role}
-                >
-                    <FormLabel>
-                        Role
-                    </FormLabel>
-                    <Select
-                        type='text'
-                        {...register("role", { required: "Role is required" })}
-                    >
-                        <MenuItem value="admin">Admin</MenuItem>
-                        <MenuItem value="director">Director</MenuItem>
-                    </Select>
-                    <FormHelperText>{errors?.role?.message}</FormHelperText>
-                </FormControl>
+
 
 
 
@@ -239,6 +260,7 @@ const BusinessApplicationForm = () => {
                         {...register("bvn", { required: "BVN (Bank Verification Number) is required" })}
                     />
                     <FormHelperText>{errors?.bvn?.message}</FormHelperText>
+                    <FormHelperText>Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.</FormHelperText>
                 </FormControl>
 
 

@@ -9,7 +9,7 @@ import IndividualApplicationForm from "./individualApplicationForm";
 import BusinessApplicationForm from "./businessApplicationForm";
 import { TotalSummary } from "../payment/totalSummary";
 import { QuoteInterface } from "@/types/quotation";
-import { Box, Chip } from "@mui/material";
+import { Box } from "@mui/material";
 interface ComponentProps {
     quote: QuoteInterface;
 }
@@ -21,7 +21,7 @@ export const FinancingPurchase = ({ quote }: ComponentProps) => {
     return (
         <Box>
             <TotalSummary quote={quote} isFinance={true} />
-            <Chip color="primary" onClick={() => setModalOpen(true)} label="Edit Finance Terms" />
+            {/* <Chip color="primary" onClick={() => setModalOpen(true)} label="Edit Finance Terms" /> */}
 
             {isModalOpen == true && <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />}
 
