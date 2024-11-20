@@ -19,7 +19,7 @@ export default function Home() {
         Get a quote
       </Button>
 
-      <Typography>
+      <Typography textAlign="center" mt={2} mb={2}>
         Start your journey to cleaner, more affordable energy.
       </Typography>
 
