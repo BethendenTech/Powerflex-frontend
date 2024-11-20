@@ -4,6 +4,7 @@ import StatusImage from '@/components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
   const { state } = useStateMachine({ updateAction });
@@ -11,7 +12,7 @@ export default function Page() {
   return (
     <Box>
       <StatusImage status={6} />
-
+      <CustomizedSteppers activeStep={6} />
       <Card>
         <CardHeader title="Payment Successfull" sx={{ textAlign: "center" }} />
         <CardContent>
@@ -21,7 +22,6 @@ export default function Page() {
           </Box>
         </CardContent>
       </Card>
-
       <Box position="sticky" bottom={0} mt={2}>
         <Button variant='contained' fullWidth>Create Account</Button>
       </Box>
