@@ -4,12 +4,25 @@ import updateAction from "@/little-state/action";
 import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import dynamic from 'next/dynamic';
+
+const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
+    <iframe
+        src="https://sentiflex.com/contact.php"
+        width="100%"
+        height="500"
+        style={{ border: 'none' }}
+        title="SentiFlex Contact Form"
+    />
+)), { ssr: false });
 
 const IndividualApplicationForm = () => {
     const router = useRouter();
     const { actions, state } = useStateMachine({ updateAction });
+
+    const [showIframe, setShowIframe] = useState(false)
 
     // Set up react-hook-form with default values for the inputs
     const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
@@ -37,16 +50,20 @@ const IndividualApplicationForm = () => {
         console.log("Form Data:", data);
         // You can trigger the update action or route navigation here
         // actions.updateAction(data);
-        router.push("/quotation/payment-summary");
+        // router.push("/quotation/payment-summary");
+        setShowIframe(true)
     };
 
 
     return (
         <Box mt={5}>
-            <form onSubmit={handleSubmit(onSubmit)} >
-                <Typography variant="h6">
-                    Individual Application
-                </Typography>
+            <Typography variant="h6">
+                Individual Application
+            </Typography>
+
+            {showIframe && <SentiFlexIframeComponent />}
+
+            {!showIframe && <form onSubmit={handleSubmit(onSubmit)} >
 
                 <FormControl
                     fullWidth
@@ -281,7 +298,7 @@ const IndividualApplicationForm = () => {
                     </Button>
                 </Box>
 
-            </form>
+            </form>}
         </Box>
     );
 };

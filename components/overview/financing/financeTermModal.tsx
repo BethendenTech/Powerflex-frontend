@@ -117,7 +117,6 @@ export const FinancingTermModal = ({ isOpen, onClose }: FinancingTermModalProps)
                         Submit
                     </Button>
                 </DialogActions>
-
             </form>
         </Dialog>
     );
