@@ -11,6 +11,7 @@ import Image from 'next/image';
 import useQuotation from '@/hooks/quotation';
 import PayStackPayment from '@/components/payment/payStack';
 import { Box, Button, Typography } from '@mui/material';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
 
@@ -40,6 +41,9 @@ export default function Page() {
       </Button>
 
       <StatusImage status={5} />
+
+      <CustomizedSteppers activeStep={5} />
+
 
       <Box>
 

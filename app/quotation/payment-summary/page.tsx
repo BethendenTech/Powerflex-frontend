@@ -9,6 +9,7 @@ import Image from 'next/image';
 import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import useQuotation from '@/hooks/quotation';
 import { Box, Button, Typography } from '@mui/material';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
 
@@ -56,6 +57,7 @@ export default function Page() {
       </Button>
 
       <StatusImage status={4} />
+      <CustomizedSteppers activeStep={4} />
 
       <Box>
         <Typography textAlign="center" variant="h6" fontWeight="bold">

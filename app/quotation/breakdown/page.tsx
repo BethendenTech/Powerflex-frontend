@@ -3,6 +3,7 @@
 import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
+import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
 import updateAction from '@/little-state/action';
 import { Box, Button } from '@mui/material';
@@ -137,6 +138,10 @@ export default function Page() {
       </Button>
 
       <StatusImage status={3} />
+
+      <CustomizedSteppers activeStep={3} />
+
+
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <div className='flex input-group'>
           <label htmlFor="solar_load" className="label">

@@ -8,6 +8,7 @@ import updateAction from '@/little-state/action';
 import React from 'react';
 import Image from 'next/image';
 import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -58,6 +59,9 @@ export default function Page() {
       </Button>
 
       <StatusImage status={2} />
+
+      <CustomizedSteppers activeStep={2} />
+
 
       <form onSubmit={handleSubmit(onSubmit)}>
 

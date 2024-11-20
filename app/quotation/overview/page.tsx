@@ -13,6 +13,7 @@ import useQuotation from '@/hooks/quotation';
 import React from 'react';
 import { Box, Button, ToggleButton, Typography } from '@mui/material';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
 
@@ -51,6 +52,9 @@ export default function Page() {
 
 
       <StatusImage status={4} />
+
+      <CustomizedSteppers activeStep={4} />
+
 
       <Box>
 

@@ -7,6 +7,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
 import React from 'react';
 import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
+import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -67,6 +68,8 @@ export default function Page() {
   return (
     <Box>
       <StatusImage status={1} />
+
+      <CustomizedSteppers activeStep={1} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
