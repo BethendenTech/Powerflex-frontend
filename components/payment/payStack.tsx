@@ -20,8 +20,8 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
         reference: (new Date()).getTime().toString(),
         email: "user@example.com",
         amount: quote.total_cost_naira, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-        // publicKey: 'sk_live_cf7887404952d8034ac7d143a9cdb63dbe5e7606',
-        publicKey: 'sk_test_8e27f03e2719aad42d22ee0c294f2afd025a9790',
+        // publicKey: 'Bearer sk_live_cf7887404952d8034ac7d143a9cdb63dbe5e7606',
+        publicKey: 'Bearer sk_test_8e27f03e2719aad42d22ee0c294f2afd025a9790',
     };
 
     // you can call this function anything
