@@ -60,8 +60,8 @@ export default function Page() {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
+  const handleToggle = (e) => {
+    setIsChecked(e.target.checked);
   };
 
   const handleBreakdownChange = (breakdowns: any) => {
@@ -257,8 +257,8 @@ export default function Page() {
             title="Include Appliance Data"
             action={
               <Switch
-                value={isChecked}
-                onChange={handleToggle}
+                checked={isChecked}
+                onChange={(e)=>handleToggle(e)}
                 size='small'
                 sx={{
                   padding: 0,
