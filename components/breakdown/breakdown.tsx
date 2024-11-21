@@ -17,6 +17,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
         if (!e.target.checked) {
             setFormData({
                 ...formData,
+                [e.target.name]: e.target.checked,
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
             });
