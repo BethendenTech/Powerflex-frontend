@@ -9,6 +9,7 @@ interface SummaryObject {
     batteries?: number;
     cost?: number;
     energy?: number;
+    load_covered_by_solar?: number;
 }
 
 export default function Summary(props: SummaryObject) {
@@ -16,7 +17,7 @@ export default function Summary(props: SummaryObject) {
         <Card
             sx={{
                 backgroundColor: '#F2F2F4',
-                boxShadow:"1px 1px 5px #333"
+                boxShadow: "1px 1px 5px #333"
             }}
         >
             <CardContent>
@@ -28,8 +29,8 @@ export default function Summary(props: SummaryObject) {
                 >
                     <TableBody>
                         <TableRow>
-                            <TableCell align="left">Energy Consumption</TableCell>
-                            <TableCell align="right">{formatKWhWithCurrency(props.energy ?? 0)}</TableCell>
+                            <TableCell align="left">Your property will need</TableCell>
+                            <TableCell align="right">{formatKWhWithCurrency(props.load_covered_by_solar ?? 0)}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell align="left">Total cost</TableCell>

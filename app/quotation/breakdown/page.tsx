@@ -6,7 +6,7 @@ import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
 import updateAction from '@/little-state/action';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -250,31 +250,68 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className='w-full input-group input-group-background'>
-          <div className="toggle-group flex items-center justify-between gap-4">
-            {/* Label */}
-            <label htmlFor="toggle" className="text-gray-700 text-sm font-medium">
-              Include Appliance Data
-            </label>
 
-            {/* Toggle Switch */}
-            <div className="relative">
-              {/* Visible Toggle Track and Thumb */}
-              <div
-                className={`w-11 h-6 ${isChecked ? 'bg-blue-500' : 'bg-gray-700'} rounded-full cursor-pointer transition-colors duration-300`}
-                onClick={handleToggle}
-              >
-                <div
-                  className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform ${isChecked ? 'translate-x-5' : ''
-                    }`}
-                ></div>
-              </div>
-            </div>
-          </div>
-          {isChecked && (
-            <Breakdown onBreakdownChange={handleBreakdownChange} breakdowns={state.breakdowns} />
-          )}
-        </div>
+
+        <Card>
+          <CardHeader
+            title="Include Appliance Data"
+            action={
+              <Switch
+                value={isChecked}
+                onChange={handleToggle}
+                size='small'
+                sx={{
+                  padding: 0,
+                  '& .MuiSwitch-switchBase': {
+                    transitionDuration: '300ms',
+                    '&.Mui-checked': {
+                      color: '#fff',
+                      '& + .MuiSwitch-track': {
+                        backgroundColor: '#516EFA',
+                        opacity: 1,
+                        border: 0,
+                      },
+                      '&.Mui-disabled + .MuiSwitch-track': {
+                        opacity: 0.5,
+                      },
+                    },
+                    '&.Mui-focusVisible .MuiSwitch-thumb': {
+                      color: '#33cf4d',
+                      border: '6px solid #fff',
+                    },
+                    '&.Mui-disabled .MuiSwitch-thumb': {
+                      color: "#CED7EB",
+                    },
+                    '&.Mui-disabled + .MuiSwitch-track': {
+                      opacity: 0.7,
+                    },
+                  },
+                  '& .MuiSwitch-thumb': {
+                    boxSizing: 'border-box',
+                  },
+                  '& .MuiSwitch-track': {
+                    borderRadius: 4,
+                    backgroundColor: '#CED7EB',
+                    opacity: 1,
+                  },
+                }}
+              />
+            }
+            sx={{
+              '.MuiCardHeader-title': {
+                fontSize: '1rem',
+                fontWeight: "bold"
+              },
+            }}
+          />
+          <CardContent>
+
+            {isChecked && (
+              <Breakdown onBreakdownChange={handleBreakdownChange} breakdowns={state.breakdowns} />
+            )}
+
+          </CardContent>
+        </Card>
 
 
         <Box position="sticky" bottom={0} mt={2}>
