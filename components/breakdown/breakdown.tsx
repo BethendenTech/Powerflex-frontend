@@ -153,7 +153,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
 
                 <AccordionDetails sx={{ px: 3 }}>
 
-
                     <Table
                         size="small"
                         sx={{
@@ -170,9 +169,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                 <TableCell>Hours</TableCell>
                             </TableRow>
                         </TableHead>
-
-
-
 
                         {props.items.map((row: any) => (
                             renderRow(row)

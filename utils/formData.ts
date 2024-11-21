@@ -1,7 +1,7 @@
 export const allElements = [
     {
         name: "Kitchen Appliance",
-        type: "l",
+        type: "accordian",
         items: [
             {
                 displayName: "Coffee Maker",
