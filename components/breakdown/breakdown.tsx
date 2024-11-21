@@ -3,6 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Image from "next/image";
 import { allElements } from '@/utils/formData';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
 interface BreakdownProps {
     breakdowns: any,
@@ -76,113 +77,144 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
 
     const renderRow = (props: RowObject) => {
         return (
-            <>
-                <div></div>
-                <div className="first-col col-span-2">
-                    <label htmlFor={props.name}>
-                        <input
-                            id={props.name}
-                            className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
-                            type='checkbox'
-                            name={props.name}
-                            checked={formData[props.name]}
-                            onChange={handleCheckboxChange}
-                        />
-                        {props.displayName}
-                    </label>
-                </div>
-                <div>
-                    <select
-                        className="select mini-select w-4/5"
-                        name={`${props.name}_quantity`}
-                        value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
-                        onChange={handleSelectChange}
-                        disabled={!formData[props.name]}
-                    >
-                        {Array.from({ length: 51 }, (_, i) => (
-                            <option key={props.name + i} value={i}>
-                                {i}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <select
-                        className="select mini-select w-4/5 text-black"
-                        name={`${props.name}_usage`}
-                        value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
-                        onChange={handleSelectChange}
-                        disabled={!formData[props.name]}
-                    >
-                        {Array.from({ length: 25 }, (_, i) => (
-                            <option key={props.name + 'u' + i} value={i}>
-                                {i}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div></div>
-            </>
+            <TableBody>
+                <TableRow>
+                    <TableCell>
+                        <label htmlFor={props.name}>
+                            <input
+                                id={props.name}
+                                className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
+                                type='checkbox'
+                                name={props.name}
+                                checked={formData[props.name]}
+                                onChange={handleCheckboxChange}
+                            />
+                            {props.displayName}
+                        </label>
+                    </TableCell>
+                    <TableCell>
+                        <select
+                            className="select mini-select w-4/5"
+                            name={`${props.name}_quantity`}
+                            value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
+                            onChange={handleSelectChange}
+                            disabled={!formData[props.name]}
+                        >
+                            {Array.from({ length: 51 }, (_, i) => (
+                                <option key={props.name + i} value={i}>
+                                    {i}
+                                </option>
+                            ))}
+                        </select>
+                    </TableCell>
+                    <TableCell>
+                        <select
+                            className="select mini-select w-4/5 text-black"
+                            name={`${props.name}_usage`}
+                            value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
+                            onChange={handleSelectChange}
+                            disabled={!formData[props.name]}
+                        >
+                            {Array.from({ length: 25 }, (_, i) => (
+                                <option key={props.name + 'u' + i} value={i}>
+                                    {i}
+                                </option>
+                            ))}
+                        </select>
+                    </TableCell>
+                </TableRow>
+            </TableBody>
         );
     }
 
     const renderAccordianWithRows = (props: AccordianObject) => {
         return (
-            <details className="group text-sm">
-                <summary className="flex justify-between items-center p cursor-pointer list-none px-10 pb-[5px]">
-                    <p className="textg font-semibld text-black">{props.name}</p>
-                    <span className="text-lg font-bold group-open:hidden">
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={
                         <Image
                             src="/images/collaps-arrow-down.svg"
-                            alt="chevron"
-                            width={36}
-                            height={36}
+                            alt="expand"
+                            width={24}
+                            height={24}
                         />
-                    </span>
-                    <span className="text-lg font-bold hidden group-open:block">
-                        <Image
-                            src="/images/collaps-arrow-up.svg"
-                            alt="chevron"
-                            width={36}
-                            height={36}
-                        />
-                    </span>
-                </summary>
-                <div className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row">
-                    <div />
-                    <div className="first-col col-span-2"></div>
-                    <div className='text-black'>Quantity</div>
-                    <div className='text-black'>Hours</div>
-                    <div />
-                </div>
-                <div>
-                    {props.items.map((row: any) => {
-                        return (
-                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row text-black">
-                                {renderRow(row)}
-                            </div>
-                        )
-                    })}
-                </div>
-            </details>
+                    }
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        px: 3,
+                    }}
+                >
+                    <Typography sx={{ fontWeight: 600, color: 'black' }}>
+                        {props.name}
+                    </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails sx={{ px: 3 }}>
+
+
+                    <Table
+                        size="small"
+                        sx={{
+                            border: 'none', // Removes table border
+                            '& .MuiTableCell-root': {
+                                borderBottom: 'none', // Removes cell borders
+                            },
+                        }}
+                    >
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>First Column</TableCell>
+                                <TableCell>Quantity</TableCell>
+                                <TableCell>Hours</TableCell>
+                            </TableRow>
+                        </TableHead>
+
+
+
+
+                        {props.items.map((row: any) => (
+                            renderRow(row)
+                        ))}
+
+                    </Table>
+                </AccordionDetails>
+            </Accordion>
         );
     }
 
     return (
-        <div className='w-full'>
+        <Box>
             <>
                 {allElements.map((row: any) => {
                     if (row.type === "accordian") {
                         return renderAccordianWithRows(row);
                     } else {
                         return (
-                            <div key={row.name} className="grid grid-cols-6 gap-2 auto-cols-auto items-center table-row text-black">
+                            <Table
+
+                                size="small"
+                                sx={{
+                                    border: 'none', // Removes table border
+                                    '& .MuiTableCell-root': {
+                                        borderBottom: 'none', // Removes cell borders
+                                    },
+                                }}
+                            >
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>First Column</TableCell>
+                                        <TableCell>Quantity</TableCell>
+                                        <TableCell>Hours</TableCell>
+                                    </TableRow>
+                                </TableHead>
                                 {renderRow(row)}
-                            </div>
+                            </Table>
                         );
                     }
                 })}
             </>
-        </div>
+        </Box>
     );
 }
