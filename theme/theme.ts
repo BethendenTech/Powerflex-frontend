@@ -107,6 +107,25 @@ const themeOptions: ThemeOptions = {
                 },
             },
         },
+        MuiSelect: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: "#257FE6",
+                    color: "#fff",
+                    borderRadius: 12,
+                    '& .MuiSvgIcon-root': {
+                        color: '#fff',
+                    },
+                    '& .MuiSelect-icon': {
+                        color: '#fff',
+                    },
+                    '& .Mui-disabled': {
+                        color: "#fff",
+                        '-webkit-text-fill-color': '#fff',
+                    },
+                },
+            },
+        },
     },
 };
 

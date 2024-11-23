@@ -3,11 +3,22 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Image from "next/image";
 import { allElements } from '@/utils/formData';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControl, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 interface BreakdownProps {
     breakdowns: any,
     onBreakdownChange: (sata: any) => void;
+}
+
+const SelectIconComponent = () => {
+    return (
+        <Box>
+            <ArrowDropUpIcon />
+            <ArrowDropDownIcon />
+        </Box>
+    )
 }
 
 export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownProps) {
@@ -30,7 +41,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
         }
     };
 
-    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const handleSelectChange = (e: any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -76,51 +87,59 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
     }
 
     const renderRow = (props: RowObject) => {
+
+        const { name } = props;
+
+
         return (
             <TableBody>
                 <TableRow>
                     <TableCell>
-                        <label htmlFor={props.name}>
-                            <input
-                                id={props.name}
-                                className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
-                                type='checkbox'
-                                name={props.name}
-                                checked={formData[props.name]}
-                                onChange={handleCheckboxChange}
-                            />
-                            {props.displayName}
-                        </label>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    id={props.name}
+                                    name={props.name}
+                                    checked={formData[props.name]}
+                                    onChange={handleCheckboxChange}
+                                />
+                            }
+                            label={props.displayName}
+                        />
                     </TableCell>
                     <TableCell>
-                        <select
-                            className="select mini-select w-4/5"
-                            name={`${props.name}_quantity`}
-                            value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
+
+                        <Select
+                            name={`${name}_quantity`}
+                            value={formData[`${name}_quantity`] || 0}
                             onChange={handleSelectChange}
+                            fullWidth
+                            size='small'
                             disabled={!formData[props.name]}
+                            IconComponent={SelectIconComponent}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
-                                <option key={props.name + i} value={i}>
+                                <MenuItem key={`${name}-${i}`} value={i}>
                                     {i}
-                                </option>
+                                </MenuItem>
                             ))}
-                        </select>
+                        </Select>
                     </TableCell>
                     <TableCell>
-                        <select
-                            className="select mini-select w-4/5 text-black"
+                        <Select
                             name={`${props.name}_usage`}
-                            value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
+                            value={formData[`${props.name}_usage`] || 0}
                             onChange={handleSelectChange}
                             disabled={!formData[props.name]}
+                            IconComponent={SelectIconComponent}
+                            size='small'
                         >
                             {Array.from({ length: 25 }, (_, i) => (
-                                <option key={props.name + 'u' + i} value={i}>
+                                <MenuItem key={props.name + 'u' + i} value={i}>
                                     {i}
-                                </option>
+                                </MenuItem>
                             ))}
-                        </select>
+                        </Select>
                     </TableCell>
                 </TableRow>
             </TableBody>
