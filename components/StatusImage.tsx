@@ -8,7 +8,7 @@ export interface Status {
 
 export default function StatusImage(props: Status) {
     return (
-        <Box mb={2}>
+        <Box mb={2} textAlign="center">
             <Image
                 src={`/images/status-${props.status}.svg`}
                 alt="powerflex"

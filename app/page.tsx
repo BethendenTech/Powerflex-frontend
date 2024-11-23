@@ -4,16 +4,17 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <Box>
-      <Image
-        className="bg-img"
-        src="/images/solar-bg.png"
-        alt="powerflex logo"
-        width={1500}
-        height={100}
-      />
+    <Box textAlign="center">
 
-
+      <Box mt={2} mb={2}>
+        <Image
+          className="bg-img"
+          src="/images/solar-bg.png"
+          alt="powerflex logo"
+          width={500}
+          height={500}
+        />
+      </Box>
 
       <Button variant="contained" LinkComponent={Link} href="/quotation/details" fullWidth>
         Get a quote
