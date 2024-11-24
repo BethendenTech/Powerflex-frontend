@@ -5,6 +5,7 @@ import Image from "next/image";
 import { allElements } from '@/utils/formData';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import TimeDropdown from './TimeDropdown';
 interface BreakdownProps {
     breakdowns: any,
     onBreakdownChange: (sata: any) => void;
@@ -22,7 +23,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                 [e.target.name]: e.target.checked,
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
-                [e.target.name + '_usage_minutes']: 0,
             });
         } else {
             setFormData({
@@ -54,7 +54,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         initialFormData[item.name] = false; // for checkbox
                         initialFormData[`${item.name}_quantity`] = 0; // for quantity
                         initialFormData[`${item.name}_usage`] = 0; // for usage
-                        initialFormData[`${item.name}_usage_minutes`] = 0; // for usage
                     }
                 });
             }
@@ -117,37 +116,15 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         </Select>
                     </TableCell>
                     <TableCell>
-                        <Select
+                        <TimeDropdown
+                            label=""
                             name={`${name}_usage`}
                             value={formData[`${name}_usage`] || 0}
                             onChange={handleSelectChange}
                             disabled={!formData[name]}
-                            IconComponent={UnfoldMoreIcon}
-                            size='small'
-                        >
-                            {Array.from({ length: 25 }, (_, i) => (
-                                <MenuItem key={name + 'u' + i} value={i}>
-                                    {i}
-                                </MenuItem>
-                            ))}
-                        </Select>
+                        />
                     </TableCell>
-                    <TableCell>
-                        <Select
-                            name={`${name}_usage_minutes`}
-                            value={formData[`${name}_usage_minutes`] || 0}
-                            onChange={handleSelectChange}
-                            disabled={!formData[name]}
-                            IconComponent={UnfoldMoreIcon}
-                            size='small'
-                        >
-                            {Array.from({ length: 61 }, (_, i) => (
-                                <MenuItem key={name + 'u' + i} value={i}>
-                                    {i}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </TableCell>
+
                 </TableRow>
             </TableBody>
         );
@@ -193,7 +170,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                 <TableCell>First Column</TableCell>
                                 <TableCell>Quantity</TableCell>
                                 <TableCell>Hours</TableCell>
-                                <TableCell>Minutes</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -230,7 +206,6 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                         <TableCell>First Column</TableCell>
                                         <TableCell>Quantity</TableCell>
                                         <TableCell>Hours</TableCell>
-                                        <TableCell>Minutes</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 {renderRow(row)}
