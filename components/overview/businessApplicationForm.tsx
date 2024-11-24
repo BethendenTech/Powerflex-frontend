@@ -6,6 +6,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import SelectStateComponent from "./stateSelect";
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -23,7 +24,7 @@ const BusinessApplicationForm = () => {
     const router = useRouter();
 
     // Set up react-hook-form with default values for the inputs
-    const { register, handleSubmit, formState: { errors }, watch } = useForm({
+    const { control, register, handleSubmit, setValue, formState: { errors }, watch } = useForm({
         defaultValues: {
             first_name: '',
             last_name: '',
@@ -221,36 +222,12 @@ const BusinessApplicationForm = () => {
                     <FormHelperText>{errors?.nearest_bus_stop?.message}</FormHelperText>
                 </FormControl>
 
-                <FormControl
-                    fullWidth
-                    error={!!errors.state}
-                >
-                    <FormLabel>
-                        State
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("state", { required: "State is required" })}
-                    />
-                    <FormHelperText>{errors?.state?.message}</FormHelperText>
-                </FormControl>
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.lga}
-                >
-                    <FormLabel>
-                        LGA (Local Government Area)
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
-                    />
-                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
-                </FormControl>
-
-
-                
+                <SelectStateComponent
+                    control={control}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                />
 
                 <FormControl
                     fullWidth
