@@ -43,6 +43,18 @@ const TimeDropdown = ({
                 value={value}
                 onChange={onChange} // Correct type of event
                 IconComponent={UnfoldMoreIcon}
+                sx={{
+                    borderRadius: 12,
+                    backgroundColor: "#257FE6",
+                    color: "#fff",
+                    '& .MuiSelect-icon': {
+                        color: '#fff !important',
+                    },
+                    '& .Mui-disabled': {
+                        color: "#eee",
+                        '-webkit-text-fill-color': '#eee !important',
+                    },
+                }}
             >
                 {timeOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>

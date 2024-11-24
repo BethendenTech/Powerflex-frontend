@@ -107,6 +107,19 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                             size='small'
                             disabled={!formData[name]}
                             IconComponent={UnfoldMoreIcon}
+                            sx={{
+                                borderRadius: 12,
+                                backgroundColor: "#257FE6",
+                                color: "#fff",
+                                border: "none",
+                                '& .MuiSelect-icon': {
+                                    color: '#fff !important',
+                                },
+                                '& .Mui-disabled': {
+                                    color: "#eee",
+                                    '-webkit-text-fill-color': '#eee !important',
+                                },
+                            }}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
                                 <MenuItem key={`${name}-${i}`} value={i}>
