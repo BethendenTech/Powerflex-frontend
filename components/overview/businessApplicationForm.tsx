@@ -221,22 +221,6 @@ const BusinessApplicationForm = () => {
                     <FormHelperText>{errors?.nearest_bus_stop?.message}</FormHelperText>
                 </FormControl>
 
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.lga}
-                >
-                    <FormLabel>
-                        LGA (Local Government Area)
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
-                    />
-                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
-                </FormControl>
-
-
                 <FormControl
                     fullWidth
                     error={!!errors.state}
@@ -253,19 +237,57 @@ const BusinessApplicationForm = () => {
 
                 <FormControl
                     fullWidth
-                    error={!!errors.bvn}
+                    error={!!errors.lga}
+                >
+                    <FormLabel>
+                        LGA (Local Government Area)
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
+                    />
+                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
+                </FormControl>
+
+
+                
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.bvn} // Highlight the field if there's an error
                 >
                     <FormLabel>
                         BVN (Bank Verification Number)
                     </FormLabel>
-                    <FormHelperText>Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.</FormHelperText>
+                    <FormHelperText>
+                        Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
+                    </FormHelperText>
 
                     <OutlinedInput
-                        type='text'
-                        {...register("bvn", { required: "BVN (Bank Verification Number) is required" })}
+                        type="text"
+                        {...register("bvn", {
+                            required: "BVN (Bank Verification Number) is required",
+                            minLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            maxLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            pattern: {
+                                value: /^\d{11}$/,
+                                message: "BVN must contain only numeric characters",
+                            },
+                        })}
+                        error={!!errors.bvn} // Add error state to input
                     />
-                    <FormHelperText>{errors?.bvn?.message}</FormHelperText>
+
+                    {errors?.bvn?.message && (
+                        <FormHelperText>{errors.bvn.message}</FormHelperText>
+                    )}
                 </FormControl>
+
 
 
                 <FormControl
