@@ -258,43 +258,8 @@ export default function Page() {
             action={
               <Switch
                 checked={isChecked}
-                onChange={(e)=>handleToggle(e)}
+                onChange={(e) => handleToggle(e)}
                 size='small'
-                sx={{
-                  padding: 0,
-                  '& .MuiSwitch-switchBase': {
-                    transitionDuration: '300ms',
-                    '&.Mui-checked': {
-                      color: '#fff',
-                      '& + .MuiSwitch-track': {
-                        backgroundColor: '#516EFA',
-                        opacity: 1,
-                        border: 0,
-                      },
-                      '&.Mui-disabled + .MuiSwitch-track': {
-                        opacity: 0.5,
-                      },
-                    },
-                    '&.Mui-focusVisible .MuiSwitch-thumb': {
-                      color: '#33cf4d',
-                      border: '6px solid #fff',
-                    },
-                    '&.Mui-disabled .MuiSwitch-thumb': {
-                      color: "#CED7EB",
-                    },
-                    '&.Mui-disabled + .MuiSwitch-track': {
-                      opacity: 0.7,
-                    },
-                  },
-                  '& .MuiSwitch-thumb': {
-                    boxSizing: 'border-box',
-                  },
-                  '& .MuiSwitch-track': {
-                    borderRadius: 4,
-                    backgroundColor: '#CED7EB',
-                    opacity: 1,
-                  },
-                }}
               />
             }
             sx={{

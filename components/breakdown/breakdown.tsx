@@ -3,23 +3,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Image from "next/image";
 import { allElements } from '@/utils/formData';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControl, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 interface BreakdownProps {
     breakdowns: any,
     onBreakdownChange: (sata: any) => void;
 }
 
-const SelectIconComponent = () => {
-    return (
-        <Box>
-            <ArrowDropUpIcon />
-            <ArrowDropDownIcon />
-        </Box>
-    )
-}
 
 export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownProps) {
 
@@ -32,6 +22,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                 [e.target.name]: e.target.checked,
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
+                [e.target.name + '_usage_minutes']: 0,
             });
         } else {
             setFormData({
@@ -63,6 +54,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         initialFormData[item.name] = false; // for checkbox
                         initialFormData[`${item.name}_quantity`] = 0; // for quantity
                         initialFormData[`${item.name}_usage`] = 0; // for usage
+                        initialFormData[`${item.name}_usage_minutes`] = 0; // for usage
                     }
                 });
             }
@@ -88,9 +80,8 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
 
     const renderRow = (props: RowObject) => {
 
-        const { name } = props;
-
-
+        const { name, displayName } = props;
+        console.log(formData[name], displayName)
         return (
             <TableBody>
                 <TableRow>
@@ -98,13 +89,13 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    id={props.name}
-                                    name={props.name}
-                                    checked={formData[props.name]}
-                                    onChange={handleCheckboxChange}
+                                    id={name}
+                                    name={name}
+                                    checked={Boolean(formData[name])}
+                                    onChange={(event) => handleCheckboxChange(event)}
                                 />
                             }
-                            label={props.displayName}
+                            label={displayName}
                         />
                     </TableCell>
                     <TableCell>
@@ -115,8 +106,8 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                             onChange={handleSelectChange}
                             fullWidth
                             size='small'
-                            disabled={!formData[props.name]}
-                            IconComponent={SelectIconComponent}
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
                                 <MenuItem key={`${name}-${i}`} value={i}>
@@ -127,15 +118,31 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                     </TableCell>
                     <TableCell>
                         <Select
-                            name={`${props.name}_usage`}
-                            value={formData[`${props.name}_usage`] || 0}
+                            name={`${name}_usage`}
+                            value={formData[`${name}_usage`] || 0}
                             onChange={handleSelectChange}
-                            disabled={!formData[props.name]}
-                            IconComponent={SelectIconComponent}
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
                             size='small'
                         >
                             {Array.from({ length: 25 }, (_, i) => (
-                                <MenuItem key={props.name + 'u' + i} value={i}>
+                                <MenuItem key={name + 'u' + i} value={i}>
+                                    {i}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </TableCell>
+                    <TableCell>
+                        <Select
+                            name={`${name}_usage_minutes`}
+                            value={formData[`${name}_usage_minutes`] || 0}
+                            onChange={handleSelectChange}
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
+                            size='small'
+                        >
+                            {Array.from({ length: 61 }, (_, i) => (
+                                <MenuItem key={name + 'u' + i} value={i}>
                                     {i}
                                 </MenuItem>
                             ))}
@@ -186,6 +193,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                 <TableCell>First Column</TableCell>
                                 <TableCell>Quantity</TableCell>
                                 <TableCell>Hours</TableCell>
+                                <TableCell>Minutes</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -222,6 +230,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                         <TableCell>First Column</TableCell>
                                         <TableCell>Quantity</TableCell>
                                         <TableCell>Hours</TableCell>
+                                        <TableCell>Minutes</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 {renderRow(row)}
