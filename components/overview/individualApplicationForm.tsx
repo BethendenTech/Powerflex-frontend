@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from 'next/dynamic';
+import SelectStateComponent from "./stateSelect";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -25,7 +26,7 @@ const IndividualApplicationForm = () => {
     const [showIframe, setShowIframe] = useState(false)
 
     // Set up react-hook-form with default values for the inputs
-    const { register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { control, register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
         defaultValues: {
             first_name: '',
             last_name: '',
@@ -214,34 +215,12 @@ const IndividualApplicationForm = () => {
                 </FormControl>
 
 
-                <FormControl
-                    fullWidth
-                    error={!!errors.state}
-                >
-                    <FormLabel>
-                        State
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("state", { required: "State is required" })}
-                    />
-                    <FormHelperText>{errors?.state?.message}</FormHelperText>
-                </FormControl>
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.lga}
-                >
-                    <FormLabel>
-                        LGA (Local Government Area)
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
-                    />
-                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
-                </FormControl>
-
+                <SelectStateComponent
+                    control={control}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                />
 
 
                 <FormControl
