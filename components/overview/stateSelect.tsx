@@ -1022,12 +1022,10 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
         return state ? state.lgas : [];
     };
 
-    console.log("SelectStateComponentError", errors)
-
     return (
         <Box>
             {/* State Dropdown */}
-            <FormControl fullWidth error={!!errors.state} margin="normal">
+            <FormControl fullWidth error={!!errors.state} >
                 <FormLabel id="state-label">State</FormLabel>
                 <Controller
                     name="state"
@@ -1038,7 +1036,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
                         <Select
                             {...field}
                             labelId="state-label"
-                            label="State"
+                        
                             onChange={(e) => {
                                 field.onChange(e);
                                 setValue("lga", ""); // Reset LGA when state changes
@@ -1069,7 +1067,6 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
                         <Select
                             {...field}
                             labelId="lga-label"
-                            label="LGA (Local Government Area)"
                             disabled={!selectedState} // Disable if no state is selected
                         >
                             {getLgaOptions().map((lga) => (
