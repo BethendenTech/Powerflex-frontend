@@ -284,7 +284,7 @@ const BusinessApplicationForm = () => {
                         Applicant Id Card
                         <VisuallyHiddenInput
                             type="file"
-                            {...register("applicant_id_card", { required: "applicant_id_card is required" })}
+                            {...register("applicant_id_card", { required: "Applicant Id Card is required" })}
 
                         />
                     </Button>
@@ -309,7 +309,7 @@ const BusinessApplicationForm = () => {
                         Company Registration Document
                         <VisuallyHiddenInput
                             type="file"
-                            {...register("company_registration_document", { required: "company_registration_document is required" })}
+                            {...register("company_registration_document", { required: "Company Registration Document is required" })}
 
                         />
                     </Button>
@@ -334,7 +334,7 @@ const BusinessApplicationForm = () => {
                         6 months Bank Statements
                         <VisuallyHiddenInput
                             type="file"
-                            {...register("bank_statements", { required: "bank_statements is required" })}
+                            {...register("bank_statements", { required: "Bank Statements is required" })}
 
                         />
                     </Button>
@@ -359,7 +359,7 @@ const BusinessApplicationForm = () => {
                         Recent Utility Bill
                         <VisuallyHiddenInput
                             type="file"
-                            {...register("recent_utility_bill", { required: "recent_utility_bill is required" })}
+                            {...register("recent_utility_bill", { required: "Recent Utility Bill is required" })}
 
                         />
                     </Button>
