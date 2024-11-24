@@ -11,7 +11,8 @@ import SelectStateComponent from "./stateSelect";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
-        src="https://sentiflex.com/contact.php"
+        // src="https://sentiflex.com/contact.php" this not working
+        src="https://sentiflex.com"
         width="100%"
         height="500"
         style={{ border: 'none' }}
