@@ -3,12 +3,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Image from "next/image";
 import { allElements } from '@/utils/formData';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 interface BreakdownProps {
     breakdowns: any,
     onBreakdownChange: (sata: any) => void;
 }
+
 
 export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownProps) {
 
@@ -21,6 +22,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                 [e.target.name]: e.target.checked,
                 [e.target.name + '_quantity']: 0,
                 [e.target.name + '_usage']: 0,
+                [e.target.name + '_usage_minutes']: 0,
             });
         } else {
             setFormData({
@@ -30,7 +32,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
         }
     };
 
-    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const handleSelectChange = (e: any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -52,6 +54,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                         initialFormData[item.name] = false; // for checkbox
                         initialFormData[`${item.name}_quantity`] = 0; // for quantity
                         initialFormData[`${item.name}_usage`] = 0; // for usage
+                        initialFormData[`${item.name}_usage_minutes`] = 0; // for usage
                     }
                 });
             }
@@ -76,51 +79,74 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
     }
 
     const renderRow = (props: RowObject) => {
+
+        const { name, displayName } = props;
+        console.log(formData[name], displayName)
         return (
             <TableBody>
                 <TableRow>
                     <TableCell>
-                        <label htmlFor={props.name}>
-                            <input
-                                id={props.name}
-                                className="mr-[8px] border-[#257FE6] border-2 custom-checkbox"
-                                type='checkbox'
-                                name={props.name}
-                                checked={formData[props.name]}
-                                onChange={handleCheckboxChange}
-                            />
-                            {props.displayName}
-                        </label>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    id={name}
+                                    name={name}
+                                    checked={Boolean(formData[name])}
+                                    onChange={(event) => handleCheckboxChange(event)}
+                                />
+                            }
+                            label={displayName}
+                        />
                     </TableCell>
                     <TableCell>
-                        <select
-                            className="select mini-select w-4/5"
-                            name={`${props.name}_quantity`}
-                            value={formData[`${props.name}_quantity`] || 0} // Fallback to 0 if undefined
+
+                        <Select
+                            name={`${name}_quantity`}
+                            value={formData[`${name}_quantity`] || 0}
                             onChange={handleSelectChange}
-                            disabled={!formData[props.name]}
+                            fullWidth
+                            size='small'
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
-                                <option key={props.name + i} value={i}>
+                                <MenuItem key={`${name}-${i}`} value={i}>
                                     {i}
-                                </option>
+                                </MenuItem>
                             ))}
-                        </select>
+                        </Select>
                     </TableCell>
                     <TableCell>
-                        <select
-                            className="select mini-select w-4/5 text-black"
-                            name={`${props.name}_usage`}
-                            value={formData[`${props.name}_usage`] || 0} // Fallback to 0 if undefined
+                        <Select
+                            name={`${name}_usage`}
+                            value={formData[`${name}_usage`] || 0}
                             onChange={handleSelectChange}
-                            disabled={!formData[props.name]}
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
+                            size='small'
                         >
                             {Array.from({ length: 25 }, (_, i) => (
-                                <option key={props.name + 'u' + i} value={i}>
+                                <MenuItem key={name + 'u' + i} value={i}>
                                     {i}
-                                </option>
+                                </MenuItem>
                             ))}
-                        </select>
+                        </Select>
+                    </TableCell>
+                    <TableCell>
+                        <Select
+                            name={`${name}_usage_minutes`}
+                            value={formData[`${name}_usage_minutes`] || 0}
+                            onChange={handleSelectChange}
+                            disabled={!formData[name]}
+                            IconComponent={UnfoldMoreIcon}
+                            size='small'
+                        >
+                            {Array.from({ length: 61 }, (_, i) => (
+                                <MenuItem key={name + 'u' + i} value={i}>
+                                    {i}
+                                </MenuItem>
+                            ))}
+                        </Select>
                     </TableCell>
                 </TableRow>
             </TableBody>
@@ -167,6 +193,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                 <TableCell>First Column</TableCell>
                                 <TableCell>Quantity</TableCell>
                                 <TableCell>Hours</TableCell>
+                                <TableCell>Minutes</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -203,6 +230,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                                         <TableCell>First Column</TableCell>
                                         <TableCell>Quantity</TableCell>
                                         <TableCell>Hours</TableCell>
+                                        <TableCell>Minutes</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 {renderRow(row)}

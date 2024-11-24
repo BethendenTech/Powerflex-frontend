@@ -37,7 +37,7 @@ export default function DrawerAppBar(props: Props) {
                         src="/images/logo-blue.png"
                         alt="PowerFlex"
                         width={100}
-                        height={100}
+                        height={50}
                     />
                 </Box>
 

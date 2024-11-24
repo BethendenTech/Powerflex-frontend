@@ -38,7 +38,10 @@ const BusinessApplicationForm = () => {
             lga: '',
             state: '',
             bvn: '',
-            documents: ""
+            applicant_id_card: "",
+            company_registration_document: "",
+            bank_statements: "",
+            recent_utility_bill: ""
         }
     });
 
@@ -218,22 +221,6 @@ const BusinessApplicationForm = () => {
                     <FormHelperText>{errors?.nearest_bus_stop?.message}</FormHelperText>
                 </FormControl>
 
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.lga}
-                >
-                    <FormLabel>
-                        LGA (Local Government Area)
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
-                    />
-                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
-                </FormControl>
-
-
                 <FormControl
                     fullWidth
                     error={!!errors.state}
@@ -250,23 +237,62 @@ const BusinessApplicationForm = () => {
 
                 <FormControl
                     fullWidth
-                    error={!!errors.bvn}
+                    error={!!errors.lga}
+                >
+                    <FormLabel>
+                        LGA (Local Government Area)
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("lga", { required: "LGA (Local Government Area) is required" })}
+                    />
+                    <FormHelperText>{errors?.lga?.message}</FormHelperText>
+                </FormControl>
+
+
+                
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.bvn} // Highlight the field if there's an error
                 >
                     <FormLabel>
                         BVN (Bank Verification Number)
                     </FormLabel>
+                    <FormHelperText>
+                        Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
+                    </FormHelperText>
+
                     <OutlinedInput
-                        type='text'
-                        {...register("bvn", { required: "BVN (Bank Verification Number) is required" })}
+                        type="text"
+                        {...register("bvn", {
+                            required: "BVN (Bank Verification Number) is required",
+                            minLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            maxLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            pattern: {
+                                value: /^\d{11}$/,
+                                message: "BVN must contain only numeric characters",
+                            },
+                        })}
+                        error={!!errors.bvn} // Add error state to input
                     />
-                    <FormHelperText>{errors?.bvn?.message}</FormHelperText>
-                    <FormHelperText>Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.</FormHelperText>
+
+                    {errors?.bvn?.message && (
+                        <FormHelperText>{errors.bvn.message}</FormHelperText>
+                    )}
                 </FormControl>
+
 
 
                 <FormControl
                     fullWidth
-                    error={!!errors.documents}
+                    error={!!errors.applicant_id_card}
                 >
 
                     <Button
@@ -278,15 +304,90 @@ const BusinessApplicationForm = () => {
                         startIcon={<CloudUploadIcon />}
                         color="warning"
                     >
-                        Documents
+                        Applicant Id Card
                         <VisuallyHiddenInput
                             type="file"
-                            {...register("documents", { required: "Documents is required" })}
-                            multiple
+                            {...register("applicant_id_card", { required: "applicant_id_card is required" })}
+
                         />
                     </Button>
 
-                    <FormHelperText>{errors?.documents?.message}</FormHelperText>
+                    <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.company_registration_document}
+                >
+
+                    <Button
+                        fullWidth
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                        color="warning"
+                    >
+                        Company Registration Document
+                        <VisuallyHiddenInput
+                            type="file"
+                            {...register("company_registration_document", { required: "company_registration_document is required" })}
+
+                        />
+                    </Button>
+
+                    <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.bank_statements}
+                >
+
+                    <Button
+                        fullWidth
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                        color="warning"
+                    >
+                        6 months Bank Statements
+                        <VisuallyHiddenInput
+                            type="file"
+                            {...register("bank_statements", { required: "bank_statements is required" })}
+
+                        />
+                    </Button>
+
+                    <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.recent_utility_bill}
+                >
+
+                    <Button
+                        fullWidth
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                        color="warning"
+                    >
+                        Recent Utility Bill
+                        <VisuallyHiddenInput
+                            type="file"
+                            {...register("recent_utility_bill", { required: "recent_utility_bill is required" })}
+
+                        />
+                    </Button>
+
+                    <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>
 
 

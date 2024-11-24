@@ -107,6 +107,62 @@ const themeOptions: ThemeOptions = {
                 },
             },
         },
+        MuiSelect: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: "#257FE6",
+                    color: "#fff",
+                    borderRadius: 12,
+                    '& .MuiSelect-icon': {
+                        color: '#fff !important',
+                    },
+                    '& .Mui-disabled': {
+                        color: "#eee",
+                        '-webkit-text-fill-color': '#eee !important',
+                    },
+                },
+            },
+        },
+        MuiSwitch: {
+            styleOverrides: {
+                root: {
+                    padding: 0,
+                    borderRadius: 10,
+                    '& .MuiSwitch-switchBase': {
+                        transitionDuration: '300ms',
+                        '&.Mui-checked': {
+                            color: '#fff',
+                            '& + .MuiSwitch-track': {
+                                backgroundColor: '#516EFA',
+                                opacity: 1,
+                                border: 0,
+                            },
+                            '& .Mui-disabled + .MuiSwitch-track': {
+                                opacity: 0.5,
+                            },
+                        },
+                        '& .Mui-focusVisible .MuiSwitch-thumb': {
+                            color: '#33cf4d',
+                            border: '6px solid #fff',
+                        },
+                        '& .Mui-disabled .MuiSwitch-thumb': {
+                            color: "#CED7EB",
+                        },
+                        '& .Mui-disabled + .MuiSwitch-track': {
+                            opacity: 0.7,
+                        },
+                    },
+                    '& .MuiSwitch-thumb': {
+                        boxSizing: 'border-box',
+                    },
+                    '& .MuiSwitch-track': {
+                        borderRadius: 4,
+                        backgroundColor: '#CED7EB',
+                        opacity: 1,
+                    },
+                },
+            },
+        },
     },
 };
 
