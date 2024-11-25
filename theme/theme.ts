@@ -1,4 +1,5 @@
 // src/theme.ts
+import { BorderColor } from '@mui/icons-material';
 import { createTheme, ThemeOptions } from '@mui/material/styles';
 import {
     toggleButtonGroupClasses,
@@ -25,13 +26,24 @@ const themeOptions: ThemeOptions = {
             styleOverrides: {
                 root: {
                     borderRadius: 12,
-                    padding: 12,
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 15,
+                    paddingRight: 15,
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
                     color: 'white',
                     '&:hover': {
                         background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
+                    },
+                },
+                outlinedSecondary: {
+                    background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%)',
+                    color: 'white',
+                    '&:hover': {
+                        background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%)',
+                        borderColor: "#FFFF00"
                     },
                 },
             },

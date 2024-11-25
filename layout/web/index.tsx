@@ -1,4 +1,4 @@
-import { Box, Container, Grid2 } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React, { ReactNode } from "react";
 import DrawerAppBar from "./navbar";
 import { AppDrawer } from "./drawer";
@@ -38,15 +38,16 @@ const navItems = [
 ];
 
 export const WebLayout: React.FC<Props> = ({ children }) => {
-
+   
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
+   
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
 
+
     return (
-        <>
+        <Box>
             <DrawerAppBar navItems={navItems} handleDrawerToggle={handleDrawerToggle} />
 
             <nav>
@@ -54,14 +55,10 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
             </nav>
 
             <Container>
-                <Box component="main" mt={8}>
-                    <Grid2 container>
-                        <Grid2 size={{ xs: 'grow', md: 6 }} offset={{ md: 3 }}>
-                            {children}
-                        </Grid2>
-                    </Grid2>
+                <Box component="main">
+                    {children}
                 </Box>
             </Container>
-        </>
+        </Box>
     );
 };
