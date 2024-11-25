@@ -14,6 +14,7 @@ export interface QuotationContextType {
     error: any;
     isLoading: boolean;
     quote: QuoteInterface;
+    calculateQuote: any
 }
 export interface QuoteInterface {
     total_cost_naira: number;

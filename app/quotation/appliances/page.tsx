@@ -84,39 +84,6 @@ export default function Page() {
     }
   }, [state])
 
-  //Show estimate on load
-  useEffect(() => {
-    calculateQuote();
-  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, breakdowns, battery_autonomy_hours]);
-
-  const calculateQuote = async () => {
-    const quoteData = {
-      electricity_spend: state.electricity_spend,
-      price_band: state.price_band,
-      solar_load: solar_load,
-      battery_autonomy_hours: Number(battery_autonomy_hours_only) + Number(battery_autonomy_days * 24),
-      breakdowns: breakdowns
-    }
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(quoteData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setQuote(data);
-      } else {
-        console.error('Failed to save user details');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
 
   const onBack = () => {
     router.push(`/quotation/breakdown`);
@@ -144,7 +111,7 @@ export default function Page() {
 
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        
+
         <Card>
           <CardHeader
             title="Include Appliance Data"
@@ -173,7 +140,7 @@ export default function Page() {
 
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_with_profit_financing} energy={quote.total_load_kwh} load_covered_by_solar={quote.load_covered_by_solar}/>
+          <Summary showCalculate={true}/>
 
           <Button
             type='submit'

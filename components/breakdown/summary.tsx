@@ -1,18 +1,16 @@
 import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
-import { Card, CardContent, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
+import { Button, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
+import useQuotation from "@/hooks/quotation";
 
 
 interface SummaryObject {
-    solar_panels: number;
-    inverters?: number;
-    batteries?: number;
-    cost?: number;
-    energy?: number;
-    load_covered_by_solar?: number;
+    showCalculate: boolean
 }
 
 export default function Summary(props: SummaryObject) {
+    const { quote, calculateQuote } = useQuotation()
+
     return (
         <Card
             sx={{
@@ -20,8 +18,15 @@ export default function Summary(props: SummaryObject) {
                 boxShadow: "1px 1px 5px #333"
             }}
         >
+            <CardHeader
+                title="Estimation"
+                action={props.showCalculate ? (
+                    <Button variant="outlined" color="primary" aria-label="calculate" onClick={() => calculateQuote()}>
+                        Calculate
+                    </Button>
+                ) : ""}
+            />
             <CardContent>
-                <Typography textAlign="center" variant="h6" fontWeight="bold">Estimation</Typography>
 
                 <Table
                     size="small"
@@ -30,11 +35,11 @@ export default function Summary(props: SummaryObject) {
                     <TableBody>
                         <TableRow>
                             <TableCell align="left">Your property will need</TableCell>
-                            <TableCell align="right">{formatKWhWithCurrency(props.load_covered_by_solar ?? 0)}</TableCell>
+                            <TableCell align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell align="left">Total cost</TableCell>
-                            <TableCell align="right">{renderNaira(props.cost ?? 0)}</TableCell>
+                            <TableCell align="right">{renderNaira(quote.total_cost_with_profit_financing ?? 0)}</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

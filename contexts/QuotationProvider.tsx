@@ -70,7 +70,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     ]);
 
     return (
-        <QuotationContext.Provider value={{ quote, error, isLoading }}>
+        <QuotationContext.Provider value={{ quote, error, isLoading, calculateQuote }}>
             {children}
         </QuotationContext.Provider>
     );

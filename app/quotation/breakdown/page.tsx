@@ -1,20 +1,21 @@
 "use client"; // This is a client component
 
-import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
+import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
-import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useResizeObserver from "use-resize-observer";
 
 export default function Page() {
+  const { calculateQuote } = useQuotation()
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
@@ -48,15 +49,6 @@ export default function Page() {
 
   const { width } = useResizeObserver<HTMLDivElement>();
 
-  const [quote, setQuote] = useState({
-    number_of_panels: 0,
-    number_of_batteries: 3,
-    number_of_inverters: 18,
-    total_cost_with_profit_financing: 0,
-    total_load_kwh: 0,
-    load_covered_by_solar: 0,
-  });
-
   React.useEffect(() => {
     if (state) {
       setValue("additional_info", state.additional_info || false);
@@ -68,43 +60,13 @@ export default function Page() {
     }
   }, [state])
 
-  //Show estimate on load
-  useEffect(() => {
-    calculateQuote();
-  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours]);
-
-  const calculateQuote = async () => {
-    const quoteData = {
-      electricity_spend: state.electricity_spend,
-      price_band: state.price_band,
-      solar_load: solar_load,
-      battery_autonomy_hours: Number(battery_autonomy_hours_only) + Number(battery_autonomy_days * 24),
-      breakdowns: {}
-    }
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/calculate-quote/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(quoteData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setQuote(data);
-      } else {
-        console.error('Failed to save user details');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
   const onBack = () => {
     router.push(`/quotation/monthly-spend`);
   }
+
+  useEffect(() => {
+    calculateQuote()
+  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
 
   return (
     <Box>
@@ -237,7 +199,7 @@ export default function Page() {
         </div>
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_with_profit_financing} energy={quote.total_load_kwh} load_covered_by_solar={quote.load_covered_by_solar}/>
+          <Summary showCalculate={false} />
 
           <Button
             type='submit'
