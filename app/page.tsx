@@ -1,11 +1,22 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid2, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <Box>
 
-      <Box textAlign="center" mt={20} mb={20}>
+      <Box textAlign="center"
+        sx={{
+          mt: {
+            xs: 20,
+            md: 20,
+          },
+          mb: {
+            xs: 10,
+            md: 20,
+          },
+        }}
+      >
         <Typography
           variant="h2"
           component="h1"
@@ -44,23 +55,24 @@ export default function Home() {
       </Box>
 
 
-
       <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center'
-        }}
+        textAlign="center"
+        mb={4}
       >
-        <Stack direction="row" spacing={5}>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" sx={{ width: 200 }}>
-            Explore Products
-          </Button>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" sx={{ width: 200 }}>
-            Get a quote
-          </Button>
-        </Stack>
+        <Grid2 container spacing={2}>
+
+          <Grid2 size={{ xs: 12, md: 3 }} offset={{ md: 3 }}>
+            <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" fullWidth>
+              Explore Products
+            </Button>
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 3 }}>
+            <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" fullWidth>
+              Get a quote
+            </Button>
+          </Grid2>
+
+        </Grid2>
       </Box>
 
     </Box>
