@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <Box>
 
-      <Box textAlign="center" mt={30} mb={20}>
+      <Box textAlign="center" mt={20} mb={20}>
         <Typography
           variant="h2"
           component="h1"
@@ -53,11 +53,11 @@ export default function Home() {
           textAlign: 'center'
         }}
       >
-        <Stack direction="row" spacing={3}>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary">
+        <Stack direction="row" spacing={5}>
+          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" >
             Explore Products
           </Button>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary">
+          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" >
             Get a quote
           </Button>
         </Stack>

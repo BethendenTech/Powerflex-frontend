@@ -55,7 +55,7 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
             </nav>
 
             <Container>
-                <Box component="main" mt={8}>
+                <Box component="main">
                     {children}
                 </Box>
             </Container>
