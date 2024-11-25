@@ -56,6 +56,7 @@ export default function Page() {
     number_of_inverters: 18,
     total_cost_naira: 0,
     total_load_kwh: 0,
+    load_covered_by_solar: 0,
   });
 
   const [isChecked, setIsChecked] = useState(false);
@@ -280,7 +281,7 @@ export default function Page() {
 
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} />
+          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} load_covered_by_solar={quote.load_covered_by_solar}/>
 
           <Button
             type='submit'
