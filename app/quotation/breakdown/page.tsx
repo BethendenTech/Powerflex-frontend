@@ -26,13 +26,11 @@ export default function Page() {
       battery_autonomy_hours_only: 12,
       battery_autonomy_days: 0,
       battery_autonomy_hours: 0,
-      breakdowns: {},
     }
   });
 
   const allValues = watch();
   const solar_load = watch("solar_load");
-  const breakdowns = watch("breakdowns");
   const battery_autonomy_hours_only = watch("battery_autonomy_hours_only");
   const battery_autonomy_days = watch("battery_autonomy_days");
   const battery_autonomy_hours = watch("battery_autonomy_hours");
@@ -42,7 +40,7 @@ export default function Page() {
       console.log('formData', formData)
       actions.updateAction(formData);
 
-      router.push(`/quotation/overview`);
+      router.push(`/quotation/appliances`);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -54,20 +52,10 @@ export default function Page() {
     number_of_panels: 0,
     number_of_batteries: 3,
     number_of_inverters: 18,
-    total_cost_naira: 0,
+    total_cost_with_profit_financing: 0,
     total_load_kwh: 0,
     load_covered_by_solar: 0,
   });
-
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleToggle = (e) => {
-    setIsChecked(e.target.checked);
-  };
-
-  const handleBreakdownChange = (breakdowns: any) => {
-    setValue("breakdowns", breakdowns)
-  };
 
   React.useEffect(() => {
     if (state) {
@@ -76,26 +64,22 @@ export default function Page() {
       setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
       setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
       setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
-      setValue("breakdowns", state.breakdowns || {});
 
-      if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
-        setIsChecked(true)
-      }
     }
   }, [state])
 
   //Show estimate on load
   useEffect(() => {
     calculateQuote();
-  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, breakdowns, battery_autonomy_hours]);
+  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours]);
 
   const calculateQuote = async () => {
     const quoteData = {
       electricity_spend: state.electricity_spend,
       price_band: state.price_band,
       solar_load: solar_load,
-      battery_autonomy_hours: battery_autonomy_hours_only + battery_autonomy_days * 24,
-      breakdowns: breakdowns
+      battery_autonomy_hours: Number(battery_autonomy_hours_only) + Number(battery_autonomy_days * 24),
+      breakdowns: {}
     }
 
     try {
@@ -252,36 +236,8 @@ export default function Page() {
           </div>
         </div>
 
-
-        <Card>
-          <CardHeader
-            title="Include Appliance Data"
-            action={
-              <Switch
-                checked={isChecked}
-                onChange={(e) => handleToggle(e)}
-                size='small'
-              />
-            }
-            sx={{
-              '.MuiCardHeader-title': {
-                fontSize: '1rem',
-                fontWeight: "bold"
-              },
-            }}
-          />
-          <CardContent>
-
-            {isChecked && (
-              <Breakdown onBreakdownChange={handleBreakdownChange} breakdowns={state.breakdowns} />
-            )}
-
-          </CardContent>
-        </Card>
-
-
         <Box position="sticky" bottom={0} mt={2}>
-          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_naira} energy={quote.total_load_kwh} load_covered_by_solar={quote.load_covered_by_solar}/>
+          <Summary solar_panels={quote.number_of_panels} cost={quote.total_cost_with_profit_financing} energy={quote.total_load_kwh} load_covered_by_solar={quote.load_covered_by_solar}/>
 
           <Button
             type='submit'
