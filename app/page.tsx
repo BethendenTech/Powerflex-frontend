@@ -54,10 +54,10 @@ export default function Home() {
         }}
       >
         <Stack direction="row" spacing={5}>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" >
+          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" sx={{ width: 200 }}>
             Explore Products
           </Button>
-          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" >
+          <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" sx={{ width: 200 }}>
             Get a quote
           </Button>
         </Stack>
