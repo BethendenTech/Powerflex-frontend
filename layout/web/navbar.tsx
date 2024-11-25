@@ -51,7 +51,7 @@ export default function DrawerAppBar(props: Props) {
                             )
                         } else {
                             return (
-                                <Button variant="text" key={`nav-link-${index}`} LinkComponent={Link} href={item.href}>
+                                <Button variant="text" key={`nav-link-${index}`} LinkComponent={Link} href={item.href} color='secondary'>
                                     {item.title}
                                 </Button>
                             )
