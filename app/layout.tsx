@@ -39,6 +39,9 @@ export default function RootLayout({
       case "/":
         setBackgroundImage("/images/home/bg-homes.svg")
         break;
+      case "/internet-not-working":
+        setBackgroundImage("/images/home/bg-homes.svg")
+        break;
       case "/products":
         setBackgroundImage("/images/home/bg-products.svg")
         break;
@@ -59,7 +62,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1f1f1]`}
+        className={`${geistSans.variable} ${geistMono.variable}`}
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: 'no-repeat',
