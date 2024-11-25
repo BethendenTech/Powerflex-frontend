@@ -12,16 +12,33 @@ export default function Page() {
 
     return (
         <Container>
-            <Box textAlign="center" mt={4}>
+            <Box textAlign="center" mt={20} mb={20}>
                 <Box mt={2} mb={2}>
-                    <Typography component="h1" variant="h3">Internet Not Working</Typography>
+                    <Typography
+                        variant="h2"
+                        component="h1"
+                        fontWeight="bold"
+                        fontSize={36}
+                        color="#fff"
+                        sx={{
+                            textShadow: '2px 2px 5px #000',
+                        }}
+                    >Internet Not Working
+                    </Typography>
                 </Box>
                 <Box mt={2} mb={2}>
-                    <Typography component="h6" variant="h6">Our system is temporarily offline. Please try again
-                        later.</Typography>
+                    <Typography
+                        color="#fff"
+                        mt={4}
+                        sx={{
+                            textShadow: '1px 1px 5px #000',
+                        }}
+                    >
+                        Our system is temporarily offline. Please try again later.
+                    </Typography>
                 </Box>
 
-                <Button variant="contained" onClick={() => handleBack()}>Go to home</Button>
+                <Button variant="outlined" color="secondary" onClick={() => handleBack()}>Go to home</Button>
             </Box>
         </Container>
     );
