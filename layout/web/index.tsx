@@ -2,6 +2,7 @@ import { Box, Container, Grid2 } from "@mui/material";
 import React, { ReactNode } from "react";
 import DrawerAppBar from "./navbar";
 import { AppDrawer } from "./drawer";
+import { usePathname } from "next/navigation";
 
 interface Props {
     children: ReactNode;
@@ -38,7 +39,9 @@ const navItems = [
 ];
 
 export const WebLayout: React.FC<Props> = ({ children }) => {
+    const pathname = usePathname();
 
+    const isHome = pathname === '/';
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -46,14 +49,25 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
     };
 
     return (
-        <>
+        <Box
+            sx={isHome ? {
+                backgroundImage: `url("/images/home/bg-products.svg")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            } : {
+
+            }}
+        >
             <DrawerAppBar navItems={navItems} handleDrawerToggle={handleDrawerToggle} />
 
             <nav>
                 <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
             </nav>
 
-            <Container>
+            <Container
+
+            >
                 <Box component="main" mt={8}>
                     <Grid2 container>
                         <Grid2 size={{ xs: 'grow', md: 6 }} offset={{ md: 3 }}>
@@ -62,6 +76,6 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
                     </Grid2>
                 </Box>
             </Container>
-        </>
+        </Box>
     );
 };

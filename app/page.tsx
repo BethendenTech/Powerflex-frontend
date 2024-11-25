@@ -4,7 +4,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <Box textAlign="center">
+    <Box textAlign="center"
+    >
 
       <Box mt={2} mb={2}>
         <Image
