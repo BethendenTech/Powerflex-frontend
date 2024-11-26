@@ -6,11 +6,13 @@ import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
 import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
+import { QuoteInterface } from '@/types/quotation';
+import { defaultQuoteData } from '@/utils/formData';
 import { Box, Button } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useResizeObserver from "use-resize-observer";
 
@@ -64,7 +66,16 @@ export default function Page() {
   }
 
   useEffect(() => {
-    calculateQuote()
+    const filter = {
+      electricity_spend: state.electricity_spend,
+      price_band: state.price_band,
+      solar_load: solar_load,
+      battery_autonomy_hours_only: battery_autonomy_hours_only,
+      battery_autonomy_days: battery_autonomy_days,
+      battery_autonomy_hours: battery_autonomy_hours,
+      breakdowns: {},
+    }
+    calculateQuote(filter)
   }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
 
   return (
