@@ -27,7 +27,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             electricity_spend: state.electricity_spend,
             price_band: state.price_band,
             solar_load: state.solar_load,
-            battery_autonomy_hours: state.battery_autonomy_hours_only + state.battery_autonomy_days * 24,
+            battery_autonomy_hours: Number(state.battery_autonomy_hours_only) + Number(state.battery_autonomy_days * 24),
             breakdowns: state.breakdowns,
         };
 
@@ -70,7 +70,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     ]);
 
     return (
-        <QuotationContext.Provider value={{ quote, error, isLoading }}>
+        <QuotationContext.Provider value={{ quote, error, isLoading, calculateQuote }}>
             {children}
         </QuotationContext.Provider>
     );

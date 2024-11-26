@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
+const backgroundImage = "/images/home/bg-homes.svg";
 
 export default function Page() {
     const router = useRouter();
@@ -11,9 +12,14 @@ export default function Page() {
     }
 
     return (
-        <Container>
-            <Box textAlign="center" mt={20} mb={20}>
-                <Box mt={2} mb={2}>
+        <Box style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }}>
+            <Box textAlign="center" pt={20} pb={20}>
+                <Box mt={5} mb={5}>
                     <Typography
                         variant="h2"
                         component="h1"
@@ -38,8 +44,10 @@ export default function Page() {
                     </Typography>
                 </Box>
 
-                <Button variant="outlined" color="secondary" onClick={() => handleBack()}>Go to home</Button>
+                <Box mt={10}>
+                    <Button variant="outlined" color="secondary" onClick={() => handleBack()}>Go to home</Button>
+                </Box>
             </Box>
-        </Container>
+        </Box>
     );
 }
