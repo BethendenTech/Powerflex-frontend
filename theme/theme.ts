@@ -33,14 +33,12 @@ const themeOptions: ThemeOptions = {
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
-                    color: 'white',
                     '&:hover': {
                         background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
                     },
                 },
                 outlinedSecondary: {
                     background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%)',
-                    color: 'white',
                     '&:hover': {
                         background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%)',
                         borderColor: "#FFFF00"
