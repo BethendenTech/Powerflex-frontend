@@ -51,9 +51,9 @@ export default function Page() {
       </Button>
 
 
-      <StatusImage status={4} />
+      <StatusImage status={5} />
 
-      <CustomizedSteppers activeStep={4} />
+      <CustomizedSteppers activeStep={5} />
 
 
       <Box>

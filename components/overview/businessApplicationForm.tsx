@@ -54,7 +54,7 @@ const BusinessApplicationForm = () => {
         console.log("Form Data:", data);
         // You can trigger the update action or route navigation here
         // actions.updateAction(data);
-        router.push("/quotation/payment-summary");
+        router.push("/quotation/payment-process");
     };
 
     return (
