@@ -1,5 +1,6 @@
 "use client"
 
+import HomeAboutSection from "@/components/home/aboutSection";
 import HomeFinanceSection from "@/components/home/financeSection";
 import HomeMainSection from "@/components/home/mainSection";
 import HomeProductSection from "@/components/home/productSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <HomeProductSection />
       <HomeFinanceSection />
       <HomeWorkSection />
+      <HomeAboutSection />
     </Box>
   );
 }
