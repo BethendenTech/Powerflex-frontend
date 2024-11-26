@@ -102,7 +102,7 @@ export default function Page() {
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-        <FormControl
+        {/* <FormControl
           fullWidth
           error={!!errors.solar_load}
         >
@@ -120,7 +120,7 @@ export default function Page() {
             valueLabelDisplay="auto"
             marks={solarLoadCoverageMarks}
           />
-        </FormControl>
+        </FormControl> */}
 
         <div className='flex input-group'>
           <label htmlFor="solar_load" className="label">
