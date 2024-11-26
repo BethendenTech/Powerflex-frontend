@@ -22,13 +22,13 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const calculateQuote = async () => {
+    const calculateQuote = async (data: any) => {
         const postData = {
-            electricity_spend: state.electricity_spend,
-            price_band: state.price_band,
-            solar_load: state.solar_load,
-            battery_autonomy_hours: Number(state.battery_autonomy_hours_only) + Number(state.battery_autonomy_days * 24),
-            breakdowns: state.breakdowns,
+            electricity_spend: data.electricity_spend,
+            price_band: data.price_band,
+            solar_load: data.solar_load,
+            battery_autonomy_hours: Number(data.battery_autonomy_hours_only) + Number(data.battery_autonomy_days * 24),
+            breakdowns: data.breakdowns,
         };
 
         setIsLoading(true);
@@ -61,7 +61,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     };
 
     useEffect(() => {
-        calculateQuote();
+        calculateQuote(state);
     }, [
         state.solar_load,
         state.battery_autonomy_hours_only,
