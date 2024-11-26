@@ -6,7 +6,6 @@ import theme from "@/theme/theme";
 import { ThemeProvider } from "@mui/material";
 import localFont from "next/font/local";
 import "./globals.css";
-import { usePathname } from "next/navigation";
 import React from "react";
 
 const geistSans = localFont({
@@ -31,26 +30,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const pathname = usePathname();
-  const [backgroundImage, setBackgroundImage] = React.useState("");
-
-  React.useEffect(() => {
-    switch (pathname) {
-      case "/":
-        setBackgroundImage("/images/home/bg-homes.svg")
-        break;
-      case "/internet-not-working":
-        setBackgroundImage("/images/home/bg-homes.svg")
-        break;
-      case "/products":
-        setBackgroundImage("/images/home/bg-products.svg")
-        break;
-      default:
-        setBackgroundImage("")
-        break;
-    }
-  }, [pathname])
-
   return (
     <html lang="en">
 
@@ -63,12 +42,6 @@ export default function RootLayout({
 
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
       >
         <ThemeProvider theme={theme}>
           <NetworkProvider>

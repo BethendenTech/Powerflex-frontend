@@ -26,11 +26,9 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
                 <AppDrawer drawerWidth={drawerWidth} navItems={navItems} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
             </nav>
 
-            <Container>
-                <Box component="main">
-                    {children}
-                </Box>
-            </Container>
+
+            {children}
+
         </Box>
     );
 };
