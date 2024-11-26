@@ -225,7 +225,10 @@ export default function Page() {
               </div>
             </div>
             <div className='m-auto pt-[10px] font-bold text-black'>
-              {allValues.battery_autonomy_days} days, {allValues.battery_autonomy_hours_only} hours
+              {allValues.battery_autonomy_days && allValues.battery_autonomy_days != 0 ? `${allValues.battery_autonomy_days} Day(s)` : ""}
+              {" "}
+
+              {allValues.battery_autonomy_hours_only && allValues.battery_autonomy_hours_only != 0 ? `${allValues.battery_autonomy_hours_only} Hour(s)` : ""}
             </div>
           </div>
         </div>
