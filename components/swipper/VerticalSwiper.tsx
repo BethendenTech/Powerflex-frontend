@@ -9,33 +9,33 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Box } from '@mui/material';
 
 export default ({ sliderComponents }: any) => {
     return (
         <Swiper
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={50}
+            modules={[Pagination]}
+            spaceBetween={0}
             slidesPerView={1}
-            direction="vertical"
-            navigation
+            direction={'vertical'}
+            // navigation
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
+            // scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
         >
-            {sliderComponents && sliderComponents.map((sliderComponent) => {
+            {sliderComponents && sliderComponents.map((sliderComponent, index) => {
                 const SlideComponent = sliderComponent.component
                 return (
-                    <SwiperSlide>
-                        <SlideComponent />
+                    <SwiperSlide key={`home-swipper-${index}`}>
+                        <Box >
+                            <SlideComponent />
+                        </Box>
                     </SwiperSlide>
                 )
             })}
 
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
         </Swiper>
     );
 };
