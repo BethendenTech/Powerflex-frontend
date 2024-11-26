@@ -1,4 +1,5 @@
-import { Box, Grid2, Typography } from "@mui/material"
+import { Box, Container, Grid2, Typography } from "@mui/material"
+import ProductCard from "../product/productCard";
 
 const backgroundImage = "/images/home/bg-products.svg";
 
@@ -14,7 +15,8 @@ const HomeProductSection = () => {
             }}
         >
 
-            <Box
+            <Container
+                maxWidth="md"
                 sx={{
                     pt: {
                         xs: 20,
@@ -29,7 +31,7 @@ const HomeProductSection = () => {
 
                 <Grid2 container spacing={2}>
 
-                    <Grid2 size={{ xs: 12, md: 4 }} offset={{ md: 2 }}>
+                    <Grid2 size={{ xs: 12, md: 4 }}>
                         <Typography
                             variant="h2"
                             component="h1"
@@ -49,11 +51,19 @@ const HomeProductSection = () => {
                         >
                             Our products are designed to meet a variety of needs, whether you’re powering a small home or a large business
                         </Typography>
-
-
                     </Grid2>
                 </Grid2>
-            </Box>
+
+
+
+                <Box>
+                    <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/products/solar-panels.svg" />
+                    
+                    <ProductCard title="Inverters" description="Reliable power conversion for seamless energy use" image="/images/products/inverters.svg" />
+                    
+                    <ProductCard title="Batteries" description="Energy storage solutions tailored for all-day power." image="/images/products/batteries.svg" />
+                </Box>
+            </Container>
         </Box>
     )
 }
