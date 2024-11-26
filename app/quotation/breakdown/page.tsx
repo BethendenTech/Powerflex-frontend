@@ -56,7 +56,6 @@ export default function Page() {
       setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
       setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
       setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
-
     }
   }, [state])
 
@@ -65,7 +64,13 @@ export default function Page() {
   }
 
   useEffect(() => {
-    calculateQuote()
+    const formData = {
+      solar_load,
+      battery_autonomy_hours_only,
+      battery_autonomy_days,
+      battery_autonomy_hours,
+    }
+    actions.updateAction(formData);
   }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
 
   return (
