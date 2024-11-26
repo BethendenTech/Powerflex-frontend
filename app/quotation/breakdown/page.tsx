@@ -64,13 +64,7 @@ export default function Page() {
   }
 
   useEffect(() => {
-    const formData = {
-      solar_load,
-      battery_autonomy_hours_only,
-      battery_autonomy_days,
-      battery_autonomy_hours,
-    }
-    actions.updateAction(formData);
+    calculateQuote()
   }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
 
   return (
