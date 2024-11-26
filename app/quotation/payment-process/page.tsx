@@ -21,7 +21,7 @@ export default function Page() {
   const { quote } = useQuotation();
 
   const onBack = () => {
-    router.push(`/quotation/payment-summary`);
+    router.push(`/quotation/overview`);
   }
 
   return (
@@ -40,9 +40,9 @@ export default function Page() {
         Back
       </Button>
 
-      <StatusImage status={5} />
+      <StatusImage status={6} />
 
-      <CustomizedSteppers activeStep={5} />
+      <CustomizedSteppers activeStep={6} />
 
 
       <Box>

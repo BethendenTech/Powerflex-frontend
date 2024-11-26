@@ -11,11 +11,11 @@ import SelectStateComponent from "./stateSelect";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
-        // src="https://sentiflex.com/contact.php" this not working
-        src="https://sentiflex.com"
+        // src="https://sentiflex.com/contact.php"
+        src="https://sentiflex.com/"
         width="100%"
         height="500"
-        style={{ border: 'none' }}
+        style={{ border: '1px #808080 solid' }}
         title="SentiFlex Contact Form"
     />
 )), { ssr: false });
@@ -52,7 +52,7 @@ const IndividualApplicationForm = () => {
         console.log("Form Data:", data);
         // You can trigger the update action or route navigation here
         // actions.updateAction(data);
-        // router.push("/quotation/payment-summary");
+        // router.push("/quotation/payment-process");
         setShowIframe(true)
     };
 
