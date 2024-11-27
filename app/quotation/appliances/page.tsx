@@ -105,9 +105,9 @@ export default function Page() {
         Back
       </Button>
 
-      <StatusImage status={3} />
+      <StatusImage status={4} />
 
-      <CustomizedSteppers activeStep={3} />
+      <CustomizedSteppers activeStep={4} />
 
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>

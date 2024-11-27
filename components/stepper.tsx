@@ -78,7 +78,7 @@ function ColorlibStepIcon(props: StepIconProps) {
     );
 }
 
-const steps = ['1', '2', '3', '4', '5'];
+const steps = ['1', '2', '3', '4', '5', '6'];
 
 export interface ComponentProps {
     activeStep: number;

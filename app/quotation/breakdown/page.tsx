@@ -1,14 +1,15 @@
 "use client"; // This is a client component
 
 import Summary from '@/components/breakdown/summary';
+import { ValueLabelComponent } from '@/components/slider/valueLabelComponent';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
 import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
 import { QuoteInterface } from '@/types/quotation';
-import { defaultQuoteData } from '@/utils/formData';
-import { Box, Button } from '@mui/material';
+import { defaultQuoteData, solarLoadCoverageMarks } from '@/utils/formData';
+import { Box, Button, FormControl, FormLabel, Slider } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -100,6 +101,27 @@ export default function Page() {
 
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+
+        {/* <FormControl
+          fullWidth
+          error={!!errors.solar_load}
+        >
+          <FormLabel>
+            Solar load coverage
+          </FormLabel>
+
+          <Slider
+            aria-label="Solar load coverage"
+            defaultValue={allValues.solar_load}
+            slots={{
+              valueLabel: ValueLabelComponent,
+            }}
+            step={1}
+            valueLabelDisplay="auto"
+            marks={solarLoadCoverageMarks}
+          />
+        </FormControl> */}
+
         <div className='flex input-group'>
           <label htmlFor="solar_load" className="label">
             Solar load coverage
@@ -203,7 +225,10 @@ export default function Page() {
               </div>
             </div>
             <div className='m-auto pt-[10px] font-bold text-black'>
-              {allValues.battery_autonomy_days} days, {allValues.battery_autonomy_hours_only} hours
+              {allValues.battery_autonomy_days && allValues.battery_autonomy_days != 0 ? `${allValues.battery_autonomy_days} Day(s)` : ""}
+              {" "}
+
+              {allValues.battery_autonomy_hours_only && allValues.battery_autonomy_hours_only != 0 ? `${allValues.battery_autonomy_hours_only} Hour(s)` : ""}
             </div>
           </div>
         </div>

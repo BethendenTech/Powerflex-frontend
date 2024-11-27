@@ -56,8 +56,8 @@ export default function Page() {
         Back
       </Button>
 
-      <StatusImage status={4} />
-      <CustomizedSteppers activeStep={4} />
+      <StatusImage status={6} />
+      <CustomizedSteppers activeStep={6} />
 
       <Box>
         <Typography textAlign="center" variant="h6" fontWeight="bold">

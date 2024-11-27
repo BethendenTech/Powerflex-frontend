@@ -43,7 +43,7 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
                     </TableRow>
                     <TableRow>
                         <TableCell align="left">Total Load Kwh</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.total_load_kwh)}</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
