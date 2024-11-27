@@ -1,7 +1,7 @@
 import { Box, Button, Grid2, Typography } from "@mui/material"
 import Link from "next/link"
 
-const backgroundImage = "/images/home/bg-homes.svg";
+const backgroundImage = "/images/home/bg-banner.svg";
 
 const HomeMainSection = () => {
 
