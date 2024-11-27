@@ -17,13 +17,17 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
     const theme = useTheme();
 
     return (
-        <Card sx={{ mt: 2 }}>
-
-            <CardContent>
-
+        <Card sx={{
+            mt: 2,
+            height: '100%',
+            borderRadius: '12px',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            border: '1px solid #ccc',
+        }}>
+            <CardContent sx={{ padding: '15px' }}>
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, md: 6 }}>
-                        <Typography component="div" variant="h6">
+                        <Typography component="div" variant="h6" fontSize={26} color='#191919' fontWeight='bold'>
                             {title}
                         </Typography>
                         <Typography
@@ -34,12 +38,12 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
                             {description}
                         </Typography>
 
-                        <Button variant='outlined' color='secondary' sx={{ mt: 2, width: 200 }}>Learn More</Button>
+                        <Button variant='outlined' color='secondary' sx={{ mt: 5, width: 200 }}>Learn More</Button>
                     </Grid2>
                     <Grid2 size={{ xs: 12, md: 6 }}>
                         <CardMedia
                             component="img"
-                            sx={{ width: "100%", height: 200 }}
+                            sx={{ width: "100%", height: 200, borderRadius: '12px' }}
                             image={image}
                             alt={title}
                         />
