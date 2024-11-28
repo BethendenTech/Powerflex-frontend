@@ -43,7 +43,7 @@ const HomeMainVideoSection = () => {
                         }}
                     >
                         <source
-                            src="/videos/homepage2-roofers-workers-on-a-commercial-building-metal-roo-2023-11-27-05-06-54-utc.mov"
+                            src="/videos/mixkit-view-of-a-solar-panel-farm-generating-sustainable-energy-47097-hd-ready.mp4"
                             type="video/mp4"
                         />
                     </video>
@@ -144,7 +144,7 @@ const HomeMainVideoSection = () => {
                         }}
                     >
                         <source
-                            src="/videos/homepage3-african-american-engineer-in-safety-helmet-and-uni-2023-11-27-04-58-24-utc.mov"
+                            src="/videos/mixkit-view-of-a-solar-panel-farm-generating-sustainable-energy-47097-hd-ready.mp4"
                             type="video/mp4"
                         />
                     </video>
