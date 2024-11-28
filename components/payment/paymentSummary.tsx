@@ -2,7 +2,7 @@
 
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
-import { Box, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableFooter, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -14,7 +14,6 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
             <Typography variant="h6" fontWeight="bold">Outright Purchase</Typography>
 
             <Card>
-
                 <CardContent>
                     <Table
                         size="small"

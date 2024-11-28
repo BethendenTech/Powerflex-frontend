@@ -12,6 +12,7 @@ import useQuotation from '@/hooks/quotation';
 import PayStackPayment from '@/components/payment/payStack';
 import { Box, Button, Typography } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
+import { TotalSummary } from '@/components/payment/totalSummary';
 
 export default function Page() {
 
@@ -44,14 +45,36 @@ export default function Page() {
 
       <CustomizedSteppers activeStep={6} />
 
-
       <Box>
+        <Box sx={{
+          boxShadow: "5px 5px 4px 0px rgba(0, 0, 0, 0.1) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          borderRadius: 2,
+          padding: 3,
+          position: "relative",
+          textAlign: "center",
+          mt: 10,
+          pt: 5,
+        }}>
+          {/* Top Middle Image */}
+          <Box
+            component="img"
+            src="/images/quotation/summary.svg"
+            alt="Top Image"
+            sx={{
+              position: "absolute",
+              top: "-60px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "100px",
+              height: "100px",
+            }}
+          />
+          <Typography textAlign="center" variant="h6">
+            Payment Summary
+          </Typography>
 
-        <Typography textAlign="center" variant="h6" fontWeight="bold">
-          Payment Summary
-        </Typography>
-
-        <PaymentSummaryCard quote={quote} />
+          <TotalSummary quote={quote} />
+        </Box>
         <PaymentMethodCard />
         {state.payment_method == "credit_debit_card" && (
           <PaymentCardDetails quote={quote} />
