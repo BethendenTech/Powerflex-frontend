@@ -21,7 +21,7 @@ export default function Summary(props: SummaryObject) {
             <CardHeader
                 title="Estimation"
                 action={props.showCalculate ? (
-                    <Button variant="outlined" color="primary" aria-label="calculate" onClick={() => calculateQuote()}>
+                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => calculateQuote()}>
                         Calculate
                     </Button>
                 ) : ""}

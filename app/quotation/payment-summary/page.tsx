@@ -60,7 +60,7 @@ export default function Page() {
       <CustomizedSteppers activeStep={6} />
 
       <Box>
-        <Typography textAlign="center" variant="h6" fontWeight="bold">
+        <Typography textAlign="center" variant="h6">
           Payment Summary
         </Typography>
 
