@@ -1,5 +1,6 @@
-import { Box, Button, Grid2, Typography } from "@mui/material"
+import { Box, Grid2, Typography } from "@mui/material"
 import Link from "next/link"
+import { BannerGlowingButton } from "../button/style";
 
 const backgroundImage = "/images/home/bg-banner.svg";
 
@@ -71,19 +72,31 @@ const HomeMainSection = () => {
                 <Grid2 mt={20} container spacing={2}>
 
                     <Grid2 size={{ xs: 12, md: 3 }} offset={{ md: 3 }}>
-                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" fullWidth>
+                        <BannerGlowingButton
+                            variant="outlined"
+                            LinkComponent={Link}
+                            href="/quotation/details"
+                            color="secondary"
+                            fullWidth
+                        >
                             Explore Products
-                        </Button>
+                        </BannerGlowingButton>
                     </Grid2>
                     <Grid2 size={{ xs: 12, md: 3 }}>
-                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary" fullWidth>
+                        <BannerGlowingButton
+                            variant="outlined"
+                            LinkComponent={Link}
+                            href="/quotation/details"
+                            color="secondary"
+                            fullWidth
+                        >
                             Get a quote
-                        </Button>
+                        </BannerGlowingButton>
                     </Grid2>
                 </Grid2>
 
             </Box>
-        </Box>
+        </Box >
     )
 }
 
