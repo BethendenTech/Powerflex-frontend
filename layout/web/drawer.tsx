@@ -23,12 +23,12 @@ export const AppDrawer = (props: Props) => {
                     keepMounted: true, // Better open performance on mobile.
                 }}
                 sx={{
-                    display: { xs: 'block', sm: 'none' },
+                    display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                 }}
             >
                 <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-                    
+
                     <Image
                         src="/images/logo-blue.png"
                         alt="PowerFlex"
