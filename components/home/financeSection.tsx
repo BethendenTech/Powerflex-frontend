@@ -7,6 +7,7 @@ const HomeFinanceSection = () => {
 
     return (
         <Box
+            id="financing"
             style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',
@@ -27,10 +28,7 @@ const HomeFinanceSection = () => {
                     },
                 }}
             >
-
-
                 <Grid2 container spacing={2}>
-
                     <Grid2 size={{ xs: 12, md: 6 }}>
                         <Typography
                             variant="h2"
@@ -55,7 +53,6 @@ const HomeFinanceSection = () => {
                 </Grid2>
 
                 <Grid2 mt={20} container spacing={2}>
-
                     <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
                         <Card sx={{
                             mt: 2,
@@ -149,7 +146,6 @@ const HomeFinanceSection = () => {
                         </Card>
                     </Grid2>
                 </Grid2>
-
             </Container>
         </Box>
     )

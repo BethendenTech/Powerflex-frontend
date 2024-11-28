@@ -7,6 +7,7 @@ const backgroundImage = "/images/home/bg-products.svg";
 const HomeProductSection = () => {
     return (
         <Box
+            id="products"
             sx={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',

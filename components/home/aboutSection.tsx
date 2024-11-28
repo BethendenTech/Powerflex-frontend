@@ -6,6 +6,7 @@ const HomeAboutSection = () => {
 
     return (
         <Box
+            id="about"
             style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',
@@ -26,10 +27,7 @@ const HomeAboutSection = () => {
                     },
                 }}
             >
-
-
                 <Grid2 container spacing={2}>
-
                     <Grid2 size={{ xs: 12, md: 6 }}>
                         <Typography
                             variant="h2"

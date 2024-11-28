@@ -7,6 +7,7 @@ const HomeWorkSection = () => {
 
     return (
         <Box
+            id="how-it-works"
             style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',
@@ -27,10 +28,7 @@ const HomeWorkSection = () => {
                     },
                 }}
             >
-
-
                 <Grid2 container spacing={2}>
-
                     <Grid2 size={{ xs: 12, md: 4 }}>
                         <Typography
                             variant="h2"
