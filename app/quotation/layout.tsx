@@ -15,7 +15,7 @@ export default function RootLayout({
     return (
         <StateMachineProvider>
             <QuotationProvider>
-                <Box mt={8}>
+                <Box mt={8} sx={{ backgroundColor: "#F1F1F1" }}>
                     <Grid2 container>
                         <Grid2 size={{ xs: 'grow', md: 6 }} offset={{ md: 3 }}>
                             {children}
