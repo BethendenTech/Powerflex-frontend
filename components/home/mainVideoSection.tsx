@@ -144,7 +144,7 @@ const HomeMainVideoSection = () => {
                         }}
                     >
                         <source
-                            src="/videos/mixkit-view-of-a-solar-panel-farm-generating-sustainable-energy-47097-hd-ready.mp4"
+                            src="/videos/mixkit-view-of-a-farm-with-solar-panels-on-its-roofs-47091-hd-ready.mp4"
                             type="video/mp4"
                         />
                     </video>
