@@ -7,18 +7,23 @@ const HomeMainSection = () => {
 
     return (
         <Box
-            style={{
+            sx={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                width: '100%',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
             }}
         >
             <Box textAlign="center"
                 sx={{
                     pt: {
                         xs: 20,
-                        md: 20,
+                        md: 20
                     },
                     pb: {
                         xs: 10,
