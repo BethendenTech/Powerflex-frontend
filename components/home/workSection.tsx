@@ -8,11 +8,16 @@ const HomeWorkSection = () => {
     return (
         <Box
             id="how-it-works"
-            style={{
+            sx={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                width: '100%',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
             }}
         >
             <Container
