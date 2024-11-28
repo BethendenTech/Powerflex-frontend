@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,14 +12,13 @@ type ProductDataType = {
 };
 
 const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) => {
-    const theme = useTheme();
 
     return (
         <Card sx={{
             mt: 2,
             height: '100%',
             borderRadius: '12px',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
             border: '1px solid #ccc',
         }}>
             <CardContent sx={{ padding: '15px' }}>
