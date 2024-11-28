@@ -22,7 +22,8 @@ const WorkCard: React.FC<WorkDataType> = ({ heading, title, description, image }
             border: '1px solid #ccc',
             padding: '10px 15px',
             alignItems: "center",
-            justifyContent: 'center'
+            justifyContent: 'center',
+            textAlign: "center"
         }}>
             <CardContent sx={{
                 "&.MuiCardContent-root": {
@@ -32,7 +33,7 @@ const WorkCard: React.FC<WorkDataType> = ({ heading, title, description, image }
                 <Typography color="#676767" textAlign="center" fontSize={20} pb={2}>{heading}</Typography>
                 <Typography color="#000000" textAlign="center" fontSize={20}>{title}</Typography>
 
-                <Box textAlign="center" p={2}>
+                <Box textAlign="center" justifyItems='center' p={2}>
                     <Box
                         component="img"
                         src={image}
