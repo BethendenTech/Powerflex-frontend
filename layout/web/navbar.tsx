@@ -26,7 +26,7 @@ export default function DrawerAppBar(props: Props) {
                     aria-label="open drawer"
                     edge="start"
                     onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
+                    sx={{ mr: 2, display: { lg: 'none', md: 'none' } }}
                 >
                     <MenuIcon />
                 </IconButton>
@@ -41,7 +41,7 @@ export default function DrawerAppBar(props: Props) {
                     />
                 </Box>
 
-                <Stack sx={{ display: { xs: 'none', sm: 'block' } }} spacing={2} direction="row">
+                <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' } }} spacing={2} direction="row">
                     {navItems && navItems.map((item, index) => {
                         if (item.type == "button") {
                             return (

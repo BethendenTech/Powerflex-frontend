@@ -9,25 +9,25 @@ export const navItems = [
     },
     {
         title: "About Us",
-        href: "/",
+        href: "/#about",
         type: "link",
         children: []
     },
     {
         title: "Products",
-        href: "/",
+        href: "/#products",
         type: "link",
         children: []
     },
     {
         title: "Financing",
-        href: "/",
+        href: "/#financing",
         type: "link",
         children: []
     },
     {
         title: "How it works",
-        href: "/",
+        href: "/#how-it-works",
         type: "link",
         children: []
     },
