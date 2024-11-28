@@ -1,19 +1,16 @@
 "use client"; // This is a client component
 
 import Summary from '@/components/breakdown/summary';
-import { ValueLabelComponent } from '@/components/slider/valueLabelComponent';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
 import useQuotation from '@/hooks/quotation';
 import updateAction from '@/little-state/action';
-import { QuoteInterface } from '@/types/quotation';
-import { defaultQuoteData, solarLoadCoverageMarks } from '@/utils/formData';
-import { Box, Button, FormControl, FormLabel, Slider } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useResizeObserver from "use-resize-observer";
 
@@ -110,6 +107,7 @@ export default function Page() {
             Solar load coverage
           </FormLabel>
 
+
           <Slider
             aria-label="Solar load coverage"
             defaultValue={allValues.solar_load}
@@ -119,7 +117,14 @@ export default function Page() {
             step={1}
             valueLabelDisplay="auto"
             marks={solarLoadCoverageMarks}
+            onChange={(e: any) => {
+              if (e?.target?.value) {
+                setValue("solar_load", e.target.value)
+              }
+            }}
           />
+
+          <FormHelperText>{errors?.solar_load?.message}</FormHelperText>
         </FormControl> */}
 
         <div className='flex input-group'>

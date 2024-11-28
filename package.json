@@ -18,7 +18,6 @@
     "little-state-machine": "^4.8.0",
     "next": "^15.0.1",
     "react": "^18",
-    "react-datepicker": "^7.5.0",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "react-paystack": "^6.0.0",

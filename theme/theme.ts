@@ -160,18 +160,26 @@ const themeOptions: ThemeOptions = {
         MuiSlider: {
             styleOverrides: {
                 root: {
-                    height: 10,
-                    padding: 5,
-                    backgroundColor: "linear-gradient(181deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25))",
-                    boxShadow: "1px 1px 1px 1px gray",
+                    // background: "linear-gradient(181deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25))",
+                    // boxShadow: "1px 1px 1px 1px gray",
+                    '& .MuiSlider-rail': {
+                        background: "#333",
+                        padding: 5,
+                        border: 10,
+                        borderImage: "linear-gradient(180deg, #BEC2CC 0.43%, #CBCED6 15.88%, #FFFFFF 97.01%)"
+                    },
                     '& .MuiSlider-track': {
                         border: 'none',
+                        padding: 5
+                    },
+                    '& .MuiSlider-markLabel': {
+                        fontWeight: 'bold',
                     },
                     '& .MuiSlider-thumb': {
-                        height: 24,
-                        width: 24,
+                        height: 20,
+                        width: 20,
                         backgroundColor: '#fff',
-                        border: '2px solid currentColor',
+                        border: '2px solid #ccc',
                         '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
                             boxShadow: 'inherit',
                         },
