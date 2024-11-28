@@ -9,7 +9,6 @@ export const renderNaira = (value: number) => {
     }).format();
 }
 
-
 export const formatKWhWithCurrency = (value: number, precision: number = 2): string => {
     return `${currency(value, {
         symbol: '',                    // No currency symbol
