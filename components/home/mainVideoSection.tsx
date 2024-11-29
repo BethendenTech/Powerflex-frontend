@@ -1,4 +1,4 @@
-import { Box, Button, Grid2, Typography } from "@mui/material"
+import { Box, Grid2, Typography } from "@mui/material"
 import Link from "next/link"
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { BannerGlowingButton } from "../button/style";
 
 const HomeMainVideoSection = () => {
 
@@ -99,28 +100,28 @@ const HomeMainVideoSection = () => {
                         </Typography>
 
                         {/* Buttons */}
-                        <Grid2 container spacing={2} justifyContent="center" mt={6}>
+                        <Grid2 container spacing={2} justifyContent="center" mt={20}>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <Button
+                                <BannerGlowingButton
                                     variant="outlined"
-                                    component={Link}
+                                    LinkComponent={Link}
                                     href="/quotation/details"
                                     color="secondary"
                                     fullWidth
                                 >
                                     Explore Products
-                                </Button>
+                                </BannerGlowingButton>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <Button
+                                <BannerGlowingButton
                                     variant="outlined"
-                                    component={Link}
+                                    LinkComponent={Link}
                                     href="/quotation/details"
                                     color="secondary"
                                     fullWidth
                                 >
                                     Get a quote
-                                </Button>
+                                </BannerGlowingButton>
                             </Grid2>
                         </Grid2>
                     </Box>
@@ -200,28 +201,28 @@ const HomeMainVideoSection = () => {
                         </Typography>
 
                         {/* Buttons */}
-                        <Grid2 container spacing={2} justifyContent="center" mt={6}>
+                        <Grid2 container spacing={2} justifyContent="center" mt={20}>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <Button
+                                <BannerGlowingButton
                                     variant="outlined"
-                                    component={Link}
+                                    LinkComponent={Link}
                                     href="/quotation/details"
                                     color="secondary"
                                     fullWidth
                                 >
                                     Explore Products
-                                </Button>
+                                </BannerGlowingButton>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <Button
+                                <BannerGlowingButton
                                     variant="outlined"
-                                    component={Link}
+                                    LinkComponent={Link}
                                     href="/quotation/details"
                                     color="secondary"
                                     fullWidth
                                 >
                                     Get a quote
-                                </Button>
+                                </BannerGlowingButton>
                             </Grid2>
                         </Grid2>
                     </Box>
