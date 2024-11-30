@@ -1,5 +1,6 @@
-import { Box, Container, Grid2, Typography } from "@mui/material"
+import { Box, Container, Typography } from "@mui/material"
 import WorkCard from "../product/workCard";
+import Grid from '@mui/material/Grid2';
 
 const backgroundImage = "/images/home/bg-how-it-works.svg";
 
@@ -33,8 +34,8 @@ const HomeWorkSection = () => {
                     },
                 }}
             >
-                <Grid2 container spacing={2}>
-                    <Grid2 size={{ xs: 12, md: 4 }}>
+                <Grid container spacing={2}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Typography
                             variant="h2"
                             component="h1"
@@ -54,35 +55,35 @@ const HomeWorkSection = () => {
                         >
                             Simplified solar installation in 3 steps
                         </Typography>
-                    </Grid2>
-                </Grid2>
+                    </Grid>
+                </Grid>
 
-                <Grid2 mt={20} container spacing={4}>
-                    <Grid2 size={{ xs: 12, md: 4 }}>
+                <Grid mt={20} container spacing={5}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <WorkCard
                             heading="STEP 1"
                             title="Consultation & Quote"
                             image="/images/how-it-works/how-it-works-01.svg"
                             description="Get a personalised quote based on your energy needs using our state-of-the-art solar calculator."
                         />
-                    </Grid2>
-                    <Grid2 size={{ xs: 12, md: 4 }}>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <WorkCard
                             heading="STEP 2"
                             title="Installation"
                             image="/images/how-it-works/how-it-works-02.svg"
                             description="Professionally installed solar systems tailored to your property"
                         />
-                    </Grid2>
-                    <Grid2 size={{ xs: 12, md: 4 }}>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <WorkCard
                             heading="STEP 3"
                             title="Power Up"
                             image="/images/how-it-works/how-it-works-03.svg"
                             description="Enjoy clean, renewable energy and reduced electricity bills"
                         />
-                    </Grid2>
-                </Grid2>
+                    </Grid>
+                </Grid>
             </Container>
         </Box>
     )

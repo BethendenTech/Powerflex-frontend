@@ -5,7 +5,6 @@ import StatusImage from '@/components/StatusImage';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import PaymentMethodCard from '@/components/payment/paymentMethodCard';
-import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
 import useQuotation from '@/hooks/quotation';
@@ -47,13 +46,24 @@ export default function Page() {
 
       <Box>
         <Box sx={{
-          boxShadow: "5px 5px 4px 0px rgba(0, 0, 0, 0.1) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           borderRadius: 2,
           padding: 3,
           position: "relative",
           textAlign: "center",
-          mt: 10,
+          mt: 14,
           pt: 5,
+          background: '#ffffff',
+          '&:before': {
+            content: '""',
+            position: "absolute",
+            top: "1px",
+            left: "1px",
+            right: "1px",
+            bottom: "1px",
+            border: "6px solid #FFFFFF4D",
+            borderRadius: "inherit",
+            boxShadow: "5px 5px 4px 0px rgba(0, 0, 0, 0.1) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          },
         }}>
           {/* Top Middle Image */}
           <Box
@@ -62,18 +72,18 @@ export default function Page() {
             alt="Top Image"
             sx={{
               position: "absolute",
-              top: "-60px",
+              top: "-80px",
               left: "50%",
               transform: "translateX(-50%)",
-              width: "100px",
-              height: "100px",
+              width: "130px",
+              height: "130px",
             }}
           />
-          <Typography textAlign="center" variant="h6">
+          <Typography textAlign="center" variant="h6" mt={2}>
             Payment Summary
           </Typography>
 
-          <TotalSummary quote={quote} isFinance={false}/>
+          <TotalSummary quote={quote} isFinance={false} />
         </Box>
         <PaymentMethodCard />
         {state.payment_method == "credit_debit_card" && (
