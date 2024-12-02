@@ -1,28 +1,29 @@
-import { Box, Button, Container, Grid2, Typography } from "@mui/material"
-import Link from "next/link"
+import { Box, Container, Grid2, Typography } from "@mui/material"
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Pagination, A11y } from 'swiper/modules';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 const HomeAboutVideoSection = () => {
 
     return (
         <Box id="about">
             <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Pagination, A11y]}
                 spaceBetween={50}
                 slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
+                pagination={{
+                    clickable: true,
+                    renderBullet: (index, className) =>
+                        `<span class="${className}" 
+                      style="width: 27px; height: 7px; background-color: #FFFFFF; border-radius: 5px; margin: 0 4px; transition: all 0.3s ease;"></span>`,
+                }}
+                style={{ height: '100%' }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >
