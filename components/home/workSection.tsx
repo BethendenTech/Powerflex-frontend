@@ -22,7 +22,7 @@ const HomeWorkSection = () => {
             }}
         >
             <Container
-                maxWidth="md"
+                maxWidth="lg"
                 sx={{
                     pt: {
                         xs: 20,
@@ -31,6 +31,11 @@ const HomeWorkSection = () => {
                     pb: {
                         xs: 10,
                         md: 20,
+                    },
+                    width: {
+                        xs: "100%",
+                        sm: "100%",
+                        md: "100%",
                     },
                 }}
             >
