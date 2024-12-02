@@ -30,7 +30,7 @@ export default function Page() {
   };
 
   const onBack = () => {
-    router.push(`/quotation/breakdown`);
+    router.push(`/quotation/appliances`);
   }
 
   return (

@@ -1,5 +1,4 @@
 // src/theme.ts
-import { BorderColor } from '@mui/icons-material';
 import { createTheme, ThemeOptions } from '@mui/material/styles';
 import {
     toggleButtonGroupClasses,
@@ -16,9 +15,9 @@ const themeOptions: ThemeOptions = {
         },
     },
     typography: {
-        fontFamily: 'Roboto, Arial, sans-serif',
+        fontFamily: 'Harmonia Sans Pro, Arial, sans-serif',
         allVariants: {
-            color: '#333', // Global text color
+            color: '#424242', // Global text color
         },
     },
     components: {
@@ -30,6 +29,7 @@ const themeOptions: ThemeOptions = {
                     paddingBottom: 10,
                     paddingLeft: 15,
                     paddingRight: 15,
+                    textTransform: "capitalize"
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
