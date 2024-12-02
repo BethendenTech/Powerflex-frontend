@@ -73,7 +73,7 @@ export default function Page() {
           exclusive
           onChange={(e, value) => handleToggle(value)}
           fullWidth
-
+          
         >
           <ToggleButton value={false}>Outright Purchase</ToggleButton>
           <ToggleButton value={true}>Financing</ToggleButton>

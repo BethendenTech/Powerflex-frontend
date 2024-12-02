@@ -21,17 +21,6 @@ export default function DrawerAppBar(props: Props) {
     return (
         <AppBar component="nav" color='inherit'>
             <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { lg: 'none', md: 'none' } }}
-                >
-                    <MenuIcon />
-                </IconButton>
-
-
                 <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
                     <Image
                         src="/images/logo-blue.png"
@@ -40,6 +29,16 @@ export default function DrawerAppBar(props: Props) {
                         height={50}
                     />
                 </Box>
+
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{ display: { lg: 'none', md: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
 
                 <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' } }} spacing={2} direction="row">
                     {navItems && navItems.map((item, index) => {
