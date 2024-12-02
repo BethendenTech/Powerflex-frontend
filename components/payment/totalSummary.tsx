@@ -1,6 +1,6 @@
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
-import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
+import { Box, Table, TableBody, TableCell, TableRow } from "@mui/material";
 
 interface ComponentProps {
     quote: QuoteInterface;
@@ -10,7 +10,6 @@ interface ComponentProps {
 export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
     return (
         <Box sx={{ mb: 2 }}>
-            <Typography variant="h6" fontWeight="bold" textAlign="center">Outright Purchase</Typography>
             <Table
                 size="small"
                 sx={{
