@@ -15,18 +15,34 @@ export default function Summary(props: SummaryObject) {
         <Card
             sx={{
                 backgroundColor: '#F2F2F4',
-                boxShadow: "1px 1px 5px #333"
+                boxShadow: "1px 1px 10px #333",
+                background: "rgba(242, 242, 244, 1)",
             }}
         >
             <CardHeader
                 title="Estimation"
+                titleTypographyProps={{
+                    style: {
+                        fontSize: 20,
+                        fontWeight: "bold",
+                    }
+                }}
+                sx={{
+                    paddingTop: 2,
+                    paddingBottom: 0,
+                    paddingLeft: 2,
+                    paddingRight: 2,
+                }}
                 action={props.showCalculate ? (
-                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => calculateQuote()}>
+                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => calculateQuote()} sx={{
+                        padding: 2,
+                        lineHeight: 0
+                    }}>
                         Calculate
                     </Button>
                 ) : ""}
             />
-            
+
             <CardContent>
 
                 <Table
