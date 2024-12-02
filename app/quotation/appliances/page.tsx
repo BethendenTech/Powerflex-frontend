@@ -140,7 +140,7 @@ export default function Page() {
 
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Summary showCalculate={true}/>
+          <Summary showCalculate={true} />
 
           <Button
             type='submit'
