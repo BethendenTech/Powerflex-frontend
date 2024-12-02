@@ -26,6 +26,7 @@ export default function Summary(props: SummaryObject) {
                     </Button>
                 ) : ""}
             />
+            
             <CardContent>
 
                 <Table

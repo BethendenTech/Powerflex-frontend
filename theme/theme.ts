@@ -30,6 +30,7 @@ const themeOptions: ThemeOptions = {
                     paddingBottom: 10,
                     paddingLeft: 15,
                     paddingRight: 15,
+                    textTransform: "capitalize"
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
