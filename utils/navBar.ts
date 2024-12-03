@@ -1,6 +1,6 @@
 export const drawerWidth = 240;
 
-export const navItems = [
+export const navItems: NavItemsModel[] = [
     {
         title: "Home",
         href: "/",
