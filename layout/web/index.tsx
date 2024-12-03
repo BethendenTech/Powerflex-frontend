@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import DrawerAppBar from "./navbar";
 import { AppDrawer } from "./drawer";
 import { drawerWidth, navItems } from "@/utils/navBar";
+import WebFooter from "./footer";
 
 interface Props {
     children: ReactNode;
@@ -28,6 +29,8 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
 
 
             {children}
+
+            <WebFooter />
 
         </Box>
     );
