@@ -46,8 +46,7 @@ export const navItems = [
     {
         title: "Solar Business Suite",
         href: null,
-        type: "link",
-        icon: "business",
+        type: "button",
         children: []
     },
 ];
