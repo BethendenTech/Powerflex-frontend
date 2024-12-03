@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { BannerGlowingButton } from "../button/style";
+import { BannerGlowingButton, BannerNormalButton } from "../button/style";
 
 const HomeMainVideoSection = () => {
 
@@ -104,7 +104,7 @@ const HomeMainVideoSection = () => {
                         {/* Buttons */}
                         <Grid2 container spacing={2} justifyContent="center" mt={20}>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <BannerGlowingButton
+                                <BannerNormalButton
                                     variant="outlined"
                                     LinkComponent={Link}
                                     href="/quotation/details"
@@ -112,7 +112,7 @@ const HomeMainVideoSection = () => {
                                     fullWidth
                                 >
                                     Explore Products
-                                </BannerGlowingButton>
+                                </BannerNormalButton>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 3 }}>
                                 <BannerGlowingButton
@@ -205,7 +205,7 @@ const HomeMainVideoSection = () => {
                         {/* Buttons */}
                         <Grid2 container spacing={2} justifyContent="center" mt={20}>
                             <Grid2 size={{ xs: 12, md: 3 }}>
-                                <BannerGlowingButton
+                                <BannerNormalButton
                                     variant="outlined"
                                     LinkComponent={Link}
                                     href="/quotation/details"
@@ -213,7 +213,7 @@ const HomeMainVideoSection = () => {
                                     fullWidth
                                 >
                                     Explore Products
-                                </BannerGlowingButton>
+                                </BannerNormalButton>
                             </Grid2>
                             <Grid2 size={{ xs: 12, md: 3 }}>
                                 <BannerGlowingButton
