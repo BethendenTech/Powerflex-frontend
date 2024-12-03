@@ -103,7 +103,7 @@ const HomeMainVideoSection = () => {
 
                         {/* Buttons */}
                         <Grid2 container spacing={2} justifyContent="center" mt={20}>
-                            <Grid2 size={{ xs: 12, md: 3 }}>
+                            <Grid2 size={{ xs: 6, md: 3 }}>
                                 <BannerNormalButton
                                     variant="outlined"
                                     LinkComponent={Link}
@@ -114,7 +114,7 @@ const HomeMainVideoSection = () => {
                                     Explore Products
                                 </BannerNormalButton>
                             </Grid2>
-                            <Grid2 size={{ xs: 12, md: 3 }}>
+                            <Grid2 size={{ xs: 6, md: 3 }}>
                                 <BannerGlowingButton
                                     variant="outlined"
                                     LinkComponent={Link}
@@ -204,7 +204,7 @@ const HomeMainVideoSection = () => {
 
                         {/* Buttons */}
                         <Grid2 container spacing={2} justifyContent="center" mt={20}>
-                            <Grid2 size={{ xs: 12, md: 3 }}>
+                            <Grid2 size={{ xs: 6, md: 3 }}>
                                 <BannerNormalButton
                                     variant="outlined"
                                     LinkComponent={Link}
@@ -215,7 +215,7 @@ const HomeMainVideoSection = () => {
                                     Explore Products
                                 </BannerNormalButton>
                             </Grid2>
-                            <Grid2 size={{ xs: 12, md: 3 }}>
+                            <Grid2 size={{ xs: 6, md: 3 }}>
                                 <BannerGlowingButton
                                     variant="outlined"
                                     LinkComponent={Link}
