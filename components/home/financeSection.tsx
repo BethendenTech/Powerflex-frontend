@@ -21,7 +21,7 @@ const HomeFinanceSection = () => {
             }}
         >
             <Container
-                maxWidth="md"
+                maxWidth="lg"
                 sx={{
                     pt: {
                         xs: 20,
@@ -30,6 +30,11 @@ const HomeFinanceSection = () => {
                     pb: {
                         xs: 10,
                         md: 20,
+                    },
+                    width: {
+                        xs: "100%",
+                        sm: "100%",
+                        md: "100%",
                     },
                 }}
             >
@@ -57,7 +62,7 @@ const HomeFinanceSection = () => {
                     </Grid2>
                 </Grid2>
 
-                <Grid2 mt={20} container spacing={2}>
+                <Grid2 mt={20} container spacing={4}>
                     <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
                         <Card sx={{
                             mt: 2,
@@ -97,7 +102,7 @@ const HomeFinanceSection = () => {
                                         </Typography>
                                     </Box>
                                     <Box textAlign='right'>
-                                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary">
+                                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
                                             Explore Pricing
                                         </Button>
                                     </Box>
@@ -142,7 +147,7 @@ const HomeFinanceSection = () => {
                                     </Box>
 
                                     <Box textAlign='right'>
-                                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" color="secondary">
+                                        <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
                                             Explore financing Options
                                         </Button>
                                     </Box>
