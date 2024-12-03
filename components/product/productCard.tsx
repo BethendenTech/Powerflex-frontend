@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
                 }
             }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <CardContent sx={{ flex: '1 0 auto', p: 0 }}>
+                    <CardContent sx={{ flex: '1 0 auto', p: { lg: 0, md: 0, sm: 2, xs: 2 } }}>
                         <Typography component="div" variant="h6" fontSize={26} color='#191919' fontWeight='bold'>
                             {title}
                         </Typography>
@@ -49,7 +49,7 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
                             {description}
                         </Typography>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'center', pb: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', pb: 1, p: { lg: 0, md: 0, sm: 2, xs: 2 } }}>
                         <Button
                             variant='outlined'
                             sx={{ mt: 3, width: 200, color: '#595959', borderColor: '#595959' }}>
