@@ -15,6 +15,12 @@ const gridItemStyles = {
     alignItems: "center",
     textAlign: "center",
     height: "100%",
+    minHeight: {
+        lg: "150px",
+        md: "100px",
+        sm: "0px",
+        xs: "0px",
+    }
 };
 
 const WebFooter = () => {
@@ -30,7 +36,7 @@ const WebFooter = () => {
                         },
                     }}>
                     <Grid container spacing={1} alignItems="center" textAlign="center">
-                        <Grid size={{ lg: 1.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px" }}>
+                        <Grid size={{ lg: 1.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles }}>
                             <Box
                                 component="img"
                                 src="/images/logo-white.png"
@@ -40,7 +46,7 @@ const WebFooter = () => {
                                 }}
                             />
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -51,7 +57,7 @@ const WebFooter = () => {
                                 Home
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -62,7 +68,7 @@ const WebFooter = () => {
                                 About Us
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -83,7 +89,7 @@ const WebFooter = () => {
                                 Solar Panels Inverters Batteries
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -114,7 +120,7 @@ const WebFooter = () => {
                                 Instalment Plans
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -125,7 +131,7 @@ const WebFooter = () => {
                                 How it works
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -164,7 +170,7 @@ const WebFooter = () => {
                                 Address
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 2, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 2, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 variant="h2"
                                 component="h1"
@@ -175,7 +181,7 @@ const WebFooter = () => {
                                 Solar Business Suite
                             </Typography>
                         </Grid>
-                        <Grid size={{ lg: 2.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, minHeight: "150px", mt: 2.5 }}>
+                        <Grid size={{ lg: 2.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Stack direction="row" spacing={3}>
                                 <FacebookIcon />
                                 <XIcon />
