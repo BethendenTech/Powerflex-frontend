@@ -40,7 +40,7 @@ export const navItems = [
     {
         title: "Solar Business Suite",
         href: null,
-        type: "link",
+        type: "button",
         children: []
     },
 ];

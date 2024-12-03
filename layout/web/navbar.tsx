@@ -44,13 +44,44 @@ export default function DrawerAppBar(props: Props) {
                     {navItems && navItems.map((item, index) => {
                         if (item.type == "button") {
                             return (
-                                <Button variant="contained" key={`nav-link-${index}`} LinkComponent={Link} href={item.href}>
+                                <Button
+                                    variant="contained"
+                                    key={`nav-link-${index}`}
+                                    LinkComponent={Link}
+                                    href={item.href}
+                                    sx={{
+                                        background: `linear-gradient(90deg, #0078DC -0.01%, #BE4BA0 100%)`,
+                                        border: `1px solid #1072F2`,
+                                        backdropFilter: "blur(12px)",
+                                        borderColor: `1px solid rgba(255, 255, 255, 1)`,
+                                        borderRadius: '25px',
+                                        '&:hover': {
+                                            background: `linear-gradient(90deg, #0078DC -0.01%, #BE4BA0 100%)`,
+                                        },
+                                        '&:before': {
+                                            content: '""',
+                                            position: "absolute",
+                                            top: "6px",
+                                            left: "6px",
+                                            right: "6px",
+                                            bottom: "6px",
+                                            border: "1px solid #FFFFFF",
+                                            borderRadius: "inherit",
+                                        },
+                                    }}
+                                >
                                     {item.title}
                                 </Button>
                             )
                         } else {
                             return (
-                                <Button variant="text" key={`nav-link-${index}`} LinkComponent={Link} href={item.href} color='secondary'>
+                                <Button
+                                    variant="text"
+                                    key={`nav-link-${index}`}
+                                    LinkComponent={Link}
+                                    href={item.href}
+                                    sx={{ color: '#555353' }}
+                                >
                                     {item.title}
                                 </Button>
                             )
