@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button, Stack } from '@mui/material';
+import { Button, Menu, MenuItem, Stack } from '@mui/material';
 
 interface Props {
     handleDrawerToggle?: () => void;
@@ -17,6 +17,15 @@ interface Props {
 
 export default function DrawerAppBar(props: Props) {
     const { handleDrawerToggle, navItems } = props;
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <AppBar component="nav" color='inherit'>
@@ -44,34 +53,73 @@ export default function DrawerAppBar(props: Props) {
                     {navItems && navItems.map((item, index) => {
                         if (item.type == "button") {
                             return (
-                                <Button
-                                    variant="contained"
-                                    key={`nav-link-${index}`}
-                                    LinkComponent={Link}
-                                    href={item.href}
-                                    sx={{
-                                        background: `linear-gradient(90deg, #0078DC -0.01%, #BE4BA0 100%)`,
-                                        border: `1px solid #1072F2`,
-                                        backdropFilter: "blur(12px)",
-                                        borderColor: `1px solid rgba(255, 255, 255, 1)`,
-                                        borderRadius: '25px',
-                                        '&:hover': {
-                                            background: `linear-gradient(90deg, #0078DC -0.01%, #BE4BA0 100%)`,
-                                        },
-                                        '&:before': {
-                                            content: '""',
-                                            position: "absolute",
-                                            top: "6px",
-                                            left: "6px",
-                                            right: "6px",
-                                            bottom: "6px",
-                                            border: "1px solid #FFFFFF",
-                                            borderRadius: "inherit",
-                                        },
-                                    }}
-                                >
-                                    {item.title}
-                                </Button>
+                                <React.Fragment key={`nav-link-${index}`}>
+                                    <Button
+                                        variant="contained"
+                                        LinkComponent={Link}
+                                        href={item.href}
+                                        onClick={handleClick}
+                                        sx={{
+                                            fontSize: "12.36px",
+                                            fontWeight: 700,
+                                            textAlign: "left",
+                                            textUnderlinePosition: "from-font",
+                                            textDecorationSkipInk: "none",
+                                            boxShadow: 'none',
+                                            width: 200,
+                                            background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
+                                            backdropFilter: "blur(12px)",
+                                            borderColor: `1px solid rgba(255, 255, 255, 1)`,
+                                            borderRadius: '25px',
+                                            '&:hover': {
+                                                background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
+                                                boxShadow: 'none',
+                                            },
+                                            '&:before': {
+                                                content: '""',
+                                                position: "absolute",
+                                                top: "6px",
+                                                left: "6px",
+                                                right: "6px",
+                                                bottom: "6px",
+                                                border: "2px solid #FFFFFF80",
+                                                borderRadius: "inherit",
+                                            },
+                                        }}
+                                    >
+                                        {item.title}
+                                    </Button>
+                                    <Menu
+                                        id="basic-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'basic-button',
+                                        }}
+                                        sx={{
+                                            width: 200,
+                                            gap: "0px",
+                                            opacity: "0px",
+                                            '& .MuiPaper-root': {
+                                                width: 200,
+                                                boxShadow: 'none',
+                                                borderRadius: "12px"
+                                            },
+                                            '& .MuiList-root': {
+                                                justifyItems: 'center'
+                                            }
+                                        }}
+                                    >
+                                        <MenuItem onClick={handleClose} sx={{
+                                            fontSize: "14px",
+                                            fontWeight: 400,
+                                            textUnderlinePosition: "from-font",
+                                            textDecorationSkipInk: "none",
+                                            color: "#555353",
+                                        }}>Soon to come!</MenuItem>
+                                    </Menu>
+                                </React.Fragment>
                             )
                         } else {
                             return (
@@ -89,6 +137,6 @@ export default function DrawerAppBar(props: Props) {
                     })}
                 </Stack>
             </Toolbar>
-        </AppBar>
+        </AppBar >
     );
 }
