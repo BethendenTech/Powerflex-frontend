@@ -4,13 +4,14 @@ export const BannerGlowingButton = styled(Button)(({ }) => ({
     fontSize: "16px",
     fontWeight: 400,
     color: 'rgba(255, 255, 255, 1)',
-    textTransform: 'capitalize',
+    textTransform: 'inherit',
     position: "relative",
     overflow: "hidden",
     background: `linear-gradient(90deg, rgba(0, 131, 223, 0.8) 0%, rgba(3, 216, 221, 0.8) 100%)`,
-    border: `1px solid #1072F2`,
+    border: `1px solid rgba(255, 255, 255, 1)`,
     backdropFilter: "blur(12px)",
     borderColor: `1px solid rgba(255, 255, 255, 1)`,
+    boxShadow: `0 0 12px #1072F2, 0 0 12px rgba(16, 114, 242, 0.9)`,
     '&:before': {
         content: '""',
         position: "absolute",
@@ -23,9 +24,10 @@ export const BannerGlowingButton = styled(Button)(({ }) => ({
     },
     '&:hover': {
         background: `linear-gradient(90deg, rgba(0, 131, 223, 0.8) 0%, rgba(3, 216, 221, 0.8) 100%)`,
-        border: `1px solid #1072F2`,
+        border: `1px solid rgba(255, 255, 255, 1)`,
         backdropFilter: "blur(12px)",
         borderColor: `1px solid rgba(255, 255, 255, 1)`,
+        boxShadow: `0 0 12px #1072F2, 0 0 12px rgba(16, 114, 242, 0.9)`,
     },
 }));
 

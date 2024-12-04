@@ -69,9 +69,12 @@ const HomeMainSection = () => {
                 </Typography>
             </Box>
 
-            <Box pb={6}>
+            <Box pb={6} sx={{
+                px: {
+                    xs: 2
+                }
+            }}>
                 <Grid2 mt={20} container spacing={2}>
-
                     <Grid2 size={{ xs: 6, md: 3 }} offset={{ md: 3 }}>
                         <BannerNormalButton
                             variant="outlined"
