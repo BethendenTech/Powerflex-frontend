@@ -36,10 +36,15 @@ const HomeMainSection = () => {
                     variant="h2"
                     component="h1"
                     fontWeight="bold"
-                    fontSize={36}
                     color="#fff"
                     sx={{
-                        textShadow: '2px 2px 5px #000',
+                        textShadow: '2px 2px 5px #000000',
+                        fontSize: "56.81px",
+                        fontWeight: 700,
+                        lineHeight: "68.17px",
+                        textAlign: "center",
+                        textUnderlinePosition: "from-font",
+                        textDecorationSkipInk: "none",
                     }}
                 >
                     Powering your world
@@ -49,10 +54,15 @@ const HomeMainSection = () => {
                     variant="h2"
                     component="h2"
                     fontWeight="bold"
-                    fontSize={33}
                     color="#fff"
                     sx={{
-                        textShadow: '2px 2px 5px #000',
+                        textShadow: '2px 2px 5px #000000',
+                        fontSize: "42.67px",
+                        fontWeight: 700,
+                        lineHeight: "51.2px",
+                        textAlign: "center",
+                        textUnderlinePosition: "from-font",
+                        textDecorationSkipInk: "none",
                     }}
                 >
                     with clean energy solutions
@@ -62,16 +72,25 @@ const HomeMainSection = () => {
                     color="#fff"
                     mt={4}
                     sx={{
-                        textShadow: '1px 1px 5px #000',
+                        textShadow: '2px 2px 5px #000',
+                        fontSize: "25.25px",
+                        fontWeight: 400,
+                        lineHeight: "30.3px",
+                        textAlign: "center",
+                        textUnderlinePosition: "from-font",
+                        textDecorationSkipInk: "none",
                     }}
                 >
                     Affordable, reliable and tailored solar solutions for every home and business
                 </Typography>
             </Box>
 
-            <Box pb={6}>
+            <Box pb={6} sx={{
+                px: {
+                    xs: 2
+                }
+            }}>
                 <Grid2 mt={20} container spacing={2}>
-
                     <Grid2 size={{ xs: 6, md: 3 }} offset={{ md: 3 }}>
                         <BannerNormalButton
                             variant="outlined"

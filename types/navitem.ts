@@ -1,7 +1,7 @@
 interface NavItemsModel {
     title: string;
-    href: string;
-    type: string;
+    href?: string | null;
+    type?: string;
     icon?: string;
-    children: NavItemsModel[];
+    children?: NavItemsModel[];
 }
