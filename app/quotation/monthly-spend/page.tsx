@@ -41,8 +41,6 @@ export default function Page() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data)
-
         formData["quote_number"] = data.quote.quote_number
         actions.updateAction(formData);
         router.push(`/quotation/breakdown`);
