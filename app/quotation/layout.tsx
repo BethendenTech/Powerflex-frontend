@@ -15,7 +15,7 @@ export default function RootLayout({
     return (
         <StateMachineProvider>
             <QuotationProvider>
-                <Box sx={{ backgroundColor: "#F1F1F1" }}>
+                <Box sx={{ backgroundColor: "#F1F1F1" }} pb={4}>
                     <Container>
                         <Box mt={8} >
                             <Grid2 container>
