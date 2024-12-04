@@ -2,6 +2,8 @@ import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
 import { Button, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import React from "react";
 import useQuotation from "@/hooks/quotation";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "@/little-state/action";
 
 
 interface SummaryObject {
@@ -10,6 +12,20 @@ interface SummaryObject {
 
 export default function Summary(props: SummaryObject) {
     const { quote, calculateQuote } = useQuotation()
+    const { actions, state } = useStateMachine({ updateAction });
+
+    const handleCalculate = () => {
+        const filter = {
+            electricity_spend: state.electricity_spend,
+            price_band: state.price_band,
+            solar_load: state.solar_load,
+            battery_autonomy_hours_only: state.battery_autonomy_hours_only,
+            battery_autonomy_days: state.battery_autonomy_days,
+            battery_autonomy_hours: state.battery_autonomy_hours,
+            breakdowns: state.breakdowns,
+        }
+        calculateQuote(filter)
+    }
 
     return (
         <Card
@@ -34,7 +50,7 @@ export default function Summary(props: SummaryObject) {
                     paddingRight: 2,
                 }}
                 action={props.showCalculate ? (
-                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => calculateQuote()} sx={{
+                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => handleCalculate()} sx={{
                         padding: 2,
                         lineHeight: 0
                     }}>
