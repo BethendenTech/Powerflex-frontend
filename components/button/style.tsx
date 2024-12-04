@@ -46,3 +46,31 @@ export const BannerNormalButton = styled(Button)(({ }) => ({
         borderColor: `1px solid rgba(255, 255, 255, 1)`,
     },
 }));
+
+export const NavbarButton = styled(Button)(({ }) => ({
+    fontSize: "12.36px",
+    fontWeight: 700,
+    textAlign: "left",
+    textUnderlinePosition: "from-font",
+    textDecorationSkipInk: "none",
+    boxShadow: 'none',
+    width: 160,
+    background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
+    backdropFilter: "blur(12px)",
+    borderColor: `1px solid rgba(255, 255, 255, 1)`,
+    borderRadius: '25px',
+    '&:hover': {
+        background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
+        boxShadow: 'none',
+    },
+    '&:before': {
+        content: '""',
+        position: "absolute",
+        top: "6px",
+        left: "6px",
+        right: "6px",
+        bottom: "6px",
+        border: "2px solid #FFFFFF80",
+        borderRadius: "inherit",
+    },
+}));
