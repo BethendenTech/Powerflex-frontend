@@ -46,7 +46,8 @@ export default function Page() {
 
 
       if (response.ok) {
-        // alert('User details saved successfully!');
+        const data = await response.json();
+        actions.updateAction({ "user_id": data?.user?.id });
         router.push(`/quotation/monthly-spend`);
       } else {
         console.error('Failed to save user details');

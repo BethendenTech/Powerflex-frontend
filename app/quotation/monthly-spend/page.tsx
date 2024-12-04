@@ -30,9 +30,24 @@ export default function Page() {
 
   const onSubmit = async (formData: any) => {
     try {
-      console.log("formData", formData)
-      actions.updateAction(formData);
-      router.push(`/quotation/breakdown`);
+      formData['user_id'] = state.user_id
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-1/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("data", data)
+
+        formData["quote_number"] = data.quote.quote_number
+        actions.updateAction(formData);
+        router.push(`/quotation/breakdown`);
+      }
+
     } catch (error) {
       console.error('Error:', error);
     }
