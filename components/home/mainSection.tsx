@@ -76,7 +76,7 @@ const HomeMainSection = () => {
                         <BannerNormalButton
                             variant="outlined"
                             LinkComponent={Link}
-                            href="/quotation/details"
+                            href="/#products"
                             color="secondary"
                             fullWidth
                         >
