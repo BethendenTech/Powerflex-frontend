@@ -67,15 +67,16 @@ const HomeMainSection = () => {
                 >
                     Affordable, reliable and tailored solar solutions for every home and business
                 </Typography>
+            </Box>
 
-
+            <Box pb={6}>
                 <Grid2 mt={20} container spacing={2}>
 
                     <Grid2 size={{ xs: 6, md: 3 }} offset={{ md: 3 }}>
                         <BannerNormalButton
                             variant="outlined"
                             LinkComponent={Link}
-                            href="/quotation/details"
+                            href="/#products"
                             color="secondary"
                             fullWidth
                         >
@@ -94,7 +95,6 @@ const HomeMainSection = () => {
                         </BannerGlowingButton>
                     </Grid2>
                 </Grid2>
-
             </Box>
         </Box >
     )
