@@ -6,16 +6,14 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormContr
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import TimeDropdown from './TimeDropdown';
 interface BreakdownProps {
-    watch: any,
+    breakdowns: any,
     register: any,
     setValue: any,
 }
 
 
-export default function Breakdown({ watch, register, setValue }: BreakdownProps) {
+export default function Breakdown({ breakdowns, register, setValue }: BreakdownProps) {
     const [applianceData, setApplianceData] = useState<any>([]);
-    const breakdowns = watch("breakdowns");
-    console.log("watchbreakdowns", breakdowns)
 
     useEffect(() => {
         getAppliances();

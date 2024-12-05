@@ -9,7 +9,7 @@ import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/materia
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Page() {
@@ -66,6 +66,11 @@ export default function Page() {
     router.push(`/quotation/breakdown`);
   }
 
+  const breakdowns = watch("breakdowns");
+  useEffect(() => {
+    console.log("Breakdowns changed:", breakdowns);
+    // Trigger any additional logic if needed when breakdowns change
+  }, [breakdowns]); // Add `breakdowns` as a dependency
   return (
     <Box>
       <Button
@@ -109,7 +114,7 @@ export default function Page() {
           <CardContent>
 
             {isChecked && (
-              <Breakdown register={register} watch={watch} setValue={setValue} />
+              <Breakdown register={register} breakdowns={breakdowns} setValue={setValue} />
             )}
 
           </CardContent>
