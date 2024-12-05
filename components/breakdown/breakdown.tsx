@@ -51,7 +51,7 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
             <TableBody>
                 <TableRow>
                     <TableCell>
-                        {breakdowns[index]?.id}
+                        
                         <FormControlLabel
                             control={
                                 <Checkbox
