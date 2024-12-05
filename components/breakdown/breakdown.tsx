@@ -180,7 +180,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                     >
                         <TableHead>
                             <TableRow>
-                                <TableCell>First Column</TableCell>
+                                <TableCell></TableCell>
                                 <TableCell>Quantity</TableCell>
                                 <TableCell>Hours</TableCell>
                             </TableRow>
@@ -216,7 +216,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                             >
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>First Column</TableCell>
+                                        <TableCell></TableCell>
                                         <TableCell>Quantity</TableCell>
                                         <TableCell>Hours</TableCell>
                                     </TableRow>
