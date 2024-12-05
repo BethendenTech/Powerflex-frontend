@@ -14,7 +14,7 @@ declare module 'little-state-machine' {
         battery_autonomy_hours_only: number;
         battery_autonomy_days: number;
         battery_autonomy_hours: number;
-        breakdowns: Record<string, any>;
+        breakdowns: Array;
         payment_method: string;
         name_card: string;
         card_number: string;
