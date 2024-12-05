@@ -9,7 +9,7 @@ import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/materia
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Page() {
@@ -19,11 +19,6 @@ export default function Page() {
 
   const { handleSubmit, setValue, watch, register } = useForm({
     defaultValues: {
-      additional_info: false,
-      solar_load: 50,
-      battery_autonomy_hours_only: 12,
-      battery_autonomy_days: 0,
-      battery_autonomy_hours: 0,
       breakdowns: [],
     }
   });
@@ -48,11 +43,6 @@ export default function Page() {
 
   React.useEffect(() => {
     if (state) {
-      setValue("additional_info", state.additional_info || false);
-      setValue("solar_load", state.solar_load || 50);
-      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
-      setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
-      setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
       setValue("breakdowns", state.breakdowns || []);
 
       if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
@@ -67,10 +57,7 @@ export default function Page() {
   }
 
   const breakdowns = watch("breakdowns");
-  useEffect(() => {
-    console.log("Breakdowns changed:", breakdowns);
-    // Trigger any additional logic if needed when breakdowns change
-  }, [breakdowns]); // Add `breakdowns` as a dependency
+
   return (
     <Box>
       <Button

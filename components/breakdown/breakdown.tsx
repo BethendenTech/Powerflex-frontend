@@ -44,26 +44,26 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
         appliances: RowObject[];
     }
 
-    const renderRow = (props: RowObject, index: any) => {
+    const renderRow = (props: RowObject) => {
         const { id, name } = props;
 
         return (
             <TableBody>
                 <TableRow>
                     <TableCell>
-                        
+
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    // {...register(`breakdowns[${index}].id`)}
-                                    checked={breakdowns[index]?.id}
+                                    {...register(`breakdowns[${id}].id`)}
+                                    checked={breakdowns[id]?.id}
                                     onChange={(e) => {
                                         if (e.target.checked) {
-                                            setValue(`breakdowns[${index}].id`, id);
+                                            setValue(`breakdowns[${id}].id`, id);
                                         } else {
-                                            setValue(`breakdowns[${index}].id`, false);
-                                            setValue(`breakdowns[${index}].quantity`, "");
-                                            setValue(`breakdowns[${index}].usage`, "");
+                                            setValue(`breakdowns[${id}].id`, false);
+                                            setValue(`breakdowns[${id}].quantity`, "");
+                                            setValue(`breakdowns[${id}].usage`, "");
                                         }
                                     }}
                                 />
@@ -73,12 +73,12 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                     </TableCell>
                     <TableCell>
                         <Select
-                            // {...register(`breakdowns[${index}].quantity`)}
-                            value={breakdowns[index]?.quantity}
+                            {...register(`breakdowns[${id}].quantity`)}
+                            value={breakdowns[id]?.quantity}
                             onChange={(e) => {
-                                setValue(`breakdowns[${index}].quantity`, e.target.value);
+                                setValue(`breakdowns[${id}].quantity`, e.target.value);
                             }}
-                            disabled={!breakdowns[index]?.id}
+                            disabled={!breakdowns[id]?.id}
                             fullWidth
                             size='small'
                             IconComponent={UnfoldMoreIcon}
@@ -97,7 +97,7 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                             }}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
-                                <MenuItem key={`${index}-${i}`} value={i}>
+                                <MenuItem key={`quantity-${id}-${i}`} value={i}>
                                     {i}
                                 </MenuItem>
                             ))}
@@ -107,12 +107,12 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                         <TimeDropdown
                             label=""
                             name=''
-                            disabled={!breakdowns[index]?.id}
-                            // {...register(`breakdowns[${index}].usage`)}
+                            disabled={!breakdowns[id]?.id}
+                            {...register(`breakdowns[${id}].usage`)}
                             onChange={(e) => {
-                                setValue(`breakdowns[${index}].usage`, e.target.value);
+                                setValue(`breakdowns[${id}].usage`, e.target.value);
                             }}
-                            value={breakdowns[index]?.usage}
+                            value={breakdowns[id]?.usage}
                         />
                     </TableCell>
 
@@ -167,7 +167,7 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                         </TableHead>
 
                         {appliances && appliances.map((row: any, index: any) => (
-                            renderRow(row, index)
+                            renderRow(row)
                         ))}
 
                     </Table>
@@ -178,34 +178,32 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
 
     return (
         <Box>
-            <>
-                {applianceData && applianceData.map((row: any, index: any) => {
-                    if (row.type === "accordion") {
-                        return renderAccordionWithRows(row);
-                    } else {
-                        return (
-                            <Table
-                                size="small"
-                                sx={{
-                                    border: 'none', // Removes table border
-                                    '& .MuiTableCell-root': {
-                                        borderBottom: 'none', // Removes cell borders
-                                    },
-                                }}
-                            >
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                        <TableCell>Quantity</TableCell>
-                                        <TableCell>Hours</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                {renderRow(row, index)}
-                            </Table>
-                        );
-                    }
-                })}
-            </>
+            {applianceData && applianceData.map((row: any, index: any) => {
+                if (row.type === "accordion") {
+                    return renderAccordionWithRows(row);
+                } else {
+                    return (
+                        <Table
+                            size="small"
+                            sx={{
+                                border: 'none', // Removes table border
+                                '& .MuiTableCell-root': {
+                                    borderBottom: 'none', // Removes cell borders
+                                },
+                            }}
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell></TableCell>
+                                    <TableCell>Quantity</TableCell>
+                                    <TableCell>Hours</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            {renderRow(row)}
+                        </Table>
+                    );
+                }
+            })}
         </Box>
     );
 }
