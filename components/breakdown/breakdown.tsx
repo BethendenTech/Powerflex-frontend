@@ -9,10 +9,11 @@ interface BreakdownProps {
     register: any,
     watch: any,
     errors: any,
+    setValue: any,
 }
 
 
-export default function Breakdown({ register, watch, errors }: BreakdownProps) {
+export default function Breakdown({ register, watch, errors, setValue }: BreakdownProps) {
 
     const [applianceData, setApplianceData] = useState<any>([]);
 
@@ -48,6 +49,14 @@ export default function Breakdown({ register, watch, errors }: BreakdownProps) {
     const renderRow = (props: RowObject) => {
         const { id, name } = props;
 
+        const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            const isChecked = event.target.checked;
+            if (!isChecked) {
+                setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
+                setValue(`breakdowns.${id}.usage`, "");  // Reset usage
+            }
+        };
+
         return (
             <TableBody>
                 <TableRow>
@@ -56,8 +65,9 @@ export default function Breakdown({ register, watch, errors }: BreakdownProps) {
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    {...register(`breakdowns[${id}].id`)}
+                                    {...register(`breakdowns.${id}.id`)}
                                     checked={watch(`breakdowns.${id}.id`) || false}
+                                    onChange={handleCheckboxChange}
                                 />
                             }
                             label={name}
@@ -65,7 +75,7 @@ export default function Breakdown({ register, watch, errors }: BreakdownProps) {
                     </TableCell>
                     <TableCell>
                         <Select
-                            {...register(`breakdowns[${id}].quantity`)}
+                            {...register(`breakdowns.${id}.quantity`)}
                             value={watch(`breakdowns.${id}.quantity`)}
                             disabled={!watch(`breakdowns.${id}.id`)}
                             fullWidth
@@ -97,7 +107,7 @@ export default function Breakdown({ register, watch, errors }: BreakdownProps) {
                             label=""
                             name=''
                             disabled={!watch(`breakdowns.${id}.id`)}
-                            {...register(`breakdowns[${id}].usage`)}
+                            {...register(`breakdowns.${id}.usage`)}
                             value={watch(`breakdowns.${id}.usage`)}
                         />
                     </TableCell>

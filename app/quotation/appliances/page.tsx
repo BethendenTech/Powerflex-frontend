@@ -108,7 +108,7 @@ export default function Page() {
           <CardContent>
 
             {isChecked && (
-              <Breakdown register={register} watch={watch} errors={errors} />
+              <Breakdown register={register} watch={watch} errors={errors} setValue={setValue}/>
             )}
 
           </CardContent>
