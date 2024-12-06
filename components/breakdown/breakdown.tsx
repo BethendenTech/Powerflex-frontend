@@ -52,8 +52,11 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
         const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             const isChecked = event.target.checked;
             if (!isChecked) {
+                setValue(`breakdowns.${id}.id`, false);
                 setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
                 setValue(`breakdowns.${id}.usage`, "");  // Reset usage
+            }else{
+                setValue(`breakdowns.${id}.id`, true);
             }
         };
 
