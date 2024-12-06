@@ -5,14 +5,22 @@ import Image from "next/image";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import TimeDropdown from './TimeDropdown';
+import { useFieldArray } from 'react-hook-form';
 interface BreakdownProps {
-    breakdowns: any,
+    control: any,
     register: any,
-    setValue: any,
+    watch: any,
+    errors: any,
 }
 
 
-export default function Breakdown({ breakdowns, register, setValue }: BreakdownProps) {
+export default function Breakdown({ register, control, watch, errors }: BreakdownProps) {
+
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "breakdowns" // Name of the field array
+    });
+
     const [applianceData, setApplianceData] = useState<any>([]);
 
     useEffect(() => {
@@ -56,16 +64,7 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                             control={
                                 <Checkbox
                                     {...register(`breakdowns[${id}].id`)}
-                                    checked={breakdowns[id]?.id}
-                                    onChange={(e) => {
-                                        if (e.target.checked) {
-                                            setValue(`breakdowns[${id}].id`, id);
-                                        } else {
-                                            setValue(`breakdowns[${id}].id`, false);
-                                            setValue(`breakdowns[${id}].quantity`, "");
-                                            setValue(`breakdowns[${id}].usage`, "");
-                                        }
-                                    }}
+                                    checked={watch(`breakdowns.${id}.id`) || false}
                                 />
                             }
                             label={name}
@@ -74,11 +73,8 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                     <TableCell>
                         <Select
                             {...register(`breakdowns[${id}].quantity`)}
-                            value={breakdowns[id]?.quantity}
-                            onChange={(e) => {
-                                setValue(`breakdowns[${id}].quantity`, e.target.value);
-                            }}
-                            disabled={!breakdowns[id]?.id}
+                            value={watch(`breakdowns.${id}.quantity`)}
+                            disabled={!watch(`breakdowns.${id}.id`)}
                             fullWidth
                             size='small'
                             IconComponent={UnfoldMoreIcon}
@@ -107,12 +103,9 @@ export default function Breakdown({ breakdowns, register, setValue }: BreakdownP
                         <TimeDropdown
                             label=""
                             name=''
-                            disabled={!breakdowns[id]?.id}
+                            disabled={!watch(`breakdowns.${id}.id`)}
                             {...register(`breakdowns[${id}].usage`)}
-                            onChange={(e) => {
-                                setValue(`breakdowns[${id}].usage`, e.target.value);
-                            }}
-                            value={breakdowns[id]?.usage}
+                            value={watch(`breakdowns.${id}.usage`)}
                         />
                     </TableCell>
 
