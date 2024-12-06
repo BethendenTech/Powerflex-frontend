@@ -5,21 +5,14 @@ import Image from "next/image";
 import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import TimeDropdown from './TimeDropdown';
-import { useFieldArray } from 'react-hook-form';
 interface BreakdownProps {
-    control: any,
     register: any,
     watch: any,
     errors: any,
 }
 
 
-export default function Breakdown({ register, control, watch, errors }: BreakdownProps) {
-
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: "breakdowns" // Name of the field array
-    });
+export default function Breakdown({ register, watch, errors }: BreakdownProps) {
 
     const [applianceData, setApplianceData] = useState<any>([]);
 

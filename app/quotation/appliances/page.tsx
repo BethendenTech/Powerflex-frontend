@@ -10,7 +10,7 @@ import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 export default function Page() {
 
@@ -23,7 +23,7 @@ export default function Page() {
     control,
     watch,
     register,
-    formState: { defaultValues, errors, isValid, isDirty },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       breakdowns: [],
@@ -64,7 +64,6 @@ export default function Page() {
   }
 
 
-  const breakdowns = useWatch({ control, name: 'breakdowns' });
 
   return (
     <Box>
@@ -109,7 +108,7 @@ export default function Page() {
           <CardContent>
 
             {isChecked && (
-              <Breakdown register={register} watch={watch} errors={errors} control={control} />
+              <Breakdown register={register} watch={watch} errors={errors} />
             )}
 
           </CardContent>
