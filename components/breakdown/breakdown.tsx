@@ -1,111 +1,87 @@
 "use client";
 
-import { ChangeEvent, useEffect, useState } from 'react';
-import Image from "next/image";
-import { allElements } from '@/utils/formData';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import Image from "next/image";
+import { useEffect, useState } from 'react';
 import TimeDropdown from './TimeDropdown';
 interface BreakdownProps {
-    breakdowns: any,
-    onBreakdownChange: (sata: any) => void;
+    register: any,
+    watch: any,
+    errors: any,
+    setValue: any,
 }
 
+export default function Breakdown({ register, watch, errors, setValue }: BreakdownProps) {
 
-export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownProps) {
+    const [applianceData, setApplianceData] = useState<any>([]);
 
-    const [formData, setFormData] = useState<any>({});
+    useEffect(() => {
+        getAppliances();
+    }, [])
 
-    const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.checked) {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.checked,
-                [e.target.name + '_quantity']: 0,
-                [e.target.name + '_usage']: 0,
-            });
-        } else {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.checked,
-            });
+    const getAppliances = async () => {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/categories/`);
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log("data", data)
+            setApplianceData(data)
         }
-    };
-
-    const handleSelectChange = (e: any) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    useEffect(() => {
-        onBreakdownChange(formData);
-    }, [formData]);
-
-    useEffect(() => {
-        // Initialize formData with breakdown values or default empty values
-        const initialFormData = breakdowns || {};
-
-        allElements.forEach((element) => {
-            if (element.items) {
-                element.items.forEach((item) => {
-                    if (!(item.name in initialFormData)) {
-                        initialFormData[item.name] = false; // for checkbox
-                        initialFormData[`${item.name}_quantity`] = 0; // for quantity
-                        initialFormData[`${item.name}_usage`] = 0; // for usage
-                    }
-                });
-            }
-        });
-
-        setFormData(initialFormData);
-    }, [breakdowns]);
+    }
 
     interface RowObject {
+        id: any;
         name: string;
-        displayName: string;
         value: string;
         power_w: number;
         hours_per_day: number;
         quantity: number;
     }
 
-    interface AccordianObject {
+    interface AccordionObject {
+        id: number;
         name: string;
-        displayName: string;
-        items: RowObject[];
+        appliances: RowObject[];
     }
 
     const renderRow = (props: RowObject) => {
+        const { id, name } = props;
 
-        const { name, displayName } = props;
-        console.log(formData[name], displayName)
+        const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            const isChecked = event.target.checked;
+            if (!isChecked) {
+                setValue(`breakdowns.${id}.id`, false);
+                setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
+                setValue(`breakdowns.${id}.usage`, "");  // Reset usage
+            } else {
+                setValue(`breakdowns.${id}.id`, true);
+            }
+        };
+
         return (
             <TableBody>
                 <TableRow>
                     <TableCell>
+
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    id={name}
-                                    name={name}
-                                    checked={Boolean(formData[name])}
-                                    onChange={(event) => handleCheckboxChange(event)}
+                                    {...register(`breakdowns.${id}.id`)}
+                                    checked={watch(`breakdowns.${id}.id`) || false}
+                                    onChange={handleCheckboxChange}
                                 />
                             }
-                            label={displayName}
+                            label={name}
                         />
                     </TableCell>
                     <TableCell>
-
                         <Select
-                            name={`${name}_quantity`}
-                            value={formData[`${name}_quantity`] || 0}
-                            onChange={handleSelectChange}
+                            {...register(`breakdowns.${id}.quantity`)}
+                            value={watch(`breakdowns.${id}.quantity`)}
+                            disabled={!watch(`breakdowns.${id}.id`)}
                             fullWidth
                             size='small'
-                            disabled={!formData[name]}
                             IconComponent={UnfoldMoreIcon}
                             sx={{
                                 borderRadius: 12,
@@ -122,7 +98,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                             }}
                         >
                             {Array.from({ length: 51 }, (_, i) => (
-                                <MenuItem key={`${name}-${i}`} value={i}>
+                                <MenuItem key={`quantity-${id}-${i}`} value={i}>
                                     {i}
                                 </MenuItem>
                             ))}
@@ -131,10 +107,10 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                     <TableCell>
                         <TimeDropdown
                             label=""
-                            name={`${name}_usage`}
-                            value={formData[`${name}_usage`] || 0}
-                            onChange={handleSelectChange}
-                            disabled={!formData[name]}
+                            name=''
+                            disabled={!watch(`breakdowns.${id}.id`)}
+                            {...register(`breakdowns.${id}.usage`)}
+                            value={watch(`breakdowns.${id}.usage`)}
                         />
                     </TableCell>
 
@@ -143,7 +119,9 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
         );
     }
 
-    const renderAccordianWithRows = (props: AccordianObject) => {
+    const renderAccordionWithRows = (props: AccordionObject) => {
+        const { appliances, name } = props
+
         return (
             <Accordion>
                 <AccordionSummary
@@ -163,7 +141,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                     }}
                 >
                     <Typography sx={{ fontWeight: 600, color: 'black' }}>
-                        {props.name}
+                        {name}
                     </Typography>
                 </AccordionSummary>
 
@@ -186,7 +164,7 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
                             </TableRow>
                         </TableHead>
 
-                        {props.items.map((row: any) => (
+                        {appliances && appliances.map((row: any) => (
                             renderRow(row)
                         ))}
 
@@ -198,35 +176,32 @@ export default function Breakdown({ onBreakdownChange, breakdowns }: BreakdownPr
 
     return (
         <Box>
-            <>
-                {allElements.map((row: any) => {
-                    if (row.type === "accordian") {
-                        return renderAccordianWithRows(row);
-                    } else {
-                        return (
-                            <Table
-
-                                size="small"
-                                sx={{
-                                    border: 'none', // Removes table border
-                                    '& .MuiTableCell-root': {
-                                        borderBottom: 'none', // Removes cell borders
-                                    },
-                                }}
-                            >
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                        <TableCell>Quantity</TableCell>
-                                        <TableCell>Hours</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                {renderRow(row)}
-                            </Table>
-                        );
-                    }
-                })}
-            </>
+            {applianceData && applianceData.map((row: any) => {
+                if (row.type === "accordion") {
+                    return renderAccordionWithRows(row);
+                } else {
+                    return (
+                        <Table
+                            size="small"
+                            sx={{
+                                border: 'none', // Removes table border
+                                '& .MuiTableCell-root': {
+                                    borderBottom: 'none', // Removes cell borders
+                                },
+                            }}
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell></TableCell>
+                                    <TableCell>Quantity</TableCell>
+                                    <TableCell>Hours</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            {renderRow(row)}
+                        </Table>
+                    );
+                }
+            })}
         </Box>
     );
 }
