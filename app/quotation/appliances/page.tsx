@@ -20,7 +20,6 @@ export default function Page() {
   const {
     handleSubmit,
     setValue,
-    control,
     watch,
     register,
     formState: { errors },
@@ -108,7 +107,7 @@ export default function Page() {
           <CardContent>
 
             {isChecked && (
-              <Breakdown register={register} watch={watch} errors={errors} setValue={setValue}/>
+              <Breakdown register={register} watch={watch} errors={errors} setValue={setValue} />
             )}
 
           </CardContent>

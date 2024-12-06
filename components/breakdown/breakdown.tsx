@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import Image from "next/image";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import Image from "next/image";
+import { useEffect, useState } from 'react';
 import TimeDropdown from './TimeDropdown';
 interface BreakdownProps {
     register: any,
@@ -11,7 +11,6 @@ interface BreakdownProps {
     errors: any,
     setValue: any,
 }
-
 
 export default function Breakdown({ register, watch, errors, setValue }: BreakdownProps) {
 
@@ -55,7 +54,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                 setValue(`breakdowns.${id}.id`, false);
                 setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
                 setValue(`breakdowns.${id}.usage`, "");  // Reset usage
-            }else{
+            } else {
                 setValue(`breakdowns.${id}.id`, true);
             }
         };
@@ -165,7 +164,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                             </TableRow>
                         </TableHead>
 
-                        {appliances && appliances.map((row: any, index: any) => (
+                        {appliances && appliances.map((row: any) => (
                             renderRow(row)
                         ))}
 
@@ -177,7 +176,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
 
     return (
         <Box>
-            {applianceData && applianceData.map((row: any, index: any) => {
+            {applianceData && applianceData.map((row: any) => {
                 if (row.type === "accordion") {
                     return renderAccordionWithRows(row);
                 } else {
