@@ -21,6 +21,9 @@ export interface QuotationProduct {
     number_of_panels: any;
     number_of_inverters: any;
     number_of_batteries: any;
+    best_panel: any;
+    best_inverter: any;
+    best_battery: any;
 }
 export interface QuoteInterface {
     total_cost_naira: number;
