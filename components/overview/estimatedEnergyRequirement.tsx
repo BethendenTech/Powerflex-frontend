@@ -31,15 +31,15 @@ export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
                 <TableBody>
                     <TableRow>
                         <TableCell align="left">Number of solar panels</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote.number_of_panels}</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell align="left">Number of inverters</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote.number_of_inverters}</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell align="left">Number of batteries</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote.number_of_batteries}</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell align="left">Total Load Kwh</TableCell>
