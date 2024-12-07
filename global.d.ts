@@ -23,7 +23,7 @@ declare module 'little-state-machine' {
         postcode: string;
         total_cost: number;
         business_role: string;
-        finance: boolean;
+        is_finance: boolean;
         address_line_1: string;
         address_line_2: string;
     }

@@ -29,6 +29,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             solar_load: data.solar_load,
             battery_autonomy_hours: Number(data.battery_autonomy_hours_only) + Number(data.battery_autonomy_days * 24),
             breakdowns: data.breakdowns,
+            is_finance: data.is_finance,
         };
 
         setIsLoading(true);
@@ -67,6 +68,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
         state.battery_autonomy_hours_only,
         state.battery_autonomy_days,
         state.breakdowns,
+        state.is_finance,
     ]);
 
     return (

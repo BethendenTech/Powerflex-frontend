@@ -34,7 +34,7 @@ export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
 
                     <TableRow>
                         <TableCell align="left" sx={{ fontWeight: "bold" }}>Due Today</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{isFinance ? renderNaira(quote.total_cost_with_profit_financing) : renderNaira(quote.total_cost_with_profit_outright)}</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{renderNaira(quote.total_cost_with_profit)}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
