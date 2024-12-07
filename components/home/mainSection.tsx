@@ -5,7 +5,6 @@ import { BannerGlowingButton, BannerNormalButton } from "../button/style";
 const backgroundImage = "/images/home/bg-banner.svg";
 
 const HomeMainSection = () => {
-
     return (
         <Box
             sx={{
@@ -17,18 +16,21 @@ const HomeMainSection = () => {
                 minHeight: '100vh',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: {
+                    xs: '10px',
+                    md: '30px',
+                },
             }}
         >
-            <Box textAlign="center"
+            {/* Text Section */}
+            <Box
+                textAlign="center"
                 sx={{
                     pt: {
                         xs: 20,
                         md: 20
-                    },
-                    pb: {
-                        xs: 10,
-                        md: 20,
                     },
                 }}
             >
@@ -38,13 +40,20 @@ const HomeMainSection = () => {
                     fontWeight="bold"
                     color="#fff"
                     sx={{
-                        textShadow: '2px 2px 5px #000000',
-                        fontSize: "56.81px",
+                        textShadow: {
+                            md: '2px 2px 5px #000000',
+                            xs: 'none'
+                        },
+                        fontSize: {
+                            md: "56.81px",
+                            xs: "38.72px",
+                        },
                         fontWeight: 700,
-                        lineHeight: "68.17px",
+                        lineHeight: {
+                            md: "68.17px",
+                            xs: "46.47px",
+                        },
                         textAlign: "center",
-                        textUnderlinePosition: "from-font",
-                        textDecorationSkipInk: "none",
                     }}
                 >
                     Powering your world
@@ -56,13 +65,20 @@ const HomeMainSection = () => {
                     fontWeight="bold"
                     color="#fff"
                     sx={{
-                        textShadow: '2px 2px 5px #000000',
-                        fontSize: "42.67px",
+                        textShadow: {
+                            md: '2px 2px 5px #000000',
+                            xs: 'none'
+                        },
+                        fontSize: {
+                            md: "42.67px",
+                            xs: "29.09px",
+                        },
                         fontWeight: 700,
-                        lineHeight: "51.2px",
+                        lineHeight: {
+                            md: "51.2px",
+                            xs: "34.9px",
+                        },
                         textAlign: "center",
-                        textUnderlinePosition: "from-font",
-                        textDecorationSkipInk: "none",
                     }}
                 >
                     with clean energy solutions
@@ -72,26 +88,39 @@ const HomeMainSection = () => {
                     color="#fff"
                     mt={4}
                     sx={{
-                        textShadow: '2px 2px 5px #000',
-                        fontSize: "25.25px",
+                        textShadow: {
+                            md: '2px 2px 5px #000000',
+                            xs: 'none'
+                        },
+                        fontSize: {
+                            md: "25.25px",
+                            xs: "17.21px"
+                        },
                         fontWeight: 400,
-                        lineHeight: "30.3px",
+                        lineHeight: {
+                            md: "30.3px",
+                            xs: "20.65px"
+                        },
                         textAlign: "center",
-                        textUnderlinePosition: "from-font",
-                        textDecorationSkipInk: "none",
                     }}
                 >
                     Affordable, reliable and tailored solar solutions for every home and business
                 </Typography>
             </Box>
 
-            <Box pb={6} sx={{
-                px: {
-                    xs: 2
-                }
-            }}>
-                <Grid2 mt={20} container spacing={2}>
-                    <Grid2 size={{ xs: 6, md: 3 }} offset={{ md: 3 }}>
+            {/* Button Section */}
+            <Box
+                sx={{
+                    width: '100%',
+                    maxWidth: '600px',
+                    pb: {
+                        xs: 3,
+                        md: 2,
+                    },
+                }}
+            >
+                <Grid2 container spacing={2}>
+                    <Grid2 size={{ xs: 6, md: 6 }}>
                         <BannerNormalButton
                             variant="outlined"
                             LinkComponent={Link}
@@ -102,7 +131,7 @@ const HomeMainSection = () => {
                             Explore Products
                         </BannerNormalButton>
                     </Grid2>
-                    <Grid2 size={{ xs: 6, md: 3 }}>
+                    <Grid2 size={{ xs: 6, md: 6 }}>
                         <BannerGlowingButton
                             variant="outlined"
                             LinkComponent={Link}
@@ -115,8 +144,8 @@ const HomeMainSection = () => {
                     </Grid2>
                 </Grid2>
             </Box>
-        </Box >
-    )
-}
+        </Box>
+    );
+};
 
-export default HomeMainSection
+export default HomeMainSection;
