@@ -4,60 +4,50 @@ import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
-import Tooltip from '@/components/Tooltip';
 import updateAction from '@/little-state/action';
 import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import useResizeObserver from "use-resize-observer";
 
 export default function Page() {
 
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
 
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
+  const {
+    handleSubmit,
+    setValue,
+    watch,
+    register,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      additional_info: false,
-      solar_load: 50,
-      battery_autonomy_hours_only: 12,
-      battery_autonomy_days: 0,
-      battery_autonomy_hours: 0,
-      breakdowns: {},
+      breakdowns: [],
     }
   });
 
-  const allValues = watch();
-  const solar_load = watch("solar_load");
-  const breakdowns = watch("breakdowns");
-  const battery_autonomy_hours_only = watch("battery_autonomy_hours_only");
-  const battery_autonomy_days = watch("battery_autonomy_days");
-  const battery_autonomy_hours = watch("battery_autonomy_hours");
-
   const onSubmit = async (formData: any) => {
     try {
-      console.log('formData', formData)
-      actions.updateAction(formData);
+      formData['quote_number'] = state.quote_number
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-3/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      router.push(`/quotation/overview`);
+      if (response.ok) {
+        actions.updateAction(formData);
+        router.push(`/quotation/overview`);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
   };
-
-  const { width } = useResizeObserver<HTMLDivElement>();
-
-  const [quote, setQuote] = useState({
-    number_of_panels: 0,
-    number_of_batteries: 3,
-    number_of_inverters: 18,
-    total_cost_with_profit_financing: 0,
-    total_load_kwh: 0,
-    load_covered_by_solar: 0,
-  });
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -65,18 +55,10 @@ export default function Page() {
     setIsChecked(e.target.checked);
   };
 
-  const handleBreakdownChange = (breakdowns: any) => {
-    setValue("breakdowns", breakdowns)
-  };
 
   React.useEffect(() => {
     if (state) {
-      setValue("additional_info", state.additional_info || false);
-      setValue("solar_load", state.solar_load || 50);
-      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
-      setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
-      setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
-      setValue("breakdowns", state.breakdowns || {});
+      setValue("breakdowns", state.breakdowns || []);
 
       if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
         setIsChecked(true)
@@ -88,6 +70,8 @@ export default function Page() {
   const onBack = () => {
     router.push(`/quotation/breakdown`);
   }
+
+
 
   return (
     <Box>
@@ -132,7 +116,7 @@ export default function Page() {
           <CardContent>
 
             {isChecked && (
-              <Breakdown onBreakdownChange={handleBreakdownChange} breakdowns={state.breakdowns} />
+              <Breakdown register={register} watch={watch} errors={errors} setValue={setValue} />
             )}
 
           </CardContent>
