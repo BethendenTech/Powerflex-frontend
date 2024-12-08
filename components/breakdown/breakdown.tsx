@@ -51,11 +51,11 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
         const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             const isChecked = event.target.checked;
             if (!isChecked) {
-                setValue(`breakdowns.${id}.id`, false);
+                setValue(`breakdowns.${id}.appliance_id`, false);
                 setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
                 setValue(`breakdowns.${id}.usage`, "");  // Reset usage
             } else {
-                setValue(`breakdowns.${id}.id`, true);
+                setValue(`breakdowns.${id}.appliance_id`, id);
             }
         };
 
@@ -67,8 +67,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    {...register(`breakdowns.${id}.id`)}
-                                    checked={watch(`breakdowns.${id}.id`) || false}
+                                    checked={watch(`breakdowns.${id}.appliance_id`) || false}
                                     onChange={handleCheckboxChange}
                                 />
                             }
@@ -79,7 +78,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                         <Select
                             {...register(`breakdowns.${id}.quantity`)}
                             value={watch(`breakdowns.${id}.quantity`)}
-                            disabled={!watch(`breakdowns.${id}.id`)}
+                            disabled={!watch(`breakdowns.${id}.appliance_id`)}
                             fullWidth
                             size='small'
                             IconComponent={UnfoldMoreIcon}
@@ -108,7 +107,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                         <TimeDropdown
                             label=""
                             name=''
-                            disabled={!watch(`breakdowns.${id}.id`)}
+                            disabled={!watch(`breakdowns.${id}.appliance_id`)}
                             {...register(`breakdowns.${id}.usage`)}
                             value={watch(`breakdowns.${id}.usage`)}
                         />
