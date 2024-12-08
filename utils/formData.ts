@@ -245,3 +245,10 @@ export const solarLoadCoverageMarks = [
         label: '100%',
     },
 ];
+
+export const updateApplianceArray = (value) => {
+    const breakdownArray = Object.values(value).filter(
+        (item: any) => item.appliance_id // Keep only entries with valid `appliance_id`
+    );
+    return breakdownArray
+}

@@ -4,6 +4,7 @@ import React from "react";
 import useQuotation from "@/hooks/quotation";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
+import { updateApplianceArray } from "@/utils/formData";
 
 
 interface SummaryObject {
@@ -15,6 +16,9 @@ export default function Summary(props: SummaryObject) {
     const { actions, state } = useStateMachine({ updateAction });
 
     const handleCalculate = () => {
+
+        const breakdownArray = updateApplianceArray(state.breakdowns)
+
         const filter = {
             electricity_spend: state.electricity_spend,
             price_band: state.price_band,
@@ -22,7 +26,7 @@ export default function Summary(props: SummaryObject) {
             battery_autonomy_hours_only: state.battery_autonomy_hours_only,
             battery_autonomy_days: state.battery_autonomy_days,
             battery_autonomy_hours: state.battery_autonomy_hours,
-            breakdowns: state.breakdowns,
+            breakdowns: breakdownArray,
             is_finance: state.is_finance,
         }
         calculateQuote(filter)

@@ -19,6 +19,7 @@ export default function Page() {
       name: "",
       email: "",
       phone_number: "",
+      is_finance: false,
     }
   });
 

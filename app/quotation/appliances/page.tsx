@@ -5,6 +5,7 @@ import Summary from '@/components/breakdown/summary';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import updateAction from '@/little-state/action';
+import { updateApplianceArray } from '@/utils/formData';
 import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
@@ -32,6 +33,11 @@ export default function Page() {
   const onSubmit = async (formData: any) => {
     try {
       formData['quote_number'] = state.quote_number
+
+      const breakdownArray = updateApplianceArray(formData['breakdowns']);
+
+      formData['breakdowns'] = breakdownArray
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-3/`, {
         method: 'POST',
         headers: {

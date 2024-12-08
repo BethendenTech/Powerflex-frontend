@@ -1,6 +1,6 @@
 import updateAction from '@/little-state/action';
 import { QuotationContextType, QuoteInterface } from '@/types/quotation';
-import { defaultQuoteData } from '@/utils/formData';
+import { defaultQuoteData, updateApplianceArray } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
 import { useRouter } from 'next/navigation';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
@@ -23,12 +23,15 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const calculateQuote = async (data: any) => {
+
+        const breakdownArray = updateApplianceArray(data.breakdowns);
+
         const postData = {
             electricity_spend: data.electricity_spend,
             price_band: data.price_band,
             solar_load: data.solar_load,
             battery_autonomy_hours: Number(data.battery_autonomy_hours_only) + Number(data.battery_autonomy_days * 24),
-            breakdowns: data.breakdowns,
+            breakdowns: breakdownArray,
             is_finance: data.is_finance,
         };
 
