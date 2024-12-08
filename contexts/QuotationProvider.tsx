@@ -1,6 +1,6 @@
 import updateAction from '@/little-state/action';
 import { QuotationContextType, QuoteInterface } from '@/types/quotation';
-import { defaultQuoteData } from '@/utils/formData';
+import { defaultQuoteData, updateApplianceArray } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
 import { useRouter } from 'next/navigation';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
@@ -24,9 +24,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
 
     const calculateQuote = async (data: any) => {
 
-        const breakdownArray = Object.values(data.breakdowns).filter(
-            (item: any) => item.appliance_id // Keep only entries with valid `appliance_id`
-        );
+        const breakdownArray = updateApplianceArray(data.breakdowns);
 
         const postData = {
             electricity_spend: data.electricity_spend,

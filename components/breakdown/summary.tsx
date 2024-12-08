@@ -4,6 +4,7 @@ import React from "react";
 import useQuotation from "@/hooks/quotation";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
+import { updateApplianceArray } from "@/utils/formData";
 
 
 interface SummaryObject {
@@ -16,9 +17,7 @@ export default function Summary(props: SummaryObject) {
 
     const handleCalculate = () => {
 
-        const breakdownArray = Object.values(state.breakdowns).filter(
-            (item: any) => item.appliance_id // Keep only entries with valid `appliance_id`
-        );
+        const breakdownArray = updateApplianceArray(state.breakdowns)
 
         const filter = {
             electricity_spend: state.electricity_spend,
