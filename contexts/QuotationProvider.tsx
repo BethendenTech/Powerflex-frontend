@@ -23,12 +23,17 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const calculateQuote = async (data: any) => {
+
+        const breakdownArray = Object.values(data.breakdowns).filter(
+            (item: any) => item.appliance_id // Keep only entries with valid `appliance_id`
+        );
+
         const postData = {
             electricity_spend: data.electricity_spend,
             price_band: data.price_band,
             solar_load: data.solar_load,
             battery_autonomy_hours: Number(data.battery_autonomy_hours_only) + Number(data.battery_autonomy_days * 24),
-            breakdowns: data.breakdowns,
+            breakdowns: breakdownArray,
             is_finance: data.is_finance,
         };
 

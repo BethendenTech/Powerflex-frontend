@@ -25,7 +25,6 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
 
         if (response.ok) {
             const data = await response.json();
-            console.log("data", data)
             setApplianceData(data)
         }
     }
@@ -45,76 +44,73 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
         appliances: RowObject[];
     }
 
-    const renderRow = (props: RowObject) => {
+    const renderRow = (props: RowObject, index: number) => {
         const { id, name } = props;
 
         const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             const isChecked = event.target.checked;
             if (!isChecked) {
-                setValue(`breakdowns.${id}.appliance_id`, false);
-                setValue(`breakdowns.${id}.quantity`, ""); // Reset quantity
-                setValue(`breakdowns.${id}.usage`, "");  // Reset usage
+                setValue(`breakdowns.${index}.appliance_id`, false);
+                setValue(`breakdowns.${index}.quantity`, ""); // Reset quantity
+                setValue(`breakdowns.${index}.usage`, "");  // Reset usage
             } else {
-                setValue(`breakdowns.${id}.appliance_id`, id);
+                setValue(`breakdowns.${index}.appliance_id`, id);
             }
         };
 
         return (
-            <TableBody>
-                <TableRow>
-                    <TableCell>
+            <TableRow key={`table-row-${index}`}>
+                <TableCell>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={watch(`breakdowns.${index}.appliance_id`) || false}
+                                onChange={handleCheckboxChange}
+                            />
+                        }
+                        label={name}
+                    />
+                </TableCell>
+                <TableCell>
+                    <Select
+                        {...register(`breakdowns.${index}.quantity`)}
+                        value={watch(`breakdowns.${index}.quantity`)}
+                        disabled={!watch(`breakdowns.${index}.appliance_id`)}
+                        fullWidth
+                        size='small'
+                        IconComponent={UnfoldMoreIcon}
+                        sx={{
+                            borderRadius: 12,
+                            backgroundColor: "#257FE6",
+                            color: "#fff",
+                            border: "none",
+                            '& .MuiSelect-icon': {
+                                color: '#fff !important',
+                            },
+                            '& .Mui-disabled': {
+                                color: "#eee",
+                                '-webkit-text-fill-color': '#eee !important',
+                            },
+                        }}
+                    >
+                        {Array.from({ length: 51 }, (_, i) => (
+                            <MenuItem key={`quantity-${id}-${i}`} value={i}>
+                                {i}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </TableCell>
+                <TableCell>
+                    <TimeDropdown
+                        label=""
+                        name=''
+                        disabled={!watch(`breakdowns.${index}.appliance_id`)}
+                        {...register(`breakdowns.${index}.usage`)}
+                        value={watch(`breakdowns.${index}.usage`)}
+                    />
+                </TableCell>
 
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={watch(`breakdowns.${id}.appliance_id`) || false}
-                                    onChange={handleCheckboxChange}
-                                />
-                            }
-                            label={name}
-                        />
-                    </TableCell>
-                    <TableCell>
-                        <Select
-                            {...register(`breakdowns.${id}.quantity`)}
-                            value={watch(`breakdowns.${id}.quantity`)}
-                            disabled={!watch(`breakdowns.${id}.appliance_id`)}
-                            fullWidth
-                            size='small'
-                            IconComponent={UnfoldMoreIcon}
-                            sx={{
-                                borderRadius: 12,
-                                backgroundColor: "#257FE6",
-                                color: "#fff",
-                                border: "none",
-                                '& .MuiSelect-icon': {
-                                    color: '#fff !important',
-                                },
-                                '& .Mui-disabled': {
-                                    color: "#eee",
-                                    '-webkit-text-fill-color': '#eee !important',
-                                },
-                            }}
-                        >
-                            {Array.from({ length: 51 }, (_, i) => (
-                                <MenuItem key={`quantity-${id}-${i}`} value={i}>
-                                    {i}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </TableCell>
-                    <TableCell>
-                        <TimeDropdown
-                            label=""
-                            name=''
-                            disabled={!watch(`breakdowns.${id}.appliance_id`)}
-                            {...register(`breakdowns.${id}.usage`)}
-                            value={watch(`breakdowns.${id}.usage`)}
-                        />
-                    </TableCell>
-
-                </TableRow>
-            </TableBody>
+            </TableRow>
         );
     }
 
@@ -163,9 +159,11 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                             </TableRow>
                         </TableHead>
 
-                        {appliances && appliances.map((row: any) => (
-                            renderRow(row)
-                        ))}
+                        <TableBody>
+                            {appliances && appliances.map((row: any, index: number) => (
+                                renderRow(row, index)
+                            ))}
+                        </TableBody>
 
                     </Table>
                 </AccordionDetails>
@@ -175,7 +173,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
 
     return (
         <Box>
-            {applianceData && applianceData.map((row: any) => {
+            {applianceData && applianceData.map((row: any, index: number) => {
                 if (row.type === "accordion") {
                     return renderAccordionWithRows(row);
                 } else {
@@ -196,7 +194,10 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                                     <TableCell>Hours</TableCell>
                                 </TableRow>
                             </TableHead>
-                            {renderRow(row)}
+
+                            <TableBody>
+                                {renderRow(row, index)}
+                            </TableBody>
                         </Table>
                     );
                 }

@@ -32,6 +32,13 @@ export default function Page() {
   const onSubmit = async (formData: any) => {
     try {
       formData['quote_number'] = state.quote_number
+
+      const breakdownArray = Object.values(formData['breakdowns']).filter(
+        (item: any) => item.appliance_id // Keep only entries with valid `appliance_id`
+      );
+
+      formData['breakdowns'] = breakdownArray
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-3/`, {
         method: 'POST',
         headers: {
