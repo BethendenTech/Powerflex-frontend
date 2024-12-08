@@ -26,12 +26,12 @@ const BusinessApplicationForm = () => {
     // Set up react-hook-form with default values for the inputs
     const { control, register, handleSubmit, setValue, formState: { errors }, watch } = useForm({
         defaultValues: {
+            role: 'Director',
+            other_role: '',
             first_name: '',
             last_name: '',
             phone_number: '',
             email: '',
-            role: 'Director',
-            other_role: '',
             business_name: '',
             house_number: '',
             street_name: '',

@@ -34,7 +34,7 @@ const IndividualApplicationForm = () => {
             phone_number: '',
             email: '',
             house_number: '',
-            street_address: '',
+            street_name: '',
             landmark: '',
             nearest_bus_stop: '',
             town: '',
@@ -144,16 +144,16 @@ const IndividualApplicationForm = () => {
 
                 <FormControl
                     fullWidth
-                    error={!!errors.street_address}
+                    error={!!errors.street_name}
                 >
                     <FormLabel>
                         Street Address
                     </FormLabel>
                     <OutlinedInput
                         type='text'
-                        {...register("street_address", { required: "Street Address is required" })}
+                        {...register("street_name", { required: "Street Address is required" })}
                     />
-                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
+                    <FormHelperText>{errors?.street_name?.message}</FormHelperText>
                 </FormControl>
 
 
