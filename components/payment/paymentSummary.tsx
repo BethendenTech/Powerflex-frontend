@@ -33,19 +33,19 @@ const PaymentSummaryCard = ({ quote }: ComponentProps) => {
                             <TableRow>
                                 <TableCell></TableCell>
                                 <TableCell align="left">Solar panels</TableCell>
-                                <TableCell align="right">{quote?.number_of_panels}</TableCell>
+                                <TableCell align="right">{quote?.products?.number_of_panels}</TableCell>
                                 <TableCell></TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell></TableCell>
                                 <TableCell align="left">Inverters</TableCell>
-                                <TableCell align="right">{quote?.number_of_inverters}</TableCell>
+                                <TableCell align="right">{quote?.products?.number_of_inverters}</TableCell>
                                 <TableCell></TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell></TableCell>
                                 <TableCell align="left">Batteries</TableCell>
-                                <TableCell align="right">{quote?.number_of_batteries}</TableCell>
+                                <TableCell align="right">{quote?.products?.number_of_batteries}</TableCell>
                                 <TableCell></TableCell>
                             </TableRow>
 
