@@ -23,6 +23,7 @@ export default function Summary(props: SummaryObject) {
             battery_autonomy_days: state.battery_autonomy_days,
             battery_autonomy_hours: state.battery_autonomy_hours,
             breakdowns: state.breakdowns,
+            is_finance: state.is_finance,
         }
         calculateQuote(filter)
     }
@@ -72,7 +73,7 @@ export default function Summary(props: SummaryObject) {
                         </TableRow>
                         <TableRow>
                             <TableCell align="left">Total cost</TableCell>
-                            <TableCell align="right">{renderNaira(quote.total_cost_with_profit_financing ?? 0)}</TableCell>
+                            <TableCell align="right">{renderNaira(quote.total_cost_with_profit ?? 0)}</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

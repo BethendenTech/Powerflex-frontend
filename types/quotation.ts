@@ -16,15 +16,21 @@ export interface QuotationContextType {
     quote: QuoteInterface;
     calculateQuote: any
 }
+
+export interface QuotationProduct {
+    number_of_panels: any;
+    number_of_inverters: any;
+    number_of_batteries: any;
+    best_panel: any;
+    best_inverter: any;
+    best_battery: any;
+}
 export interface QuoteInterface {
     total_cost_naira: number;
     total_cost_usd: number;
     total_equipments: number;
-    number_of_panels: number;
-    number_of_inverters: number;
-    number_of_batteries: number;
-    total_cost_with_profit_outright: number;
-    total_cost_with_profit_financing: number;
+    products: QuotationProduct;
+    total_cost_with_profit: number;
     total_load_kwh: number;
     load_covered_by_solar: number;
     total_panel_cost_usd: number;

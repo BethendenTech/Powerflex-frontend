@@ -24,7 +24,7 @@ export default function Page() {
 
   const handleToggle = (id: any) => {
     const formData = {
-      finance: id
+      is_finance: id
     }
     actions.updateAction(formData);
   };
@@ -69,7 +69,7 @@ export default function Page() {
 
         <ToggleButtonGroup
           color="primary"
-          value={state.finance}
+          value={state.is_finance}
           exclusive
           onChange={(e, value) => handleToggle(value)}
           fullWidth
@@ -79,8 +79,8 @@ export default function Page() {
           <ToggleButton value={true}>Financing</ToggleButton>
         </ToggleButtonGroup>
 
-        {!state.finance && <OutRightPurchase quote={quote} />}
-        {state.finance && <FinancingPurchase quote={quote} />}
+        {!state.is_finance && <OutRightPurchase quote={quote} />}
+        {state.is_finance && <FinancingPurchase quote={quote} />}
       </Box>
 
     </Box>
