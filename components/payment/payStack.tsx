@@ -1,9 +1,8 @@
 "use client";
 
 import { QuoteInterface } from "@/types/quotation";
-import { renderNaira } from "@/utils/currency";
 import { useRouter } from "next/navigation";
-import React, { Component } from "react";
+import React from "react";
 import dynamic from 'next/dynamic';
 import { Box, Button } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
@@ -23,7 +22,7 @@ const PayStackPayment = ({ quote }: ComponentProps) => {
     const config = {
         reference: (new Date()).getTime().toString(),
         email: state.email,
-        amount: quote.total_cost_naira, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        amount: quote.total_cost_with_profit, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
         // publicKey: 'pk_live_68bf085a038d0f3e09dced6caab850db147d4c87',
         publicKey: 'pk_test_8a80005eb3a847c0a9a423d97f1c71cfe34d9215',
     };
