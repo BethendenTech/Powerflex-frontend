@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import SelectStateComponent from "./stateSelect";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "@/little-state/action";
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -22,6 +24,7 @@ const VisuallyHiddenInput = styled('input')({
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
+    const { state } = useStateMachine({ updateAction });
 
     // Set up react-hook-form with default values for the inputs
     const { control, register, handleSubmit, setValue, formState: { errors }, watch } = useForm({
@@ -50,11 +53,21 @@ const BusinessApplicationForm = () => {
     const role = watch("role");
 
     // Handle form submission
-    const onSubmit = (data: any) => {
-        console.log("Form Data:", data);
-        // You can trigger the update action or route navigation here
-        // actions.updateAction(data);
-        router.push("/quotation/payment-process");
+    const onSubmit = async (formData: any) => {
+        console.log("Form Data:", formData);
+
+        formData["quote_number"] = state.quote_number
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/apply-business/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+            router.push(`/quotation/payment-process`);
+        }
     };
 
     return (
