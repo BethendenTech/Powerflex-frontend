@@ -41,6 +41,7 @@ export interface QuoteInterface {
     total_battery_cost_naira: number;
     installation_and_cabling: number;
     vat: number;
+    total_vat: number;
     miscellaneous_cost: number;
     installer_commission: number;
     installer_commission_amount: number;

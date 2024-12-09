@@ -28,8 +28,8 @@ export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
                         <TableCell align="right">{renderNaira(quote.installation_and_cabling)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell align="left">VAT</TableCell>
-                        <TableCell align="right">{quote.vat}%</TableCell>
+                        <TableCell align="left">VAT ({quote.vat}%)</TableCell>
+                        <TableCell align="right">{renderNaira(quote.total_vat)}</TableCell>
                     </TableRow>
 
                     <TableRow>
