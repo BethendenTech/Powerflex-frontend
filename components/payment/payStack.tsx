@@ -18,7 +18,7 @@ interface ComponentProps {
 const PayStackPayment = ({ quote }: ComponentProps) => {
     const router = useRouter();
 
-    const { actions, state } = useStateMachine({ updateAction });
+    const { state } = useStateMachine({ updateAction });
 
     const config = {
         reference: (new Date()).getTime().toString(),

@@ -3,7 +3,6 @@
 import updateAction from "@/little-state/action";
 import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from 'next/dynamic';
@@ -21,13 +20,12 @@ const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
 )), { ssr: false });
 
 const IndividualApplicationForm = () => {
-    const router = useRouter();
-    const { actions, state } = useStateMachine({ updateAction });
+    const { state } = useStateMachine({ updateAction });
 
     const [showIframe, setShowIframe] = useState(false)
 
     // Set up react-hook-form with default values for the inputs
-    const { control, register, handleSubmit, formState: { errors }, setError, setValue, watch } = useForm({
+    const { control, register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
         defaultValues: {
             first_name: '',
             last_name: '',
@@ -48,12 +46,22 @@ const IndividualApplicationForm = () => {
     });
 
     // Handle form submission
-    const onSubmit = (data: any) => {
-        console.log("Form Data:", data);
-        // You can trigger the update action or route navigation here
-        // actions.updateAction(data);
-        // router.push("/quotation/payment-process");
-        setShowIframe(true)
+    const onSubmit = async (formData: any) => {
+        console.log("Form Data:", formData);
+
+        formData["quote_number"] = state.quote_number
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/apply-individual/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+            // router.push(`/quotation/payment-process`);
+            setShowIframe(true)
+        }
     };
 
 
