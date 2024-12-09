@@ -72,7 +72,7 @@ export default function Summary(props: SummaryObject) {
                 >
                     <TableBody>
                         <TableRow>
-                            <TableCell align="left">Your property will need</TableCell>
+                            <TableCell align="left">Your daily property need</TableCell>
                             <TableCell align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
                         </TableRow>
                         <TableRow>
