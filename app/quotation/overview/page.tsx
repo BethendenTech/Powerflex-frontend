@@ -9,18 +9,14 @@ import { FinancingPurchase } from '@/components/overview/financing/financing';
 import Image from 'next/image';
 import { OverviewData } from '@/components/overview/overview';
 import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
-import useQuotation from '@/hooks/quotation';
 import React from 'react';
 import { Box, Button, ToggleButton, Typography } from '@mui/material';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CustomizedSteppers from '@/components/stepper';
 
 export default function Page() {
-
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateAction });
-  const { quote } = useQuotation();
-
 
   const handleToggle = (id: any) => {
     const formData = {
@@ -32,6 +28,8 @@ export default function Page() {
   const onBack = () => {
     router.push(`/quotation/appliances`);
   }
+
+
 
   return (
     <Box>
@@ -65,7 +63,7 @@ export default function Page() {
 
         <OverviewData />
 
-        <EstimatedEnergyRequirement quote={quote} />
+        <EstimatedEnergyRequirement />
 
         <ToggleButtonGroup
           color="primary"
@@ -79,8 +77,8 @@ export default function Page() {
           <ToggleButton value={true}>Financing</ToggleButton>
         </ToggleButtonGroup>
 
-        {!state.is_finance && <OutRightPurchase quote={quote} />}
-        {state.is_finance && <FinancingPurchase quote={quote} />}
+        {!state.is_finance && <OutRightPurchase />}
+        {state.is_finance && <FinancingPurchase />}
       </Box>
 
     </Box>

@@ -1,17 +1,13 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { QuoteInterface } from "@/types/quotation";
-import { renderNaira } from "@/utils/currency";
 import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
-interface ComponentProps {
-    quote: QuoteInterface;
-}
-const PaymentCardDetails = ({ quote }: ComponentProps) => {
+
+const PaymentCardDetails = () => {
     const router = useRouter();
     const { actions, state } = useStateMachine({ updateAction });
 

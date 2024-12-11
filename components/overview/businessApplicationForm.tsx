@@ -54,8 +54,6 @@ const BusinessApplicationForm = () => {
 
     // Handle form submission
     const onSubmit = async (formData: any) => {
-        console.log("Form Data:", formData);
-
         formData["quote_number"] = state.quote_number
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/apply-business/`, {
             method: 'POST',
