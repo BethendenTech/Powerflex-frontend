@@ -21,12 +21,10 @@ export const OutRightPurchase = () => {
     const onSubmit = async (formData: any) => {
         try {
             actions.updateAction(formData);
-            let response = createQuote()
-
-            // if (response.ok) {
-            //     router.push(`/quotation/payment-process`);
-            // }
-
+            let response = await createQuote()
+            if (response.ok) {
+                router.push(`/quotation/payment-process`);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
