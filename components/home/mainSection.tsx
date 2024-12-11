@@ -3,12 +3,18 @@ import Link from "next/link"
 import { BannerGlowingButton, BannerNormalButton } from "../button/style";
 
 const backgroundImage = "/images/home/bg-banner.svg";
+const backgroundImage2 = "/images/home/mb-banner.svg";
 
 const HomeMainSection = () => {
     return (
         <Box
             sx={{
-                backgroundImage: `url(${backgroundImage})`,
+                backgroundImage: {
+                    lg: `url(${backgroundImage})`,
+                    md: `url(${backgroundImage})`,
+                    sm: `url(${backgroundImage2})`,
+                    xs: `url(${backgroundImage2})`
+                },
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -54,6 +60,7 @@ const HomeMainSection = () => {
                             xs: "46.47px",
                         },
                         textAlign: "center",
+                        WebkitTextStroke: "0.68px #A2978E",
                     }}
                 >
                     Powering your world
@@ -73,12 +80,13 @@ const HomeMainSection = () => {
                             md: "42.67px",
                             xs: "29.09px",
                         },
-                        fontWeight: 700,
+                        fontWeight: 600,
                         lineHeight: {
                             md: "51.2px",
                             xs: "34.9px",
                         },
                         textAlign: "center",
+                        WebkitTextStroke: "0.68px #A2978E",
                     }}
                 >
                     with clean energy solutions
