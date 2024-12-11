@@ -4,6 +4,7 @@ import DrawerAppBar from "./navbar";
 import { AppDrawer } from "./drawer";
 import { drawerWidth, navItems } from "@/utils/navBar";
 import WebFooter from "./footer";
+import { SocialIcon } from "./social";
 
 interface Props {
     children: ReactNode;
@@ -29,7 +30,7 @@ export const WebLayout: React.FC<Props> = ({ children }) => {
 
 
             {children}
-
+            <SocialIcon />
             <WebFooter />
 
         </Box>
