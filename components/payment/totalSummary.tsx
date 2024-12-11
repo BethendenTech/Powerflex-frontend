@@ -1,13 +1,10 @@
-import { QuoteInterface } from "@/types/quotation";
+import useQuotation from "@/hooks/quotation";
 import { renderNaira } from "@/utils/currency";
 import { Box, Table, TableBody, TableCell, TableRow } from "@mui/material";
 
-interface ComponentProps {
-    quote: QuoteInterface;
-    isFinance: boolean;
-}
+export const TotalSummary = () => {
+    const { quote } = useQuotation();
 
-export const TotalSummary = ({ quote, isFinance }: ComponentProps) => {
     return (
         <Box sx={{ mb: 2 }}>
             <Table

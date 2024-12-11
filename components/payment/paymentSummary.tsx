@@ -1,14 +1,13 @@
 "use client";
 
+import useQuotation from "@/hooks/quotation";
 import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
 import { Box, Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 
-interface ComponentProps {
-    quote: QuoteInterface;
-}
+const PaymentSummaryCard = () => {
+    const { quote } = useQuotation();
 
-const PaymentSummaryCard = ({ quote }: ComponentProps) => {
     return (
         <Box sx={{ mt: 2, mb: 2 }}>
             <Typography variant="h6" fontWeight="bold">Outright Purchase</Typography>

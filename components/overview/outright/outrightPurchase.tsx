@@ -2,21 +2,16 @@
 
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { QuoteInterface } from "@/types/quotation";
 import { Box, Button } from "@mui/material";
 import { TotalSummary } from "@/components/payment/totalSummary";
+import useQuotation from "@/hooks/quotation";
+import { useRouter } from "next/navigation";
 
-interface ComponentProps {
-    quote: QuoteInterface;
-}
-
-export const OutRightPurchase = ({ quote }: ComponentProps) => {
-
-    const router = useRouter();
+export const OutRightPurchase = () => {
+    const { createQuote } = useQuotation();
     const { actions } = useStateMachine({ updateAction });
-
+    const router = useRouter();
     const { handleSubmit } = useForm({
         defaultValues: {
         }
@@ -25,10 +20,11 @@ export const OutRightPurchase = ({ quote }: ComponentProps) => {
 
     const onSubmit = async (formData: any) => {
         try {
-            console.log('formData', formData)
             actions.updateAction(formData);
-
-            router.push(`/quotation/payment-process`);
+            let response = await createQuote()
+            if (response.ok) {
+                router.push(`/quotation/payment-process`);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
@@ -37,7 +33,7 @@ export const OutRightPurchase = ({ quote }: ComponentProps) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
 
-            <TotalSummary quote={quote} isFinance={false} />
+            <TotalSummary />
 
             <Box position="sticky" bottom={0} mt={2}>
                 <Button

@@ -74,8 +74,28 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
         state.is_finance,
     ]);
 
+    const createQuote = async () => {
+        try {
+            let formData = {
+                "quote_number": state.quote_number
+            }
+
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            return response
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
     return (
-        <QuotationContext.Provider value={{ quote, error, isLoading, calculateQuote }}>
+        <QuotationContext.Provider value={{ quote, error, isLoading, calculateQuote, createQuote }}>
             {children}
         </QuotationContext.Provider>
     );
