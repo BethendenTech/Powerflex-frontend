@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import { Box, Button } from "@mui/material";
 import { TotalSummary } from "@/components/payment/totalSummary";
 import useQuotation from "@/hooks/quotation";
+import { useRouter } from "next/navigation";
 
 export const OutRightPurchase = () => {
     const { createQuote } = useQuotation();
     const { actions } = useStateMachine({ updateAction });
-
+    const router = useRouter();
     const { handleSubmit } = useForm({
         defaultValues: {
         }
@@ -20,7 +21,12 @@ export const OutRightPurchase = () => {
     const onSubmit = async (formData: any) => {
         try {
             actions.updateAction(formData);
-            createQuote()
+            let response = createQuote()
+
+            // if (response.ok) {
+            //     router.push(`/quotation/payment-process`);
+            // }
+
         } catch (error) {
             console.error('Error:', error);
         }

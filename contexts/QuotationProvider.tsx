@@ -88,9 +88,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
-                router.push(`/quotation/payment-success`);
-            }
+            return response
         } catch (error) {
             console.log("error", error)
         }
