@@ -1,15 +1,12 @@
-import { QuoteInterface } from "@/types/quotation";
 import { formatKWhWithCurrency } from "@/utils/currency";
 import { Box, Collapse, IconButton, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import React from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import useQuotation from "@/hooks/quotation";
 
-interface ComponentProps {
-    quote: QuoteInterface;
-}
-
-export const EstimatedEnergyRequirement = ({ quote }: ComponentProps) => {
+export const EstimatedEnergyRequirement = () => {
+    const { quote } = useQuotation();
 
     const [openPanel, setOpenPanel] = React.useState(false);
     const [openInverter, setOpenInverter] = React.useState(false);

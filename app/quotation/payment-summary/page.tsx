@@ -16,14 +16,10 @@ export default function Page() {
   const router = useRouter();
   const { actions } = useStateMachine({ updateAction });
 
-  const { quote } = useQuotation();
-
-
   const { handleSubmit } = useForm({
     defaultValues: {
     }
   });
-
 
   const onSubmit = async (formData: any) => {
     try {
@@ -66,7 +62,7 @@ export default function Page() {
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
-          <PaymentSummaryCard quote={quote} />
+          <PaymentSummaryCard />
 
 
           <Box position="sticky" bottom={0} mt={2}>

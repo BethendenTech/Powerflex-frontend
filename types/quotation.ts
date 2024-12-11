@@ -15,6 +15,7 @@ export interface QuotationContextType {
     isLoading: boolean;
     quote: QuoteInterface;
     calculateQuote: any
+    createQuote: any
 }
 
 export interface QuotationProduct {

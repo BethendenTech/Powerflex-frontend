@@ -83,14 +83,14 @@ export default function Page() {
             Payment Summary
           </Typography>
 
-          <TotalSummary quote={quote} isFinance={false} />
+          <TotalSummary />
         </Box>
         <PaymentMethodCard />
         {state.payment_method == "credit_debit_card" && (
-          <PaymentCardDetails quote={quote} />
+          <PaymentCardDetails />
         )}
         {state.payment_method == "paystack" && (
-          <PayStackPayment quote={quote} />
+          <PayStackPayment />
         )}
 
       </Box>

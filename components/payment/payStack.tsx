@@ -1,21 +1,20 @@
 "use client";
 
-import { QuoteInterface } from "@/types/quotation";
 import { useRouter } from "next/navigation";
 import React from "react";
 import dynamic from 'next/dynamic';
 import { Box, Button } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
+import useQuotation from "@/hooks/quotation";
 
 const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
     ssr: false, // This ensures that the component is only rendered on the client side
 });
-interface ComponentProps {
-    quote: QuoteInterface;
-}
-const PayStackPayment = ({ quote }: ComponentProps) => {
+
+const PayStackPayment = () => {
     const router = useRouter();
+    const { quote } = useQuotation();
 
     const { state } = useStateMachine({ updateAction });
 
