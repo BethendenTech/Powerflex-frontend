@@ -31,7 +31,8 @@ export default function DrawerAppBar(props: Props) {
     return (
         <AppBar component="nav" color='inherit'>
             <Toolbar>
-                <Box sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+                <Box component={Link} href='/'
+                    sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
                     <Image
                         src="/images/logo-blue.png"
                         alt="PowerFlex"

@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
+import { Box, Divider, Drawer, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,13 +31,14 @@ export const AppDrawer = (props: Props) => {
                 <Box onClick={handleDrawerToggle} >
 
                     <Toolbar>
-                        <Image
-                            src="/images/logo-blue.png"
-                            alt="PowerFlex"
-                            width={100}
-                            height={100}
-                        />
-
+                        <Box component={Link} href='/'>
+                            <Image
+                                src="/images/logo-blue.png"
+                                alt="PowerFlex"
+                                width={100}
+                                height={100}
+                            />
+                        </Box>
                     </Toolbar>
 
                     <Divider />
