@@ -1,6 +1,6 @@
 import { Box, Container, Grid2, Typography } from "@mui/material"
 
-const backgroundImage = "/images/home/bg-about-us.svg";
+const backgroundImage = "/images/home/about-us.png";
 const backgroundImage2 = "/images/home/mb-nigeria.svg";
 
 const HomeAboutSection = () => {
