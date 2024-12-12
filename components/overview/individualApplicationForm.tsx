@@ -59,7 +59,7 @@ const IndividualApplicationForm = () => {
         });
 
         if (response.ok) {
-            // router.push(`/quotation/payment-process`);
+            // router.push(`/quotation/application-success`);
             setShowIframe(true)
         }
     };

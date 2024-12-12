@@ -4,23 +4,10 @@ import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, Outlined
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { styled } from '@mui/material/styles';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import SelectStateComponent from "./stateSelect";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
-
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-});
+import FileUploadComponent from "../fileUpload";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -64,7 +51,7 @@ const BusinessApplicationForm = () => {
         });
 
         if (response.ok) {
-            router.push(`/quotation/payment-process`);
+            router.push(`/quotation/application-success`);
         }
     };
 
@@ -282,102 +269,78 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.applicant_id_card}
                 >
-
-                    <Button
-                        fullWidth
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        color="warning"
-                    >
-                        Applicant Id Card
-                        <VisuallyHiddenInput
-                            type="file"
-                            {...register("applicant_id_card", { required: "Applicant Id Card is required" })}
-
-                        />
-                    </Button>
-
+                    <FileUploadComponent
+                        name="applicant_id_card"
+                        label="Applicant Id Card"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                    />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
                 </FormControl>
-
                 <FormControl
                     fullWidth
                     error={!!errors.company_registration_document}
                 >
-
-                    <Button
-                        fullWidth
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        color="warning"
-                    >
-                        Company Registration Document
-                        <VisuallyHiddenInput
-                            type="file"
-                            {...register("company_registration_document", { required: "Company Registration Document is required" })}
-
-                        />
-                    </Button>
-
+                    <FileUploadComponent
+                        name="company_registration_document"
+                        label="Company Registration Document"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                    />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
-
                 <FormControl
                     fullWidth
                     error={!!errors.bank_statements}
                 >
-
-                    <Button
-                        fullWidth
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        color="warning"
-                    >
-                        6 months Bank Statements
-                        <VisuallyHiddenInput
-                            type="file"
-                            {...register("bank_statements", { required: "Bank Statements is required" })}
-
-                        />
-                    </Button>
-
+                    <FileUploadComponent
+                        name="bank_statements"
+                        label="6 months Bank Statements"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                    />
                     <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
                 </FormControl>
-
                 <FormControl
                     fullWidth
                     error={!!errors.recent_utility_bill}
                 >
-
-                    <Button
-                        fullWidth
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        color="warning"
-                    >
-                        Recent Utility Bill
-                        <VisuallyHiddenInput
-                            type="file"
-                            {...register("recent_utility_bill", { required: "Recent Utility Bill is required" })}
-
-                        />
-                    </Button>
-
+                    <FileUploadComponent
+                        name="recent_utility_bill"
+                        label="Recent Utility Bill"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                    />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>
-
 
                 <Box position="sticky" bottom={0} mt={2}>
                     <Button
