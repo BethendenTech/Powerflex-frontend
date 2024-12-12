@@ -1,27 +1,13 @@
 "use client";
 
-import { Box, Button, Card, CardContent, CardHeader, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { styled } from '@mui/material/styles';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import SelectStateComponent from "./stateSelect";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
-
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-});
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -284,6 +270,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.applicant_id_card}
                 >
                     <FileUploadComponent
+                        name="applicant_id_card"
                         label="Applicant Id Card"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
@@ -293,6 +280,7 @@ const BusinessApplicationForm = () => {
                         }}
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
                 </FormControl>
@@ -301,6 +289,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.company_registration_document}
                 >
                     <FileUploadComponent
+                        name="company_registration_document"
                         label="Company Registration Document"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
@@ -310,6 +299,7 @@ const BusinessApplicationForm = () => {
                         }}
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
@@ -318,6 +308,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.bank_statements}
                 >
                     <FileUploadComponent
+                        name="bank_statements"
                         label="6 months Bank Statements"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
@@ -327,6 +318,7 @@ const BusinessApplicationForm = () => {
                         }}
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
                     />
                     <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
                 </FormControl>
@@ -335,6 +327,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.recent_utility_bill}
                 >
                     <FileUploadComponent
+                        name="recent_utility_bill"
                         label="Recent Utility Bill"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
@@ -344,6 +337,7 @@ const BusinessApplicationForm = () => {
                         }}
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>

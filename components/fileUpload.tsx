@@ -5,17 +5,19 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Alert, Box, Button, CircularProgress, List, ListItem, ListItemText, Typography } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 type ComponentProps = {
+    name: string;
     label: string;
     accept: Record<string, string[]>; // Correct type for the accept prop
     maxSize: number;
     maxFiles: number;
+    setValue: any
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { label, accept, maxSize, maxFiles } = props;
+    const { name, label, accept, maxSize, maxFiles, setValue } = props;
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
@@ -40,6 +42,7 @@ const FileUploadComponent = (props: ComponentProps) => {
 
             if (response.ok) {
                 const data = await response.json();
+                setValue(name, data.file)
                 setUploadSuccess((prev) => [...prev, file.name]);
             } else {
                 const errorData = await response.json();
@@ -61,6 +64,12 @@ const FileUploadComponent = (props: ComponentProps) => {
 
         setUploading(false);
     };
+
+    React.useEffect(() => {
+        if (acceptedFiles?.length > 0) {
+            handleUpload()
+        }
+    }, [acceptedFiles])
 
     const files = acceptedFiles.map((file) => (
         <ListItem key={file.path}>
@@ -114,19 +123,8 @@ const FileUploadComponent = (props: ComponentProps) => {
                             </Alert>
                         </Box>
                     )}
-                    {acceptedFiles.length > 0 && (
-                        <Box mt={2}>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleUpload}
-                                disabled={uploading}
-                                startIcon={uploading && <CircularProgress size={20} />}
-                            >
-                                {uploading ? 'Uploading...' : 'Upload Files'}
-                            </Button>
-                        </Box>
-                    )}
+
+
                     {uploadSuccess.length > 0 && (
                         <Box mt={2}>
                             <Alert severity="success">
