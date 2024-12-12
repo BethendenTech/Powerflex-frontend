@@ -46,7 +46,6 @@ const HomeProductSection = () => {
                             <Typography
                                 variant="h2"
                                 component="h1"
-                                fontWeight="bold"
                                 fontSize={32}
                                 color="#191919"
                                 sx={{ pb: 4 }}
@@ -55,7 +54,6 @@ const HomeProductSection = () => {
                             </Typography>
 
                             <Typography
-                                variant="h2"
                                 component="h2"
                                 fontSize={16}
                                 color="#191919"
@@ -129,7 +127,6 @@ const HomeProductSection = () => {
                         </Typography>
 
                         <Typography
-                            variant="h2"
                             component="h2"
                             fontSize={16}
                             sx={{

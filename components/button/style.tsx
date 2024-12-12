@@ -59,6 +59,7 @@ export const NavbarButton = styled(Button)(({ }) => ({
     backdropFilter: "blur(12px)",
     borderColor: `1px solid rgba(255, 255, 255, 1)`,
     borderRadius: '25px',
+    letterSpacing: 0,
     '&:hover': {
         background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
         boxShadow: 'none',

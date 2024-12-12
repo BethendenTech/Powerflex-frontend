@@ -42,12 +42,11 @@ const HomeMainSection = () => {
             >
                 <Typography
                     variant="h2"
-                    component="h1"
-                    fontWeight="bold"
+                    component="h2"
                     color="#fff"
                     sx={{
                         textShadow: {
-                            md: '2px 2px 5px #000000',
+                            md: '2px 2px 2px #000000',
                             xs: 'none'
                         },
                         fontSize: {
@@ -69,11 +68,10 @@ const HomeMainSection = () => {
                 <Typography
                     variant="h2"
                     component="h2"
-                    fontWeight="bold"
                     color="#fff"
                     sx={{
                         textShadow: {
-                            md: '2px 2px 5px #000000',
+                            md: '2px 2px 2px #000000',
                             xs: 'none'
                         },
                         fontSize: {
@@ -94,6 +92,7 @@ const HomeMainSection = () => {
 
                 <Typography
                     color="#fff"
+                    component="h2"
                     mt={4}
                     sx={{
                         textShadow: {
