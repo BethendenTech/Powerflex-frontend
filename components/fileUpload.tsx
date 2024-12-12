@@ -9,15 +9,19 @@ import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 type ComponentProps = {
     label: string;
     accept: Record<string, string[]>; // Correct type for the accept prop
-    maxSize: number
+    maxSize: number,
+    maxFiles: number,
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { label, accept, maxSize } = props;
+    const { label, accept, maxSize, maxFiles } = props;
 
-    const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
+    const { acceptedFiles, fileRejections, open, getRootProps, getInputProps } = useDropzone({
+        noClick: true,
+        noKeyboard: true,
         accept, // Use the accept prop dynamically
-        maxSize
+        maxSize,
+        maxFiles
     });
 
     const files = acceptedFiles.map(file => (
@@ -57,7 +61,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                         <Typography>Supported formats: JPEG, PNG, PDF, MP4 up to 10MB</Typography>
 
                         <Box mt={2}>
-                            <Button variant='contained'>Browse File</Button>
+                            <Button variant='contained' onClick={() => open()}>Browse File</Button>
                         </Box>
                     </Box>
                     {files && files.length > 0 && <Box mt={2}>

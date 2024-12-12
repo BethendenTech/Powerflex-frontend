@@ -291,6 +291,7 @@ const BusinessApplicationForm = () => {
                             'application/pdf': ['.pdf'],
                             'video/mp4': ['.mp4'],
                         }}
+                        maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
@@ -307,6 +308,7 @@ const BusinessApplicationForm = () => {
                             'application/pdf': ['.pdf'],
                             'video/mp4': ['.mp4'],
                         }}
+                        maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
@@ -323,6 +325,7 @@ const BusinessApplicationForm = () => {
                             'application/pdf': ['.pdf'],
                             'video/mp4': ['.mp4'],
                         }}
+                        maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                     />
                     <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
@@ -339,7 +342,7 @@ const BusinessApplicationForm = () => {
                             'application/pdf': ['.pdf'],
                             'video/mp4': ['.mp4'],
                         }}
-
+                        maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
