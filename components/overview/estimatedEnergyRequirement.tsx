@@ -1,10 +1,9 @@
 import { formatKWhWithCurrency } from "@/utils/currency";
 import { Box, Collapse, IconButton, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import React from "react";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useQuotation from "@/hooks/quotation";
-
+import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 export const EstimatedEnergyRequirement = () => {
     const { quote } = useQuotation();
 
@@ -34,24 +33,24 @@ export const EstimatedEnergyRequirement = () => {
                 </TableHead>
                 <TableBody>
                     <TableRow>
-                        <TableCell>
+                        <TableCell align="left">Solar panels</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels} Units</TableCell>
+                        <TableCell align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
+                                color="primary"
                                 onClick={() => setOpenPanel(!openPanel)}
                             >
-                                {openPanel ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                {openPanel ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
                         </TableCell>
-                        <TableCell align="left">Number of solar panels</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openPanel} timeout="auto" unmountOnExit>
-                               
-                            <Table component={Paper}>
+                                <Table component={Paper}>
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>Product</TableCell>
@@ -78,23 +77,24 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCell>
+                        <TableCell align="left">Inverters</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters} Units</TableCell>
+                        <TableCell align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
+                                color="primary"
                                 onClick={() => setOpenInverter(!openInverter)}
                             >
-                                {openInverter ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                {openInverter ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
                         </TableCell>
-                        <TableCell align="left">Number of inverters</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters}</TableCell>
                     </TableRow>
 
                     <TableRow>
                         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openInverter} timeout="auto" unmountOnExit>
-                            <Table component={Paper}>
+                                <Table component={Paper}>
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>Product</TableCell>
@@ -121,18 +121,18 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCell>
+                        <TableCell align="left">Batteries</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries} Units</TableCell>
+                        <TableCell align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
+                                color="primary"
                                 onClick={() => setOpenBatteries(!openBatteries)}
                             >
-                                {openBatteries ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                {openBatteries ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
                         </TableCell>
-
-                        <TableCell align="left">Number of batteries</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries}</TableCell>
                     </TableRow>
 
                     <TableRow>
