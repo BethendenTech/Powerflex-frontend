@@ -6,8 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
 import React from 'react';
-import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
+import { Box, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
+import { NextButton } from '@/components/button/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -118,13 +119,13 @@ export default function Page() {
         </FormControl>
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Button
+          <NextButton
             fullWidth
             type="submit"
             variant='contained'
           >
             Continue to quote
-          </Button>
+          </NextButton>
         </Box>
       </form>
 

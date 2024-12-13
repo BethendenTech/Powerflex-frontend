@@ -1,6 +1,7 @@
 "use client"; // This is a client component
 
 import Summary from '@/components/breakdown/summary';
+import { NextButton } from '@/components/button/style';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
@@ -251,7 +252,7 @@ export default function Page() {
         <Box position="sticky" bottom={0} mt={2}>
           <Summary showCalculate={false} />
 
-          <Button
+          <NextButton
             type='submit'
             fullWidth
             variant='contained'
@@ -259,7 +260,7 @@ export default function Page() {
             sx={{ mt: 2 }}
           >
             Next
-          </Button>
+          </NextButton>
         </Box>
 
       </form>

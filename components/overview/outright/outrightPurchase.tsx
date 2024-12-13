@@ -3,10 +3,11 @@
 import updateAction from "@/little-state/action";
 import { useStateMachine } from "little-state-machine";
 import { useForm } from "react-hook-form";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { TotalSummary } from "@/components/payment/totalSummary";
 import useQuotation from "@/hooks/quotation";
 import { useRouter } from "next/navigation";
+import { NextButton } from "@/components/button/style";
 
 export const OutRightPurchase = () => {
     const { createQuote } = useQuotation();
@@ -36,13 +37,13 @@ export const OutRightPurchase = () => {
             <TotalSummary />
 
             <Box position="sticky" bottom={0} mt={2}>
-                <Button
+                <NextButton
                     fullWidth
                     type="submit"
                     variant='contained'
                 >
                     Proceed to Payment
-                </Button>
+                </NextButton>
             </Box>
         </form>
     )

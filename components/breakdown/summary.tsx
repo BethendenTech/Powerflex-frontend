@@ -35,9 +35,10 @@ export default function Summary(props: SummaryObject) {
     return (
         <Card
             sx={{
+                boxShadow: "0px 3.66px 3.66px 0px #00000040",
                 backgroundColor: '#F2F2F4',
-                boxShadow: "1px 1px 10px #333",
                 background: "rgba(242, 242, 244, 1)",
+                borderRadius: '10.98px'
             }}
         >
             <CardHeader
@@ -55,10 +56,12 @@ export default function Summary(props: SummaryObject) {
                     paddingRight: 2,
                 }}
                 action={props.showCalculate ? (
-                    <Button variant="outlined" size="small" color="primary" aria-label="calculate" onClick={() => handleCalculate()} sx={{
-                        padding: 2,
-                        lineHeight: 0
-                    }}>
+                    <Button variant="outlined" size="small"
+                        aria-label="calculate" onClick={() => handleCalculate()} sx={{
+                            padding: 2,
+                            lineHeight: 0,
+                            fontFamily: "'Harmonia Sans Pro', sans-serif", fontWeight: 400, fontSize: "20px", color: "#FFFFFF"
+                        }}>
                         Calculate
                     </Button>
                 ) : ""}
@@ -72,7 +75,7 @@ export default function Summary(props: SummaryObject) {
                 >
                     <TableBody>
                         <TableRow>
-                            <TableCell align="left">Your daily property need</TableCell>
+                            <TableCell align="left">Your Daily Property Need Is</TableCell>
                             <TableCell align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
                         </TableRow>
                         <TableRow>

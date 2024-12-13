@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from 'next/dynamic';
 import SelectStateComponent from "./stateSelect";
+import { NextButton } from "../button/style";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -449,13 +450,13 @@ const IndividualApplicationForm = () => {
                 </FormControl>
 
                 <Box position="sticky" bottom={0} mt={2}>
-                    <Button
+                    <NextButton
                         fullWidth
                         type="submit"
                         variant='contained'
                     >
                         Apply for Financing
-                    </Button>
+                    </NextButton>
                 </Box>
 
             </form>}

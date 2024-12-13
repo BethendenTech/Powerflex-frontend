@@ -51,7 +51,6 @@ const HomeWorkSection = () => {
                             <Typography
                                 variant="h2"
                                 component="h1"
-                                fontWeight="bold"
                                 fontSize={32}
                                 color="#191919"
                                 mb={2}
@@ -60,7 +59,6 @@ const HomeWorkSection = () => {
                             </Typography>
 
                             <Typography
-                                variant="h2"
                                 component="h2"
                                 fontSize={16}
                                 color="#191919"
@@ -145,7 +143,6 @@ const HomeWorkSection = () => {
                         <Typography
                             variant="h2"
                             component="h1"
-                            fontWeight="bold"
                             fontSize={32}
                             color="#191919"
                             mb={2}
@@ -154,7 +151,6 @@ const HomeWorkSection = () => {
                         </Typography>
 
                         <Typography
-                            variant="h2"
                             component="h2"
                             fontSize={16}
                             color="#191919"

@@ -1,11 +1,12 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, Button, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
+import { Box, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { NextButton } from "../button/style";
 
 const PaymentCardDetails = () => {
     const router = useRouter();
@@ -137,13 +138,13 @@ const PaymentCardDetails = () => {
 
 
                 <Box position="sticky" bottom={0} mt={2}>
-                    <Button
+                    <NextButton
                         fullWidth
                         type="submit"
                         variant='contained'
                     >
                         Confirm
-                    </Button>
+                    </NextButton>
                 </Box>
             </form>
         </Box>

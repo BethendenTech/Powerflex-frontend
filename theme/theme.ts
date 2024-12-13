@@ -15,7 +15,12 @@ const themeOptions: ThemeOptions = {
         },
     },
     typography: {
-        fontFamily: 'Harmonia Sans Pro, Arial, sans-serif',
+        h1: {
+            fontFamily: "'Harmonia Sans Pro', sans-serif",
+        },
+        h2: {
+            fontFamily: "'Myriad Pro', sans-serif",
+        },
         allVariants: {
             color: '#424242', // Global text color
         },
@@ -164,7 +169,7 @@ const themeOptions: ThemeOptions = {
                 },
             },
         },
-        
+
         MuiSlider: {
             styleOverrides: {
                 root: {

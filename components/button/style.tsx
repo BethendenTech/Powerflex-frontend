@@ -59,6 +59,7 @@ export const NavbarButton = styled(Button)(({ }) => ({
     backdropFilter: "blur(12px)",
     borderColor: `1px solid rgba(255, 255, 255, 1)`,
     borderRadius: '25px',
+    letterSpacing: 0,
     '&:hover': {
         background: "linear-gradient(90deg, #0087FF 0%, #EF238D 100%)",
         boxShadow: 'none',
@@ -73,4 +74,11 @@ export const NavbarButton = styled(Button)(({ }) => ({
         border: "2px solid #FFFFFF80",
         borderRadius: "inherit",
     },
+}));
+
+export const NextButton = styled(Button)(({ }) => ({
+    fontFamily: "'Harmonia Sans Pro', sans-serif",
+    fontWeight: 400,
+    fontSize: "20px",
+    color: "#FFFFFF"
 }));

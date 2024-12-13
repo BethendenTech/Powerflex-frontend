@@ -38,13 +38,13 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
             }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto', p: { lg: 0, md: 0, sm: 2, xs: 2 } }}>
-                        <Typography component="div" variant="h6" fontSize={26} color='#191919' fontWeight='bold'>
+                        <Typography component="div" variant="h2" fontSize={26} color='#191919' fontWeight='bold'>
                             {title}
                         </Typography>
                         <Typography
                             variant="subtitle1"
                             component="p"
-                            sx={{ color: 'text.secondary' }}
+                            sx={{ color: '#191919' }}
                         >
                             {description}
                         </Typography>

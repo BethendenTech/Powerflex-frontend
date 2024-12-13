@@ -50,7 +50,6 @@ const HomeFinanceSection = () => {
                             <Typography
                                 variant="h2"
                                 component="h1"
-                                fontWeight="bold"
                                 fontSize={32}
                                 color="#191919"
                                 sx={{ pb: 4 }}
@@ -59,7 +58,6 @@ const HomeFinanceSection = () => {
                             </Typography>
 
                             <Typography
-                                variant="h2"
                                 component="h2"
                                 fontSize={16}
                                 color="#191919"
@@ -97,14 +95,14 @@ const HomeFinanceSection = () => {
                                             <Typography
                                                 variant="h2"
                                                 component="h1"
-                                                fontWeight="bold"
                                                 fontSize={26}
                                                 color="#191919"
                                                 mb={2}
                                             >
                                                 Outright Payment
                                             </Typography>
-                                            <Typography>
+                                            <Typography component="p"
+                                                sx={{ color: '#191919' }}>
                                                 Pay once, and you’re done! Our outright purchases are fair, competitive and transparent. Because going solar should be simple.
                                             </Typography>
                                         </Box>
@@ -212,7 +210,6 @@ const HomeFinanceSection = () => {
                         <Typography
                             variant="h2"
                             component="h1"
-                            fontWeight="bold"
                             fontSize={32}
                             color="#191919"
                             sx={{ pb: 4 }}
@@ -221,7 +218,6 @@ const HomeFinanceSection = () => {
                         </Typography>
 
                         <Typography
-                            variant="h2"
                             component="h2"
                             fontSize={16}
                             color="#191919"
@@ -231,7 +227,7 @@ const HomeFinanceSection = () => {
                     </Grid2>
                 </Grid2>
             </Container>
-            
+
             <Box
                 sx={{
                     position: "relative",
@@ -304,14 +300,14 @@ const HomeFinanceSection = () => {
                                             <Typography
                                                 variant="h2"
                                                 component="h1"
-                                                fontWeight="bold"
                                                 fontSize={26}
                                                 color="#191919"
                                                 mb={2}
                                             >
                                                 Outright Payment
                                             </Typography>
-                                            <Typography>
+                                            <Typography component="p"
+                                                sx={{ color: '#191919' }}>
                                                 Pay once, and you’re done! Our outright purchases are fair, competitive and transparent. Because going solar should be simple.
                                             </Typography>
                                         </Box>
@@ -351,13 +347,13 @@ const HomeFinanceSection = () => {
                                             <Typography
                                                 variant="h2"
                                                 component="h1"
-                                                fontWeight="bold"
                                                 fontSize={28}
                                                 mb={2}
                                             >
                                                 Installment Plans
                                             </Typography>
-                                            <Typography>Spread your payments over time with our flexible financing options, designed to make solar accesible for everyone.</Typography>
+                                            <Typography component="p"
+                                                sx={{ color: '#191919' }}>Spread your payments over time with our flexible financing options, designed to make solar accesible for everyone.</Typography>
                                         </Box>
 
                                         <Box textAlign='right'>

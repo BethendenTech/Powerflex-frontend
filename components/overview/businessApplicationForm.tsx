@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import SelectStateComponent from "./stateSelect";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
+import { NextButton } from "../button/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -497,13 +498,13 @@ const BusinessApplicationForm = () => {
                 </FormControl>
 
                 <Box position="sticky" bottom={0} mt={2}>
-                    <Button
+                    <NextButton
                         fullWidth
                         type="submit"
                         variant='contained'
                     >
                         Apply for Financing
-                    </Button>
+                    </NextButton>
                 </Box>
             </form>
         </Box>
