@@ -1,8 +1,9 @@
 "use client"; // This is a client component
 
 import StatusImage from '@/components/StatusImage';
-import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
+import { NextButton } from '@/components/button/style';
 
 export default function Page() {
   return (
@@ -54,7 +55,7 @@ export default function Page() {
         </Card>
       </Box>
       <Box position="sticky" bottom={0} mt={2}>
-        <Button variant='contained' fullWidth>Create Account</Button>
+        <NextButton variant='contained' fullWidth>Create Account</NextButton>
       </Box>
     </Box>
   );

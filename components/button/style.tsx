@@ -75,3 +75,10 @@ export const NavbarButton = styled(Button)(({ }) => ({
         borderRadius: "inherit",
     },
 }));
+
+export const NextButton = styled(Button)(({ }) => ({
+    fontFamily: "'Harmonia Sans Pro', sans-serif",
+    fontWeight: 400,
+    fontSize: "20px",
+    color: "#FFFFFF"
+}));

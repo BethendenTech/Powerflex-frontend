@@ -2,6 +2,7 @@
 
 import Breakdown from '@/components/breakdown/breakdown';
 import Summary from '@/components/breakdown/summary';
+import { NextButton } from '@/components/button/style';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import updateAction from '@/little-state/action';
@@ -132,15 +133,15 @@ export default function Page() {
         <Box position="sticky" bottom={0} mt={2}>
           <Summary showCalculate={true} />
 
-          <Button
+          <NextButton
             type='submit'
             fullWidth
             variant='contained'
             rel="noopener noreferrer"
-            sx={{ mt: 2, fontFamily: "'Harmonia Sans Pro', sans-serif", fontWeight: 400, fontSize: "20px", color: "#FFFFFF" }}
+            sx={{ mt: 2 }}
           >
             Next
-          </Button>
+          </NextButton>
         </Box>
 
       </form>

@@ -7,8 +7,9 @@ import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import React from 'react';
 import Image from 'next/image';
-import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
+import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
+import { NextButton } from '@/components/button/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -147,13 +148,13 @@ export default function Page() {
         </FormControl>
 
         <Box position="sticky" bottom={0} mt={2}>
-          <Button
+          <NextButton
             fullWidth
             type="submit"
             variant='contained'
           >
             Select coverage/autonomy
-          </Button>
+          </NextButton>
         </Box>
       </form>
 

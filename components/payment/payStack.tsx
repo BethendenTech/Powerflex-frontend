@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import dynamic from 'next/dynamic';
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import useQuotation from "@/hooks/quotation";
+import { NextButton } from "../button/style";
 
 const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
     ssr: false, // This ensures that the component is only rendered on the client side
@@ -59,7 +60,7 @@ const PayStackPayment = () => {
     return (
 
         <Box position="sticky" bottom={0} mt={2}>
-            <Button
+            <NextButton
                 {...config}
                 text="Pay Now"
                 variant="contained"
