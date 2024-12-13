@@ -10,6 +10,7 @@ import PaymentSummaryCard from '@/components/payment/paymentSummary';
 import useQuotation from '@/hooks/quotation';
 import { Box, Button, Typography } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
+import { NextButton } from '@/components/button/style';
 
 export default function Page() {
 
@@ -66,13 +67,13 @@ export default function Page() {
 
 
           <Box position="sticky" bottom={0} mt={2}>
-            <Button
+            <NextButton
               fullWidth
               type="submit"
               variant='contained'
             >
               Confirm
-            </Button>
+            </NextButton>
           </Box>
 
         </form>

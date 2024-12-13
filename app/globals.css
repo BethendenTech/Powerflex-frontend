@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Harmonia Sans Pro';
+  src: url('./fonts/HarmoniaSansProCyr-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/myriad-pro/MYRIADPRO-BOLD.OTF') format('truetype');
+}
+
+/* @font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/MYRIADPRO-REGULAR.OTF') format('truetype');
+} */
 
 :root {
   --background: #ffffff;

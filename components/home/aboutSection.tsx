@@ -44,7 +44,6 @@ const HomeAboutSection = () => {
                             <Typography
                                 variant="h2"
                                 component="h1"
-                                fontWeight="bold"
                                 fontSize={32}
                                 color="#191919"
                                 mb={3}
@@ -53,7 +52,6 @@ const HomeAboutSection = () => {
                             </Typography>
 
                             <Typography
-                                variant="h2"
                                 component="h2"
                                 fontSize={16}
                                 color="#191919"
@@ -136,7 +134,6 @@ const HomeAboutSection = () => {
                         <Typography
                             variant="h2"
                             component="h1"
-                            fontWeight="bold"
                             fontSize={32}
                             color="#191919"
                             mb={3}
@@ -145,7 +142,6 @@ const HomeAboutSection = () => {
                         </Typography>
 
                         <Typography
-                            variant="h2"
                             component="h2"
                             fontSize={16}
                             color="#191919"
@@ -174,7 +170,6 @@ const HomeAboutSection = () => {
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, md: 6 }}>
                         <Typography
-                            variant="h2"
                             component="h2"
                             fontSize={16}
                             sx={{

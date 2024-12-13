@@ -2,11 +2,10 @@ import React from 'react'
 import { Box, Container, Stack, Typography, } from '@mui/material'
 import { FooterSection } from '../style'
 import Grid from '@mui/material/Grid2';
-import XIcon from '@mui/icons-material/X';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Link from 'next/link';
 
 const gridItemStyles = {
     display: "flex",
@@ -48,39 +47,41 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
-                                component="h1"
+                                component={Link}
+                                href='/'
                                 fontSize={16}
                                 color="#ffffff"
                                 fontWeight={400}
+                                sx={{ textDecoration: 'none' }}
                             >
                                 Home
                             </Typography>
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
-                                component="h1"
+                                component={Link}
+                                href='/#about'
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
+                                sx={{ textDecoration: 'none' }}
                             >
                                 About Us
                             </Typography>
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
-                                component="h1"
+                                component={Link}
+                                href='/#products'
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
                                 mb={2}
+                                sx={{ textDecoration: 'none' }}
                             >
                                 Products
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -91,17 +92,17 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
-                                component="h1"
+                                component={Link}
+                                href='/#financing'
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
                                 mb={2}
+                                sx={{ textDecoration: 'none' }}
                             >
                                 Financing
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -111,7 +112,6 @@ const WebFooter = () => {
                                 Outright Pament
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -122,18 +122,18 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
-                                component="h1"
+                                component={Link}
+                                href='/#how-it-works'
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
+                                sx={{ textDecoration: 'none' }}
                             >
                                 How it works
                             </Typography>
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -143,7 +143,6 @@ const WebFooter = () => {
                                 Contact Us
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -152,7 +151,6 @@ const WebFooter = () => {
                                 Phone
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -161,7 +159,6 @@ const WebFooter = () => {
                                 Email
                             </Typography>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -172,7 +169,6 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 2, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                variant="h2"
                                 component="h1"
                                 fontSize={16}
                                 color="#fff"
@@ -184,8 +180,6 @@ const WebFooter = () => {
                         <Grid size={{ lg: 2.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Stack direction="row" spacing={3}>
                                 <FacebookIcon />
-                                <XIcon />
-                                <YouTubeIcon />
                                 <InstagramIcon />
                                 <WhatsAppIcon />
                             </Stack>
