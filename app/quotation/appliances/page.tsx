@@ -137,7 +137,7 @@ export default function Page() {
             fullWidth
             variant='contained'
             rel="noopener noreferrer"
-            sx={{ mt: 2 }}
+            sx={{ mt: 2, fontFamily: "'Harmonia Sans Pro', sans-serif", fontWeight: 400, fontSize: "20px", color: "#FFFFFF" }}
           >
             Next
           </Button>
