@@ -5,6 +5,7 @@ import useQuotation from "@/hooks/quotation";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import { updateApplianceArray } from "@/utils/formData";
+import { TableCellName } from "../form/style";
 
 
 interface SummaryObject {
@@ -75,12 +76,12 @@ export default function Summary(props: SummaryObject) {
                 >
                     <TableBody>
                         <TableRow>
-                            <TableCell align="left">Your Daily Property Need Is</TableCell>
-                            <TableCell align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
+                            <TableCellName align="left">Your Daily Property Need Is</TableCellName>
+                            <TableCellName align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
                         </TableRow>
                         <TableRow>
-                            <TableCell align="left">Total cost</TableCell>
-                            <TableCell align="right">{renderNaira(quote.total_cost_with_profit ?? 0)}</TableCell>
+                            <TableCellName sx={{ fontWeight: 700 }} align="left">Total cost</TableCellName>
+                            <TableCellName align="right">{renderNaira(quote.total_cost_with_profit ?? 0)}</TableCellName>
                         </TableRow>
                     </TableBody>
                 </Table>

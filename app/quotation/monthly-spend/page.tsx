@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
+import { FormTitle } from '@/components/form/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -83,9 +84,9 @@ export default function Page() {
           fullWidth
           error={!!errors.electricity_spend}
         >
-          <FormLabel>
+          <FormTitle>
             How much do you spend on electricity each month?
-          </FormLabel>
+          </FormTitle>
           <OutlinedInput
             type='text'
             {...register('electricity_spend', {
@@ -105,7 +106,7 @@ export default function Page() {
         <FormControl
           fullWidth
         >
-          <FormLabel>Select your electricity band group</FormLabel>
+          <FormTitle>Select your electricity band group</FormTitle>
 
           <RadioGroup
             row

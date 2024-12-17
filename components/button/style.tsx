@@ -78,7 +78,7 @@ export const NavbarButton = styled(Button)(({ }) => ({
 
 export const NextButton = styled(Button)(({ }) => ({
     fontFamily: "'Harmonia Sans Pro', sans-serif",
-    fontWeight: 400,
+    fontWeight: "normal",
     fontSize: "20px",
     color: "#FFFFFF"
 }));

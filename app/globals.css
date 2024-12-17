@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Harmonia Sans Pro';
-  src: url('./fonts/HarmoniaSansProCyr-Light.ttf') format('truetype');
+  src: url('./fonts/HarmoniaSansProCyr-Regular.woff') format('woff');
 }
 
 @font-face {

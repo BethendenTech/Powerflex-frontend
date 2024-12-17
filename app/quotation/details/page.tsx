@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
 import React from 'react';
-import { Box, FormControl, FormHelperText, FormLabel, OutlinedInput } from '@mui/material';
+import { Box, FormControl, FormHelperText, OutlinedInput } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
+import { FormTitle } from '@/components/form/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -80,9 +81,9 @@ export default function Page() {
           fullWidth
           error={!!errors.name}
         >
-          <FormLabel>
+          <FormTitle>
             Name
-          </FormLabel>
+          </FormTitle>
           <OutlinedInput
             type='text'
             {...register('name', { required: 'Name is required' })}
@@ -94,9 +95,9 @@ export default function Page() {
           fullWidth
           error={!!errors.email}
         >
-          <FormLabel>
+          <FormTitle>
             Email
-          </FormLabel>
+          </FormTitle>
           <OutlinedInput
             type="email"
             {...register('email', { required: 'Email is required' })}
@@ -108,9 +109,9 @@ export default function Page() {
           fullWidth
           error={!!errors.phone_number}
         >
-          <FormLabel>
+          <FormTitle>
             Phone number
-          </FormLabel>
+          </FormTitle>
           <OutlinedInput
             type="tel"
             {...register('phone_number', { required: 'Phone Number is required' })}
