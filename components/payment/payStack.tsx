@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import dynamic from 'next/dynamic';
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import useQuotation from "@/hooks/quotation";
@@ -60,12 +60,11 @@ const PayStackPayment = () => {
     return (
 
         <Box position="sticky" bottom={0} mt={2}>
-            <NextButton
+            <Button
                 {...config}
                 text="Pay Now"
                 variant="contained"
                 fullWidth
-                className="MuiButton-root MuiButton-contained MuiButton-containedPrimary"
                 onSuccess={(reference: any) => handleSuccessAction(reference)}
                 onClose={handleCloseAction}
                 component={PaystackButton}

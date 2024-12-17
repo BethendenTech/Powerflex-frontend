@@ -34,7 +34,10 @@ const themeOptions: ThemeOptions = {
                     paddingBottom: 10,
                     paddingLeft: 15,
                     paddingRight: 15,
-                    textTransform: "capitalize"
+                    textTransform: "capitalize",
+                    fontFamily: "'Harmonia Sans Pro', sans-serif",
+                    fontWeight: 400,
+                    fontSize: 20,
                 },
                 containedPrimary: {
                     background: 'linear-gradient(0deg, #5C69FF 0%, #257FE6 100%)',
