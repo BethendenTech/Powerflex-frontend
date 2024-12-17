@@ -1,7 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,30 +28,43 @@ const IndividualApplicationForm = () => {
     // Set up react-hook-form with default values for the inputs
     const { control, register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
         defaultValues: {
-            first_name: '',
-            last_name: '',
-            phone_number: '',
-            email: '',
-            house_number: '',
-            street_name: '',
-            landmark: '',
-            nearest_bus_stop: '',
-            town: '',
-            city: '',
-            state: '',
-            lga: '',
-            occupation: '',
-            work_address: '',
-            how_heard_about: ''
+            application_type: "",
+            bvn: "",
+            other_role: "",
+            first_name: "",
+            last_name: "",
+            house_number: "",
+            street_address: "",
+            landmark: "",
+            bus_stop: "",
+            occupation: "",
+            business_role: "",
+            business_name: "",
+            business_address: "",
+            town: "",
+            city: "",
+            state: "",
+            lga: "",
+            email: "",
+            phone_number: "",
+            reference_phone1: "",
+            reference_phone2: "",
+            how_heard_about: "",
+            applicant_id_card: "",
+            company_registration_document: "",
+            bank_statements: "",
+            recent_utility_bill: "",
         }
     });
 
+
+    const business_role = watch("business_role");
+
     // Handle form submission
     const onSubmit = async (formData: any) => {
-        console.log("Form Data:", formData);
-
+        formData["application_type"] = "business"
         formData["quote_number"] = state.quote_number
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/apply-individual/`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cerate-quote-application/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,11 +73,32 @@ const IndividualApplicationForm = () => {
         });
 
         if (response.ok) {
-            // router.push(`/quotation/application-success`);
-            setShowIframe(true)
+            formData["firstname"] = formData["first_name"]
+            formData["lastname"] = formData["last_name"]
+            formData["application_channel"] = "powerflex"
+            formData["device_id"] = "1856"
+            formData["quantity"] = "1"
+            formData["device_price"] = "1"
+            formData["sentinel_sld"] = "no"
+            formData["sentinel_sap"] = "no"
+
+
+            const response = await fetch(`${process.env.NEXT_PUBLIC_FINANCE_BASE_URL}/finance/prod/checkout/application/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'requestApiKey': "jOwhFfcbHGaIkTUAKo8rPSMBp3xd"
+                },
+                body: JSON.stringify(formData),
+            });
+
+            console.log("response", response)
+
+            if (response.ok) {
+                setShowIframe(true)
+            }
         }
     };
-
 
     return (
         <Box mt={5}>
@@ -75,6 +109,39 @@ const IndividualApplicationForm = () => {
             {showIframe && <SentiFlexIframeComponent />}
 
             {!showIframe && <form onSubmit={handleSubmit(onSubmit)} >
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.business_role}
+                >
+                    <FormLabel>
+                        Business_role
+                    </FormLabel>
+                    <Select
+                        type='text'
+                        {...register("business_role", { required: "Role is required" })}
+                    >
+                        <MenuItem value="director">Director</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
+                    </Select>
+                    <FormHelperText>{errors?.business_role?.message}</FormHelperText>
+                </FormControl>
+
+
+                {business_role == "other" && <FormControl
+                    fullWidth
+                    error={!!errors.other_role}
+                >
+                    <FormLabel>
+                        Please type your role?
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("other_role", { required: "This field is required" })}
+                    />
+                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
+                </FormControl>}
 
                 <FormControl
                     fullWidth
@@ -123,6 +190,35 @@ const IndividualApplicationForm = () => {
 
                 <FormControl
                     fullWidth
+                    error={!!errors.reference_phone1}
+                >
+                    <FormLabel>
+                        Reference Phone 1
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
+                    />
+                    <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.reference_phone2}
+                >
+                    <FormLabel>
+                        Reference Phone 2
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
+                    />
+                    <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
+                </FormControl>
+
+
+                <FormControl
+                    fullWidth
                     error={!!errors.email}
                 >
                     <FormLabel>
@@ -134,6 +230,40 @@ const IndividualApplicationForm = () => {
                     />
                     <FormHelperText>{errors?.email?.message}</FormHelperText>
                 </FormControl>
+
+
+
+
+
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.house_number}
+                >
+                    <FormLabel>
+                        House Number
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("house_number", { required: "House Number is required" })}
+                    />
+                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
+                </FormControl>
+                <FormControl
+                    fullWidth
+                    error={!!errors.business_name}
+                >
+                    <FormLabel>
+                        Business Name
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("business_name", { required: "Business Name is required" })}
+                    />
+                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
+                </FormControl>
+
+
 
                 <FormControl
                     fullWidth
@@ -150,22 +280,19 @@ const IndividualApplicationForm = () => {
                 </FormControl>
 
 
-
                 <FormControl
                     fullWidth
-                    error={!!errors.street_name}
+                    error={!!errors.street_address}
                 >
                     <FormLabel>
                         Street Address
                     </FormLabel>
                     <OutlinedInput
                         type='text'
-                        {...register("street_name", { required: "Street Address is required" })}
+                        {...register("street_address", { required: "Street Address is required" })}
                     />
-                    <FormHelperText>{errors?.street_name?.message}</FormHelperText>
+                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
                 </FormControl>
-
-
                 <FormControl
                     fullWidth
                     error={!!errors.landmark}
@@ -183,55 +310,17 @@ const IndividualApplicationForm = () => {
 
                 <FormControl
                     fullWidth
-                    error={!!errors.nearest_bus_stop}
+                    error={!!errors.bus_stop}
                 >
                     <FormLabel>
-                        Nearest Bus Stop
+                        Bus Stop
                     </FormLabel>
                     <OutlinedInput
                         type='text'
-                        {...register("nearest_bus_stop", { required: "Nearest Bus Stop is required" })}
+                        {...register("bus_stop", { required: "Bus Stop is required" })}
                     />
-                    <FormHelperText>{errors?.nearest_bus_stop?.message}</FormHelperText>
+                    <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
                 </FormControl>
-
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.town}
-                >
-                    <FormLabel>
-                        Town
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("town", { required: "Town is required" })}
-                    />
-                    <FormHelperText>{errors?.town?.message}</FormHelperText>
-                </FormControl>
-
-                <FormControl
-                    fullWidth
-                    error={!!errors.city}
-                >
-                    <FormLabel>
-                        City
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("city", { required: "City is required" })}
-                    />
-                    <FormHelperText>{errors?.city?.message}</FormHelperText>
-                </FormControl>
-
-
-                <SelectStateComponent
-                    control={control}
-                    watch={watch}
-                    setValue={setValue}
-                    errors={errors}
-                />
-
 
                 <FormControl
                     fullWidth
@@ -247,19 +336,102 @@ const IndividualApplicationForm = () => {
                     <FormHelperText>{errors?.occupation?.message}</FormHelperText>
                 </FormControl>
 
-
                 <FormControl
                     fullWidth
-                    error={!!errors.work_address}
+                    error={!!errors.business_name}
                 >
                     <FormLabel>
-                        Full Work or Business Address
+                        Business Name
                     </FormLabel>
                     <OutlinedInput
                         type='text'
-                        {...register("work_address", { required: "Full Work or Business Address is required" })}
+                        {...register("business_name", { required: "Business Name is required" })}
                     />
-                    <FormHelperText>{errors?.work_address?.message}</FormHelperText>
+                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.business_address}
+                >
+                    <FormLabel>
+                        Business Address
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("business_address", { required: "Business Address is required" })}
+                    />
+                    <FormHelperText>{errors?.business_address?.message}</FormHelperText>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.town}
+                >
+                    <FormLabel>
+                        Town
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("town", { required: "Town is required" })}
+                    />
+                    <FormHelperText>{errors?.town?.message}</FormHelperText>
+                </FormControl>
+                <FormControl
+                    fullWidth
+                    error={!!errors.city}
+                >
+                    <FormLabel>
+                        City
+                    </FormLabel>
+                    <OutlinedInput
+                        type='text'
+                        {...register("city", { required: "City is required" })}
+                    />
+                    <FormHelperText>{errors?.city?.message}</FormHelperText>
+                </FormControl>
+
+                <SelectStateComponent
+                    control={control}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                />
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.bvn} // Highlight the field if there's an error
+                >
+                    <FormLabel>
+                        BVN (Bank Verification Number)
+                    </FormLabel>
+                    <FormHelperText>
+                        Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
+                    </FormHelperText>
+
+                    <OutlinedInput
+                        type="text"
+                        {...register("bvn", {
+                            required: "BVN (Bank Verification Number) is required",
+                            minLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            maxLength: {
+                                value: 11,
+                                message: "BVN must be exactly 11 digits",
+                            },
+                            pattern: {
+                                value: /^\d{11}$/,
+                                message: "BVN must contain only numeric characters",
+                            },
+                        })}
+                        error={!!errors.bvn} // Add error state to input
+                    />
+
+                    {errors?.bvn?.message && (
+                        <FormHelperText>{errors.bvn.message}</FormHelperText>
+                    )}
                 </FormControl>
 
 
