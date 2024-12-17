@@ -4,6 +4,7 @@ import React from "react";
 import useQuotation from "@/hooks/quotation";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import { TableCellName } from "../form/style";
 export const EstimatedEnergyRequirement = () => {
     const { quote } = useQuotation();
 
@@ -25,7 +26,10 @@ export const EstimatedEnergyRequirement = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <Typography fontWeight="bold">
+                            <Typography fontWeight="bold" sx={{
+                                fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                fontSize: '20px'
+                            }}>
                                 Estimated energy requirement
                             </Typography>
                         </TableCell>
@@ -33,9 +37,9 @@ export const EstimatedEnergyRequirement = () => {
                 </TableHead>
                 <TableBody>
                     <TableRow>
-                        <TableCell align="left">Solar panels</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels} Units</TableCell>
-                        <TableCell align="right">
+                        <TableCellName align="left">Solar panels</TableCellName>
+                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels} Units</TableCellName>
+                        <TableCellName align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -44,42 +48,42 @@ export const EstimatedEnergyRequirement = () => {
                             >
                                 {openPanel ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
+                        <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openPanel} timeout="auto" unmountOnExit>
                                 <Table component={Paper}>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell>Product</TableCell>
-                                            <TableCell>Price USD</TableCell>
-                                            <TableCell>Capacity</TableCell>
+                                            <TableCellName>Product</TableCellName>
+                                            <TableCellName>Price USD</TableCellName>
+                                            <TableCellName>Capacity</TableCellName>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         <TableRow>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_panel?.name}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_panel?.price_usd}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_panel?.capacity_w}
-                                            </TableCell>
+                                            </TableCellName>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
                             </Collapse>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell align="left">Inverters</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters} Units</TableCell>
-                        <TableCell align="right">
+                        <TableCellName align="left">Inverters</TableCellName>
+                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters} Units</TableCellName>
+                        <TableCellName align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -88,42 +92,42 @@ export const EstimatedEnergyRequirement = () => {
                             >
                                 {openInverter ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
+                        <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openInverter} timeout="auto" unmountOnExit>
                                 <Table component={Paper}>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell>Product</TableCell>
-                                            <TableCell>Price USD</TableCell>
-                                            <TableCell>Capacity</TableCell>
+                                            <TableCellName>Product</TableCellName>
+                                            <TableCellName>Price USD</TableCellName>
+                                            <TableCellName>Capacity</TableCellName>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         <TableRow>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_inverter?.name}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_inverter?.price_usd}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_inverter?.capacity_w}
-                                            </TableCell>
+                                            </TableCellName>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
                             </Collapse>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell align="left">Batteries</TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries} Units</TableCell>
-                        <TableCell align="right">
+                        <TableCellName align="left">Batteries</TableCellName>
+                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries} Units</TableCellName>
+                        <TableCellName align="right">
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -132,42 +136,42 @@ export const EstimatedEnergyRequirement = () => {
                             >
                                 {openBatteries ? <KeyboardArrowDownOutlinedIcon /> : <KeyboardArrowRightOutlinedIcon />}
                             </IconButton>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
+                        <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openBatteries} timeout="auto" unmountOnExit>
                                 <Table component={Paper}>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell>Product</TableCell>
-                                            <TableCell>Price USD</TableCell>
-                                            <TableCell>Capacity</TableCell>
+                                            <TableCellName>Product</TableCellName>
+                                            <TableCellName>Price USD</TableCellName>
+                                            <TableCellName>Capacity</TableCellName>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         <TableRow>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_battery?.name}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_battery?.price_usd}
-                                            </TableCell>
-                                            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                                            </TableCellName>
+                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
                                                 {quote?.products?.best_battery?.capacity_w}
-                                            </TableCell>
+                                            </TableCellName>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
                             </Collapse>
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell align="left">Total Load Kwh</TableCell>
-                        <TableCell align="left"></TableCell>
-                        <TableCell align="right" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCell>
+                        <TableCellName align="left">Total Load Kwh</TableCellName>
+                        <TableCellName align="left"></TableCellName>
+                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
                     </TableRow>
                 </TableBody>
             </Table>

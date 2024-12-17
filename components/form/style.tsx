@@ -7,6 +7,14 @@ export const FormTitle = styled(FormLabel)(({ }) => ({
     color: "#424242"
 }));
 
+export const Heading = styled(Typography)(({ }) => ({
+    fontFamily: "'Harmonia Sans Pro', sans-serif",
+    fontWeight: 400,
+    fontSize: "20px",
+    color: "#000000",
+    textAlign: 'center'
+}));
+
 export const Title = styled(Typography)(({ }) => ({
     fontFamily: "'Harmonia Sans Pro', sans-serif",
     fontWeight: "bold",
