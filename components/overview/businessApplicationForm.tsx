@@ -9,6 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
+import { FormTitle, Title } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -88,20 +89,20 @@ const BusinessApplicationForm = () => {
     };
 
     return (
-        <Box mt={5}>
+        <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="h6">
+                <Title sx={{ fontWeight: 400 }}>
                     Business Application
-                </Typography>
+                </Title>
 
 
                 <FormControl
                     fullWidth
                     error={!!errors.business_role}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business_role
-                    </FormLabel>
+                    </FormTitle>
                     <Select
                         type='text'
                         {...register("business_role", { required: "Role is required" })}
@@ -117,9 +118,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.other_role}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Please type your role?
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("other_role", { required: "This field is required" })}
@@ -131,9 +132,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.first_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         First Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("first_name", { required: "First name is required" })}
@@ -147,9 +148,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.last_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Last Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("last_name", { required: "Last name is required" })}
@@ -162,9 +163,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.phone_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Phone number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("phone_number", { required: "Phone number is required" })}
@@ -176,9 +177,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.reference_phone1}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Reference Phone 1
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
@@ -190,9 +191,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.reference_phone2}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Reference Phone 2
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
@@ -205,9 +206,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.email}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Email Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("email", { required: "Email address is required" })}
@@ -224,9 +225,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.house_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         House Number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
@@ -237,9 +238,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.business_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
@@ -253,9 +254,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.house_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         House Number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
@@ -268,9 +269,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.street_address}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Street Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("street_address", { required: "Street Address is required" })}
@@ -281,9 +282,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.landmark}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Landmark
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("landmark", { required: "Landmark is required" })}
@@ -296,9 +297,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.bus_stop}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Bus Stop
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("bus_stop", { required: "Bus Stop is required" })}
@@ -310,9 +311,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.occupation}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Occupation
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("occupation", { required: "Occupation is required" })}
@@ -324,9 +325,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.business_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
@@ -338,9 +339,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.business_address}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_address", { required: "Business Address is required" })}
@@ -352,9 +353,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.town}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Town
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("town", { required: "Town is required" })}
@@ -365,9 +366,9 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.city}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         City
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("city", { required: "City is required" })}
@@ -386,10 +387,10 @@ const BusinessApplicationForm = () => {
                     fullWidth
                     error={!!errors.bvn} // Highlight the field if there's an error
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
-                    </FormLabel>
-                    <FormHelperText>
+                    </FormTitle>
+                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1 }}>
                         Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
                     </FormHelperText>
 

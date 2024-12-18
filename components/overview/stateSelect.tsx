@@ -1,6 +1,7 @@
 import React from "react";
 import { MenuItem, Select, FormControl, FormHelperText, Box, FormLabel } from "@mui/material";
 import { Control, FieldErrors, UseFormWatch, UseFormSetValue, Controller } from "react-hook-form";
+import { FormTitle } from "../form/style";
 
 type StateDataType = {
     state: string;
@@ -1026,7 +1027,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
         <Box>
             {/* State Dropdown */}
             <FormControl fullWidth error={!!errors.state} >
-                <FormLabel id="state-label">State</FormLabel>
+                <FormTitle sx={{ fontWeight: 700 }} id="state-label">State</FormTitle>
                 <Controller
                     name="state"
                     control={control}
@@ -1057,7 +1058,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
 
             {/* LGA Dropdown */}
             <FormControl fullWidth error={!!errors.lga} margin="normal">
-                <FormLabel id="lga-label">LGA (Local Government Area)</FormLabel>
+                <FormTitle sx={{ fontWeight: 700 }} id="lga-label">LGA (Local Government Area)</FormTitle>
                 <Controller
                     name="lga"
                     control={control}

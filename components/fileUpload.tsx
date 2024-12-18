@@ -1,11 +1,15 @@
 import { useDropzone } from 'react-dropzone';
 import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Alert, Box, Button, CircularProgress, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, List, ListItem, ListItemText, Typography } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import React, { useState } from 'react';
+import { CheckboxContainer, CustomAccordionSummary, CustomExpandIcon, Title, TitleContainer } from './form/style';
+import Image from 'next/image';
+
+import ArrowUp from "../public/images/web/arrowlist-down.svg";
+import ArrowDown from "../public/images/web/arrowlist-up.svg";
 
 type ComponentProps = {
     name: string;
@@ -21,6 +25,18 @@ const FileUploadComponent = (props: ComponentProps) => {
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
+
+    const [checked, setChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setChecked(!checked);
+    };
+
+    const [expanded, setExpanded] = useState(false);
+
+    const handleAccordionToggle = () => {
+        setExpanded(!expanded);
+    };
 
     const { acceptedFiles, fileRejections, open, getRootProps, getInputProps } = useDropzone({
         noClick: true,
@@ -91,20 +107,83 @@ const FileUploadComponent = (props: ComponentProps) => {
     ));
 
     return (
-        <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-                {label}
-            </AccordionSummary>
+        <Accordion
+            expanded={expanded}
+            onChange={handleAccordionToggle}
+            sx={{
+                "&.MuiAccordion-root": {
+                    border: `1px solid #5C69FF`,
+                    borderRadius: "12px",
+                },
+                boxShadow: "none",
+            }}
+        >
+            <CustomAccordionSummary
+            // expandIcon={
+            //     <CustomExpandIcon>
+            //         <ExpandMoreIcon />
+            //     </CustomExpandIcon>
+            // }
+            >
+                <Box sx={{ position: "relative", width: "100%" }}>
+                    {/* Title */}
+                    <TitleContainer>
+                        <Title>{label}</Title>
+                    </TitleContainer>
+
+                    {/* Checkbox */}
+                    <CheckboxContainer>
+                        <Checkbox
+                            size='large'
+                            sx={{
+                                "&.MuiCheckbox-root": {
+                                    color: "#257FE6",
+                                },
+                            }}
+                            checked={checked}
+                            onChange={(e) => {
+                                e.stopPropagation();
+                                handleCheckboxChange();
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </CheckboxContainer>
+
+                    {/* Custom Expand/Collapse Icon */}
+                    <CustomExpandIcon>
+                        <Image
+                            src={expanded ? ArrowDown : ArrowUp}
+                            alt={expanded ? "Collapse" : "Expand"}
+                            width={20}
+                            height={20}
+                        />
+                    </CustomExpandIcon>
+                </Box>
+            </CustomAccordionSummary>
             <AccordionDetails>
-                <Box sx={{ borderStyle: 'dotted', borderWidth: 2 }} textAlign="center" padding={2}>
+                <Box sx={{ borderStyle: 'dashed', borderWidth: 2, borderRadius: '12px' }} textAlign="center" padding={2}>
                     <CloudUploadOutlinedIcon />
-                    <Box {...getRootProps({ className: 'dropzone' })}>
+                    <Box {...getRootProps({ className: 'dropzone' })} mt={3}>
                         <input {...getInputProps()} />
-                        <Typography>Choose a file or drag & drop it here</Typography>
-                        <Typography>Supported formats: JPEG, PNG, PDF, MP4 up to 10MB</Typography>
+                        <Typography sx={{
+                            fontSize: "13.69px",
+                            fontWeight: 700,
+                            lineHeight: "16.57px",
+                            textAlign: "center",
+
+                        }}>Choose a file or drag & drop it here</Typography>
+                        <Typography sx={{
+                            fontSize: "11.87px",
+                            fontWeight: 500,
+                            lineHeight: "16.57px",
+                            textAlign: "center",
+                            color: "#A9ACB4"
+                        }}>Supported formats: JPEG, PNG, PDF, MP4 up to 10MB</Typography>
 
                         <Box mt={2}>
-                            <Button variant="contained" onClick={() => open()}>
+                            <Button sx={{
+                                padding: "6px 20px"
+                            }} variant="contained" onClick={() => open()}>
                                 Browse File
                             </Button>
                         </Box>
@@ -155,7 +234,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                     )}
                 </Box>
             </AccordionDetails>
-        </Accordion>
+        </Accordion >
     );
 };
 
