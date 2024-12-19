@@ -32,6 +32,14 @@ export const Heading = styled(Typography)(({ }) => ({
     textAlign: 'center'
 }));
 
+export const Description = styled(Typography)(({ }) => ({
+    fontFamily: "'Harmonia Sans Pro', sans-serif",
+    fontWeight: 400,
+    fontSize: "14px",
+    color: "#424242",
+    textAlign: 'center'
+}));
+
 export const Title = styled(Typography)(({ }) => ({
     fontFamily: "'Harmonia Sans Pro', sans-serif",
     fontWeight: "bold",
@@ -50,7 +58,7 @@ export const TableCellName = styled(TableCell)(({ }) => ({
 
 // ACCORDION CSS
 
-export const CustomAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+export const CustomAccordionSummary = styled(AccordionSummary)(({ }) => ({
     flexDirection: "column",
     "& .MuiAccordionSummary-content": {
         margin: 0,
@@ -78,7 +86,7 @@ export const CheckboxContainer = styled(Box)({
     alignItems: "center",
 });
 
-export const CustomExpandIcon = styled(Box)(({ theme }) => ({
+export const CustomExpandIcon = styled(Box)(({ }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

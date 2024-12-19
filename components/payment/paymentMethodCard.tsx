@@ -2,9 +2,10 @@
 
 import updateAction from '@/little-state/action';
 import { paymentMethods } from '@/utils/paymentData';
-import { Box, Divider, FormControl, FormControlLabel, FormLabel, List, ListItem, Radio, RadioGroup, Typography } from '@mui/material';
+import { Box, Divider, FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import React from 'react';
+import { FormTitle } from '../form/style';
 
 const PaymentMethodCard = () => {
     const { actions, state } = useStateMachine({ updateAction });
@@ -17,13 +18,11 @@ const PaymentMethodCard = () => {
     }
 
     return (
-        <Box>
-
-
+        <Box mb={4}>
             <FormControl
                 fullWidth
             >
-                <FormLabel>Payment Method</FormLabel>
+                <FormTitle sx={{ fontWeight: 700, color: "#000000 !important" }}>Payment Method</FormTitle>
 
                 <RadioGroup
 
@@ -34,23 +33,30 @@ const PaymentMethodCard = () => {
                         mt: 1,
                         backgroundColor: "white",
                         borderRadius: 2,
-                        borderColor: "#ccc",
-                        borderWidth: 1,
                         paddingTop: 1,
-                        paddingLeft: 2
+                        paddingLeft: 2,
+                        paddingRight: 2,
                     }}
                 >
                     {paymentMethods &&
-                        paymentMethods.map((paymentMethod) => (
-                            <>
+                        paymentMethods.map((paymentMethod, index) => (
+                            <Box key={paymentMethod.value}>
                                 <FormControlLabel
                                     value={paymentMethod.value}
                                     control={<Radio />}
                                     label={paymentMethod.label}
                                     labelPlacement="end"
+                                    sx={{
+                                        p: "6px 12px",
+                                        "&.MuiFormControlLabel-root .MuiFormControlLabel-label": {
+                                            fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                            fontWeight: 400,
+                                            fontSize: "16px",
+                                        }
+                                    }}
                                 />
-                                <Divider />
-                            </>
+                                {index < paymentMethods.length - 1 && <Divider />}
+                            </Box>
                         ))}
                 </RadioGroup>
             </FormControl>
