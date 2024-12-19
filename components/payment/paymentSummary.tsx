@@ -1,16 +1,16 @@
 "use client";
 
 import useQuotation from "@/hooks/quotation";
-import { QuoteInterface } from "@/types/quotation";
 import { renderNaira } from "@/utils/currency";
-import { Box, Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Card, CardContent, Table, TableBody, TableHead, TableRow, Typography } from "@mui/material";
+import { TableCellName, Title } from "../form/style";
 
 const PaymentSummaryCard = () => {
     const { quote } = useQuotation();
 
     return (
         <Box sx={{ mt: 2, mb: 2 }}>
-            <Typography variant="h6" fontWeight="bold">Outright Purchase</Typography>
+            <Title sx={{ color: "#000000" }}>Outright Purchase</Title>
 
             <Card>
                 <CardContent>
@@ -24,42 +24,52 @@ const PaymentSummaryCard = () => {
                         }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell colSpan={2} align="left">Equipment</TableCell>
-                                <TableCell colSpan={2} align="right">{quote?.total_equipments}</TableCell>
+                                <TableCellName colSpan={2} align="left">Equipment</TableCellName>
+                                <TableCellName colSpan={2} align="right">{quote?.total_equipments}</TableCellName>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             <TableRow>
-                                <TableCell></TableCell>
-                                <TableCell align="left">Solar panels</TableCell>
-                                <TableCell align="right">{quote?.products?.number_of_panels}</TableCell>
-                                <TableCell></TableCell>
+                                <TableCellName></TableCellName>
+                                <TableCellName align="left">Solar panels</TableCellName>
+                                <TableCellName align="right">{quote?.products?.number_of_panels}</TableCellName>
+                                <TableCellName></TableCellName>
                             </TableRow>
                             <TableRow>
-                                <TableCell></TableCell>
-                                <TableCell align="left">Inverters</TableCell>
-                                <TableCell align="right">{quote?.products?.number_of_inverters}</TableCell>
-                                <TableCell></TableCell>
+                                <TableCellName></TableCellName>
+                                <TableCellName align="left">Inverters</TableCellName>
+                                <TableCellName align="right">{quote?.products?.number_of_inverters}</TableCellName>
+                                <TableCellName></TableCellName>
                             </TableRow>
                             <TableRow>
-                                <TableCell></TableCell>
-                                <TableCell align="left">Batteries</TableCell>
-                                <TableCell align="right">{quote?.products?.number_of_batteries}</TableCell>
-                                <TableCell></TableCell>
+                                <TableCellName></TableCellName>
+                                <TableCellName align="left">Batteries</TableCellName>
+                                <TableCellName align="right">{quote?.products?.number_of_batteries}</TableCellName>
+                                <TableCellName></TableCellName>
                             </TableRow>
 
                             <TableRow>
-                                <TableCell colSpan={2} align="left">Installation</TableCell>
-                                <TableCell colSpan={2} align="right">{renderNaira(quote?.installer_commission_amount)}</TableCell>
+                                <TableCellName colSpan={2} align="left">Installation</TableCellName>
+                                <TableCellName colSpan={2} align="right">{renderNaira(quote?.installer_commission_amount)}</TableCellName>
                             </TableRow>
                         </TableBody>
                     </Table>
 
                     <Box textAlign="center">
-                        <Typography variant="h5" component="h5" fontWeight="bold">
+                        <Typography variant="h5" component="h5" fontWeight="bold"
+                            sx={{
+                                fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                fontSize: "20px",
+                                color: "#424242"
+                            }}>
                             Total Cost
                         </Typography>
-                        <Typography variant="h5" component="h5" fontWeight="bold">
+                        <Typography variant="h5" component="h5" fontWeight="bold"
+                            sx={{
+                                fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                fontSize: "20px",
+                                color: "#424242"
+                            }}>
                             {renderNaira(quote?.total_cost_naira)}
                         </Typography>
                     </Box>

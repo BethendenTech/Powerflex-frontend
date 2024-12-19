@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
 import React from 'react';
-import { Box, FormControl, FormHelperText, OutlinedInput } from '@mui/material';
+import { Box, FormHelperText, OutlinedInput } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
-import { FormTitle } from '@/components/form/style';
+import { FormInputField, FormTitle } from '@/components/form/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -77,7 +77,7 @@ export default function Page() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <FormControl
+        <FormInputField
           fullWidth
           error={!!errors.name}
         >
@@ -89,9 +89,9 @@ export default function Page() {
             {...register('name', { required: 'Name is required' })}
           />
           <FormHelperText>{errors?.name?.message}</FormHelperText>
-        </FormControl>
+        </FormInputField>
 
-        <FormControl
+        <FormInputField
           fullWidth
           error={!!errors.email}
         >
@@ -103,9 +103,9 @@ export default function Page() {
             {...register('email', { required: 'Email is required' })}
           />
           <FormHelperText>{errors?.email?.message}</FormHelperText>
-        </FormControl>
+        </FormInputField>
 
-        <FormControl
+        <FormInputField
           fullWidth
           error={!!errors.phone_number}
         >
@@ -117,7 +117,7 @@ export default function Page() {
             {...register('phone_number', { required: 'Phone Number is required' })}
           />
           <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
-        </FormControl>
+        </FormInputField>
 
         <Box position="sticky" bottom={0} mt={2}>
           <NextButton

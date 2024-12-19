@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
-import { FormTitle } from '@/components/form/style';
+import { FormInputField, FormTitle } from '@/components/form/style';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
@@ -80,7 +80,7 @@ export default function Page() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <FormControl
+        <FormInputField
           fullWidth
           error={!!errors.electricity_spend}
         >
@@ -99,7 +99,7 @@ export default function Page() {
             })}
           />
           <FormHelperText>{errors?.electricity_spend?.message}</FormHelperText>
-        </FormControl>
+        </FormInputField>
 
 
 

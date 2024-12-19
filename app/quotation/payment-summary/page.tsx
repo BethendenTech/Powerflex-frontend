@@ -11,6 +11,7 @@ import useQuotation from '@/hooks/quotation';
 import { Box, Button, Typography } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
+import { Heading } from '@/components/form/style';
 
 export default function Page() {
 
@@ -57,9 +58,9 @@ export default function Page() {
       <CustomizedSteppers activeStep={6} />
 
       <Box>
-        <Typography textAlign="center" variant="h6">
+        <Heading>
           Payment Summary
-        </Typography>
+        </Heading>
 
         <form onSubmit={handleSubmit(onSubmit)}>
 

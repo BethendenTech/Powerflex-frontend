@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormTitle, Title } from "../form/style";
+import { FormInputField, FormTitle, Title } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -96,7 +96,7 @@ const BusinessApplicationForm = () => {
                 </Title>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_role}
                 >
@@ -111,10 +111,10 @@ const BusinessApplicationForm = () => {
                         <MenuItem value="other">Other</MenuItem>
                     </Select>
                     <FormHelperText>{errors?.business_role?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                {business_role == "other" && <FormControl
+                {business_role == "other" && <FormInputField
                     fullWidth
                     error={!!errors.other_role}
                 >
@@ -126,9 +126,9 @@ const BusinessApplicationForm = () => {
                         {...register("other_role", { required: "This field is required" })}
                     />
                     <FormHelperText>{errors?.other_role?.message}</FormHelperText>
-                </FormControl>}
+                </FormInputField>}
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.first_name}
                 >
@@ -140,11 +140,9 @@ const BusinessApplicationForm = () => {
                         {...register("first_name", { required: "First name is required" })}
                     />
                     <FormHelperText>{errors?.first_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-
-
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.last_name}
                 >
@@ -156,10 +154,10 @@ const BusinessApplicationForm = () => {
                         {...register("last_name", { required: "Last name is required" })}
                     />
                     <FormHelperText>{errors?.last_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.phone_number}
                 >
@@ -171,9 +169,9 @@ const BusinessApplicationForm = () => {
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
                     <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone1}
                 >
@@ -185,9 +183,9 @@ const BusinessApplicationForm = () => {
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone2}
                 >
@@ -199,10 +197,10 @@ const BusinessApplicationForm = () => {
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.email}
                 >
@@ -214,14 +212,14 @@ const BusinessApplicationForm = () => {
                         {...register("email", { required: "Email address is required" })}
                     />
                     <FormHelperText>{errors?.email?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
@@ -233,8 +231,8 @@ const BusinessApplicationForm = () => {
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
@@ -246,11 +244,11 @@ const BusinessApplicationForm = () => {
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
@@ -262,10 +260,10 @@ const BusinessApplicationForm = () => {
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.street_address}
                 >
@@ -277,8 +275,8 @@ const BusinessApplicationForm = () => {
                         {...register("street_address", { required: "Street Address is required" })}
                     />
                     <FormHelperText>{errors?.street_address?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.landmark}
                 >
@@ -290,10 +288,10 @@ const BusinessApplicationForm = () => {
                         {...register("landmark", { required: "Landmark is required" })}
                     />
                     <FormHelperText>{errors?.landmark?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bus_stop}
                 >
@@ -305,9 +303,9 @@ const BusinessApplicationForm = () => {
                         {...register("bus_stop", { required: "Bus Stop is required" })}
                     />
                     <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.occupation}
                 >
@@ -319,9 +317,9 @@ const BusinessApplicationForm = () => {
                         {...register("occupation", { required: "Occupation is required" })}
                     />
                     <FormHelperText>{errors?.occupation?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
@@ -333,9 +331,9 @@ const BusinessApplicationForm = () => {
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_address}
                 >
@@ -347,9 +345,9 @@ const BusinessApplicationForm = () => {
                         {...register("business_address", { required: "Business Address is required" })}
                     />
                     <FormHelperText>{errors?.business_address?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.town}
                 >
@@ -361,8 +359,8 @@ const BusinessApplicationForm = () => {
                         {...register("town", { required: "Town is required" })}
                     />
                     <FormHelperText>{errors?.town?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.city}
                 >
@@ -374,7 +372,7 @@ const BusinessApplicationForm = () => {
                         {...register("city", { required: "City is required" })}
                     />
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
                 <SelectStateComponent
                     control={control}
@@ -383,7 +381,7 @@ const BusinessApplicationForm = () => {
                     errors={errors}
                 />
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bvn} // Highlight the field if there's an error
                 >
@@ -417,7 +415,7 @@ const BusinessApplicationForm = () => {
                     {errors?.bvn?.message && (
                         <FormHelperText>{errors.bvn.message}</FormHelperText>
                     )}
-                </FormControl>
+                </FormInputField>
 
 
 
