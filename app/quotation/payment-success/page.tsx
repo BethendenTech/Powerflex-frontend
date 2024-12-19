@@ -57,7 +57,7 @@ export default function Page() {
           <CardContent>
             <Box textAlign="center">
               <Description>Installer will call you within the next few hours...</Description>
-              <Description mt={2} paddingLeft={8} paddingRight={8}>Please continue to create your PowerFlex Customer account.</Description>
+              <Description mt={2} paddingLeft={12} paddingRight={12}>Please continue to create your PowerFlex Customer account.</Description>
             </Box>
           </CardContent>
         </Card>
