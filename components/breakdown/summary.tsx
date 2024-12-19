@@ -1,5 +1,5 @@
 import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
-import { Button, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Table, TableBody, TableRow } from "@mui/material";
 import React from "react";
 import useQuotation from "@/hooks/quotation";
 import { useStateMachine } from "little-state-machine";
@@ -34,58 +34,101 @@ export default function Summary(props: SummaryObject) {
     }
 
     return (
-        <Card
+        <Box
             sx={{
-                boxShadow: "0px 3.66px 3.66px 0px #00000040",
-                backgroundColor: '#F2F2F4',
-                background: "rgba(242, 242, 244, 1)",
-                borderRadius: '10.98px'
+                position: "relative", // Enable absolute positioning for gradient layer
+                display: "flex", // Wrap the card and gradient together
             }}
         >
-            <CardHeader
-                title="Estimation"
-                titleTypographyProps={{
-                    style: {
-                        fontSize: 20,
-                        fontWeight: "bold",
-                    }
-                }}
+            {/* Gradient background layer */}
+            <Box
                 sx={{
-                    paddingTop: 2,
-                    paddingBottom: 0,
-                    paddingLeft: 2,
-                    paddingRight: 2,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    display: "flex",
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "10.98px",
+                    background: "linear-gradient(270deg, #C4C7D0 0%, #FFFFFF 100%)",
+                    filter: "blur(15px)",
+                    zIndex: 0,
+                    transform: "scale(1.1)",
                 }}
-                action={props.showCalculate ? (
-                    <Button variant="outlined" size="small"
-                        aria-label="calculate" onClick={() => handleCalculate()} sx={{
-                            padding: 2,
-                            lineHeight: 0,
-                            fontFamily: "'Harmonia Sans Pro', sans-serif", fontWeight: 400, fontSize: "20px", color: "#FFFFFF"
-                        }}>
-                        Calculate
-                    </Button>
-                ) : ""}
             />
 
-            <CardContent>
+            {/* Card content */}
+            <Card
+                sx={{
+                    position: "relative",
+                    zIndex: 1,
+                    borderRadius: "10.98px",
+                    boxShadow: "0px 3.66px 3.66px 0px #00000040",
+                    backgroundColor: "#F2F2F4",
+                    width:'100%'
+                }}
+            >
+                <CardHeader
+                    title="Estimation"
+                    titleTypographyProps={{
+                        style: {
+                            fontSize: 20,
+                            fontWeight: "bold",
+                        },
+                    }}
+                    sx={{
+                        paddingTop: 2,
+                        paddingBottom: 0,
+                        paddingLeft: 2,
+                        paddingRight: 2,
+                    }}
+                    action={
+                        props.showCalculate ? (
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                aria-label="calculate"
+                                onClick={() => handleCalculate()}
+                                sx={{
+                                    padding: 2,
+                                    lineHeight: 0,
+                                    fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                    fontWeight: 400,
+                                    fontSize: "20px",
+                                    color: "#000000",
+                                }}
+                            >
+                                Calculate
+                            </Button>
+                        ) : (
+                            ""
+                        )
+                    }
+                />
+                <CardContent>
+                    <Table size="small">
+                        <TableBody>
+                            <TableRow>
+                                <TableCellName align="left">
+                                    Your Daily Property Need Is
+                                </TableCellName>
+                                <TableCellName align="right">
+                                    {formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}
+                                </TableCellName>
+                            </TableRow>
+                            <TableRow>
+                                <TableCellName sx={{ fontWeight: 700 }} align="left">
+                                    Total cost
+                                </TableCellName>
+                                <TableCellName align="right">
+                                    {renderNaira(quote.total_cost_with_profit ?? 0)}
+                                </TableCellName>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
+        </Box>
 
-                <Table
-                    size="small"
-
-                >
-                    <TableBody>
-                        <TableRow>
-                            <TableCellName align="left">Your Daily Property Need Is</TableCellName>
-                            <TableCellName align="right">{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
-                        </TableRow>
-                        <TableRow>
-                            <TableCellName sx={{ fontWeight: 700 }} align="left">Total cost</TableCellName>
-                            <TableCellName align="right">{renderNaira(quote.total_cost_with_profit ?? 0)}</TableCellName>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </CardContent>
-        </Card>
     );
 }
