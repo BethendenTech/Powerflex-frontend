@@ -116,7 +116,8 @@ export default function Page() {
             sx={{
               '.MuiCardHeader-title': {
                 fontSize: '1rem',
-                fontWeight: "bold"
+                fontWeight: "bold",
+                fontFamily: "'Harmonia Sans Pro', sans-serif",
               },
             }}
           />

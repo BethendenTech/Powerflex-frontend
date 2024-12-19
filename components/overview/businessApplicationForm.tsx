@@ -9,6 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
+import { FormInputField, FormTitle, Title } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -88,20 +89,20 @@ const BusinessApplicationForm = () => {
     };
 
     return (
-        <Box mt={5}>
+        <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="h6">
+                <Title sx={{ fontWeight: 400 }}>
                     Business Application
-                </Typography>
+                </Title>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_role}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business_role
-                    </FormLabel>
+                    </FormTitle>
                     <Select
                         type='text'
                         {...register("business_role", { required: "Role is required" })}
@@ -110,270 +111,268 @@ const BusinessApplicationForm = () => {
                         <MenuItem value="other">Other</MenuItem>
                     </Select>
                     <FormHelperText>{errors?.business_role?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                {business_role == "other" && <FormControl
+                {business_role == "other" && <FormInputField
                     fullWidth
                     error={!!errors.other_role}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Please type your role?
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("other_role", { required: "This field is required" })}
                     />
                     <FormHelperText>{errors?.other_role?.message}</FormHelperText>
-                </FormControl>}
+                </FormInputField>}
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.first_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         First Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("first_name", { required: "First name is required" })}
                     />
                     <FormHelperText>{errors?.first_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-
-
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.last_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Last Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("last_name", { required: "Last name is required" })}
                     />
                     <FormHelperText>{errors?.last_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.phone_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Phone number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
                     <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone1}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Reference Phone 1
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone2}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Reference Phone 2
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.email}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Email Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("email", { required: "Email address is required" })}
                     />
                     <FormHelperText>{errors?.email?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         House Number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         House Number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.street_address}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Street Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("street_address", { required: "Street Address is required" })}
                     />
                     <FormHelperText>{errors?.street_address?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.landmark}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Landmark
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("landmark", { required: "Landmark is required" })}
                     />
                     <FormHelperText>{errors?.landmark?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bus_stop}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Bus Stop
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("bus_stop", { required: "Bus Stop is required" })}
                     />
                     <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.occupation}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Occupation
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("occupation", { required: "Occupation is required" })}
                     />
                     <FormHelperText>{errors?.occupation?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Name
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_address}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Business Address
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("business_address", { required: "Business Address is required" })}
                     />
                     <FormHelperText>{errors?.business_address?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.town}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         Town
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("town", { required: "Town is required" })}
                     />
                     <FormHelperText>{errors?.town?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.city}
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         City
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("city", { required: "City is required" })}
                     />
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
                 <SelectStateComponent
                     control={control}
@@ -382,14 +381,14 @@ const BusinessApplicationForm = () => {
                     errors={errors}
                 />
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bvn} // Highlight the field if there's an error
                 >
-                    <FormLabel>
+                    <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
-                    </FormLabel>
-                    <FormHelperText>
+                    </FormTitle>
+                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1 }}>
                         Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
                     </FormHelperText>
 
@@ -416,7 +415,7 @@ const BusinessApplicationForm = () => {
                     {errors?.bvn?.message && (
                         <FormHelperText>{errors.bvn.message}</FormHelperText>
                     )}
-                </FormControl>
+                </FormInputField>
 
 
 

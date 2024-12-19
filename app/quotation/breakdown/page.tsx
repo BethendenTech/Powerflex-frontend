@@ -2,6 +2,7 @@
 
 import Summary from '@/components/breakdown/summary';
 import { NextButton } from '@/components/button/style';
+import { FormTitle } from '@/components/form/style';
 import StatusImage from '@/components/StatusImage';
 import CustomizedSteppers from '@/components/stepper';
 import Tooltip from '@/components/Tooltip';
@@ -139,9 +140,9 @@ export default function Page() {
         </FormControl> */}
 
         <div className='flex input-group'>
-          <label htmlFor="solar_load" className="label">
+          <FormTitle htmlFor="solar_load" className="label">
             Solar load coverage
-          </label>
+          </FormTitle>
           <div className='input-group input-group-background'>
             <div className='flex input-group'>
               <Tooltip
@@ -170,9 +171,9 @@ export default function Page() {
           </div>
         </div>
         <div className='flex input-group'>
-          <label htmlFor="battery_autonomy_hours_only" className="label">
+          <FormTitle htmlFor="battery_autonomy_hours_only" className="label">
             Battery autonomy in days and hours
-          </label>
+          </FormTitle>
           <div className='input-group input-group-background'>
 
             <div className='input-group'>

@@ -6,6 +6,7 @@ import updateAction from '@/little-state/action';
 import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
+import { Description, Heading } from '@/components/form/style';
 
 export default function Page() {
   const { state } = useStateMachine({ updateAction });
@@ -49,11 +50,14 @@ export default function Page() {
               height: "130px",
             }}
           />
-          <CardHeader title="Payment Successfull" sx={{ textAlign: "center" }} />
+
+          <Heading sx={{ mt: 2 }}>
+            Payment Successfull
+          </Heading>
           <CardContent>
-            <Box textAlign="center" padding={2}>
-              <Typography>Installer will call you within the next few hours...</Typography>
-              <Typography mt={2} paddingLeft={10} paddingRight={10}>Please continue to create your PowerFlex Customer account.</Typography>
+            <Box textAlign="center">
+              <Description>Installer will call you within the next few hours...</Description>
+              <Description mt={2} paddingLeft={12} paddingRight={12}>Please continue to create your PowerFlex Customer account.</Description>
             </Box>
           </CardContent>
         </Card>

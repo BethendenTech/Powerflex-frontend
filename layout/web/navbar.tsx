@@ -103,7 +103,7 @@ export default function DrawerAppBar(props: Props) {
                                     key={`nav-link-${index}`}
                                     LinkComponent={Link}
                                     href={item.href}
-                                    sx={{ color: '#555353' }}
+                                    sx={{ color: '#555353', fontSize: '16px' }}
                                 >
                                     {item.title}
                                 </Button>

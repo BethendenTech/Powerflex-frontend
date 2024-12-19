@@ -1,6 +1,7 @@
 import updateAction from "@/little-state/action";
-import { Box, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { Box, Table, TableBody, TableRow } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
+import { TableCellName } from "../form/style";
 
 export const OverviewData = () => {
     const { state } = useStateMachine({ updateAction });
@@ -10,25 +11,25 @@ export const OverviewData = () => {
             <Table size="small">
                 <TableBody>
                     <TableRow>
-                        <TableCell colSpan={2} align="left">Monthly Spend</TableCell>
-                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>{state?.electricity_spend}</TableCell>
+                        <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Monthly Spend</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>£{state?.electricity_spend}</TableCellName>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2} align="left">Electricity band group</TableCell>
-                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>{state?.price_band}</TableCell>
+                        <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Electricity band group</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>{state?.price_band}</TableCellName>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2} align="left">Coverage Percentage</TableCell>
-                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>{state?.solar_load}%</TableCell>
+                        <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Coverage Percentage</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>{state?.solar_load}%</TableCellName>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2} align="left">Battery Autonomy</TableCell>
-                        <TableCell colSpan={2} align="right" sx={{ fontWeight: "bold" }}>
+                        <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Battery Autonomy</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>
                             {state?.battery_autonomy_days && state?.battery_autonomy_days != 0 ? `${state?.battery_autonomy_days} Day(s)` : ""}
                             {" "}
                             {state?.battery_autonomy_hours_only && state?.battery_autonomy_hours_only != 0 ? `${state?.battery_autonomy_hours_only} Hour(s)` : ""}
 
-                        </TableCell>
+                        </TableCellName>
                     </TableRow>
                 </TableBody>
             </Table>

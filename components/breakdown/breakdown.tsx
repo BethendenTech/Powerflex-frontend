@@ -155,7 +155,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                             <TableRow>
                                 <TableCell></TableCell>
                                 <TableCell>Quantity</TableCell>
-                                <TableCell>Hours</TableCell>
+                                <TableCell>How Long?</TableCell>
                             </TableRow>
                         </TableHead>
 

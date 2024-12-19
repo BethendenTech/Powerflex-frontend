@@ -1,12 +1,13 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, FormControl, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
+import { Box, FormHelperText, OutlinedInput } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { NextButton } from "../button/style";
+import { FormInputField, FormTitle, Title } from "../form/style";
 
 const PaymentCardDetails = () => {
     const router = useRouter();
@@ -42,30 +43,30 @@ const PaymentCardDetails = () => {
     return (
         <Box>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="h6" fontWeight="bold">Card Details</Typography>
+                <Title sx={{ mb: 2 }}>Card Details</Title>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.name_card}
                 >
-                    <FormLabel>
+                    <FormTitle>
                         Name on Card
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("name_card", { required: "Name on Card is required" })}
                     />
                     <FormHelperText>{errors?.name_card?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.card_number}
                 >
-                    <FormLabel>
+                    <FormTitle>
                         Card Number
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("card_number", {
@@ -77,17 +78,17 @@ const PaymentCardDetails = () => {
                         })}
                     />
                     <FormHelperText>{errors?.card_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.expiration_date}
                 >
-                    <FormLabel>
+                    <FormTitle>
                         Expiration Date (MM/YY)
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("expiration_date", {
@@ -99,15 +100,15 @@ const PaymentCardDetails = () => {
                         })}
                     />
                     <FormHelperText>{errors?.expiration_date?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.security_code}
                 >
-                    <FormLabel>
+                    <FormTitle>
                         Security Code (CVV)
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("security_code", {
@@ -119,21 +120,21 @@ const PaymentCardDetails = () => {
                         })}
                     />
                     <FormHelperText>{errors?.security_code?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.postcode}
                 >
-                    <FormLabel>
+                    <FormTitle>
                         Postcode
-                    </FormLabel>
+                    </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("postcode", { required: "Postcode is required" })}
                     />
                     <FormHelperText>{errors?.postcode?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 

@@ -5,6 +5,7 @@ import { businessRoles } from '@/utils/formData';
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
 import { useStateMachine } from 'little-state-machine';
 import React from 'react';
+import { FormTitle } from '../form/style';
 
 export const BusinessOrIndividualCheckBox = () => {
   const { actions, state } = useStateMachine({ updateAction });
@@ -15,7 +16,7 @@ export const BusinessOrIndividualCheckBox = () => {
 
   return (
     <FormControl fullWidth>
-      <FormLabel>Are you a business or individual?</FormLabel>
+      <FormTitle sx={{ color: '#424242' }}>Are you a business or individual?</FormTitle>
       <FormGroup
         row
       >
@@ -25,6 +26,13 @@ export const BusinessOrIndividualCheckBox = () => {
               <Checkbox checked={role.id == state.business_role} onChange={() => handleToggle(role.id)} value={role.id} />
             }
             label={role.title}
+            sx={{
+              "&.MuiFormControlLabel-root span": {
+                fontFamily: "'Harmonia Sans Pro', sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+              }
+            }}
           />
         ))}
       </FormGroup>

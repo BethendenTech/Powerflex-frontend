@@ -9,9 +9,10 @@ import PaymentCardDetails from '@/components/payment/paymentCardDetails';
 import Image from 'next/image';
 import useQuotation from '@/hooks/quotation';
 import PayStackPayment from '@/components/payment/payStack';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { TotalSummary } from '@/components/payment/totalSummary';
+import { Heading, Title } from '@/components/form/style';
 
 export default function Page() {
 
@@ -51,6 +52,7 @@ export default function Page() {
           position: "relative",
           textAlign: "center",
           mt: 14,
+          mb: 3,
           pt: 5,
           background: '#ffffff',
           '&:before': {
@@ -79,9 +81,11 @@ export default function Page() {
               height: "130px",
             }}
           />
-          <Typography textAlign="center" variant="h6" mt={2}>
+          <Heading mt={2}>
             Payment Summary
-          </Typography>
+          </Heading>
+
+          <Title sx={{ color: "#000000", textAlign: "center" }}>Outright Purchase</Title>
 
           <TotalSummary />
         </Box>

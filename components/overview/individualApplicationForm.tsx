@@ -1,13 +1,14 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, Button, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from 'next/dynamic';
 import SelectStateComponent from "./stateSelect";
 import { NextButton } from "../button/style";
+import { FormInputField } from "../form/style";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -111,7 +112,7 @@ const IndividualApplicationForm = () => {
             {!showIframe && <form onSubmit={handleSubmit(onSubmit)} >
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_role}
                 >
@@ -126,10 +127,10 @@ const IndividualApplicationForm = () => {
                         <MenuItem value="other">Other</MenuItem>
                     </Select>
                     <FormHelperText>{errors?.business_role?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                {business_role == "other" && <FormControl
+                {business_role == "other" && <FormInputField
                     fullWidth
                     error={!!errors.other_role}
                 >
@@ -141,9 +142,9 @@ const IndividualApplicationForm = () => {
                         {...register("other_role", { required: "This field is required" })}
                     />
                     <FormHelperText>{errors?.other_role?.message}</FormHelperText>
-                </FormControl>}
+                </FormInputField>}
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.first_name}
                 >
@@ -155,11 +156,11 @@ const IndividualApplicationForm = () => {
                         {...register("first_name", { required: "First name is required" })}
                     />
                     <FormHelperText>{errors?.first_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.last_name}
                 >
@@ -171,10 +172,10 @@ const IndividualApplicationForm = () => {
                         {...register("last_name", { required: "Last name is required" })}
                     />
                     <FormHelperText>{errors?.last_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.phone_number}
                 >
@@ -186,9 +187,9 @@ const IndividualApplicationForm = () => {
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
                     <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone1}
                 >
@@ -200,9 +201,9 @@ const IndividualApplicationForm = () => {
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.reference_phone2}
                 >
@@ -214,10 +215,10 @@ const IndividualApplicationForm = () => {
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
                     />
                     <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.email}
                 >
@@ -229,14 +230,14 @@ const IndividualApplicationForm = () => {
                         {...register("email", { required: "Email address is required" })}
                     />
                     <FormHelperText>{errors?.email?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
@@ -248,8 +249,8 @@ const IndividualApplicationForm = () => {
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
@@ -261,11 +262,11 @@ const IndividualApplicationForm = () => {
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.house_number}
                 >
@@ -277,10 +278,10 @@ const IndividualApplicationForm = () => {
                         {...register("house_number", { required: "House Number is required" })}
                     />
                     <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.street_address}
                 >
@@ -292,8 +293,8 @@ const IndividualApplicationForm = () => {
                         {...register("street_address", { required: "Street Address is required" })}
                     />
                     <FormHelperText>{errors?.street_address?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.landmark}
                 >
@@ -305,10 +306,10 @@ const IndividualApplicationForm = () => {
                         {...register("landmark", { required: "Landmark is required" })}
                     />
                     <FormHelperText>{errors?.landmark?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bus_stop}
                 >
@@ -320,9 +321,9 @@ const IndividualApplicationForm = () => {
                         {...register("bus_stop", { required: "Bus Stop is required" })}
                     />
                     <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.occupation}
                 >
@@ -334,9 +335,9 @@ const IndividualApplicationForm = () => {
                         {...register("occupation", { required: "Occupation is required" })}
                     />
                     <FormHelperText>{errors?.occupation?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_name}
                 >
@@ -348,9 +349,9 @@ const IndividualApplicationForm = () => {
                         {...register("business_name", { required: "Business Name is required" })}
                     />
                     <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.business_address}
                 >
@@ -362,9 +363,9 @@ const IndividualApplicationForm = () => {
                         {...register("business_address", { required: "Business Address is required" })}
                     />
                     <FormHelperText>{errors?.business_address?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.town}
                 >
@@ -376,8 +377,8 @@ const IndividualApplicationForm = () => {
                         {...register("town", { required: "Town is required" })}
                     />
                     <FormHelperText>{errors?.town?.message}</FormHelperText>
-                </FormControl>
-                <FormControl
+                </FormInputField>
+                <FormInputField
                     fullWidth
                     error={!!errors.city}
                 >
@@ -389,7 +390,7 @@ const IndividualApplicationForm = () => {
                         {...register("city", { required: "City is required" })}
                     />
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
                 <SelectStateComponent
                     control={control}
@@ -398,7 +399,7 @@ const IndividualApplicationForm = () => {
                     errors={errors}
                 />
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.bvn} // Highlight the field if there's an error
                 >
@@ -432,10 +433,10 @@ const IndividualApplicationForm = () => {
                     {errors?.bvn?.message && (
                         <FormHelperText>{errors.bvn.message}</FormHelperText>
                     )}
-                </FormControl>
+                </FormInputField>
 
 
-                <FormControl
+                <FormInputField
                     fullWidth
                     error={!!errors.how_heard_about}
                 >
@@ -447,7 +448,7 @@ const IndividualApplicationForm = () => {
                         {...register("how_heard_about", { required: "this is required" })}
                     />
                     <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
-                </FormControl>
+                </FormInputField>
 
                 <Box position="sticky" bottom={0} mt={2}>
                     <NextButton

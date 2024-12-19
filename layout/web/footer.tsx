@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Stack, Typography, } from '@mui/material'
+import { Box, Container, IconButton, Stack, Typography, } from '@mui/material'
 import { FooterSection } from '../style'
 import Grid from '@mui/material/Grid2';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -23,6 +23,7 @@ const gridItemStyles = {
 };
 
 const WebFooter = () => {
+    const CallNumber = "+2347074109549";
     return (
         <>
             <FooterSection>
@@ -179,9 +180,24 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 2.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Stack direction="row" spacing={3}>
-                                <FacebookIcon />
-                                <InstagramIcon />
-                                <WhatsAppIcon />
+                                <IconButton sx={{
+                                    background: 'transparent',
+                                    color: '#FFFFFF'
+                                }}>
+                                    <FacebookIcon />
+                                </IconButton>
+                                <IconButton sx={{
+                                    background: 'transparent',
+                                    color: '#FFFFFF'
+                                }}>
+                                    <InstagramIcon />
+                                </IconButton>
+                                <IconButton LinkComponent={Link} href={`https://wa.me/${CallNumber}`} target="_blank" sx={{
+                                    background: 'transparent',
+                                    color: '#FFFFFF'
+                                }}>
+                                    <WhatsAppIcon />
+                                </IconButton>
                             </Stack>
                         </Grid>
                     </Grid>
