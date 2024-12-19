@@ -435,6 +435,7 @@ const BusinessApplicationForm = () => {
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                         setValue={setValue}
+                        supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
                 </FormControl>
@@ -454,6 +455,7 @@ const BusinessApplicationForm = () => {
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                         setValue={setValue}
+                        supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
@@ -473,6 +475,7 @@ const BusinessApplicationForm = () => {
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                         setValue={setValue}
+                        supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
                     />
                     <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
                 </FormControl>
@@ -492,6 +495,7 @@ const BusinessApplicationForm = () => {
                         maxFiles={1}
                         maxSize={10 * 1024 * 1024}
                         setValue={setValue}
+                        supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>
