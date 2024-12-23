@@ -62,7 +62,7 @@ const HomeMainSection = () => {
                         WebkitTextStroke: "0.68px #A2978E",
                     }}
                 >
-                    Powering your world
+                    Affordable Solar Solutions
                 </Typography>
 
                 <Typography
@@ -87,7 +87,7 @@ const HomeMainSection = () => {
                         WebkitTextStroke: "0.68px #A2978E",
                     }}
                 >
-                    with clean energy solutions
+                    with Flexible Financing
                 </Typography>
 
                 <Typography
@@ -111,7 +111,7 @@ const HomeMainSection = () => {
                         textAlign: "center",
                     }}
                 >
-                    Affordable, reliable and tailored solar solutions for every home and business
+                    Custom solar systems with convenient installment plans to power your home or business
                 </Typography>
             </Box>
 
