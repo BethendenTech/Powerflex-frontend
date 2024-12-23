@@ -14,10 +14,10 @@ export default function Home() {
     <Box>
       <HomeMainSection />
       <HomeProductSection />
-      <FaqComponent />
       <HomeFinanceSection />
       <HomeWorkSection />
       <HomeAboutSection />
+      <FaqComponent />
     </Box>
   );
 }
