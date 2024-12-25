@@ -1,7 +1,6 @@
 import { useDropzone } from 'react-dropzone';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Alert, Box, Button, Checkbox, List, ListItem, ListItemText, Typography } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import React, { useState } from 'react';

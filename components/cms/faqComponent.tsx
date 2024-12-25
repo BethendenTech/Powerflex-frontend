@@ -1,12 +1,21 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Box, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import * as React from 'react';
+import { Detail, Heading } from '../form/style';
+import Image from 'next/image';
+
+import Minus from "../../public/images/icon/minus.svg";
+import Plus from "../../public/images/icon/plus.svg";
 
 export const FaqComponent = () => {
     const [faqData, setFaqData] = React.useState<any>([]);
+
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleAccordionToggle = () => {
+        setExpanded(!expanded);
+    };
 
     React.useEffect(() => {
         getFaqData();
@@ -23,30 +32,40 @@ export const FaqComponent = () => {
 
 
     return (
-        <Box>
-            <Typography component="h2" variant='h4'>Frequently Asked Questions</Typography>
-
+        <Container maxWidth="lg" sx={{ pt: 3, pb: 3 }}>
+            <Heading sx={{ fontSize: "32px", textAlign: 'left' }}>
+                Frequently Asked Questions
+            </Heading>
 
             {faqData && faqData.map((value, index) => {
                 return (
-                    <Accordion key={index}>
+                    <Accordion key={`value-${index}`}
+                        expanded={expanded}
+                        onChange={handleAccordionToggle}
+                        sx={{
+                            boxShadow: "none",
+                        }}>
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls={`panel${index}-content`}
-                            id={`panel${index}-header`}
+                            expandIcon={
+                                expanded ? (
+                                    <Image src={Minus} alt="Collapse" style={{ width: "20px", height: "20px" }} />
+                                ) : (
+                                    <Image src={Plus} alt="Expand" style={{ width: "20px", height: "20px" }} />
+                                )
+                            }
                         >
-                            {value.name}
+                            <Heading sx={{ fontSize: '22px', textAlign: 'left' }}>
+                                {value.name}
+                            </Heading>
                         </AccordionSummary>
-                        <AccordionDetails>
-                            <div style={{ whiteSpace: "pre-line" }}>
-                                {value.description}
-                            </div>
-                        </AccordionDetails>
+                        <Detail>
+                            {value.description}
+                        </Detail>
                     </Accordion>
                 );
             })}
 
-        </Box>
+        </Container>
     )
 }
 
