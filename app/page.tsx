@@ -1,5 +1,6 @@
 "use client"
 
+import { FaqComponent } from "@/components/cms/faqComponent";
 import HomeAboutSection from "@/components/home/aboutSection";
 import HomeFinanceSection from "@/components/home/financeSection";
 import HomeMainSection from "@/components/home/mainSection";
@@ -16,6 +17,7 @@ export default function Home() {
       <HomeFinanceSection />
       <HomeWorkSection />
       <HomeAboutSection />
+      <FaqComponent />
     </Box>
   );
 }

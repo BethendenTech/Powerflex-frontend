@@ -65,7 +65,7 @@ export default function Summary(props: SummaryObject) {
                     borderRadius: "10.98px",
                     boxShadow: "0px 3.66px 3.66px 0px #00000040",
                     backgroundColor: "#F2F2F4",
-                    width:'100%'
+                    width: '100%'
                 }}
             >
                 <CardHeader
@@ -110,7 +110,7 @@ export default function Summary(props: SummaryObject) {
                         <TableBody>
                             <TableRow>
                                 <TableCellName align="left">
-                                    Your Daily Property Need Is
+                                    Your daily property (Power) need is
                                 </TableCellName>
                                 <TableCellName align="right">
                                     {formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}
