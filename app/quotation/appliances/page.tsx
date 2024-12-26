@@ -11,7 +11,7 @@ import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/materia
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Page() {
@@ -30,6 +30,13 @@ export default function Page() {
       breakdowns: [],
     }
   });
+  const breakdowns = watch("breakdowns");
+
+  useEffect(() => {
+    let formData = [];
+    formData['breakdowns'] = breakdowns
+    actions.updateAction(formData);
+  }, [breakdowns]);
 
   const onSubmit = async (formData: any) => {
     try {
@@ -48,7 +55,6 @@ export default function Page() {
       });
 
       if (response.ok) {
-        actions.updateAction(formData);
         router.push(`/quotation/overview`);
       }
     } catch (error) {
@@ -64,14 +70,13 @@ export default function Page() {
 
 
   React.useEffect(() => {
-    if (state) {
-      setValue("breakdowns", state.breakdowns || []);
+    setValue("breakdowns", state.breakdowns || []);
 
-      if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
-        setIsChecked(true)
-      }
+    if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
+      setIsChecked(true)
     }
-  }, [state])
+
+  }, [])
 
 
   const onBack = () => {
