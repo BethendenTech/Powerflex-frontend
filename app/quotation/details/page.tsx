@@ -90,6 +90,7 @@ export default function Page() {
               variant='contained'
               onClick={() => {
                 actions.updateAction({ "terms_and_conditions": true });
+                closeDialog();
               }}
             >
               Accept
