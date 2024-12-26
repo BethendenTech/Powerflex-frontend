@@ -30,20 +30,23 @@ export default function Page() {
       breakdowns: [],
     }
   });
-  const breakdowns = watch("breakdowns");
 
   useEffect(() => {
-    let formData = [];
-    formData['breakdowns'] = breakdowns
-    actions.updateAction(formData);
-  }, [breakdowns]);
+    const subscription = watch((value) => {
+      console.log('Updated breakdowns:', value.breakdowns);
+      actions.updateAction({ breakdowns: value.breakdowns });
+    });
+  
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
   const onSubmit = async (formData: any) => {
     try {
       formData['quote_number'] = state.quote_number
 
-      const breakdownArray = updateApplianceArray(formData['breakdowns']);
+      actions.updateAction(formData);
 
+      const breakdownArray = updateApplianceArray(formData['breakdowns']);
       formData['breakdowns'] = breakdownArray
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-3/`, {
@@ -68,7 +71,6 @@ export default function Page() {
     setIsChecked(e.target.checked);
   };
 
-
   React.useEffect(() => {
     setValue("breakdowns", state.breakdowns || []);
 
@@ -78,12 +80,9 @@ export default function Page() {
 
   }, [])
 
-
   const onBack = () => {
     router.push(`/quotation/breakdown`);
   }
-
-
 
   return (
     <Box>
