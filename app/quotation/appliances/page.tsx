@@ -103,7 +103,12 @@ export default function Page() {
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-        <Card>
+        <Card sx={{
+          boxShadow: 'none',
+          borderRadius: '12px',
+          paddingRight: '20px',
+          paddingLeft: '20px'
+        }}>
           <CardHeader
             title="Include Appliance Data"
             action={
@@ -111,6 +116,9 @@ export default function Page() {
                 checked={isChecked}
                 onChange={(e) => handleToggle(e)}
                 size='small'
+                sx={{
+                  borderRadius: '12px',
+                }}
               />
             }
             sx={{
