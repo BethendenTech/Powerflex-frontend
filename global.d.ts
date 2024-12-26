@@ -26,5 +26,6 @@ declare module 'little-state-machine' {
         is_finance: boolean;
         address_line_1: string;
         address_line_2: string;
+        terms_and_conditions: boolean;
     }
 }
