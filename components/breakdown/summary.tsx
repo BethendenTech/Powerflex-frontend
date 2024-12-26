@@ -6,6 +6,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import { updateApplianceArray } from "@/utils/formData";
 import { TableCellName } from "../form/style";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 
 interface SummaryObject {
@@ -13,7 +14,7 @@ interface SummaryObject {
 }
 
 export default function Summary(props: SummaryObject) {
-    const { quote, calculateQuote } = useQuotation()
+    const { isLoading, quote, calculateQuote } = useQuotation()
     const { actions, state } = useStateMachine({ updateAction });
 
     const handleCalculate = () => {
@@ -30,6 +31,7 @@ export default function Summary(props: SummaryObject) {
             breakdowns: breakdownArray,
             is_finance: state.is_finance,
         }
+
         calculateQuote(filter)
     }
 
@@ -84,7 +86,7 @@ export default function Summary(props: SummaryObject) {
                     }}
                     action={
                         props.showCalculate ? (
-                            <Button
+                            <LoadingButton
                                 variant="outlined"
                                 size="small"
                                 aria-label="calculate"
@@ -97,9 +99,10 @@ export default function Summary(props: SummaryObject) {
                                     fontSize: "20px",
                                     color: "#000000",
                                 }}
+                                loading={isLoading}
                             >
                                 Calculate
-                            </Button>
+                            </LoadingButton>
                         ) : (
                             ""
                         )
