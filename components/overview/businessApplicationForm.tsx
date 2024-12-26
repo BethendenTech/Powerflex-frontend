@@ -91,9 +91,9 @@ const BusinessApplicationForm = () => {
     return (
         <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Title sx={{ fontWeight: 400 }}>
+                <Typography variant="h6" fontWeight="bold">
                     Business Application
-                </Title>
+                </Typography>
 
 
                 <FormInputField

@@ -102,8 +102,8 @@ const IndividualApplicationForm = () => {
     };
 
     return (
-        <Box mt={5}>
-            <Typography variant="h6">
+        <Box mt={2}>
+            <Typography variant="h6" fontWeight="bold">
                 Individual Application
             </Typography>
 
