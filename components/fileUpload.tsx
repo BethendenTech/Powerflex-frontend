@@ -1,7 +1,6 @@
 import { useDropzone } from 'react-dropzone';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Alert, Box, Button, Checkbox, List, ListItem, ListItemText, Typography } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import React, { useState } from 'react';
@@ -17,11 +16,12 @@ type ComponentProps = {
     accept: Record<string, string[]>; // Correct type for the accept prop
     maxSize: number;
     maxFiles: number;
-    setValue: any
+    setValue: any;
+    supportFormat: string
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { name, label, accept, maxSize, maxFiles, setValue } = props;
+    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat } = props;
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
@@ -119,11 +119,6 @@ const FileUploadComponent = (props: ComponentProps) => {
             }}
         >
             <CustomAccordionSummary
-            // expandIcon={
-            //     <CustomExpandIcon>
-            //         <ExpandMoreIcon />
-            //     </CustomExpandIcon>
-            // }
             >
                 <Box sx={{ position: "relative", width: "100%" }}>
                     {/* Title */}
@@ -178,7 +173,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                             lineHeight: "16.57px",
                             textAlign: "center",
                             color: "#A9ACB4"
-                        }}>Supported formats: JPEG, PNG, PDF, MP4 up to 10MB</Typography>
+                        }}>{supportFormat}</Typography>
 
                         <Box mt={2}>
                             <Button sx={{

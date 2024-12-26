@@ -110,7 +110,7 @@ const WebFooter = () => {
                                 fontWeight={400}
                                 mb={2}
                             >
-                                Outright Pament
+                                Outright Payment
                             </Typography>
                             <Typography
                                 component="h1"

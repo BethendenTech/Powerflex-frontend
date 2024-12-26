@@ -1,4 +1,4 @@
-import { AccordionSummary, Box, FormControl, FormLabel, styled, TableCell, Typography } from "@mui/material";
+import { AccordionDetails, AccordionSummary, Box, FormControl, FormLabel, styled, TableCell, Typography } from "@mui/material";
 
 export const FormInputField = styled(FormControl)(({ }) => ({
     ".MuiOutlinedInput-root": {
@@ -52,6 +52,13 @@ export const TableCellName = styled(TableCell)(({ }) => ({
     fontWeight: 400,
     fontSize: "16px",
     color: "#424242"
+}));
+
+export const Detail = styled(AccordionDetails)(({ }) => ({
+    fontFamily: "'Harmonia Sans Pro', sans-serif",
+    fontWeight: 400,
+    fontSize: "16px",
+    color: "#000000"
 }));
 
 
