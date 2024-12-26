@@ -217,21 +217,6 @@ const BusinessApplicationForm = () => {
 
 
 
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.house_number}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        House Number
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("house_number", { required: "House Number is required" })}
-                    />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormInputField>
                 <FormInputField
                     fullWidth
                     error={!!errors.business_name}

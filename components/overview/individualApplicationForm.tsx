@@ -235,21 +235,6 @@ const IndividualApplicationForm = () => {
 
 
 
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.house_number}
-                >
-                    <FormLabel>
-                        House Number
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("house_number", { required: "House Number is required" })}
-                    />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormInputField>
                 <FormInputField
                     fullWidth
                     error={!!errors.business_name}
