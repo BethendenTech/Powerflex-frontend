@@ -23,7 +23,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const calculateQuote = async (data: any) => {
-
+        setIsLoading(true);
         const breakdownArray = updateApplianceArray(data.breakdowns);
 
         const postData = {
@@ -50,15 +50,18 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             if (response.ok) {
                 const data = await response.json();
                 setQuote(data);
+                setIsLoading(false);
             } else {
                 console.error('Failed to save user details');
                 setError('Failed to save user details');
+                setIsLoading(false);
                 // Uncomment to navigate to home if needed
                 // router.push("/");
             }
         } catch (error) {
             console.error('Error:', error);
             setError('Error calculating quote');
+            setIsLoading(false);
         } finally {
             setIsLoading(false);
         }
@@ -76,6 +79,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
 
     const createQuote = async () => {
         try {
+            setIsLoading(true);
             let formData = {
                 "quote_number": state.quote_number
             }
@@ -88,9 +92,11 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
                 body: JSON.stringify(formData),
             });
 
+            setIsLoading(false);
             return response
         } catch (error) {
             console.log("error", error)
+            setIsLoading(false);
         }
     }
 
