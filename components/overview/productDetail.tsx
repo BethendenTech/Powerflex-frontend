@@ -7,9 +7,9 @@ import Paper from '@mui/material/Paper';
 
 interface ProductDetailProps {
     product: {
-        name: string;
-        price_usd: number;
-        capacity_w: string;
+        model_name: string;
+        efficiency: string;
+        warranty_years: string;
     };
 }
 
@@ -19,17 +19,17 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({ product }) => {
             <Table>
                 <TableBody>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>{product.name}</TableCell>
+                        <TableCell>Model</TableCell>
+                        <TableCell>{product.model_name}</TableCell>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell>Price</TableCell>
-                        <TableCell>{product.price_usd}</TableCell>
+                        <TableCell>Efficiency</TableCell>
+                        <TableCell>{product.efficiency}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell>Capacity</TableCell>
-                        <TableCell>{product.capacity_w}</TableCell>
+                        <TableCell>Warranty</TableCell>
+                        <TableCell>{product.warranty_years}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

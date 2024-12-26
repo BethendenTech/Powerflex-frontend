@@ -1,7 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -58,9 +58,6 @@ const IndividualApplicationForm = () => {
         }
     });
 
-
-    const business_role = watch("business_role");
-
     // Handle form submission
     const onSubmit = async (formData: any) => {
         formData["application_type"] = "business"
@@ -102,47 +99,14 @@ const IndividualApplicationForm = () => {
     };
 
     return (
-        <Box mt={5}>
-            <Typography variant="h6">
+        <Box mt={2}>
+            <Typography variant="h6" fontWeight="bold">
                 Individual Application
             </Typography>
 
             {showIframe && <SentiFlexIframeComponent />}
 
             {!showIframe && <form onSubmit={handleSubmit(onSubmit)} >
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_role}
-                >
-                    <FormLabel>
-                        Business_role
-                    </FormLabel>
-                    <Select
-                        type='text'
-                        {...register("business_role", { required: "Role is required" })}
-                    >
-                        <MenuItem value="director">Director</MenuItem>
-                        <MenuItem value="other">Other</MenuItem>
-                    </Select>
-                    <FormHelperText>{errors?.business_role?.message}</FormHelperText>
-                </FormInputField>
-
-
-                {business_role == "other" && <FormInputField
-                    fullWidth
-                    error={!!errors.other_role}
-                >
-                    <FormLabel>
-                        Please type your role?
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("other_role", { required: "This field is required" })}
-                    />
-                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
-                </FormInputField>}
 
                 <FormInputField
                     fullWidth
@@ -235,21 +199,6 @@ const IndividualApplicationForm = () => {
 
 
 
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.house_number}
-                >
-                    <FormLabel>
-                        House Number
-                    </FormLabel>
-                    <OutlinedInput
-                        type='text'
-                        {...register("house_number", { required: "House Number is required" })}
-                    />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormInputField>
                 <FormInputField
                     fullWidth
                     error={!!errors.business_name}
@@ -271,7 +220,7 @@ const IndividualApplicationForm = () => {
                     error={!!errors.house_number}
                 >
                     <FormLabel>
-                        House Number
+                        House Address
                     </FormLabel>
                     <OutlinedInput
                         type='text'

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormControl, FormHelperText, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle, Title } from "../form/style";
+import { FormInputField, FormTitle } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -91,9 +91,9 @@ const BusinessApplicationForm = () => {
     return (
         <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Title sx={{ fontWeight: 400 }}>
+                <Typography variant="h6" fontWeight="bold">
                     Business Application
-                </Title>
+                </Typography>
 
 
                 <FormInputField
@@ -101,7 +101,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.business_role}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        Business_role
+                        Business Role
                     </FormTitle>
                     <Select
                         type='text'
@@ -217,21 +217,6 @@ const BusinessApplicationForm = () => {
 
 
 
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.house_number}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        House Number
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("house_number", { required: "House Number is required" })}
-                    />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormInputField>
                 <FormInputField
                     fullWidth
                     error={!!errors.business_name}
@@ -253,7 +238,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.house_number}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        House Number
+                        House Address
                     </FormTitle>
                     <OutlinedInput
                         type='text'
