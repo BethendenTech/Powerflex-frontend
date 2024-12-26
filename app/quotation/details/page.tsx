@@ -73,7 +73,6 @@ export default function Page() {
   };
 
   useEffect(() => {
-    console.log("state?.terms_and_conditions", state?.terms_and_conditions)
     if (!state?.terms_and_conditions) {
       openDialog({
         title: "Terms and Conditions",
