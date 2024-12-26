@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, FormControl, FormHelperText, FormLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormControl, FormHelperText, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle, Title } from "../form/style";
+import { FormInputField, FormTitle } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -101,7 +101,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.business_role}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        Business_role
+                        Business Role
                     </FormTitle>
                     <Select
                         type='text'
@@ -238,7 +238,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.house_number}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        House Number
+                        House Address
                     </FormTitle>
                     <OutlinedInput
                         type='text'
