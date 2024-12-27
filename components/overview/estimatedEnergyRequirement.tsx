@@ -5,6 +5,7 @@ import useQuotation from "@/hooks/quotation";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import { TableCellName } from "../form/style";
+import ProductDetailView from "./productDetail";
 export const EstimatedEnergyRequirement = () => {
     const { quote } = useQuotation();
 
@@ -54,28 +55,7 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openPanel} timeout="auto" unmountOnExit>
-                                <Table component={Paper}>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCellName>Product</TableCellName>
-                                            <TableCellName>Price USD</TableCellName>
-                                            <TableCellName>Capacity</TableCellName>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_panel?.name}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_panel?.price_usd}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_panel?.capacity_w}
-                                            </TableCellName>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
+                                <ProductDetailView product={quote?.products?.best_panel} />
                             </Collapse>
                         </TableCellName>
                     </TableRow>
@@ -98,28 +78,7 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openInverter} timeout="auto" unmountOnExit>
-                                <Table component={Paper}>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCellName>Product</TableCellName>
-                                            <TableCellName>Price USD</TableCellName>
-                                            <TableCellName>Capacity</TableCellName>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_inverter?.name}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_inverter?.price_usd}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_inverter?.capacity_w}
-                                            </TableCellName>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
+                                <ProductDetailView product={quote?.products?.best_inverter} />
                             </Collapse>
                         </TableCellName>
                     </TableRow>
@@ -142,28 +101,7 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
                             <Collapse in={openBatteries} timeout="auto" unmountOnExit>
-                                <Table component={Paper}>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCellName>Product</TableCellName>
-                                            <TableCellName>Price USD</TableCellName>
-                                            <TableCellName>Capacity</TableCellName>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_battery?.name}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_battery?.price_usd}
-                                            </TableCellName>
-                                            <TableCellName align="left" sx={{ fontWeight: "bold" }}>
-                                                {quote?.products?.best_battery?.capacity_w}
-                                            </TableCellName>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
+                                <ProductDetailView product={quote?.products?.best_battery} />
                             </Collapse>
                         </TableCellName>
                     </TableRow>

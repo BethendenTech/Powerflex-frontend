@@ -11,7 +11,7 @@ import { Box, Button, Card, CardContent, CardHeader, Switch } from '@mui/materia
 import { useStateMachine } from 'little-state-machine';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Page() {
@@ -31,12 +31,22 @@ export default function Page() {
     }
   });
 
+  useEffect(() => {
+    const subscription = watch((value) => {
+      console.log('Updated breakdowns:', value.breakdowns);
+      actions.updateAction({ breakdowns: value.breakdowns });
+    });
+  
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
   const onSubmit = async (formData: any) => {
     try {
       formData['quote_number'] = state.quote_number
 
-      const breakdownArray = updateApplianceArray(formData['breakdowns']);
+      actions.updateAction(formData);
 
+      const breakdownArray = updateApplianceArray(formData['breakdowns']);
       formData['breakdowns'] = breakdownArray
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-3/`, {
@@ -48,7 +58,6 @@ export default function Page() {
       });
 
       if (response.ok) {
-        actions.updateAction(formData);
         router.push(`/quotation/overview`);
       }
     } catch (error) {
@@ -62,23 +71,18 @@ export default function Page() {
     setIsChecked(e.target.checked);
   };
 
-
   React.useEffect(() => {
-    if (state) {
-      setValue("breakdowns", state.breakdowns || []);
+    setValue("breakdowns", state.breakdowns || []);
 
-      if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
-        setIsChecked(true)
-      }
+    if (state.breakdowns && Object.keys(state.breakdowns).length > 0) {
+      setIsChecked(true)
     }
-  }, [state])
 
+  }, [])
 
   const onBack = () => {
     router.push(`/quotation/breakdown`);
   }
-
-
 
   return (
     <Box>

@@ -5,14 +5,17 @@ import StatusImage from '@/components/StatusImage';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
-import React from 'react';
-import { Box, FormHelperText, OutlinedInput } from '@mui/material';
+import React, { useContext, useEffect } from 'react';
+import { Box, Button, FormHelperText, OutlinedInput } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
 import { FormInputField, FormTitle } from '@/components/form/style';
+import { DialogContext } from '@/contexts/dialogContext';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
+
+  const { openDialog, closeDialog } = useContext(DialogContext);
 
   const router = useRouter();
 
@@ -68,6 +71,35 @@ export default function Page() {
       console.error('Error:', error);
     }
   };
+
+  useEffect(() => {
+    if (!state?.terms_and_conditions) {
+      openDialog({
+        title: "Terms and Conditions",
+        content: (
+          <Box>
+            <p>
+              Please read and accept the terms and conditions to continue.
+            </p>
+          </Box>
+        ),
+        actions: (
+          <Box>
+            <Button
+              variant='contained'
+              onClick={() => {
+                actions.updateAction({ "terms_and_conditions": true });
+                closeDialog();
+              }}
+            >
+              Accept
+            </Button>
+
+          </Box>
+        )
+      });
+    }
+  }, [state?.terms_and_conditions])
 
   return (
     <Box>
