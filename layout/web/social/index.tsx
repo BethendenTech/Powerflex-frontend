@@ -23,7 +23,7 @@ export const SocialIcon = () => {
                 }}
             >
                 <Link href={`https://wa.me/${CallNumber}`} target="_blank">
-                    <Box component="img" src="/images/home/whatsapp-icon.svg" />
+                    <Box component="img" src="/images/icon/chat-icon.png" width={50} height={50}/>
                 </Link>
             </Box>
         </Box>
