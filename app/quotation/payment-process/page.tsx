@@ -28,7 +28,6 @@ export default function Page() {
   return (
     <Box>
       <Button
-        color='secondary'
         variant="text"
         startIcon={<Image
           src="/images/collaps-arrow-right.svg"
@@ -37,6 +36,10 @@ export default function Page() {
           height={24}
         />}
         onClick={() => onBack()}
+        sx={{
+          fontWeight: 'bold',
+          color: '#AEAEAE'
+        }}
       >
         Back
       </Button>

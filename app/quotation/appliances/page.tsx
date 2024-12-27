@@ -36,7 +36,7 @@ export default function Page() {
       console.log('Updated breakdowns:', value.breakdowns);
       actions.updateAction({ breakdowns: value.breakdowns });
     });
-  
+
     return () => subscription.unsubscribe();
   }, [watch]);
 
@@ -87,7 +87,6 @@ export default function Page() {
   return (
     <Box>
       <Button
-        color='secondary'
         variant="text"
         startIcon={<Image
           src="/images/collaps-arrow-right.svg"
@@ -96,6 +95,10 @@ export default function Page() {
           height={24}
         />}
         onClick={() => onBack()}
+        sx={{
+          fontWeight: 'bold',
+          color:'#AEAEAE'
+        }}
       >
         Back
       </Button>
