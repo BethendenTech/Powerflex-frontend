@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle } from "../form/style";
+import { FormInputField, FormTitle, Heading } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -91,9 +91,9 @@ const BusinessApplicationForm = () => {
     return (
         <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="h6" fontWeight="bold">
+                <Heading sx={{ textAlign: 'inherit', fontWeight: 'bold' }}>
                     Business Application
-                </Typography>
+                </Heading>
 
 
                 <FormInputField
