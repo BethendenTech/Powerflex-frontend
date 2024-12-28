@@ -121,7 +121,7 @@ export default function Summary(props: SummaryObject) {
                             </TableRow>
                             <TableRow>
                                 <TableCellName sx={{ fontWeight: 700 }} align="left">
-                                    Total cost
+                                    Total Cost
                                 </TableCellName>
                                 <TableCellName align="right">
                                     {renderNaira(quote.total_cost_with_profit ?? 0)}

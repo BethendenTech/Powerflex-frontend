@@ -24,6 +24,7 @@ export default function Page() {
     setValue,
     watch,
     register,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -97,7 +98,7 @@ export default function Page() {
         onClick={() => onBack()}
         sx={{
           fontWeight: 'bold',
-          color:'#AEAEAE'
+          color: '#AEAEAE'
         }}
       >
         Back
@@ -141,6 +142,26 @@ export default function Page() {
             {isChecked && (
               <Breakdown register={register} watch={watch} errors={errors} setValue={setValue} />
             )}
+
+            <Box textAlign="right">
+              <Button
+                variant="contained"
+                size='small'
+                sx={{
+                  pt: 0,
+                  pb: 0,
+                  fontSize: '16px'
+                }}
+                onClick={() => {
+                  reset({
+                    breakdowns: [],
+                  });
+                  setIsChecked(false);
+                }}
+              >
+                Clear All
+              </Button>
+            </Box>
 
           </CardContent>
         </Card>
