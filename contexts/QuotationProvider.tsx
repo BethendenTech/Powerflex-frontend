@@ -3,6 +3,7 @@ import { QuotationContextType, QuoteInterface } from '@/types/quotation';
 import { defaultQuoteData, updateApplianceArray } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
 import { useRouter } from 'next/navigation';
+import { useSnackbar } from 'notistack';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
 // Initialize context with undefined as default, to be provided by the provider.
@@ -16,8 +17,8 @@ interface QuotationProviderProps {
 // QuotationProvider component
 export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     const router = useRouter();
-    const { state } = useStateMachine({ updateAction });
-
+    const { state, actions } = useStateMachine({ updateAction });
+    const { enqueueSnackbar } = useSnackbar()
     const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -50,6 +51,12 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             if (response.ok) {
                 const data = await response.json();
                 setQuote(data);
+
+                if (state.total_cost != data.total_cost_with_profit) {
+                    enqueueSnackbar('Quote price updated', { variant: 'success' });
+                    actions.updateAction({ total_cost: data.total_cost_with_profit });
+                }
+
                 setIsLoading(false);
             } else {
                 console.error('Failed to save user details');

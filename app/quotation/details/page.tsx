@@ -5,7 +5,7 @@ import StatusImage from '@/components/StatusImage';
 import { useForm } from 'react-hook-form';
 import { useStateMachine } from "little-state-machine";
 import updateAction from '@/little-state/action';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box, Button, FormHelperText, OutlinedInput } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
@@ -16,6 +16,7 @@ export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
 
   const { openDialog, closeDialog } = useContext(DialogContext);
+  const [termsData, setTermsData] = useState("");
 
   const router = useRouter();
 
@@ -72,34 +73,60 @@ export default function Page() {
     }
   };
 
+  const getTermsData = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cms/content/terms/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTermsData(data.description);
+      } else {
+        console.error('Failed to get terms and conditions');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    getTermsData();
+  }, []);
+
   useEffect(() => {
     if (!state?.terms_and_conditions) {
-      openDialog({
-        title: "Terms and Conditions",
-        content: (
-          <Box>
-            <p>
-              Please read and accept the terms and conditions to continue.
-            </p>
-          </Box>
-        ),
-        actions: (
-          <Box>
-            <Button
-              variant='contained'
-              onClick={() => {
-                actions.updateAction({ "terms_and_conditions": true });
-                closeDialog();
-              }}
-            >
-              Accept
-            </Button>
+      if (termsData) {
+        openDialog({
+          title: "Terms and Conditions",
+          content: (
+            <Box>
 
-          </Box>
-        )
-      });
+              <p>{termsData}</p>
+            </Box>
+          ),
+          actions: (
+            <Box>
+              <Button
+                variant='contained'
+                onClick={() => {
+                  actions.updateAction({ "terms_and_conditions": true });
+                  closeDialog();
+                }}
+              >
+                Accept
+              </Button>
+
+            </Box>
+          )
+        });
+      }
     }
-  }, [state?.terms_and_conditions])
+  }, [state?.terms_and_conditions, termsData])
 
   return (
     <Box>
