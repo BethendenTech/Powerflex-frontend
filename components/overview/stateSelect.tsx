@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuItem, Select, FormControl, FormHelperText, Box, FormLabel } from "@mui/material";
 import { Control, FieldErrors, UseFormWatch, UseFormSetValue, Controller } from "react-hook-form";
-import { FormTitle } from "../form/style";
+import { FormInputField, FormTitle } from "../form/style";
 
 type StateDataType = {
     state: string;
@@ -1026,7 +1026,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
     return (
         <Box>
             {/* State Dropdown */}
-            <FormControl fullWidth error={!!errors.state} >
+            <FormInputField fullWidth error={!!errors.state} >
                 <FormTitle sx={{ fontWeight: 700 }} id="state-label">State</FormTitle>
                 <Controller
                     name="state"
@@ -1037,7 +1037,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
                         <Select
                             {...field}
                             labelId="state-label"
-                        
+
                             onChange={(e) => {
                                 field.onChange(e);
                                 setValue("lga", ""); // Reset LGA when state changes
@@ -1054,10 +1054,10 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
                 <FormHelperText>
                     {errors.state?.message ? String(errors.state.message) : ""}
                 </FormHelperText>
-            </FormControl>
+            </FormInputField>
 
             {/* LGA Dropdown */}
-            <FormControl fullWidth error={!!errors.lga} margin="normal">
+            <FormInputField fullWidth error={!!errors.lga} margin="normal">
                 <FormTitle sx={{ fontWeight: 700 }} id="lga-label">LGA (Local Government Area)</FormTitle>
                 <Controller
                     name="lga"
@@ -1081,7 +1081,7 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
                 <FormHelperText>
                     {errors.lga?.message ? String(errors.lga.message) : ""}
                 </FormHelperText>
-            </FormControl>
+            </FormInputField>
         </Box>
     );
 };

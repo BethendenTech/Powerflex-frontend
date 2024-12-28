@@ -1,5 +1,5 @@
 import { formatKWhWithCurrency, renderNaira } from "@/utils/currency";
-import { Box, Button, Card, CardContent, CardHeader, Table, TableBody, TableRow } from "@mui/material";
+import { Box, Card, CardContent, CardHeader, Table, TableBody, TableRow } from "@mui/material";
 import React from "react";
 import useQuotation from "@/hooks/quotation";
 import { useStateMachine } from "little-state-machine";
@@ -121,7 +121,7 @@ export default function Summary(props: SummaryObject) {
                             </TableRow>
                             <TableRow>
                                 <TableCellName sx={{ fontWeight: 700 }} align="left">
-                                    Total cost
+                                    Total Cost
                                 </TableCellName>
                                 <TableCellName align="right">
                                     {renderNaira(quote.total_cost_with_profit ?? 0)}

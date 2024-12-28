@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, FormControl, FormHelperText, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import { Box, FormControl, FormHelperText, MenuItem, OutlinedInput, Select } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle } from "../form/style";
+import { FormInputField, FormTitle, Heading } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -91,42 +91,9 @@ const BusinessApplicationForm = () => {
     return (
         <Box mt={2}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography variant="h6" fontWeight="bold">
+                <Heading sx={{ textAlign: 'inherit', fontWeight: 'bold' }}>
                     Business Application
-                </Typography>
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_role}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Business Role
-                    </FormTitle>
-                    <Select
-                        type='text'
-                        {...register("business_role", { required: "Role is required" })}
-                    >
-                        <MenuItem value="director">Director</MenuItem>
-                        <MenuItem value="other">Other</MenuItem>
-                    </Select>
-                    <FormHelperText>{errors?.business_role?.message}</FormHelperText>
-                </FormInputField>
-
-
-                {business_role == "other" && <FormInputField
-                    fullWidth
-                    error={!!errors.other_role}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Please type your role?
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("other_role", { required: "This field is required" })}
-                    />
-                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
-                </FormInputField>}
+                </Heading>
 
                 <FormInputField
                     fullWidth
@@ -156,19 +123,196 @@ const BusinessApplicationForm = () => {
                     <FormHelperText>{errors?.last_name?.message}</FormHelperText>
                 </FormInputField>
 
-
                 <FormInputField
                     fullWidth
                     error={!!errors.phone_number}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        Phone number
+                        Phone Number
                     </FormTitle>
                     <OutlinedInput
                         type='text'
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
                     <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.email}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Email Address
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("email", { required: "Email address is required" })}
+                    />
+                    <FormHelperText>{errors?.email?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.business_role}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Business Role
+                    </FormTitle>
+                    <Select
+                        type='text'
+                        {...register("business_role", { required: "Role is required" })}
+                    >
+                        <MenuItem value="director">Director</MenuItem>
+                        <MenuItem value="other">Other</MenuItem>
+                    </Select>
+                    <FormHelperText>{errors?.business_role?.message}</FormHelperText>
+                </FormInputField>
+
+                {business_role == "other" && <FormInputField
+                    fullWidth
+                    error={!!errors.other_role}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Please type your role?
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("other_role", { required: "This field is required" })}
+                    />
+                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
+                </FormInputField>}
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.business_name}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Business Name
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("business_name", { required: "Business Name is required" })}
+                    />
+                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.house_number}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        House Number
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("house_number", { required: "House Number is required" })}
+                    />
+                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.street_address}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Street Address
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("street_address", { required: "Street Address is required" })}
+                    />
+                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.town}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Town
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("town", { required: "Town is required" })}
+                    />
+                    <FormHelperText>{errors?.town?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.city}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        City
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("city", { required: "City is required" })}
+                    />
+                    <FormHelperText>{errors?.city?.message}</FormHelperText>
+                </FormInputField>
+
+                <SelectStateComponent
+                    control={control}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                />
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.landmark}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Landmark
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("landmark", { required: "Landmark is required" })}
+                    />
+                    <FormHelperText>{errors?.landmark?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.bus_stop}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Nearest Bus Stop
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("bus_stop", { required: "Nearest Bus Stop is required" })}
+                    />
+                    <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.business_address}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Full Work or Business Address
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("business_address", { required: "Business Address is required" })}
+                    />
+                    <FormHelperText>{errors?.business_address?.message}</FormHelperText>
+                </FormInputField>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.occupation}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        Occupation
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("occupation", { required: "Occupation is required" })}
+                    />
+                    <FormHelperText>{errors?.occupation?.message}</FormHelperText>
                 </FormInputField>
 
                 <FormInputField
@@ -198,173 +342,6 @@ const BusinessApplicationForm = () => {
                     />
                     <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
                 </FormInputField>
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.email}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Email Address
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("email", { required: "Email address is required" })}
-                    />
-                    <FormHelperText>{errors?.email?.message}</FormHelperText>
-                </FormInputField>
-
-
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_name}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Business Name
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("business_name", { required: "Business Name is required" })}
-                    />
-                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormInputField>
-
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.house_number}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        House Address
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("house_number", { required: "House Number is required" })}
-                    />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
-                </FormInputField>
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.street_address}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Street Address
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("street_address", { required: "Street Address is required" })}
-                    />
-                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
-                </FormInputField>
-                <FormInputField
-                    fullWidth
-                    error={!!errors.landmark}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Landmark
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("landmark", { required: "Landmark is required" })}
-                    />
-                    <FormHelperText>{errors?.landmark?.message}</FormHelperText>
-                </FormInputField>
-
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.bus_stop}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Bus Stop
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("bus_stop", { required: "Bus Stop is required" })}
-                    />
-                    <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.occupation}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Occupation
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("occupation", { required: "Occupation is required" })}
-                    />
-                    <FormHelperText>{errors?.occupation?.message}</FormHelperText>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_name}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Business Name
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("business_name", { required: "Business Name is required" })}
-                    />
-                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_address}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Business Address
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("business_address", { required: "Business Address is required" })}
-                    />
-                    <FormHelperText>{errors?.business_address?.message}</FormHelperText>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.town}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Town
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("town", { required: "Town is required" })}
-                    />
-                    <FormHelperText>{errors?.town?.message}</FormHelperText>
-                </FormInputField>
-                <FormInputField
-                    fullWidth
-                    error={!!errors.city}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        City
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("city", { required: "City is required" })}
-                    />
-                    <FormHelperText>{errors?.city?.message}</FormHelperText>
-                </FormInputField>
-
-                <SelectStateComponent
-                    control={control}
-                    watch={watch}
-                    setValue={setValue}
-                    errors={errors}
-                />
 
                 <FormInputField
                     fullWidth
@@ -401,8 +378,6 @@ const BusinessApplicationForm = () => {
                         <FormHelperText>{errors.bvn.message}</FormHelperText>
                     )}
                 </FormInputField>
-
-
 
                 <FormControl
                     fullWidth
@@ -484,6 +459,20 @@ const BusinessApplicationForm = () => {
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.how_heard_about}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        How did you hear about Powerflex?
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("how_heard_about", { required: "this is required" })}
+                    />
+                    <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
+                </FormInputField>
 
                 <Box position="sticky" bottom={0} mt={2}>
                     <NextButton

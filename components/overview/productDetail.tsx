@@ -4,6 +4,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { TableCellName } from '../form/style';
 
 interface ProductDetailProps {
     product: {
@@ -19,17 +20,17 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({ product }) => {
             <Table>
                 <TableBody>
                     <TableRow>
-                        <TableCell>Model</TableCell>
-                        <TableCell>{product.model_name}</TableCell>
+                        <TableCellName>Model</TableCellName>
+                        <TableCellName sx={{ fontWeight: 'bold', color: '#257FE6' }}>{product.model_name}</TableCellName>
                     </TableRow>
 
                     <TableRow>
-                        <TableCell>Efficiency</TableCell>
-                        <TableCell>{product.efficiency}</TableCell>
+                        <TableCellName>Efficiency &#37;</TableCellName>
+                        <TableCellName sx={{ fontWeight: 'bold', color: '#257FE6' }}>{product.efficiency}</TableCellName>
                     </TableRow>
                     <TableRow>
-                        <TableCell>Warranty</TableCell>
-                        <TableCell>{product.warranty_years}</TableCell>
+                        <TableCellName>Warranty (Years)</TableCellName>
+                        <TableCellName sx={{ fontWeight: 'bold', color: '#257FE6' }}>{product.warranty_years}</TableCellName>
                     </TableRow>
                 </TableBody>
             </Table>

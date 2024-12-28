@@ -12,7 +12,7 @@ export const OverviewData = () => {
                 <TableBody>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Monthly Spend</TableCellName>
-                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>£{state?.electricity_spend}</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>&#8358;{state?.electricity_spend}</TableCellName>
                     </TableRow>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Electricity band group</TableCellName>

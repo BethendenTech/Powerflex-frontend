@@ -24,6 +24,7 @@ export default function Page() {
     setValue,
     watch,
     register,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -36,7 +37,7 @@ export default function Page() {
       console.log('Updated breakdowns:', value.breakdowns);
       actions.updateAction({ breakdowns: value.breakdowns });
     });
-  
+
     return () => subscription.unsubscribe();
   }, [watch]);
 
@@ -87,7 +88,6 @@ export default function Page() {
   return (
     <Box>
       <Button
-        color='secondary'
         variant="text"
         startIcon={<Image
           src="/images/collaps-arrow-right.svg"
@@ -96,6 +96,10 @@ export default function Page() {
           height={24}
         />}
         onClick={() => onBack()}
+        sx={{
+          fontWeight: 'bold',
+          color: '#AEAEAE'
+        }}
       >
         Back
       </Button>
@@ -107,7 +111,12 @@ export default function Page() {
 
       <form className="w-full details-form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
 
-        <Card>
+        <Card sx={{
+          boxShadow: 'none',
+          borderRadius: '12px',
+          paddingRight: '20px',
+          paddingLeft: '20px'
+        }}>
           <CardHeader
             title="Include Appliance Data"
             action={
@@ -115,6 +124,9 @@ export default function Page() {
                 checked={isChecked}
                 onChange={(e) => handleToggle(e)}
                 size='small'
+                sx={{
+                  borderRadius: '12px',
+                }}
               />
             }
             sx={{
@@ -130,6 +142,26 @@ export default function Page() {
             {isChecked && (
               <Breakdown register={register} watch={watch} errors={errors} setValue={setValue} />
             )}
+
+            <Box textAlign="right">
+              <Button
+                variant="contained"
+                size='small'
+                sx={{
+                  pt: 0,
+                  pb: 0,
+                  fontSize: '16px'
+                }}
+                onClick={() => {
+                  reset({
+                    breakdowns: [],
+                  });
+                  setIsChecked(false);
+                }}
+              >
+                Clear All
+              </Button>
+            </Box>
 
           </CardContent>
         </Card>

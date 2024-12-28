@@ -1,7 +1,7 @@
 import { Box, styled } from "@mui/material";
 
 export const FooterSection = styled(Box)(({ theme }) => ({
-    backgroundColor: "#4F5F73",
+    backgroundColor: "#2545B0",
     color: "#FFFFFF",
     paddingBottom: '2rem',
     paddingTop: '1rem',

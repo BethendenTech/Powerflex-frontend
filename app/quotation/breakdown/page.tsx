@@ -91,7 +91,6 @@ export default function Page() {
   return (
     <Box>
       <Button
-        color='secondary'
         variant="text"
         startIcon={<Image
           src="/images/collaps-arrow-right.svg"
@@ -100,6 +99,10 @@ export default function Page() {
           height={24}
         />}
         onClick={() => onBack()}
+        sx={{
+          fontWeight: 'bold',
+          color: '#AEAEAE'
+        }}
       >
         Back
       </Button>
@@ -177,9 +180,9 @@ export default function Page() {
           <div className='input-group input-group-background'>
 
             <div className='input-group'>
-              <label htmlFor="battery_autonomy_hours_only" className="label !font-bold">
+              <FormTitle sx={{ fontSize: "14px", fontWeight: "bold" }} htmlFor="battery_autonomy_hours_only" className="label !font-bold">
                 Hours
-              </label>
+              </FormTitle>
               <Tooltip
                 content={`${allValues.battery_autonomy_hours_only} h`}
                 isAlwaysOpen={false}
@@ -213,9 +216,9 @@ export default function Page() {
             </div>
 
             <div className='input-group'>
-              <label htmlFor="battery_autonomy_hours_only" className="label !font-bold mt-[10px]">
+              <FormTitle sx={{ fontSize: "14px", fontWeight: "bold" }} htmlFor="battery_autonomy_hours_only" className="label !font-bold mt-[10px]">
                 Days
-              </label>
+              </FormTitle>
               <Tooltip
                 content={`${allValues.battery_autonomy_days} d`}
                 isAlwaysOpen={false}

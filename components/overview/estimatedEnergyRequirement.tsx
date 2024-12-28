@@ -1,5 +1,5 @@
 import { formatKWhWithCurrency } from "@/utils/currency";
-import { Box, Collapse, IconButton, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Collapse, Divider, IconButton, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import React from "react";
 import useQuotation from "@/hooks/quotation";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
@@ -31,14 +31,14 @@ export const EstimatedEnergyRequirement = () => {
                                 fontFamily: "'Harmonia Sans Pro', sans-serif",
                                 fontSize: '20px'
                             }}>
-                                Estimated energy requirement
+                                Your System
                             </Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     <TableRow>
-                        <TableCellName align="left">Solar panels</TableCellName>
+                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Solar panels</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels} Units</TableCellName>
                         <TableCellName align="right">
                             <IconButton
@@ -61,7 +61,7 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCellName align="left">Inverters</TableCellName>
+                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Inverters</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters} Units</TableCellName>
                         <TableCellName align="right">
                             <IconButton
@@ -84,7 +84,7 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCellName align="left">Batteries</TableCellName>
+                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Batteries</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries} Units</TableCellName>
                         <TableCellName align="right">
                             <IconButton
@@ -107,12 +107,24 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCellName align="left">Total Load Kwh</TableCellName>
+                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Daily Total Load</TableCellName>
                         <TableCellName align="left"></TableCellName>
-                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
+                        <TableCellName align="center" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
                     </TableRow>
                 </TableBody>
             </Table>
+            <Divider />
+            <Box pt={1} pb={1}>
+                <Typography sx={{
+                    fontFamily: "cursive",
+                    fontWeight: 700,
+                    fontSize: "10px",
+                    color: "grey",
+                    // textAlign: 'center'
+                }}>
+                    Cabling and installation costs are approximate estimates and may vary based on actual installation
+                </Typography>
+            </Box>
         </Box>
     )
 }
