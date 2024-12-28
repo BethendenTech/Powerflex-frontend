@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
+import { SnackbarProvider } from "notistack";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,9 +46,11 @@ export default function RootLayout({
       >
         <ThemeProvider theme={theme}>
           <NetworkProvider>
-            <WebLayout>
-              {children}
-            </WebLayout>
+            <SnackbarProvider>
+              <WebLayout>
+                {children}
+              </WebLayout>
+            </SnackbarProvider>
           </NetworkProvider>
         </ThemeProvider>
       </body>
