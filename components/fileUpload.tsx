@@ -17,11 +17,12 @@ type ComponentProps = {
     maxSize: number;
     maxFiles: number;
     setValue: any;
-    supportFormat: string
+    supportFormat: string;
+    acceptableText: string;
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat } = props;
+    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat, acceptableText } = props;
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
@@ -167,6 +168,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                             textAlign: "center",
 
                         }}>Choose a file or drag & drop it here</Typography>
+
                         <Typography sx={{
                             fontSize: "11.87px",
                             fontWeight: 500,
@@ -174,6 +176,14 @@ const FileUploadComponent = (props: ComponentProps) => {
                             textAlign: "center",
                             color: "#A9ACB4"
                         }}>{supportFormat}</Typography>
+                        
+                        {acceptableText && <Typography sx={{
+                            fontSize: "11.87px",
+                            fontWeight: 500,
+                            lineHeight: "16.57px",
+                            textAlign: "center",
+                            color: "#A9ACB4"
+                        }}>{acceptableText}</Typography>}
 
                         <Box mt={2}>
                             <Button sx={{
