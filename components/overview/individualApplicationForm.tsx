@@ -334,8 +334,8 @@ const IndividualApplicationForm = () => {
                     <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
                     </FormTitle>
-                    <FormHelperText>
-                        Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
+                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
+                        Providing the correct BVN is mandatory for verification purposes.
                     </FormHelperText>
 
                     <OutlinedInput

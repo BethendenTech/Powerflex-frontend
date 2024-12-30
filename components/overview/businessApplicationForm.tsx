@@ -350,7 +350,7 @@ const BusinessApplicationForm = () => {
                     <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
                     </FormTitle>
-                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1 }}>
+                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
                         Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
                     </FormHelperText>
 
@@ -385,7 +385,7 @@ const BusinessApplicationForm = () => {
                 >
                     <FileUploadComponent
                         name="applicant_id_card"
-                        label="Applicant Id Card"
+                        label="Valid Government-Issued ID"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
                             'image/png': ['.png'],
@@ -417,7 +417,7 @@ const BusinessApplicationForm = () => {
                         maxSize={10 * 1024 * 1024}
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
-                        acceptableText="NIN, Drivers License, International Passport, etc"
+                        acceptableText=""
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
@@ -427,7 +427,7 @@ const BusinessApplicationForm = () => {
                 >
                     <FileUploadComponent
                         name="bank_statements"
-                        label="6 months Bank Statements"
+                        label="6 Months Bank Statements"
                         accept={{
                             'image/jpeg': ['.jpeg', '.jpg'],
                             'image/png': ['.png'],
