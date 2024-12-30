@@ -118,7 +118,7 @@ export default function Page() {
           paddingLeft: '20px'
         }}>
           <CardHeader
-            title="Include Appliance Data"
+            title="Include Appliances? (Optional)"
             action={
               <Switch
                 checked={isChecked}
