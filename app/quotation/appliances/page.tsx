@@ -143,7 +143,7 @@ export default function Page() {
               <Breakdown register={register} watch={watch} errors={errors} setValue={setValue} />
             )}
 
-            <Box textAlign="right">
+            <Box textAlign="right" pt={2}>
               <Button
                 variant="contained"
                 size='small'
