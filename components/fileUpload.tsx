@@ -1,11 +1,12 @@
 import { useDropzone } from 'react-dropzone';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { Alert, Box, Button, Checkbox, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, IconButton, List, ListItem, ListItemText, Tooltip, Typography } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import React, { useState } from 'react';
 import { CheckboxContainer, CustomAccordionSummary, CustomExpandIcon, Title, TitleContainer } from './form/style';
 import Image from 'next/image';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 import ArrowUp from "../public/images/web/arrowlist-down.svg";
 import ArrowDown from "../public/images/web/arrowlist-up.svg";
@@ -19,10 +20,11 @@ type ComponentProps = {
     setValue: any;
     supportFormat: string;
     acceptableText: string;
+    acceptedLabel: string;
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat, acceptableText } = props;
+    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat, acceptedLabel, acceptableText } = props;
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
@@ -121,6 +123,13 @@ const FileUploadComponent = (props: ComponentProps) => {
         >
             <CustomAccordionSummary
             >
+                <Box>
+                    <Tooltip title={acceptedLabel} placement="right">
+                        <IconButton sx={{ color: '#424242' }}>
+                            <InfoOutlinedIcon />
+                        </IconButton>
+                    </Tooltip>
+                </Box>
                 <Box sx={{ position: "relative", width: "100%" }}>
                     {/* Title */}
                     <TitleContainer>
@@ -176,7 +185,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                             textAlign: "center",
                             color: "#A9ACB4"
                         }}>{supportFormat}</Typography>
-                        
+
                         {acceptableText && <Typography sx={{
                             fontSize: "11.87px",
                             fontWeight: 500,
