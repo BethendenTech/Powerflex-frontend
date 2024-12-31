@@ -40,7 +40,10 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Solar panels</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_panels} Units</TableCellName>
-                        <TableCellName align="right">
+                        <TableCellName align="right"
+                            sx={{
+                                width: 50
+                            }}>
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -63,7 +66,10 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Inverters</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_inverters} Units</TableCellName>
-                        <TableCellName align="right">
+                        <TableCellName align="right"
+                            sx={{
+                                width: 50
+                            }}>
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -86,7 +92,10 @@ export const EstimatedEnergyRequirement = () => {
                     <TableRow>
                         <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Batteries</TableCellName>
                         <TableCellName align="right" sx={{ fontWeight: "bold" }}>{quote?.products?.number_of_batteries} Units</TableCellName>
-                        <TableCellName align="right">
+                        <TableCellName align="right"
+                            sx={{
+                                width: 50
+                            }}>
                             <IconButton
                                 aria-label="expand row"
                                 size="small"
@@ -107,20 +116,22 @@ export const EstimatedEnergyRequirement = () => {
                     </TableRow>
 
                     <TableRow>
-                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>Daily Total Load</TableCellName>
-                        <TableCellName align="left"></TableCellName>
-                        <TableCellName align="center" sx={{ fontWeight: "bold" }}>{formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}</TableCellName>
+                        <TableCellName align="left" sx={{ fontWeight: 'bold', color: '#257FE6' }}>
+                            Daily Total Load
+                        </TableCellName>
+                        <TableCellName align="right" sx={{ fontWeight: "bold" }}>
+                            {formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}
+                        </TableCellName>
                     </TableRow>
                 </TableBody>
             </Table>
             <Divider />
             <Box pt={1} pb={1}>
                 <Typography sx={{
-                    fontFamily: "cursive",
+                    fontFamily: "'Harmonia Sans Pro', sans-serif",
                     fontWeight: 700,
-                    fontSize: "10px",
+                    fontSize: "11px",
                     color: "grey",
-                    // textAlign: 'center'
                 }}>
                     Cabling and installation costs are approximate estimates and may vary based on actual installation
                 </Typography>

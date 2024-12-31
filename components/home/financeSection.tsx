@@ -153,7 +153,7 @@ const HomeFinanceSection = () => {
 
                                         <Box textAlign='right'>
                                             <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
-                                                Explore financing Options
+                                                Explore financing
                                             </Button>
                                         </Box>
                                     </Stack>
@@ -358,7 +358,7 @@ const HomeFinanceSection = () => {
 
                                         <Box textAlign='right'>
                                             <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
-                                                Explore financing Options
+                                                Explore financing
                                             </Button>
                                         </Box>
                                     </Stack>
