@@ -419,7 +419,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
                         acceptableText=""
-                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC), Water Bill (e.g Lagos Water Corporation), Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board), Internet Service Bill (e.g DSTV, GOTV), Cable TV Subscription (e.g DSTV or GOTV receipts), Tenancy Agreement or rent receipt"
+                        acceptedLabel="Provide only the CAC Document"
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
@@ -463,7 +463,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
-                        acceptedLabel=""
+                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC), Water Bill (e.g Lagos Water Corporation), Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board), Internet Service Bill (e.g DSTV, GOTV), Cable TV Subscription (e.g DSTV or GOTV receipts), Tenancy Agreement or rent receipt"
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>

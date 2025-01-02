@@ -1,10 +1,11 @@
 "use client";
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow, } from '@mui/material';
 import Image from "next/image";
 import { useEffect, useState } from 'react';
 import TimeDropdown from './TimeDropdown';
+import { Description, TableCellName } from '../form/style';
 interface BreakdownProps {
     register: any,
     watch: any,
@@ -62,6 +63,14 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
             <TableRow key={`table-row-${index}`}>
                 <TableCell>
                     <FormControlLabel
+                        sx={{
+                            '&.MuiFormControlLabel-root .MuiFormControlLabel-label': {
+                                fontFamily: "'Harmonia Sans Pro', sans-serif",
+                                fontWeight: 400,
+                                fontSize: "14px",
+                                color: "#424242",
+                            },
+                        }}
                         control={
                             <Checkbox
                                 checked={watch(`breakdowns.${index}.appliance_id`) || false}
@@ -135,9 +144,9 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                         px: 3,
                     }}
                 >
-                    <Typography sx={{ fontWeight: 600, color: 'black' }}>
+                    <Description sx={{ textAlign: 'left' }}>
                         {name}
-                    </Typography>
+                    </Description>
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ px: 3 }}>
@@ -154,8 +163,8 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                         <TableHead>
                             <TableRow>
                                 <TableCell></TableCell>
-                                <TableCell>Quantity</TableCell>
-                                <TableCell>How Long?</TableCell>
+                                <TableCellName sx={{ fontSize: '14px', textAlign: 'center' }}>Quantity</TableCellName>
+                                <TableCellName sx={{ fontSize: '14px', textAlign: 'center' }}>How Long?</TableCellName>
                             </TableRow>
                         </TableHead>
 
@@ -190,8 +199,8 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                             <TableHead>
                                 <TableRow>
                                     <TableCell></TableCell>
-                                    <TableCell>Quantity</TableCell>
-                                    <TableCell>Hours</TableCell>
+                                    <TableCellName sx={{ fontSize: '14px', textAlign: 'center' }}>Quantity</TableCellName>
+                                    <TableCellName sx={{ fontSize: '14px', textAlign: 'center' }}>Hours</TableCellName>
                                 </TableRow>
                             </TableHead>
 
