@@ -126,7 +126,21 @@ const FileUploadComponent = (props: ComponentProps) => {
             >
                 <Box sx={{ padding: acceptedLabel ? 0 : 2.5 }}>
                     {acceptedLabel && (
-                        <Tooltip title={acceptedLabel} placement="right">
+                        <Tooltip
+                            title={
+                                <Box sx={{ padding: 1 }}>
+                                    <ul style={{ margin: 0, paddingLeft: "1.2em", listStyleType: "disc" }}>
+                                        {acceptedLabel.split(", ").map((item, index) => (
+                                            <li key={index} style={{ fontSize: "0.9em", lineHeight: "1.5" }}>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </Box>
+                            }
+                            placement="right"
+                            arrow
+                        >
                             <IconButton sx={{ color: '#424242' }}>
                                 <InfoOutlinedIcon />
                             </IconButton>
