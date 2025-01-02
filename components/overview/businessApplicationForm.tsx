@@ -397,6 +397,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
+                        acceptedLabel="NIN, Driver's License, International Passport, Nigerian Birth Certificate Permanent Voter's Card, Nigerian Residence Permit, Nigerian Seaman's Card (For Maritime Professionals), Employee ID (For Civil Servants)"
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
                 </FormControl>
@@ -418,6 +419,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
                         acceptableText=""
+                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC), Water Bill (e.g Lagos Water Corporation), Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board), Internet Service Bill (e.g DSTV, GOTV), Cable TV Subscription (e.g DSTV or GOTV receipts), Tenancy Agreement or rent receipt"
                     />
                     <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
                 </FormControl>
@@ -439,6 +441,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
                         acceptableText=""
+                        acceptedLabel=""
                     />
                     <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
                 </FormControl>
@@ -460,6 +463,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
+                        acceptedLabel=""
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
                 </FormControl>
