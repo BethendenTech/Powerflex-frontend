@@ -397,7 +397,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
-                        acceptedLabel="NIN, Driver's License, International Passport., Nigerian Birth Certificate Permanent Voter's Card., Nigerian Residence Permit., Nigerian Seaman's Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
+                        acceptedLabel="NIN, Driver’s License, International Passport., Nigerian Birth Certificate, Permanent Voter’s Card., Nigerian Residence Permit., Nigerian Seaman’s Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
                         subNote="Refer to info icon for accepted documents"
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
@@ -466,7 +466,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
-                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC)., Water Bill (e.g Lagos Water Corporation)., Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board)., Internet Service Bill (e.g DSTV, GOTV)., Cable TV Subscription (e.g DSTV or GOTV receipts)., Tenancy Agreement or rent receipt."
+                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC)., Water Bill (e.g Lagos Water Corporation)., Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board)., Internet Service Bill., Cable TV Subscription., Tenancy Agreement or Rent Receipt."
                         subNote="Refer to info icon for accepted documents"
                     />
                     <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>

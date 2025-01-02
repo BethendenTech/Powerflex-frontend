@@ -130,9 +130,9 @@ const FileUploadComponent = (props: ComponentProps) => {
                             title={
                                 <Box sx={{ padding: 1 }}>
                                     <ul style={{ margin: 0, paddingLeft: "1.2em", listStyleType: "disc" }}>
-                                        {acceptedLabel.split(", ").map((item, index) => (
+                                        {acceptedLabel.split(/,(?![^(]*\))/).map((item, index) => (
                                             <li key={index} style={{ fontSize: "0.9em", lineHeight: "1.5" }}>
-                                                {item}
+                                                {item.trim()}
                                             </li>
                                         ))}
                                     </ul>
