@@ -88,7 +88,7 @@ export const TitleContainer = styled(Box)({
 export const CheckboxContainer = styled(Box)({
     position: "absolute",
     right: "-20px",
-    top: "-14px",
+    top: "-10px",
     display: "flex",
     alignItems: "center",
 });
@@ -98,7 +98,8 @@ export const CustomExpandIcon = styled(Box)(({ }) => ({
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
-    marginTop: 4,
+    marginTop: 2,
+    paddingBottom: 4,
     // position: "absolute",
     // right: "16px",
 }));

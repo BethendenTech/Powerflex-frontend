@@ -21,10 +21,11 @@ type ComponentProps = {
     supportFormat: string;
     acceptableText: string;
     acceptedLabel: string;
+    subNote: string;
 };
 
 const FileUploadComponent = (props: ComponentProps) => {
-    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat, acceptedLabel, acceptableText } = props;
+    const { name, label, accept, maxSize, maxFiles, setValue, supportFormat, acceptedLabel, acceptableText, subNote } = props;
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
@@ -123,12 +124,28 @@ const FileUploadComponent = (props: ComponentProps) => {
         >
             <CustomAccordionSummary
             >
-                <Box>
-                    <Tooltip title={acceptedLabel} placement="right">
-                        <IconButton sx={{ color: '#424242' }}>
-                            <InfoOutlinedIcon />
-                        </IconButton>
-                    </Tooltip>
+                <Box sx={{ padding: acceptedLabel ? 0 : 2.5 }}>
+                    {acceptedLabel && (
+                        <Tooltip
+                            title={
+                                <Box sx={{ padding: 1 }}>
+                                    <ul style={{ margin: 0, paddingLeft: "1.2em", listStyleType: "disc" }}>
+                                        {acceptedLabel.split(", ").map((item, index) => (
+                                            <li key={index} style={{ fontSize: "0.9em", lineHeight: "1.5" }}>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </Box>
+                            }
+                            placement="right"
+                            arrow
+                        >
+                            <IconButton sx={{ color: '#424242' }}>
+                                <InfoOutlinedIcon />
+                            </IconButton>
+                        </Tooltip>
+                    )}
                 </Box>
                 <Box sx={{ position: "relative", width: "100%" }}>
                     {/* Title */}
@@ -137,7 +154,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                     </TitleContainer>
 
                     {/* Checkbox */}
-                    <CheckboxContainer>
+                    <CheckboxContainer sx={{ top: subNote ? "-10px" : "-14px" }}>
                         <Checkbox
                             size='large'
                             sx={{
@@ -153,6 +170,18 @@ const FileUploadComponent = (props: ComponentProps) => {
                             onClick={(e) => e.stopPropagation()}
                         />
                     </CheckboxContainer>
+
+                    <Box textAlign="center" p={0}>
+                        <Typography sx={{
+                            fontSize: "11.87px",
+                            fontWeight: 500,
+                            lineHeight: "16.57px",
+                            textAlign: "center",
+                            color: "#424242"
+                        }}>
+                            {subNote}
+                        </Typography>
+                    </Box>
 
                     {/* Custom Expand/Collapse Icon */}
                     <CustomExpandIcon>

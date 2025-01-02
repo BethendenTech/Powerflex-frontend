@@ -113,7 +113,7 @@ export default function Summary(props: SummaryObject) {
                         <TableBody>
                             <TableRow>
                                 <TableCellName align="left">
-                                    Your daily property (Power) need is
+                                    Your daily power need is
                                 </TableCellName>
                                 <TableCellName align="right">
                                     {formatKWhWithCurrency(quote.load_covered_by_solar ?? 0)}
