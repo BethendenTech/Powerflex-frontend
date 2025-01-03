@@ -32,7 +32,6 @@ export default function Page() {
     }
   });
 
-  const allValues = watch();
   const solar_load = watch("solar_load");
   const battery_autonomy_hours_only = watch("battery_autonomy_hours_only");
   const battery_autonomy_days = watch("battery_autonomy_days");
@@ -61,14 +60,12 @@ export default function Page() {
   const { width } = useResizeObserver<HTMLDivElement>();
 
   React.useEffect(() => {
-    if (state) {
-      setValue("additional_info", state.additional_info || false);
-      setValue("solar_load", state.solar_load || 50);
-      setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
-      setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
-      setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
-    }
-  }, [state])
+    setValue("additional_info", state.additional_info || false);
+    setValue("solar_load", state.solar_load || 50);
+    setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
+    setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
+    setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
+  }, [])
 
   const onBack = () => {
     router.push(`/quotation/monthly-spend`);
@@ -125,7 +122,7 @@ export default function Page() {
 
           <Slider
             aria-label="Solar load coverage"
-            defaultValue={allValues.solar_load}
+            defaultValue={solar_load}
             slots={{
               valueLabel: ValueLabelComponent,
             }}
@@ -149,9 +146,9 @@ export default function Page() {
           <div className='input-group input-group-background'>
             <div className='flex input-group'>
               <Tooltip
-                content={`${allValues.solar_load}%`}
+                content={`${solar_load}%`}
                 isAlwaysOpen={false}
-                left={`${((width ?? 0) - 20) * allValues.solar_load / 100 + 20}px`}
+                left={`${((width ?? 0) - 20) * solar_load / 100 + 20}px`}
                 position="top"
               >
                 <div className='slider-container'>
@@ -159,7 +156,7 @@ export default function Page() {
                     id="solar_load"
                     className="input w-full slider-input"
                     type="range"
-                    style={{ backgroundSize: `${allValues.solar_load}% 100%` }}
+                    style={{ backgroundSize: `${solar_load}% 100%` }}
                     {...register('solar_load', { required: 'Solar load is required' })}
                   />
                   {errors.solar_load && <p className="text-red-500 text-xs italic">{errors?.solar_load?.message}</p>}
@@ -184,9 +181,9 @@ export default function Page() {
                 Hours
               </FormTitle>
               <Tooltip
-                content={`${allValues.battery_autonomy_hours_only} h`}
+                content={`${battery_autonomy_hours_only} h`}
                 isAlwaysOpen={false}
-                left={`${((width ?? 0) - 20) * allValues.battery_autonomy_hours_only / 24 + 20}px`}
+                left={`${((width ?? 0) - 20) * battery_autonomy_hours_only / 24 + 20}px`}
                 position="top"
               >
                 <div className='slider-container'>
@@ -197,7 +194,7 @@ export default function Page() {
                     {...register('battery_autonomy_hours_only', { required: 'Battery Autonomy Hours Only is required' })}
                     min="0"
                     max="24"
-                    style={{ backgroundSize: `${100 * allValues.battery_autonomy_hours_only / 24}% 100%` }}
+                    style={{ backgroundSize: `${100 * battery_autonomy_hours_only / 24}% 100%` }}
                   />
 
                   {errors.battery_autonomy_hours_only && <p className="text-red-500 text-xs italic">{errors?.battery_autonomy_hours_only?.message}</p>}
@@ -220,9 +217,9 @@ export default function Page() {
                 Days
               </FormTitle>
               <Tooltip
-                content={`${allValues.battery_autonomy_days} d`}
+                content={`${battery_autonomy_days} d`}
                 isAlwaysOpen={false}
-                left={`${((width ?? 0) - 20) * allValues.battery_autonomy_days / 5 + 20}px`}
+                left={`${((width ?? 0) - 20) * battery_autonomy_days / 5 + 20}px`}
                 position="top"
               >
                 <div className='slider-container'>
@@ -234,7 +231,7 @@ export default function Page() {
                     {...register('battery_autonomy_days', { required: 'Battery Autonomy Days is required' })}
                     min="0"
                     max="5"
-                    style={{ backgroundSize: `${100 * allValues.battery_autonomy_days / 5}% 100%` }}
+                    style={{ backgroundSize: `${100 * battery_autonomy_days / 5}% 100%` }}
                   />
                 </div>
               </Tooltip>
@@ -245,10 +242,10 @@ export default function Page() {
               </div>
             </div>
             <div className='m-auto pt-[10px] font-bold text-black'>
-              {allValues.battery_autonomy_days && allValues.battery_autonomy_days != 0 ? `${allValues.battery_autonomy_days} Day(s)` : ""}
+              {battery_autonomy_days && battery_autonomy_days != 0 ? `${battery_autonomy_days} Day(s)` : ""}
               {" "}
 
-              {allValues.battery_autonomy_hours_only && allValues.battery_autonomy_hours_only != 0 ? `${allValues.battery_autonomy_hours_only} Hour(s)` : ""}
+              {battery_autonomy_hours_only && battery_autonomy_hours_only != 0 ? `${battery_autonomy_hours_only} Hour(s)` : ""}
             </div>
           </div>
         </div>
