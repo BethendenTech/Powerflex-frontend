@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, FormControl, FormHelperText, MenuItem, OutlinedInput, Select } from "@mui/material";
+import { Box, FormControl, MenuItem, OutlinedInput, Select } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle, Heading } from "../form/style";
+import { FormInputField, FormTitle, FormValidation, Heading } from "../form/style";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
@@ -106,7 +106,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("first_name", { required: "First name is required" })}
                     />
-                    <FormHelperText>{errors?.first_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.first_name?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -120,7 +120,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("last_name", { required: "Last name is required" })}
                     />
-                    <FormHelperText>{errors?.last_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.last_name?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -134,7 +134,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
-                    <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
+                    <FormValidation>{errors?.phone_number?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -148,7 +148,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("email", { required: "Email address is required" })}
                     />
-                    <FormHelperText>{errors?.email?.message}</FormHelperText>
+                    <FormValidation>{errors?.email?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -165,7 +165,7 @@ const BusinessApplicationForm = () => {
                         <MenuItem value="director">Director</MenuItem>
                         <MenuItem value="other">Other</MenuItem>
                     </Select>
-                    <FormHelperText>{errors?.business_role?.message}</FormHelperText>
+                    <FormValidation>{errors?.business_role?.message}</FormValidation>
                 </FormInputField>
 
                 {business_role == "other" && <FormInputField
@@ -179,7 +179,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("other_role", { required: "This field is required" })}
                     />
-                    <FormHelperText>{errors?.other_role?.message}</FormHelperText>
+                    <FormValidation>{errors?.other_role?.message}</FormValidation>
                 </FormInputField>}
 
                 <FormInputField
@@ -193,7 +193,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
                     />
-                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.business_name?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -207,7 +207,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
                     />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
+                    <FormValidation>{errors?.house_number?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -221,7 +221,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("street_address", { required: "Street Address is required" })}
                     />
-                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
+                    <FormValidation>{errors?.street_address?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -235,7 +235,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("town", { required: "Town is required" })}
                     />
-                    <FormHelperText>{errors?.town?.message}</FormHelperText>
+                    <FormValidation>{errors?.town?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -249,7 +249,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("city", { required: "City is required" })}
                     />
-                    <FormHelperText>{errors?.city?.message}</FormHelperText>
+                    <FormValidation>{errors?.city?.message}</FormValidation>
                 </FormInputField>
 
                 <SelectStateComponent
@@ -270,7 +270,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("landmark", { required: "Landmark is required" })}
                     />
-                    <FormHelperText>{errors?.landmark?.message}</FormHelperText>
+                    <FormValidation>{errors?.landmark?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -284,7 +284,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("bus_stop", { required: "Nearest Bus Stop is required" })}
                     />
-                    <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
+                    <FormValidation>{errors?.bus_stop?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -298,7 +298,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("business_address", { required: "Business Address is required" })}
                     />
-                    <FormHelperText>{errors?.business_address?.message}</FormHelperText>
+                    <FormValidation>{errors?.business_address?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -312,7 +312,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("occupation", { required: "Occupation is required" })}
                     />
-                    <FormHelperText>{errors?.occupation?.message}</FormHelperText>
+                    <FormValidation>{errors?.occupation?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -326,7 +326,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
                     />
-                    <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
+                    <FormValidation>{errors?.reference_phone1?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -340,7 +340,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
                     />
-                    <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
+                    <FormValidation>{errors?.reference_phone2?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -350,9 +350,9 @@ const BusinessApplicationForm = () => {
                     <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
                     </FormTitle>
-                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
+                    <FormValidation sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
                         Please ensure the BVN entered belongs to the director of the company. Providing the correct BVN is mandatory for verification purposes.
-                    </FormHelperText>
+                    </FormValidation>
 
                     <OutlinedInput
                         type="text"
@@ -375,7 +375,7 @@ const BusinessApplicationForm = () => {
                     />
 
                     {errors?.bvn?.message && (
-                        <FormHelperText>{errors.bvn.message}</FormHelperText>
+                        <FormValidation>{errors.bvn.message}</FormValidation>
                     )}
                 </FormInputField>
 
@@ -400,7 +400,7 @@ const BusinessApplicationForm = () => {
                         acceptedLabel="NIN, Driver’s License., International Passport., Nigerian Birth Certificate., Permanent Voter’s Card., Nigerian Residence Permit., Nigerian Seaman’s Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
                         subNote="Refer to info icon for accepted documents"
                     />
-                    <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>
+                    <FormValidation>{errors?.applicant_id_card?.message}</FormValidation>
                 </FormControl>
                 <FormControl
                     fullWidth
@@ -423,7 +423,7 @@ const BusinessApplicationForm = () => {
                         acceptedLabel=""
                         subNote="Provide only the CAC Document"
                     />
-                    <FormHelperText>{errors?.company_registration_document?.message}</FormHelperText>
+                    <FormValidation>{errors?.company_registration_document?.message}</FormValidation>
                 </FormControl>
                 <FormControl
                     fullWidth
@@ -446,7 +446,7 @@ const BusinessApplicationForm = () => {
                         acceptedLabel=""
                         subNote=""
                     />
-                    <FormHelperText>{errors?.bank_statements?.message}</FormHelperText>
+                    <FormValidation>{errors?.bank_statements?.message}</FormValidation>
                 </FormControl>
                 <FormControl
                     fullWidth
@@ -469,7 +469,7 @@ const BusinessApplicationForm = () => {
                         acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC)., Water Bill (e.g Lagos Water Corporation)., Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board)., Internet Service Bill., Cable TV Subscription., Tenancy Agreement or Rent Receipt."
                         subNote="Refer to info icon for accepted documents"
                     />
-                    <FormHelperText>{errors?.recent_utility_bill?.message}</FormHelperText>
+                    <FormValidation>{errors?.recent_utility_bill?.message}</FormValidation>
                 </FormControl>
 
                 <FormInputField
@@ -483,7 +483,7 @@ const BusinessApplicationForm = () => {
                         type='text'
                         {...register("how_heard_about", { required: "this is required" })}
                     />
-                    <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
+                    <FormValidation>{errors?.how_heard_about?.message}</FormValidation>
                 </FormInputField>
 
                 <Box position="sticky" bottom={0} mt={2}>
