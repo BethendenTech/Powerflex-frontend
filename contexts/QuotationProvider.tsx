@@ -2,7 +2,7 @@ import updateAction from '@/little-state/action';
 import { QuotationContextType, QuoteInterface } from '@/types/quotation';
 import { defaultQuoteData, updateApplianceArray } from '@/utils/formData';
 import { useStateMachine } from 'little-state-machine';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useSnackbar } from 'notistack';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
@@ -16,7 +16,8 @@ interface QuotationProviderProps {
 
 // QuotationProvider component
 export const QuotationProvider = ({ children }: QuotationProviderProps) => {
-    const router = useRouter();
+    const pathname = usePathname();
+
     const { state, actions } = useStateMachine({ updateAction });
     const { enqueueSnackbar } = useSnackbar()
     const [quote, setQuote] = useState<QuoteInterface>(defaultQuoteData);
@@ -53,8 +54,10 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
                 setQuote(data);
 
                 if (state.total_cost != data.total_cost_with_profit) {
-                    enqueueSnackbar('Quote price updated', { variant: 'success' });
-                    actions.updateAction({ total_cost: data.total_cost_with_profit });
+                    if (pathname === "/quotation/appliances") {
+                        enqueueSnackbar('Quote price updated', { variant: 'success' });
+                        actions.updateAction({ total_cost: data.total_cost_with_profit });
+                    }
                 }
 
                 setIsLoading(false);
