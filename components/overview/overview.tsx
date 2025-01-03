@@ -2,6 +2,7 @@ import updateAction from "@/little-state/action";
 import { Box, Table, TableBody, TableRow } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { TableCellName } from "../form/style";
+import { renderNaira } from "@/utils/currency";
 
 export const OverviewData = () => {
     const { state } = useStateMachine({ updateAction });
@@ -12,7 +13,7 @@ export const OverviewData = () => {
                 <TableBody>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Monthly Spend</TableCellName>
-                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>&#8358;{state?.electricity_spend}</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>{renderNaira(state?.electricity_spend)}</TableCellName>
                     </TableRow>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Electricity band group</TableCellName>

@@ -48,7 +48,7 @@ const HomeAboutSection = () => {
                                 color="#191919"
                                 mb={3}
                             >
-                                Powering Nigeria One home at a Time
+                                Powering Nigeria one Home & Business at time
                             </Typography>
 
                             <Typography
@@ -56,7 +56,7 @@ const HomeAboutSection = () => {
                                 fontSize={16}
                                 color="#191919"
                             >
-                                At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                                At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
                             </Typography>
                         </Grid2>
                     </Grid2>
@@ -138,7 +138,7 @@ const HomeAboutSection = () => {
                             color="#191919"
                             mb={3}
                         >
-                            Powering Nigeria One home at a Time
+                            Powering Nigeria one Home & Business at time
                         </Typography>
 
                         <Typography
@@ -151,7 +151,7 @@ const HomeAboutSection = () => {
                                 color: '#191919'
                             }}
                         >
-                            At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses.
+                            At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses.
                         </Typography>
                     </Grid2>
                 </Grid2>

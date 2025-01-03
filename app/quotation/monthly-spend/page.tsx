@@ -7,13 +7,15 @@ import { useStateMachine } from 'little-state-machine';
 import updateAction from '@/little-state/action';
 import React from 'react';
 import Image from 'next/image';
-import { Box, Button, FormControl, FormControlLabel, FormHelperText, FormLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
+import { Box, Button, FormControl, FormControlLabel, OutlinedInput, Radio, RadioGroup } from '@mui/material';
 import CustomizedSteppers from '@/components/stepper';
 import { NextButton } from '@/components/button/style';
-import { FormInputField, FormTitle } from '@/components/form/style';
+import { FormInputField, FormTitle, FormValidation } from '@/components/form/style';
+import { formatNumberWithCommas } from '@/utils/currency';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
+
 
   const router = useRouter();
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
@@ -28,26 +30,42 @@ export default function Page() {
       setValue("electricity_spend", state.electricity_spend || "");
       setValue("price_band", state.price_band || "A");
     }
-  }, [state])
+  }, [state]);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = event.target.value.replace(/,/g, ""); // Remove existing commas
+    if (/^\d*$/.test(rawValue)) {
+      // Update state only if valid numeric input
+      setValue("electricity_spend", rawValue, { shouldValidate: true });
+    }
+  };
+
 
   const onSubmit = async (formData: any) => {
     try {
-      formData['user_id'] = state.user_id
+      // Remove commas from `electricity_spend`
+      const processedData = {
+        ...formData,
+        electricity_spend: formData.electricity_spend.replace(/,/g, ""),
+        user_id: state.user_id, // Add `user_id`
+      };
+
+      // Send the processed data in the API request
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-quote-step-1/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(processedData),
       });
 
       if (response.ok) {
         const data = await response.json();
-        formData["quote_number"] = data.quote.quote_number
-        actions.updateAction(formData);
+        processedData["quote_number"] = data.quote.quote_number;
+
+        actions.updateAction(processedData);
         router.push(`/quotation/breakdown`);
       }
-
     } catch (error) {
       console.error('Error:', error);
     }
@@ -83,25 +101,23 @@ export default function Page() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <FormInputField
-          fullWidth
-          error={!!errors.electricity_spend}
-        >
-          <FormTitle>
-            How much do you spend on electricity each month?
-          </FormTitle>
+        <FormInputField fullWidth error={!!errors.electricity_spend}>
+          <FormTitle>How much do you spend on electricity each month?</FormTitle>
           <OutlinedInput
-            type='text'
-            {...register('electricity_spend', {
-              required: 'Please enter a valid monthly spend amount',
-              valueAsNumber: true, // Converts the input to a number
+            type="text"
+            value={formatNumberWithCommas(watch("electricity_spend") || "")} // Display formatted value
+            onChange={handleInputChange}
+            {...register("electricity_spend", {
+              required: "Please enter a valid monthly spend amount",
               validate: {
-                positive: (value: any) => value > 0 || 'Electricity Spend must be a positive number',
-                // You can add more custom validations here if needed
-              }
+                positive: (value: string) => {
+                  // The raw value is already handled by `setValue` without commas
+                  return parseFloat(value) > 0 || "Electricity Spend must be a positive number";
+                },
+              },
             })}
           />
-          <FormHelperText>{errors?.electricity_spend?.message}</FormHelperText>
+          <FormValidation>{errors?.electricity_spend?.message}</FormValidation>
         </FormInputField>
 
 
