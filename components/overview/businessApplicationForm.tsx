@@ -397,7 +397,7 @@ const BusinessApplicationForm = () => {
                         setValue={setValue}
                         supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
                         acceptableText=""
-                        acceptedLabel="NIN, Driver’s License, International Passport., Nigerian Birth Certificate, Permanent Voter’s Card., Nigerian Residence Permit., Nigerian Seaman’s Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
+                        acceptedLabel="NIN, Driver’s License., International Passport., Nigerian Birth Certificate., Permanent Voter’s Card., Nigerian Residence Permit., Nigerian Seaman’s Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
                         subNote="Refer to info icon for accepted documents"
                     />
                     <FormHelperText>{errors?.applicant_id_card?.message}</FormHelperText>

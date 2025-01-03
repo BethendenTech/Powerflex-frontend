@@ -17,3 +17,24 @@ export const formatKWhWithCurrency = (value: number, precision: number = 2): str
         decimal: '.',                  // Decimal separator
     }).format()} kWh`;
 };
+
+// export const formatNumberWithCommas = (value: string | undefined | null) => {
+//     return currency(value || 0, {
+//         symbol: '', 
+//         precision: 0,
+//         separator: ','
+//     }).format();
+// };
+
+export const formatNumberWithCommas = (value: string | undefined | null) => {
+    // Return an empty string for null, undefined, or empty values
+    if (value === null || value === undefined || value === "") {
+      return "";
+    }
+  
+    return currency(value, {
+      symbol: '', 
+      precision: 0, 
+      separator: ',',
+    }).format();
+  };
