@@ -20,8 +20,9 @@ export const BusinessOrIndividualCheckBox = () => {
       <FormGroup
         row
       >
-        {businessRoles && businessRoles.map((role) => (
+        {businessRoles && businessRoles.map((role, index) => (
           <FormControlLabel
+            key={`role-${index}`}
             control={
               <Checkbox checked={role.id == state.business_role} onChange={() => handleToggle(role.id)} value={role.id} />
             }

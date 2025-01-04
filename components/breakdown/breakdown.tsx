@@ -188,6 +188,7 @@ export default function Breakdown({ register, watch, errors, setValue }: Breakdo
                 } else {
                     return (
                         <Table
+                            key={`row-${index}`}
                             size="small"
                             sx={{
                                 border: 'none', // Removes table border
