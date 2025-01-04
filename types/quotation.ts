@@ -1,6 +1,6 @@
 // types/quotation.ts
 export interface Quotation {
-    electricity_spend: string;
+    electricity_spend: any;
     price_band: string;
     additional_info: boolean;
     solar_load: number;

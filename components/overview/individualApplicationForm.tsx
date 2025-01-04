@@ -1,14 +1,14 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, FormHelperText, FormLabel, OutlinedInput, Typography } from "@mui/material";
+import { Box, OutlinedInput } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from 'next/dynamic';
 import SelectStateComponent from "./stateSelect";
 import { NextButton } from "../button/style";
-import { FormInputField, FormTitle, Heading } from "../form/style";
+import { FormInputField, FormTitle, FormValidation, Heading } from "../form/style";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -119,7 +119,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("first_name", { required: "First name is required" })}
                     />
-                    <FormHelperText>{errors?.first_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.first_name?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -133,7 +133,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("last_name", { required: "Last name is required" })}
                     />
-                    <FormHelperText>{errors?.last_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.last_name?.message}</FormValidation>
                 </FormInputField>
 
 
@@ -148,7 +148,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("phone_number", { required: "Phone number is required" })}
                     />
-                    <FormHelperText>{errors?.phone_number?.message}</FormHelperText>
+                    <FormValidation>{errors?.phone_number?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -162,7 +162,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("email", { required: "Email address is required" })}
                     />
-                    <FormHelperText>{errors?.email?.message}</FormHelperText>
+                    <FormValidation>{errors?.email?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -176,7 +176,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("house_number", { required: "House Number is required" })}
                     />
-                    <FormHelperText>{errors?.house_number?.message}</FormHelperText>
+                    <FormValidation>{errors?.house_number?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -190,7 +190,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("street_address", { required: "Street Address is required" })}
                     />
-                    <FormHelperText>{errors?.street_address?.message}</FormHelperText>
+                    <FormValidation>{errors?.street_address?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -204,7 +204,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("landmark", { required: "Landmark is required" })}
                     />
-                    <FormHelperText>{errors?.landmark?.message}</FormHelperText>
+                    <FormValidation>{errors?.landmark?.message}</FormValidation>
                 </FormInputField>
 
 
@@ -219,7 +219,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("bus_stop", { required: "Nearest Bus Stop is required" })}
                     />
-                    <FormHelperText>{errors?.bus_stop?.message}</FormHelperText>
+                    <FormValidation>{errors?.bus_stop?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -233,7 +233,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("town", { required: "Town is required" })}
                     />
-                    <FormHelperText>{errors?.town?.message}</FormHelperText>
+                    <FormValidation>{errors?.town?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -247,7 +247,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("city", { required: "City is required" })}
                     />
-                    <FormHelperText>{errors?.city?.message}</FormHelperText>
+                    <FormValidation>{errors?.city?.message}</FormValidation>
                 </FormInputField>
 
                 <SelectStateComponent
@@ -268,7 +268,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("occupation", { required: "Occupation is required" })}
                     />
-                    <FormHelperText>{errors?.occupation?.message}</FormHelperText>
+                    <FormValidation>{errors?.occupation?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -282,7 +282,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("business_address", { required: "Business Address is required" })}
                     />
-                    <FormHelperText>{errors?.business_address?.message}</FormHelperText>
+                    <FormValidation>{errors?.business_address?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -296,7 +296,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
                     />
-                    <FormHelperText>{errors?.reference_phone1?.message}</FormHelperText>
+                    <FormValidation>{errors?.reference_phone1?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -310,7 +310,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
                     />
-                    <FormHelperText>{errors?.reference_phone2?.message}</FormHelperText>
+                    <FormValidation>{errors?.reference_phone2?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -324,7 +324,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("business_name", { required: "Business Name is required" })}
                     />
-                    <FormHelperText>{errors?.business_name?.message}</FormHelperText>
+                    <FormValidation>{errors?.business_name?.message}</FormValidation>
                 </FormInputField>
 
                 <FormInputField
@@ -334,9 +334,9 @@ const IndividualApplicationForm = () => {
                     <FormTitle sx={{ fontWeight: 700 }}>
                         BVN (Bank Verification Number)
                     </FormTitle>
-                    <FormHelperText sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
+                    <FormValidation sx={{ fontFamily: "'Harmonia Sans Pro', sans-serif", mb: 1, marginLeft: 0 }}>
                         Providing the correct BVN is mandatory for verification purposes.
-                    </FormHelperText>
+                    </FormValidation>
 
                     <OutlinedInput
                         type="text"
@@ -359,7 +359,7 @@ const IndividualApplicationForm = () => {
                     />
 
                     {errors?.bvn?.message && (
-                        <FormHelperText>{errors.bvn.message}</FormHelperText>
+                        <FormValidation>{errors.bvn.message}</FormValidation>
                     )}
                 </FormInputField>
 
@@ -375,7 +375,7 @@ const IndividualApplicationForm = () => {
                         type='text'
                         {...register("how_heard_about", { required: "this is required" })}
                     />
-                    <FormHelperText>{errors?.how_heard_about?.message}</FormHelperText>
+                    <FormValidation>{errors?.how_heard_about?.message}</FormValidation>
                 </FormInputField>
 
                 <Box position="sticky" bottom={0} mt={2}>

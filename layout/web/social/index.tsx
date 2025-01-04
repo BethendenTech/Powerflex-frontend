@@ -1,12 +1,31 @@
-import { Box, Modal, Paper, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Modal, Paper, Stack, Tooltip, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 export const SocialIcon = () => {
     const [open, setOpen] = useState(false);
+    const [showGif, setShowGif] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
     // const CallNumber = "+2347074109549";
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    useEffect(() => {
+        const gifTimer = setTimeout(() => {
+            setShowGif(true);
+            setShowTooltip(true);
+        }, 6000);
+
+        const hideGifTimer = setTimeout(() => {
+            setShowGif(false);
+            setShowTooltip(false);
+        }, 21000);
+
+        return () => {
+            clearTimeout(gifTimer);
+            clearTimeout(hideGifTimer);
+        };
+    }, []);
 
     return (
         <>
@@ -19,18 +38,40 @@ export const SocialIcon = () => {
                     zIndex: 1400,
                 }}
             >
-                <Box
-                    component={Paper}
-                    sx={{
-                        borderRadius: "50%",
-                        cursor: "pointer",
-                        overflow: "hidden",
-                    }}
-                    onClick={handleOpen}
+                <Tooltip
+                    placement="left"
+                    title="How can I help you?"
+                    open={showTooltip}
+                    arrow
                 >
-                    <Box component="img" src="/images/icon/chat-icon.png" width={50} height={50} />
-                </Box>
+                    <Box
+                        component={Paper}
+                        sx={{
+                            borderRadius: "50%",
+                            cursor: "pointer",
+                            overflow: "hidden",
+                        }}
+                        onClick={handleOpen}
+                    >
+                        {showGif ? (
+                            <Box
+                                component="img"
+                                src="/images/icon/typing.gif"
+                                width={50}
+                                height={50}
+                            />
+                        ) : (
+                            <Box
+                                component="img"
+                                src="/images/icon/chat-icon.png"
+                                width={50}
+                                height={50}
+                            />
+                        )}
+                    </Box>
+                </Tooltip>
             </Box>
+
 
             {/* Bottom-Right Modal */}
             <Modal
