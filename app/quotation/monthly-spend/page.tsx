@@ -122,17 +122,16 @@ export default function Page() {
 
 
 
-        <FormControl
-          fullWidth
-        >
-          <FormTitle>Select your electricity band group</FormTitle>
-
+        <FormControl fullWidth>
+          <FormTitle>
+            Select your electricity band group
+          </FormTitle>
           <RadioGroup
             row
+            value={watch("price_band")}
             onChange={(e) => {
-              setValue("price_band", e.target.value)
+              setValue("price_band", e.target.value);
             }}
-            defaultValue={watch("price_band")}
             sx={{
               justifyContent: 'space-between',
               mt: 1,
@@ -148,7 +147,7 @@ export default function Page() {
               control={<Radio />}
               label="Band A"
               labelPlacement="top"
-              sx={{ flex: 1, textAlign: 'center' }} // Ensure each option takes equal width
+              sx={{ flex: 1, textAlign: 'center' }}
             />
             <FormControlLabel
               value="B"
