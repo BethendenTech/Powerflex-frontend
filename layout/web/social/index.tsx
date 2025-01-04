@@ -14,14 +14,16 @@ export const SocialIcon = () => {
         // Show the GIF and tooltip after 3 seconds
         const gifTimer = setTimeout(() => {
             setShowGif(true);
-            setShowTooltip(true);
-        }, 4000);
+            setShowTooltip(true); // Show tooltip automatically
+        }, 6000);
 
+        // Hide the GIF and tooltip after 18 seconds (3 seconds + 15 seconds)
         const hideGifTimer = setTimeout(() => {
             setShowGif(false);
             setShowTooltip(false);
-        }, 9000);
+        }, 21000); // 3000ms delay + 15000ms visible duration
 
+        // Cleanup timers on component unmount
         return () => {
             clearTimeout(gifTimer);
             clearTimeout(hideGifTimer);
