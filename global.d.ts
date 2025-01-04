@@ -7,7 +7,7 @@ declare module 'little-state-machine' {
         name: string;
         email: string;
         phone_number: string;
-        electricity_spend: string;
+        electricity_spend: number;
         price_band: string;
         additional_info: boolean;
         solar_load: number;
