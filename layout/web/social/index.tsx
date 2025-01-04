@@ -11,19 +11,16 @@ export const SocialIcon = () => {
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
-        // Show the GIF and tooltip after 3 seconds
         const gifTimer = setTimeout(() => {
             setShowGif(true);
-            setShowTooltip(true); // Show tooltip automatically
+            setShowTooltip(true);
         }, 6000);
 
-        // Hide the GIF and tooltip after 18 seconds (3 seconds + 15 seconds)
         const hideGifTimer = setTimeout(() => {
             setShowGif(false);
             setShowTooltip(false);
-        }, 21000); // 3000ms delay + 15000ms visible duration
+        }, 21000);
 
-        // Cleanup timers on component unmount
         return () => {
             clearTimeout(gifTimer);
             clearTimeout(hideGifTimer);
@@ -33,27 +30,6 @@ export const SocialIcon = () => {
     return (
         <>
             {/* Floating Chat Icon */}
-            {/* <Box
-                sx={{
-                    position: "fixed",
-                    bottom: 20,
-                    right: 20,
-                    zIndex: 1400,
-                }}
-            >
-                <Box
-                    component={Paper}
-                    sx={{
-                        borderRadius: "50%",
-                        cursor: "pointer",
-                        overflow: "hidden",
-                    }}
-                    onClick={handleOpen}
-                >
-                    <Box component="img" src="/images/icon/chat-icon.png" width={50} height={50} />
-                </Box>
-            </Box> */}
-
             <Box
                 sx={{
                     position: "fixed",
@@ -65,7 +41,7 @@ export const SocialIcon = () => {
                 <Tooltip
                     placement="left"
                     title="How can I help you?"
-                    open={showTooltip} // Automatically show/hide tooltip
+                    open={showTooltip}
                     arrow
                 >
                     <Box
@@ -80,14 +56,14 @@ export const SocialIcon = () => {
                         {showGif ? (
                             <Box
                                 component="img"
-                                src="/images/icon/typing.gif" // Replace with your GIF path
+                                src="/images/icon/typing.gif"
                                 width={50}
                                 height={50}
                             />
                         ) : (
                             <Box
                                 component="img"
-                                src="/images/icon/chat-icon.png" // Original chat icon
+                                src="/images/icon/chat-icon.png"
                                 width={50}
                                 height={50}
                             />
