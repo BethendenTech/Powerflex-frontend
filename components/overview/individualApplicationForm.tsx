@@ -285,47 +285,7 @@ const IndividualApplicationForm = () => {
                     <FormValidation>{errors?.business_address?.message}</FormValidation>
                 </FormInputField>
 
-                <FormInputField
-                    fullWidth
-                    error={!!errors.reference_phone1}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Reference Phone 1
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
-                    />
-                    <FormValidation>{errors?.reference_phone1?.message}</FormValidation>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.reference_phone2}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Reference Phone 2
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
-                    />
-                    <FormValidation>{errors?.reference_phone2?.message}</FormValidation>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.business_name}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Business Name
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("business_name", { required: "Business Name is required" })}
-                    />
-                    <FormValidation>{errors?.business_name?.message}</FormValidation>
-                </FormInputField>
+        
 
                 <FormInputField
                     fullWidth

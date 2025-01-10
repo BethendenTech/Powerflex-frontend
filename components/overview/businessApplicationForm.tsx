@@ -201,7 +201,7 @@ const BusinessApplicationForm = () => {
                     error={!!errors.house_number}
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
-                        House Number
+                        Business House Number
                     </FormTitle>
                     <OutlinedInput
                         type='text'
@@ -303,48 +303,6 @@ const BusinessApplicationForm = () => {
 
                 <FormInputField
                     fullWidth
-                    error={!!errors.occupation}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Occupation
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("occupation", { required: "Occupation is required" })}
-                    />
-                    <FormValidation>{errors?.occupation?.message}</FormValidation>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.reference_phone1}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Reference Phone 1
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("reference_phone1", { required: "Reference Phone 1 is required" })}
-                    />
-                    <FormValidation>{errors?.reference_phone1?.message}</FormValidation>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.reference_phone2}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        Reference Phone 2
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("reference_phone2", { required: "Reference Phone 2 is required" })}
-                    />
-                    <FormValidation>{errors?.reference_phone2?.message}</FormValidation>
-                </FormInputField>
-
-                <FormInputField
-                    fullWidth
                     error={!!errors.bvn} // Highlight the field if there's an error
                 >
                     <FormTitle sx={{ fontWeight: 700 }}>
@@ -378,6 +336,9 @@ const BusinessApplicationForm = () => {
                         <FormValidation>{errors.bvn.message}</FormValidation>
                     )}
                 </FormInputField>
+
+
+
 
                 <FormControl
                     fullWidth
@@ -448,6 +409,7 @@ const BusinessApplicationForm = () => {
                     />
                     <FormValidation>{errors?.bank_statements?.message}</FormValidation>
                 </FormControl>
+
                 <FormControl
                     fullWidth
                     error={!!errors.recent_utility_bill}
