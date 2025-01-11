@@ -25,7 +25,7 @@ export default function Page() {
       name: "",
       email: "",
       phone_number: "",
-      is_finance: false,
+      is_finance: true,
       agree_terms: false,
     }
   });
@@ -188,7 +188,7 @@ export default function Page() {
               closeDialog();
             }}
           >
-            Accept
+            Done
           </Button>
         </Box>
       ),
