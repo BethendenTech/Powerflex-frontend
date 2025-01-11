@@ -27,5 +27,6 @@ declare module 'little-state-machine' {
         address_line_1: string;
         address_line_2: string;
         terms_and_conditions: boolean;
+        agree_terms: boolean;
     }
 }

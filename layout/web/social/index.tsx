@@ -98,14 +98,14 @@ export const SocialIcon = () => {
                 >
                     <Stack direction="row" justifyContent="space-between" mb={2}>
                         <Typography variant="body2" color="grey">
-                            Team Murtiya
+                            Team Powerflex
                         </Typography>
                         <Typography variant="body2" color="grey">
                             just now
                         </Typography>
                     </Stack>
                     <Typography variant="body2" mb={2} fontWeight="bold">
-                        Welcome to Murtiya! How can we help you?
+                        Welcome to Powerflex! How can we help you?
                     </Typography>
                 </Box>
             </Modal>
