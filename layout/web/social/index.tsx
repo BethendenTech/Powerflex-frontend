@@ -1,11 +1,12 @@
 import { Box, Modal, Paper, Stack, Tooltip, Typography } from "@mui/material";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export const SocialIcon = () => {
     const [open, setOpen] = useState(false);
     const [showGif, setShowGif] = useState(false);
     const [showTooltip, setShowTooltip] = useState(false);
-    // const CallNumber = "+2347074109549";
+    const CallNumber = "+2347074109549";
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -34,10 +35,10 @@ export const SocialIcon = () => {
                 sx={{
                     position: "fixed",
                     bottom: {
-                        lg:20,
-                        md:20,
-                        sm:60,
-                        xs:60,
+                        lg: 20,
+                        md: 20,
+                        sm: 60,
+                        xs: 60,
                     },
                     right: 20,
                     zIndex: 1400,
@@ -66,12 +67,10 @@ export const SocialIcon = () => {
                                 height={50}
                             />
                         ) : (
-                            <Box
-                                component="img"
-                                src="/images/icon/chat-icon.png"
-                                width={50}
-                                height={50}
-                            />
+                            <Link href={`https://wa.me/${CallNumber}`} target="_blank">
+                                <Box component="img" src="/images/icon/chat-icon.png" width={50} height={50} />
+                            </Link>
+
                         )}
                     </Box>
                 </Tooltip>
