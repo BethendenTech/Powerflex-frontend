@@ -142,32 +142,50 @@ const HomeAboutSection = () => {
                     },
                 }}
             >
-                <Grid2 container spacing={2}>
-                    <Grid2 size={{ xs: 12, md: 6 }}>
-                        <Typography
-                            variant="h2"
-                            component="h1"
-                            fontSize={32}
-                            color="#191919"
-                            mb={3}
-                        >
-                            Powering Nigeria One Home & Business at time
-                        </Typography>
+                <Box sx={{
+                    background: '#2755EB',
+                    borderBottomRightRadius: '12px',
+                    borderTopRightRadius: '12px',
+                    position: "relative",
+                    top: {
+                        sm: '-20px',
+                        xs: '-22px'
+                    },
+                    left: {
+                        sm: '-60px',
+                        xs: '-55px'
+                    },
+                }}>
+                    <Typography
+                        variant="h2"
+                        component="h1"
+                        fontSize={32}
+                        sx={{
+                            color: "#FFFFFF",
+                            fontWeight: 700,
+                            lineHeight: "38.4px",
+                            textAlign: "left",
+                            padding: '10px 20px 10px 60px'
+                        }}
+                    >
+                        Powering Nigeria One Home & Business at time
+                    </Typography>
+                </Box>
 
-                        <Typography
-                            component="h2"
-                            fontSize={16}
-                            color="#191919"
-                            sx={{
-                                fontWeight: 400,
-                                lineHeight: "19.2px",
-                                color: '#191919'
-                            }}
-                        >
-                            At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses.
-                        </Typography>
-                    </Grid2>
-                </Grid2>
+                <Box>
+                    <Typography
+                        component="h2"
+                        fontSize={16}
+                        color="#191919"
+                        sx={{
+                            fontWeight: 400,
+                            lineHeight: "19.2px",
+                            color: '#191919'
+                        }}
+                    >
+                        At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses.
+                    </Typography>
+                </Box>
 
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, md: 6 }}>

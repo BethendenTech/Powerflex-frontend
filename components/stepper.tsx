@@ -89,7 +89,22 @@ export default function CustomizedSteppers({ activeStep }: ComponentProps) {
         <Stack sx={{ width: '100%' }} mb={2}>
             <Stepper alternativeLabel activeStep={activeStep - 1} connector={<ColorlibConnector />}>
                 {steps.map((label) => (
-                    <Step key={label}>
+                    <Step key={label} sx={{
+                        '&.MuiStep-root': {
+                            paddingLeft: {
+                                lg: '8px',
+                                md: '8px',
+                                sm: '8px',
+                                xs: '4px'
+                            },
+                            paddingRight: {
+                                lg: '8px',
+                                md: '8px',
+                                sm: '8px',
+                                xs: '4px'
+                            }
+                        }
+                    }}>
                         <StepLabel StepIconComponent={ColorlibStepIcon} />
                     </Step>
                 ))}

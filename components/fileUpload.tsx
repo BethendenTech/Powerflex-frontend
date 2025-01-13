@@ -1,7 +1,7 @@
 import { useDropzone } from 'react-dropzone';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { Alert, Box, Button, Checkbox, IconButton, List, ListItem, ListItemText, Tooltip, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, List, ListItem, ListItemText, Tooltip, TooltipProps, Typography, useMediaQuery } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import React, { useState } from 'react';
 import { CheckboxContainer, CustomAccordionSummary, CustomExpandIcon, Title, TitleContainer } from './form/style';
@@ -29,6 +29,14 @@ const FileUploadComponent = (props: ComponentProps) => {
     const [uploading, setUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState<string[]>([]);
     const [uploadError, setUploadError] = useState<string[]>([]);
+
+    const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+    const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('lg', 'md'));
+
+    let placement: TooltipProps['placement'] = 'right';
+    if (isSmallScreen) placement = 'bottom';
+    if (isMediumScreen) placement = 'right';
+
 
     const [checked, setChecked] = useState(false);
 
@@ -94,9 +102,9 @@ const FileUploadComponent = (props: ComponentProps) => {
     const files = acceptedFiles.map((file) => (
         <ListItem key={file.path}>
             <ListItemText primary={`${file.path} - ${file.size} bytes`} />
+
         </ListItem>
     ));
-
     const fileRejectionItems = fileRejections.map(({ file, errors }) => (
         <ListItem key={file.path}>
             {file.path} - {file.size} bytes
@@ -124,7 +132,7 @@ const FileUploadComponent = (props: ComponentProps) => {
         >
             <CustomAccordionSummary
             >
-                <Box sx={{ padding: acceptedLabel ? 0 : 2.5 }}>
+                <Box sx={{ padding: acceptedLabel ? 0 : 1 }}>
                     {acceptedLabel && (
                         <Tooltip
                             title={
@@ -138,12 +146,21 @@ const FileUploadComponent = (props: ComponentProps) => {
                                     </ul>
                                 </Box>
                             }
-                            placement="right"
+                            placement={placement}
                             arrow
                         >
-                            <IconButton sx={{ color: '#424242' }}>
+                            <Box
+                                component="span"
+                                sx={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    color: "#424242",
+                                    cursor: "pointer",
+                                }}
+                            >
                                 <InfoOutlinedIcon />
-                            </IconButton>
+                            </Box>
                         </Tooltip>
                     )}
                 </Box>
@@ -277,7 +294,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                     )}
                 </Box>
             </AccordionDetails>
-        </Accordion >
+        </Accordion>
     );
 };
 
