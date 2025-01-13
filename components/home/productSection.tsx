@@ -43,23 +43,35 @@ const HomeProductSection = () => {
 
                     <Grid2 container spacing={2}>
                         <Grid2 size={{ xs: 12, md: 6 }}>
-                            <Typography
-                                variant="h2"
-                                component="h1"
-                                fontSize={32}
-                                color="#191919"
-                                sx={{ pb: 4 }}
-                            >
-                                Find the Right Solar Solution for Your Needs
-                            </Typography>
-
-                            <Typography
-                                component="h2"
-                                fontSize={16}
-                                color="#191919"
-                            >
-                                Our products are designed to meet a variety of needs, whether you’re powering a small home or a large business
-                            </Typography>
+                            <Box sx={{
+                                background: '#2755EB',
+                                borderTopLeftRadius: '20px',
+                                borderTopRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    variant="h2"
+                                    component="h1"
+                                    fontSize={32}
+                                    color="#FFFFFF"
+                                    sx={{ px: 4, py: 2 }}
+                                >
+                                    Find the Right Solar Solution for Your Needs
+                                </Typography>
+                            </Box>
+                            <Box sx={{
+                                background: '#F1F7FE',
+                                borderBottomLeftRadius: '20px',
+                                borderBottomRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    component="h2"
+                                    fontSize={16}
+                                    color="#191919"
+                                    sx={{ px: 4, py: 2 }}
+                                >
+                                    Our products are designed to meet a variety of needs, whether you’re powering a small home or a large business
+                                </Typography>
+                            </Box>
                         </Grid2>
                     </Grid2>
 
@@ -117,7 +129,7 @@ const HomeProductSection = () => {
                             fontSize={32}
                             sx={{
                                 pb: 4,
-                                color: "#191919",
+                                color: "#FFFFFF",
                                 fontWeight: 700,
                                 lineHeight: "38.4px",
                                 textAlign: "left",

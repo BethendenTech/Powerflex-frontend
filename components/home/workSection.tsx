@@ -46,25 +46,38 @@ const HomeWorkSection = () => {
                         },
                     }}
                 >
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} justifyContent="center">
                         <Grid size={{ xs: 12, md: 4 }}>
-                            <Typography
-                                variant="h2"
-                                component="h1"
-                                fontSize={32}
-                                color="#191919"
-                                mb={2}
-                            >
-                                How it Works
-                            </Typography>
+                            <Box sx={{
+                                background: '#2755EB',
+                                borderTopLeftRadius: '20px',
+                                borderTopRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    variant="h2"
+                                    component="h1"
+                                    fontSize={32}
+                                    color="#FFFFFF"
+                                    sx={{ px: 4, py: 2, textAlign: 'center' }}
+                                >
+                                    How it Works
+                                </Typography>
+                            </Box>
 
-                            <Typography
-                                component="h2"
-                                fontSize={16}
-                                color="#191919"
-                            >
-                                Simplified solar installation in 3 steps
-                            </Typography>
+                            <Box sx={{
+                                background: '#F1F7FE',
+                                borderBottomLeftRadius: '20px',
+                                borderBottomRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    component="h2"
+                                    fontSize={16}
+                                    color="#191919"
+                                    sx={{ px: 4, py: 2, textAlign: 'center' }}
+                                >
+                                    Simplified solar installation in 3 steps
+                                </Typography>
+                            </Box>
                         </Grid>
                     </Grid>
 

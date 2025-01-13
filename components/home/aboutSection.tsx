@@ -41,23 +41,36 @@ const HomeAboutSection = () => {
                 >
                     <Grid2 container spacing={2}>
                         <Grid2 size={{ xs: 12, md: 6 }}>
-                            <Typography
-                                variant="h2"
-                                component="h1"
-                                fontSize={32}
-                                color="#191919"
-                                mb={3}
-                            >
-                                Powering Nigeria one Home & Business at time
-                            </Typography>
+                            <Box sx={{
+                                background: '#2755EB',
+                                borderTopLeftRadius: '20px',
+                                borderTopRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    variant="h2"
+                                    component="h1"
+                                    fontSize={32}
+                                    color="#FFFFFF"
+                                    sx={{ px: 4, py: 2 }}
+                                >
+                                    Powering Nigeria One Home & Business at time
+                                </Typography>
+                            </Box>
 
-                            <Typography
-                                component="h2"
-                                fontSize={16}
-                                color="#191919"
-                            >
-                                At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
-                            </Typography>
+                            <Box sx={{
+                                background: '#F1F7FE',
+                                borderBottomLeftRadius: '20px',
+                                borderBottomRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    component="h2"
+                                    fontSize={16}
+                                    color="#191919"
+                                    sx={{ px: 4, py: 3 }}
+                                >
+                                    At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                                </Typography>
+                            </Box>
                         </Grid2>
                     </Grid2>
 
@@ -138,7 +151,7 @@ const HomeAboutSection = () => {
                             color="#191919"
                             mb={3}
                         >
-                            Powering Nigeria one Home & Business at time
+                            Powering Nigeria One Home & Business at time
                         </Typography>
 
                         <Typography

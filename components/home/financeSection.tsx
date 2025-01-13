@@ -45,25 +45,38 @@ const HomeFinanceSection = () => {
                         },
                     }}
                 >
-                    <Grid2 container spacing={2}>
+                    <Grid2 container spacing={2} justifyContent="center">
                         <Grid2 size={{ xs: 12, md: 6 }}>
-                            <Typography
-                                variant="h2"
-                                component="h1"
-                                fontSize={32}
-                                color="#191919"
-                                sx={{ pb: 4 }}
-                            >
-                                Flexible Financing For Every Budget
-                            </Typography>
+                            <Box sx={{
+                                background: '#2755EB',
+                                borderTopLeftRadius: '20px',
+                                borderTopRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    variant="h2"
+                                    component="h1"
+                                    fontSize={32}
+                                    color="#FFFFFF"
+                                    sx={{ px: 4, py: 2, textAlign: 'center' }}
+                                >
+                                    Flexible Financing For Every Budget
+                                </Typography>
+                            </Box>
 
-                            <Typography
-                                component="h2"
-                                fontSize={16}
-                                color="#191919"
-                            >
-                                We have options for every type of budget
-                            </Typography>
+                            <Box sx={{
+                                background: '#F1F7FE',
+                                borderBottomLeftRadius: '20px',
+                                borderBottomRightRadius: '20px',
+                            }}>
+                                <Typography
+                                    component="h2"
+                                    fontSize={16}
+                                    color="#191919"
+                                    sx={{ px: 4, py: 2, textAlign: 'center' }}
+                                >
+                                    We have options for every type of budget
+                                </Typography>
+                            </Box>
                         </Grid2>
                     </Grid2>
 
@@ -73,54 +86,7 @@ const HomeFinanceSection = () => {
                                 mt: 2,
                                 height: '100%',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                                border: '1px solid #ccc',
-                                padding: '10px 15px',
-                            }}>
-                                <CardContent sx={{
-                                    "&.MuiCardContent-root": {
-                                        height: "100%",
-                                    },
-                                }}>
-                                    <Stack
-                                        direction="column"
-                                        justifyContent="space-between"
-                                        spacing={3}
-                                        sx={{
-                                            "&.MuiStack-root": {
-                                                height: "100%",
-                                            },
-                                        }}>
-                                        <Box>
-                                            <Typography
-                                                variant="h2"
-                                                component="h1"
-                                                fontSize={26}
-                                                color="#191919"
-                                                mb={2}
-                                            >
-                                                Outright Payment
-                                            </Typography>
-                                            <Typography component="p"
-                                                sx={{ color: '#191919' }}>
-                                                Pay once, and you’re done! Our outright purchases are fair, competitive and transparent. Because going solar should be simple.
-                                            </Typography>
-                                        </Box>
-                                        <Box textAlign='right'>
-                                            <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
-                                                Explore Pricing
-                                            </Button>
-                                        </Box>
-                                    </Stack>
-                                </CardContent>
-                            </Card>
-                        </Grid2>
-                        <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
-                            <Card sx={{
-                                mt: 2,
-                                height: '100%',
-                                borderRadius: '12px',
-                                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                                backgroundColor: '#FFFFFF',
                                 border: '1px solid #ccc',
                                 padding: '10px 15px',
                             }}>
@@ -144,6 +110,55 @@ const HomeFinanceSection = () => {
                                                 component="h1"
                                                 fontWeight="bold"
                                                 fontSize={28}
+                                                color="#2755EB"
+                                                mb={2}
+                                            >
+                                                Outright Payment
+                                            </Typography>
+                                            <Typography component="p"
+                                                sx={{ color: '#191919' }}>
+                                                Pay once, and you’re done! Our outright purchases are fair, competitive and transparent. Because going solar should be simple.
+                                            </Typography>
+                                        </Box>
+                                        <Box textAlign='right'>
+                                            <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
+                                                Explore Pricing
+                                            </Button>
+                                        </Box>
+                                    </Stack>
+                                </CardContent>
+                            </Card>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
+                            <Card sx={{
+                                mt: 2,
+                                height: '100%',
+                                borderRadius: '12px',
+                                backgroundColor: '#FFFFFF',
+                                border: '1px solid #ccc',
+                                padding: '10px 15px',
+                            }}>
+                                <CardContent sx={{
+                                    "&.MuiCardContent-root": {
+                                        height: "100%",
+                                    },
+                                }}>
+                                    <Stack
+                                        direction="column"
+                                        justifyContent="space-between"
+                                        spacing={3}
+                                        sx={{
+                                            "&.MuiStack-root": {
+                                                height: "100%",
+                                            },
+                                        }}>
+                                        <Box>
+                                            <Typography
+                                                variant="h2"
+                                                component="h1"
+                                                fontWeight="bold"
+                                                fontSize={28}
+                                                color="#2755EB"
                                                 mb={2}
                                             >
                                                 Installment Plans
