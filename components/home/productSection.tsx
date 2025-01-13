@@ -28,7 +28,7 @@ const HomeProductSection = () => {
             >
 
                 <Container
-                    maxWidth="md"
+                    maxWidth="lg"
                     sx={{
                         pt: {
                             xs: 20,
@@ -37,6 +37,11 @@ const HomeProductSection = () => {
                         pb: {
                             xs: 10,
                             md: 20,
+                        },
+                        width: {
+                            xs: "100%",
+                            sm: "100%",
+                            md: "100%",
                         },
                     }}
                 >
@@ -75,13 +80,17 @@ const HomeProductSection = () => {
                         </Grid2>
                     </Grid2>
 
-                    <Box pt={20}>
-                        <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/products/solar-panels.svg" />
-
-                        <ProductCard title="Inverters" description="Reliable power conversion for seamless energy use" image="/images/products/inverters.svg" />
-
-                        <ProductCard title="Batteries" description="Energy storage solutions tailored for all-day power." image="/images/products/batteries.svg" />
-                    </Box>
+                    <Grid2 mt={20} container spacing={4}>
+                        <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                            <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/home/solar-panels-image.svg" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                            <ProductCard title="Inverters" description="Reliable power conversion for seamless energy use" image="/images/home/inverter.svg" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                            <ProductCard title="Batteries" description="Energy storage solutions tailored for all-day power." image="/images/home/batteries.svg" />
+                        </Grid2>
+                    </Grid2>
                 </Container>
             </Box>
             <Box
@@ -153,13 +162,17 @@ const HomeProductSection = () => {
                     </Grid2>
                 </Grid2>
 
-                <Box pt={4}>
-                    <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/products/solar-panels.svg" />
-
-                    <ProductCard title="Inverters" description="Reliable power conversion for seamless energy use" image="/images/products/inverters.svg" />
-
-                    <ProductCard title="Batteries" description="Energy storage solutions tailored for all-day power." image="/images/products/batteries.svg" />
-                </Box>
+                <Grid2 mt={20} container spacing={4}>
+                    <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                        <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/products/solar-panels.svg" />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                        <ProductCard title="Inverters" description="Reliable power conversion for seamless energy use" image="/images/products/inverters.svg" />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+                        <ProductCard title="Batteries" description="Energy storage solutions tailored for all-day power." image="/images/products/batteries.svg" />
+                    </Grid2>
+                </Grid2>
             </Container>
         </>
     )

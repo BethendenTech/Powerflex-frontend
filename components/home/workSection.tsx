@@ -86,7 +86,7 @@ const HomeWorkSection = () => {
                             <WorkCard
                                 heading="STEP 1"
                                 title="Consultation & Quote"
-                                image="/images/how-it-works/how-it-works-01.svg"
+                                image="/images/how-it-works/step-1-image.svg"
                                 description="Get a personalised quote based on your energy needs using our state-of-the-art solar calculator."
                             />
                         </Grid>
@@ -94,7 +94,7 @@ const HomeWorkSection = () => {
                             <WorkCard
                                 heading="STEP 2"
                                 title="Installation"
-                                image="/images/how-it-works/how-it-works-02.svg"
+                                image="/images/how-it-works/step-2-image.svg"
                                 description="Professionally installed solar systems tailored to your property"
                             />
                         </Grid>
@@ -102,7 +102,7 @@ const HomeWorkSection = () => {
                             <WorkCard
                                 heading="STEP 3"
                                 title="Power Up"
-                                image="/images/how-it-works/how-it-works-03.svg"
+                                image="/images/how-it-works/step-3-image.svg"
                                 description="Enjoy clean, renewable energy and reduced electricity bills"
                             />
                         </Grid>
