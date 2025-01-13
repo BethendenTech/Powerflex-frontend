@@ -16,54 +16,44 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
     return (
         <>
             <Card sx={{
-                display: 'flex',
                 mt: 2,
-                padding: {
-                    lg: '0px 12px',
-                    md: '0px 12px',
-                    sm: '0px 0px',
-                    xs: '0px 0px',
-                },
                 height: '100%',
                 borderRadius: '12px',
-                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                backgroundColor: '#FFFFFF',
                 border: '1px solid #ccc',
-                alignItems: 'center',
-                flexDirection: {
-                    lg: 'row',
-                    md: 'row',
-                    sm: 'column',
-                    xs: 'column'
-                }
             }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <CardContent sx={{ flex: '1 0 auto', p: { lg: 0, md: 0, sm: 2, xs: 2 } }}>
-                        <Typography component="div" variant="h2" fontSize={26} color='#191919' fontWeight='bold'>
-                            {title}
-                        </Typography>
-                        <Typography
-                            variant="subtitle1"
-                            component="p"
-                            sx={{ color: '#191919' }}
-                        >
-                            {description}
-                        </Typography>
-                    </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'center', pb: 1, p: { lg: 0, md: 0, sm: 2, xs: 2 } }}>
+
+                <CardContent sx={{
+                    flex: 1,
+                    "&.MuiCardContent-root": {
+                        height: "100%",
+                        padding: '10px 15px',
+                    },
+                }}>
+
+                    <Typography component="div" variant="h2" fontSize={26} color="#2755EB" fontWeight='bold' textAlign="center" mb={1}>
+                        {title}
+                    </Typography>
+                    <Typography
+                        variant="subtitle1"
+                        component="p"
+                        sx={{ color: '#191919', px: 3.4, }}
+                    >
+                        {description}
+                    </Typography>
+                    <Box textAlign="center">
                         <Button
                             variant='outlined'
-                            sx={{ mt: 3, width: 200, color: '#595959', borderColor: '#595959' }}>
+                            sx={{ mt: 2, mb: 2, width: 230, color: '#595959', borderColor: '#595959' }}>
                             Learn More</Button>
                     </Box>
-                </Box>
-                <Box p={1} sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardMedia
                         component="img"
-                        sx={{ width: "100%", height: 'auto', borderRadius: '12px' }}
+                        sx={{ width: "100%", height: "auto", borderRadius: '12px' }}
                         image={image}
-                        alt={title}
+                        alt="dhsj"
                     />
-                </Box>
+                </CardContent>
             </Card>
         </>
     );

@@ -80,7 +80,7 @@ export default function Page() {
       battery_autonomy_days: battery_autonomy_days,
       battery_autonomy_hours: battery_autonomy_hours,
       breakdowns: {},
-      is_finance: false
+      is_finance: true,
     }
     calculateQuote(filter)
   }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
