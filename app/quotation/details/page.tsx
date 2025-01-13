@@ -99,36 +99,6 @@ export default function Page() {
     getTermsData();
   }, []);
 
-  // useEffect(() => {
-  //   if (!state?.terms_and_conditions) {
-  //     if (termsData) {
-  //       openDialog({
-  //         title: "Terms and Conditions",
-  //         content: (
-  //           <Box>
-
-  //             <p>{termsData}</p>
-  //           </Box>
-  //         ),
-  //         actions: (
-  //           <Box>
-  //             <Button
-  //               variant='contained'
-  //               onClick={() => {
-  //                 actions.updateAction({ "terms_and_conditions": true });
-  //                 closeDialog();
-  //               }}
-  //             >
-  //               Accept
-  //             </Button>
-
-  //           </Box>
-  //         )
-  //       });
-  //     }
-  //   }
-  // }, [state?.terms_and_conditions, termsData])
-
   const openTermsPopup = () => {
     openDialog({
       title: (

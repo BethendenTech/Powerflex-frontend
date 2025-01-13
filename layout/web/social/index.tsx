@@ -33,7 +33,12 @@ export const SocialIcon = () => {
             <Box
                 sx={{
                     position: "fixed",
-                    bottom: 20,
+                    bottom: {
+                        lg:20,
+                        md:20,
+                        sm:60,
+                        xs:60,
+                    },
                     right: 20,
                     zIndex: 1400,
                 }}
