@@ -130,39 +130,51 @@ const HomeProductSection = () => {
                 }}
             >
 
-                <Grid2 container spacing={2}>
-                    <Grid2 size={{ xs: 12, md: 6 }}>
-                        <Typography
-                            variant="h2"
-                            component="h1"
-                            fontSize={32}
-                            sx={{
-                                pb: 4,
-                                color: "#FFFFFF",
-                                fontWeight: 700,
-                                lineHeight: "38.4px",
-                                textAlign: "left",
-                            }}
-                        >
-                            Find the Right Solar Solution for Your Needs
-                        </Typography>
+                <Box sx={{
+                    background: '#2755EB',
+                    borderBottomRightRadius: '12px',
+                    borderTopRightRadius: '12px',
+                    position: "relative",
+                    top: {
+                        sm: '-35px',
+                        xs: '-35px'
+                    },
+                    left: {
+                        sm: '-60px',
+                        xs: '-55px'
+                    },
+                }}>
+                    <Typography
+                        variant="h2"
+                        component="h1"
+                        fontSize={32}
+                        sx={{
+                            color: "#FFFFFF",
+                            fontWeight: 700,
+                            lineHeight: "38.4px",
+                            textAlign: "left",
+                            padding: '10px 20px 10px 60px'
+                        }}
+                    >
+                        Find the Right Solar Solution for Your Needs
+                    </Typography>
+                </Box>
+                <Box>
+                    <Typography
+                        component="h2"
+                        fontSize={16}
+                        sx={{
+                            color: "#191919",
+                            fontWeight: 400,
+                            lineHeight: "19.2px",
+                            textAlign: "left",
+                        }}
+                    >
+                        Our products are designed to meet a variety of needs, whether you’re powering a small home or a large business
+                    </Typography>
+                </Box>
 
-                        <Typography
-                            component="h2"
-                            fontSize={16}
-                            sx={{
-                                color: "#191919",
-                                fontWeight: 400,
-                                lineHeight: "19.2px",
-                                textAlign: "left",
-                            }}
-                        >
-                            Our products are designed to meet a variety of needs, whether you’re powering a small home or a large business
-                        </Typography>
-                    </Grid2>
-                </Grid2>
-
-                <Grid2 mt={20} container spacing={4}>
+                <Grid2 mt={4} container spacing={4}>
                     <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
                         <ProductCard title="Solar Panels" description="Durable and efficient panels to capture maximum energy." image="/images/products/solar-panels.svg" />
                     </Grid2>

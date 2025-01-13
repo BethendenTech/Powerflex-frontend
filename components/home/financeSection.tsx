@@ -220,27 +220,45 @@ const HomeFinanceSection = () => {
                     },
                 }}
             >
-                <Grid2 container spacing={2}>
-                    <Grid2 size={{ xs: 12, md: 6 }}>
-                        <Typography
-                            variant="h2"
-                            component="h1"
-                            fontSize={32}
-                            color="#191919"
-                            sx={{ pb: 4 }}
-                        >
-                            Flexible Financing For Every Budget
-                        </Typography>
+                <Box sx={{
+                    background: '#2755EB',
+                    borderBottomRightRadius: '12px',
+                    borderTopRightRadius: '12px',
+                    position: "relative",
+                    top: {
+                        sm: '-20px',
+                        xs: '-22px'
+                    },
+                    left: {
+                        sm: '-60px',
+                        xs: '-55px'
+                    },
+                }}>
+                    <Typography
+                        variant="h2"
+                        component="h1"
+                        fontSize={32}
+                        sx={{
+                            color: "#FFFFFF",
+                            fontWeight: 700,
+                            lineHeight: "38.4px",
+                            textAlign: "left",
+                            padding: '10px 20px 10px 60px'
+                        }}
+                    >
+                        Flexible Financing For Every Budget
+                    </Typography>
+                </Box>
 
-                        <Typography
-                            component="h2"
-                            fontSize={16}
-                            color="#191919"
-                        >
-                            We have options for every type of budget
-                        </Typography>
-                    </Grid2>
-                </Grid2>
+                <Box>
+                    <Typography
+                        component="h2"
+                        fontSize={16}
+                        color="#191919"
+                    >
+                        We have options for every type of budget
+                    </Typography>
+                </Box>
             </Container>
 
             <Box
@@ -326,7 +344,7 @@ const HomeFinanceSection = () => {
                                                 Pay once, and you’re done! Our outright purchases are fair, competitive and transparent. Because going solar should be simple.
                                             </Typography>
                                         </Box>
-                                        <Box textAlign='right'>
+                                        <Box textAlign='center'>
                                             <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
                                                 Explore Pricing
                                             </Button>
@@ -371,7 +389,7 @@ const HomeFinanceSection = () => {
                                                 sx={{ color: '#191919' }}>Spread your payments over time with our flexible financing options, designed to make solar accesible for everyone.</Typography>
                                         </Box>
 
-                                        <Box textAlign='right'>
+                                        <Box textAlign='center'>
                                             <Button variant="outlined" LinkComponent={Link} href="/quotation/details" sx={{ width: 250, color: '#595959', borderColor: '#595959' }}>
                                                 Explore financing
                                             </Button>
