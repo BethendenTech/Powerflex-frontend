@@ -177,7 +177,10 @@ const FileUploadComponent = (props: ComponentProps) => {
                         </Tooltip>
                     )}
                 </Box>
-                <Box sx={{ position: "relative", width: "100%" }}>
+                <Box sx={{ position: "relative", width: "100%" }} onClick={(e) => {
+                    e.stopPropagation();
+                    handleAccordionToggle();
+                }}>
                     {/* Title */}
                     <TitleContainer>
                         <Title>{label}</Title>
@@ -216,12 +219,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                     </Box>
 
                     {/* Custom Expand/Collapse Icon */}
-                    <CustomExpandIcon
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleAccordionToggle();
-                        }}
-                    >
+                    <CustomExpandIcon>
                         <Image
                             src={expanded ? ArrowDown : ArrowUp}
                             alt={expanded ? "Collapse" : "Expand"}
