@@ -37,6 +37,14 @@ const FileUploadComponent = (props: ComponentProps) => {
     if (isSmallScreen) placement = 'bottom';
     if (isMediumScreen) placement = 'right';
 
+    const isMobile = useMediaQuery("(max-width:600px)"); // Detect if the screen width is <= 600px
+    const [tooltipOpen, setTooltipOpen] = useState(false);
+
+    // Handlers
+    const handleTooltipOpen = () => setTooltipOpen(true);
+    const handleTooltipClose = () => setTooltipOpen(false);
+    const handleTooltipToggle = () => setTooltipOpen((prev) => !prev);
+
 
     const [checked, setChecked] = useState(false);
 
@@ -121,7 +129,7 @@ const FileUploadComponent = (props: ComponentProps) => {
     return (
         <Accordion
             expanded={expanded}
-            onChange={handleAccordionToggle}
+            onChange={() => { }} // Disable default toggle behavior
             sx={{
                 "&.MuiAccordion-root": {
                     border: `1px solid #5C69FF`,
@@ -130,8 +138,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                 boxShadow: "none",
             }}
         >
-            <CustomAccordionSummary
-            >
+            <CustomAccordionSummary>
                 <Box sx={{ padding: acceptedLabel ? 0 : 1 }}>
                     {acceptedLabel && (
                         <Tooltip
@@ -148,9 +155,15 @@ const FileUploadComponent = (props: ComponentProps) => {
                             }
                             placement={placement}
                             arrow
+                            open={tooltipOpen}
+                            onClose={handleTooltipClose}
+                            disableHoverListener={isMobile}
                         >
                             <Box
                                 component="span"
+                                onClick={isMobile ? handleTooltipToggle : undefined}
+                                onMouseEnter={!isMobile ? handleTooltipOpen : undefined}
+                                onMouseLeave={!isMobile ? handleTooltipClose : undefined}
                                 sx={{
                                     display: "inline-flex",
                                     alignItems: "center",
@@ -173,7 +186,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                     {/* Checkbox */}
                     <CheckboxContainer sx={{ top: subNote ? "-10px" : "-14px" }}>
                         <Checkbox
-                            size='large'
+                            size="large"
                             sx={{
                                 "&.MuiCheckbox-root": {
                                     color: "#257FE6",
@@ -189,19 +202,26 @@ const FileUploadComponent = (props: ComponentProps) => {
                     </CheckboxContainer>
 
                     <Box textAlign="center" p={0}>
-                        <Typography sx={{
-                            fontSize: "11.87px",
-                            fontWeight: 500,
-                            lineHeight: "16.57px",
-                            textAlign: "center",
-                            color: "#424242"
-                        }}>
+                        <Typography
+                            sx={{
+                                fontSize: "11.87px",
+                                fontWeight: 500,
+                                lineHeight: "16.57px",
+                                textAlign: "center",
+                                color: "#424242",
+                            }}
+                        >
                             {subNote}
                         </Typography>
                     </Box>
 
                     {/* Custom Expand/Collapse Icon */}
-                    <CustomExpandIcon>
+                    <CustomExpandIcon
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleAccordionToggle();
+                        }}
+                    >
                         <Image
                             src={expanded ? ArrowDown : ArrowUp}
                             alt={expanded ? "Collapse" : "Expand"}
@@ -212,38 +232,59 @@ const FileUploadComponent = (props: ComponentProps) => {
                 </Box>
             </CustomAccordionSummary>
             <AccordionDetails>
-                <Box sx={{ borderStyle: 'dashed', borderWidth: 2, borderRadius: '12px' }} textAlign="center" padding={2}>
+                <Box
+                    sx={{ borderStyle: "dashed", borderWidth: 2, borderRadius: "12px" }}
+                    textAlign="center"
+                    padding={2}
+                >
                     <CloudUploadOutlinedIcon />
-                    <Box {...getRootProps({ className: 'dropzone' })} mt={3}>
+                    <Box {...getRootProps({ className: "dropzone" })} mt={3}>
                         <input {...getInputProps()} />
-                        <Typography sx={{
-                            fontSize: "13.69px",
-                            fontWeight: 700,
-                            lineHeight: "16.57px",
-                            textAlign: "center",
+                        <Typography
+                            sx={{
+                                fontSize: "13.69px",
+                                fontWeight: 700,
+                                lineHeight: "16.57px",
+                                textAlign: "center",
+                            }}
+                        >
+                            Choose a file or drag & drop it here
+                        </Typography>
 
-                        }}>Choose a file or drag & drop it here</Typography>
+                        <Typography
+                            sx={{
+                                fontSize: "11.87px",
+                                fontWeight: 500,
+                                lineHeight: "16.57px",
+                                textAlign: "center",
+                                color: "#A9ACB4",
+                            }}
+                        >
+                            {supportFormat}
+                        </Typography>
 
-                        <Typography sx={{
-                            fontSize: "11.87px",
-                            fontWeight: 500,
-                            lineHeight: "16.57px",
-                            textAlign: "center",
-                            color: "#A9ACB4"
-                        }}>{supportFormat}</Typography>
-
-                        {acceptableText && <Typography sx={{
-                            fontSize: "11.87px",
-                            fontWeight: 500,
-                            lineHeight: "16.57px",
-                            textAlign: "center",
-                            color: "#A9ACB4"
-                        }}>{acceptableText}</Typography>}
+                        {acceptableText && (
+                            <Typography
+                                sx={{
+                                    fontSize: "11.87px",
+                                    fontWeight: 500,
+                                    lineHeight: "16.57px",
+                                    textAlign: "center",
+                                    color: "#A9ACB4",
+                                }}
+                            >
+                                {acceptableText}
+                            </Typography>
+                        )}
 
                         <Box mt={2}>
-                            <Button sx={{
-                                padding: "6px 20px"
-                            }} variant="contained" onClick={() => open()}>
+                            <Button
+                                sx={{
+                                    padding: "6px 20px",
+                                }}
+                                variant="contained"
+                                onClick={() => open()}
+                            >
                                 Browse File
                             </Button>
                         </Box>
@@ -262,7 +303,6 @@ const FileUploadComponent = (props: ComponentProps) => {
                             </Alert>
                         </Box>
                     )}
-
 
                     {uploadSuccess.length > 0 && (
                         <Box mt={2}>
@@ -295,6 +335,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                 </Box>
             </AccordionDetails>
         </Accordion>
+
     );
 };
 
