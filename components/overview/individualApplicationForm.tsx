@@ -1,7 +1,7 @@
 "use client";
 
 import updateAction from "@/little-state/action";
-import { Box, OutlinedInput } from "@mui/material";
+import { Box, FormControl, OutlinedInput } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 import SelectStateComponent from "./stateSelect";
 import { NextButton } from "../button/style";
 import { FormInputField, FormTitle, FormValidation, Heading } from "../form/style";
+import FileUploadComponent from "../fileUpload";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -323,6 +324,114 @@ const IndividualApplicationForm = () => {
                     )}
                 </FormInputField>
 
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.applicant_id_card}
+                >
+                    <FileUploadComponent
+                        name="applicant_id_card"
+                        label="Valid Government-Issued ID"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                        supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
+                        acceptableText=""
+                        acceptedLabel="NIN, Driver’s License., International Passport., Nigerian Birth Certificate., Permanent Voter’s Card., Nigerian Residence Permit., Nigerian Seaman’s Card (For Maritime Professionals)., Employee ID (For Civil Servants)."
+                        subNote="Refer to info icon for accepted documents"
+                    />
+                    <FormValidation>{errors?.applicant_id_card?.message}</FormValidation>
+                </FormControl>
+                <FormControl
+                    fullWidth
+                    error={!!errors.company_registration_document}
+                >
+                    <FileUploadComponent
+                        name="company_registration_document"
+                        label="Company Registration Document"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                        supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
+                        acceptableText=""
+                        acceptedLabel=""
+                        subNote="Provide only the CAC Document"
+                    />
+                    <FormValidation>{errors?.company_registration_document?.message}</FormValidation>
+                </FormControl>
+                <FormControl
+                    fullWidth
+                    error={!!errors.bank_statements}
+                >
+                    <FileUploadComponent
+                        name="bank_statements"
+                        label="6 Months Bank Statements"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                        supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
+                        acceptableText=""
+                        acceptedLabel=""
+                        subNote=""
+                    />
+                    <FormValidation>{errors?.bank_statements?.message}</FormValidation>
+                </FormControl>
+
+                <FormControl
+                    fullWidth
+                    error={!!errors.recent_utility_bill}
+                >
+                    <FileUploadComponent
+                        name="recent_utility_bill"
+                        label="Recent Utility Bill"
+                        accept={{
+                            'image/jpeg': ['.jpeg', '.jpg'],
+                            'image/png': ['.png'],
+                            'application/pdf': ['.pdf'],
+                            'video/mp4': ['.mp4'],
+                        }}
+                        maxFiles={1}
+                        maxSize={10 * 1024 * 1024}
+                        setValue={setValue}
+                        supportFormat="Accepted formats: PDF, JPG, PNG; Max size: 10MB"
+                        acceptableText=""
+                        acceptedLabel="Electricity Bill (e.g Ikeja Electric, AEDC)., Water Bill (e.g Lagos Water Corporation)., Waste Management Bill (e.g LAWMA, Abuja Environmental Protection Board)., Internet Service Bill., Cable TV Subscription., Tenancy Agreement or Rent Receipt."
+                        subNote="Refer to info icon for accepted documents"
+                    />
+                    <FormValidation>{errors?.recent_utility_bill?.message}</FormValidation>
+                </FormControl>
+
+                <FormInputField
+                    fullWidth
+                    error={!!errors.how_heard_about}
+                >
+                    <FormTitle sx={{ fontWeight: 700 }}>
+                        How did you hear about Powerflex?
+                    </FormTitle>
+                    <OutlinedInput
+                        type='text'
+                        {...register("how_heard_about", { required: "this is required" })}
+                    />
+                    <FormValidation>{errors?.how_heard_about?.message}</FormValidation>
+                </FormInputField>
 
                 <FormInputField
                     fullWidth
