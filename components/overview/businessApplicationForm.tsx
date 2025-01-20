@@ -10,10 +10,12 @@ import updateAction from "@/little-state/action";
 import FileUploadComponent from "../fileUpload";
 import { NextButton } from "../button/style";
 import { FormInputField, FormTitle, FormValidation, Heading } from "../form/style";
+import useQuotation from "@/hooks/quotation";
 
 const BusinessApplicationForm = () => {
     const router = useRouter();
     const { state } = useStateMachine({ updateAction });
+    const { quote } = useQuotation();
 
     // Set up react-hook-form with default values for the inputs
     const { control, register, handleSubmit, setValue, formState: { errors }, watch } = useForm({
@@ -44,6 +46,7 @@ const BusinessApplicationForm = () => {
             company_registration_document: "",
             bank_statements: "",
             recent_utility_bill: "",
+            device_price: ""
         }
     });
 
@@ -71,6 +74,8 @@ const BusinessApplicationForm = () => {
             formData["device_price"] = "1"
             formData["sentinel_sld"] = "no"
             formData["sentinel_sap"] = "no"
+            formData["device_price"] = quote?.total_cost_naira
+
 
 
             const response = await fetch(`${process.env.NEXT_PUBLIC_FINANCE_BASE_URL}/finance/prod/checkout/application/`, {

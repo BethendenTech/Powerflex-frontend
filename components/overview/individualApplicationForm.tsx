@@ -10,6 +10,7 @@ import SelectStateComponent from "./stateSelect";
 import { NextButton } from "../button/style";
 import { FormInputField, FormTitle, FormValidation, Heading } from "../form/style";
 import FileUploadComponent from "../fileUpload";
+import useQuotation from "@/hooks/quotation";
 
 const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
     <iframe
@@ -24,7 +25,7 @@ const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
 
 const IndividualApplicationForm = () => {
     const { state } = useStateMachine({ updateAction });
-
+    const { quote } = useQuotation();
     const [showIframe, setShowIframe] = useState(false)
 
     // Set up react-hook-form with default values for the inputs
@@ -56,6 +57,7 @@ const IndividualApplicationForm = () => {
             company_registration_document: "",
             bank_statements: "",
             recent_utility_bill: "",
+            device_price: ""
         }
     });
 
@@ -80,7 +82,7 @@ const IndividualApplicationForm = () => {
             formData["device_price"] = "1"
             formData["sentinel_sld"] = "no"
             formData["sentinel_sap"] = "no"
-
+            formData["device_price"] = quote?.total_cost_naira
 
             const response = await fetch(`${process.env.NEXT_PUBLIC_FINANCE_BASE_URL}/finance/prod/checkout/application/`, {
                 method: 'POST',
