@@ -286,7 +286,7 @@ const IndividualApplicationForm = () => {
                     <FormValidation>{errors?.business_address?.message}</FormValidation>
                 </FormInputField>
 
-        
+
 
                 <FormInputField
                     fullWidth
@@ -418,20 +418,6 @@ const IndividualApplicationForm = () => {
                     />
                     <FormValidation>{errors?.recent_utility_bill?.message}</FormValidation>
                 </FormControl>
-
-                <FormInputField
-                    fullWidth
-                    error={!!errors.how_heard_about}
-                >
-                    <FormTitle sx={{ fontWeight: 700 }}>
-                        How did you hear about Powerflex?
-                    </FormTitle>
-                    <OutlinedInput
-                        type='text'
-                        {...register("how_heard_about", { required: "this is required" })}
-                    />
-                    <FormValidation>{errors?.how_heard_about?.message}</FormValidation>
-                </FormInputField>
 
                 <FormInputField
                     fullWidth
