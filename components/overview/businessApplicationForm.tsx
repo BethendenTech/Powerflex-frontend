@@ -57,6 +57,9 @@ const BusinessApplicationForm = () => {
     const onSubmit = async (formData: any) => {
         formData["application_type"] = "business"
         formData["quote_number"] = state.quote_number
+        formData["occupation"] = "Business"
+        formData["reference_phone1"] = state.phone_number
+        formData["reference_phone2"] = state.phone_number
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cerate-quote-application/`, {
             method: 'POST',
             headers: {
