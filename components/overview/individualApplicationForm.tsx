@@ -79,7 +79,6 @@ const IndividualApplicationForm = () => {
             formData["application_channel"] = "powerflex"
             formData["device_id"] = "1856"
             formData["quantity"] = "1"
-            formData["device_price"] = "1"
             formData["sentinel_sld"] = "no"
             formData["sentinel_sap"] = "no"
             formData["device_price"] = quote?.total_cost_naira
