@@ -46,4 +46,6 @@ export interface QuoteInterface {
     miscellaneous_cost: number;
     installer_commission: number;
     installer_commission_amount: number;
+    profit_margin: number;
+    profit_margin_amount: number;
 }
