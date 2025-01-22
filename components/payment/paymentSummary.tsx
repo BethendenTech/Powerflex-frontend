@@ -48,10 +48,10 @@ const PaymentSummaryCard = () => {
                                 <TableCellName></TableCellName>
                             </TableRow>
 
-                            <TableRow>
+                            {/* <TableRow>
                                 <TableCellName colSpan={2} align="left">Installation</TableCellName>
                                 <TableCellName colSpan={2} align="right">{renderNaira(quote?.installer_commission_amount)}</TableCellName>
-                            </TableRow>
+                            </TableRow> */}
                         </TableBody>
                     </Table>
 
