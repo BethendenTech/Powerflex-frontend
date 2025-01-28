@@ -162,7 +162,7 @@ export default function Page() {
                 key={band.id}
                 value={band.id}
                 control={<Radio />}
-                label={`Band ${band.name}`}
+                label={band.name}
                 labelPlacement="top"
                 sx={{ flex: 1, textAlign: 'center' }}
               />
