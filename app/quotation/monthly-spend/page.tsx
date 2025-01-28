@@ -158,7 +158,7 @@ export default function Page() {
             }}
           >
 
-            {bandData.map((band: any) => (
+            {bandData && bandData.map((band: any) => (
               <FormControlLabel
                 key={band.id}
                 value={band.id}
