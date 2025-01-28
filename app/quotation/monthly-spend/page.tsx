@@ -157,7 +157,6 @@ export default function Page() {
               paddingTop: 1
             }}
           >
-
             {bandData && bandData.map((band: any) => (
               <FormControlLabel
                 key={band.id}
