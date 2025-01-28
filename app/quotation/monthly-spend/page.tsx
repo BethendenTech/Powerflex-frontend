@@ -15,7 +15,7 @@ import { formatNumberWithCommas } from '@/utils/currency';
 
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
-
+  const [bandData, setBandData] = React.useState([]);
 
   const router = useRouter();
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
@@ -40,6 +40,21 @@ export default function Page() {
     }
   };
 
+  const getBandData = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/bands/`);
+      if (response.ok) {
+        const data = await response.json();
+        setBandData(data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  React.useEffect(() => {
+    getBandData();
+  }, []);
 
   const onSubmit = async (formData: any) => {
     try {
@@ -142,27 +157,17 @@ export default function Page() {
               paddingTop: 1
             }}
           >
-            <FormControlLabel
-              value="A"
-              control={<Radio />}
-              label="Band A"
-              labelPlacement="top"
-              sx={{ flex: 1, textAlign: 'center' }}
-            />
-            <FormControlLabel
-              value="B"
-              control={<Radio />}
-              label="Band B"
-              labelPlacement="top"
-              sx={{ flex: 1, textAlign: 'center' }}
-            />
-            <FormControlLabel
-              value="C"
-              control={<Radio />}
-              label="Band C"
-              labelPlacement="top"
-              sx={{ flex: 1, textAlign: 'center' }}
-            />
+
+            {bandData.map((band: any) => (
+              <FormControlLabel
+                key={band.id}
+                value={band.id}
+                control={<Radio />}
+                label={`Band ${band.name}`}
+                labelPlacement="top"
+                sx={{ flex: 1, textAlign: 'center' }}
+              />
+            ))}
           </RadioGroup>
         </FormControl>
 
