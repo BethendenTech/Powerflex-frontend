@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import { FaqComponent } from "@/components/cms/faqComponent";
+import ContactUsMainPage from "@/components/contact-us/page";
 import HomeAboutSection from "@/components/home/aboutSection";
 import HomeFinanceSection from "@/components/home/financeSection";
 import HomeMainSection from "@/components/home/mainSection";
@@ -9,7 +10,6 @@ import HomeWorkSection from "@/components/home/workSection";
 import { Box } from "@mui/material";
 
 export default function Home() {
-
   return (
     <Box>
       <HomeMainSection />
@@ -18,6 +18,7 @@ export default function Home() {
       <HomeWorkSection />
       <HomeAboutSection />
       <FaqComponent />
+      <ContactUsMainPage />
     </Box>
   );
 }
