@@ -48,4 +48,5 @@ export interface QuoteInterface {
     installer_commission_amount: number;
     profit_margin: number;
     profit_margin_amount: number;
+    price_band_data: any;
 }
