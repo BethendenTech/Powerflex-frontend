@@ -57,7 +57,7 @@ export const PackageList = () => {
                             <Card>
                                 <CardMedia
                                     sx={{ height: 150 }}
-                                    image={`${process.env.NEXT_PUBLIC_BASE_URL}/${item.image}`}
+                                    image={`${process.env.NEXT_PUBLIC_BASE_URL}${item.image}`}
                                     title={item.name}
                                 />
 
