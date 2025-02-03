@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Container, Grid2, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material";
 import React from "react";
 
 export const PackageList = () => {
@@ -80,7 +80,7 @@ export const PackageList = () => {
                     ))}
 
                 </Grid2>
-            </Container >
-        </Box >
+            </Container>
+        </Box>
     );
 }
