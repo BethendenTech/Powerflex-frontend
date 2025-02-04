@@ -1,9 +1,12 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid2, Skeleton, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Container, Grid2, Skeleton, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 export const PackageList = () => {
     const [data, setData] = React.useState<any[]>([]);
     const [loading, setLoading] = React.useState(true);
+    const [selected, setSelected] = React.useState<any>(null);
+
 
     React.useEffect(() => {
         getData();
@@ -135,13 +138,73 @@ export const PackageList = () => {
                                 </CardContent>
 
                                 <CardActions>
-                                    <Button variant="outlined">Learn More</Button>
+                                    <Button variant="outlined" onClick={() => setSelected(item)}>Learn More</Button>
                                 </CardActions>
                             </Card>
                         </Grid2>
                     ))}
 
                 </Grid2>
+
+
+                {selected && <Box>
+                    <Card>
+                        <CardHeader
+                            title={selected.name}
+                        />
+                        <CardContent>
+                            <Grid2 container spacing={2}>
+                                <Grid2 size={{
+                                    xs: 12,
+                                    sm: 12,
+                                    md: 3,
+                                    lg: 3,
+                                    xl: 3,
+                                }}>
+                                    <Card>
+                                        <CardHeader title="Powered Appliances" />
+                                    </Card>
+                                </Grid2>
+                                <Grid2 size={{
+                                    xs: 12,
+                                    sm: 12,
+                                    md: 3,
+                                    lg: 3,
+                                    xl: 3,
+                                }}>
+                                    <Card>
+                                        <CardHeader title="Runtime" />
+                                        <CardContent>
+                                            {selected.runtime}
+                                        </CardContent>
+                                    </Card>
+                                </Grid2>
+                                <Grid2 size={{
+                                    xs: 12,
+                                    sm: 12,
+                                    md: 6,
+                                    lg: 6,
+                                    xl: 6,
+                                }}>
+                                    <Card sx={{ textAlign: "center", alignItems: "center", alignContent: "center" }}>
+                                        <CardHeader title="Save up to 50% on power bills" />
+                                        <CardContent>
+                                            <ShowPrice item={selected} />
+
+                                            <Button variant="contained">Buy Now</Button>
+
+                                            <Stack direction="row" spacing={1}>
+                                                <Typography gutterBottom>Power up sustainably</Typography>
+                                                <Image src="/images/package/green.svg" alt="solar-panel" width={50} height={50} />
+                                                <Typography gutterBottom>cut your carbon footprint</Typography>
+                                            </Stack>
+                                        </CardContent>
+                                    </Card>
+                                </Grid2>
+                            </Grid2>
+                        </CardContent>
+                    </Card>
+                </Box>}
             </Container>
         </Box>
     );
