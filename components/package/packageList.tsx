@@ -1,6 +1,7 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Container, Grid2, Skeleton, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid2, Skeleton, Typography } from "@mui/material";
 import React from "react";
+import { ShowPrice } from "./showPrice";
+import { PackageDetail } from "./packageDetail";
 
 export const PackageList = () => {
     const [data, setData] = React.useState<any[]>([]);
@@ -25,23 +26,7 @@ export const PackageList = () => {
     };
 
 
-    const ShowPrice = (props: any) => {
 
-        const { item } = props
-
-        if (item.discount_price) {
-            return (
-                <Box>
-                    <Typography sx={{ textDecoration: 'line-through' }}>₦{item.price}</Typography>
-                    <Typography>₦{item.discount_price}</Typography>
-                </Box>
-            )
-        } else {
-            return (
-                <Typography>₦{item.price}</Typography>
-            )
-        }
-    }
 
 
     return (
@@ -147,64 +132,7 @@ export const PackageList = () => {
                 </Grid2>
 
 
-                {selected && <Box>
-                    <Card>
-                        <CardHeader
-                            title={selected.name}
-                        />
-                        <CardContent>
-                            <Grid2 container spacing={2}>
-                                <Grid2 size={{
-                                    xs: 12,
-                                    sm: 12,
-                                    md: 3,
-                                    lg: 3,
-                                    xl: 3,
-                                }}>
-                                    <Card>
-                                        <CardHeader title="Powered Appliances" />
-                                    </Card>
-                                </Grid2>
-                                <Grid2 size={{
-                                    xs: 12,
-                                    sm: 12,
-                                    md: 3,
-                                    lg: 3,
-                                    xl: 3,
-                                }}>
-                                    <Card>
-                                        <CardHeader title="Runtime" />
-                                        <CardContent>
-                                            {selected.runtime}
-                                        </CardContent>
-                                    </Card>
-                                </Grid2>
-                                <Grid2 size={{
-                                    xs: 12,
-                                    sm: 12,
-                                    md: 6,
-                                    lg: 6,
-                                    xl: 6,
-                                }}>
-                                    <Card sx={{ textAlign: "center", alignItems: "center", alignContent: "center" }}>
-                                        <CardHeader title="Save up to 50% on power bills" />
-                                        <CardContent>
-                                            <ShowPrice item={selected} />
-
-                                            <Button variant="contained">Buy Now</Button>
-
-                                            <Stack direction="row" spacing={1}>
-                                                <Typography gutterBottom>Power up sustainably</Typography>
-                                                <Image src="/images/package/green.svg" alt="solar-panel" width={50} height={50} />
-                                                <Typography gutterBottom>cut your carbon footprint</Typography>
-                                            </Stack>
-                                        </CardContent>
-                                    </Card>
-                                </Grid2>
-                            </Grid2>
-                        </CardContent>
-                    </Card>
-                </Box>}
+                {selected && <PackageDetail item={selected} />}
             </Container>
         </Box>
     );
