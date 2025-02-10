@@ -1,9 +1,11 @@
-import { Box, Button, Card, CardContent, CardHeader, Grid2, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Stack, Typography } from "@mui/material";
 import { ShowPrice } from "./showPrice";
 import Image from "next/image";
 
-export const PackageDetail = (props:any) => {
+export const PackageDetail = (props: any) => {
     const { item } = props;
+
+    console.log("PackageDetail", item)
 
     return (
         <Box>
@@ -22,6 +24,20 @@ export const PackageDetail = (props:any) => {
                         }}>
                             <Card>
                                 <CardHeader title="Powered Appliances" />
+                                <CardContent>
+                                    <FormGroup>
+                                        {item.appliances && item.appliances.map((appliance: any) => {
+                                            return (
+                                                <FormControlLabel
+                                                    control={
+                                                        <Checkbox name={appliance.id} />
+                                                    }
+                                                    label={appliance.name}
+                                                />
+                                            )
+                                        })}
+                                    </FormGroup>
+                                </CardContent>
                             </Card>
                         </Grid2>
                         <Grid2 size={{
