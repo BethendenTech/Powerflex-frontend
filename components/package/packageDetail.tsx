@@ -1,12 +1,9 @@
-import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Stack, Typography } from "@mui/material";
-import { ShowPrice } from "./showPrice";
+import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
+import { ShowPrice } from "./showPrice";
 
 export const PackageDetail = (props: any) => {
     const { item } = props;
-
-    console.log("PackageDetail", item)
-
     return (
         <Box>
             <Card>
@@ -24,9 +21,13 @@ export const PackageDetail = (props: any) => {
                         }}>
                             <Card>
                                 <CardHeader title="Powered Appliances" />
-                                <CardContent>
+                                <CardContent sx={{
+                                    overflowX: 'auto',
+                                    scrollBehavior: "smooth",
+                                    height: 200,
+                                }}>
                                     <FormGroup>
-                                        {item.appliances && item.appliances.map((appliance: any) => {
+                                        {item?.appliances.map((appliance: any) => {
                                             return (
                                                 <FormControlLabel
                                                     control={
@@ -61,18 +62,26 @@ export const PackageDetail = (props: any) => {
                             lg: 6,
                             xl: 6,
                         }}>
-                            <Card sx={{ textAlign: "center", alignItems: "center", alignContent: "center" }}>
+                            <Card sx={{ textAlign: "center" }}>
                                 <CardHeader title="Save up to 50% on power bills" />
-                                <CardContent>
-                                    <ShowPrice item={item} />
+                                <CardContent sx={{ height: 200 }}>
 
-                                    <Button variant="contained">Buy Now</Button>
+                                    <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                                        <Box width={200} >
+                                            <ShowPrice item={item} />
+                                            <Button variant="contained" fullWidth>Buy Now</Button>
+                                        </Box>
+                                    </Box>
 
-                                    <Stack direction="row" spacing={1}>
-                                        <Typography gutterBottom>Power up sustainably</Typography>
-                                        <Image src="/images/package/green.svg" alt="solar-panel" width={50} height={50} />
-                                        <Typography gutterBottom>cut your carbon footprint</Typography>
-                                    </Stack>
+                                    <Box display={"flex"} alignItems={"center"} justifyContent={"center"} mt={2}>
+
+                                        <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                                            <Typography gutterBottom>Power up sustainably</Typography>
+                                            <Image src="/images/package/green.svg" alt="solar-panel" width={50} height={50} style={{ marginLeft: 2, marginRight: 2 }} />
+                                            <Typography gutterBottom>cut your carbon footprint</Typography>
+                                        </Box>
+                                    </Box>
+
                                 </CardContent>
                             </Card>
                         </Grid2>
