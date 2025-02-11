@@ -29,9 +29,13 @@ const validationSchema = yup.object().shape({
   message: yup.string().required("Message is required"),
 });
 const FormPage = () => {
+  const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState(false);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -61,11 +65,16 @@ const FormPage = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("data", data)
+        reset();
+        setSuccess(true);
+
       } else {
         console.error("Failed to save user details");
+        setError(true);
       }
     } catch (error) {
       console.log(error);
+      setError(true);
     }
   };
 
@@ -95,6 +104,40 @@ const FormPage = () => {
             >
               Contact Form
             </Typography>
+
+
+            {success && (
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                fontSize={26}
+                pb={2}
+                sx={{
+                  color: "green",
+                }}
+              >
+                Your message has been sent successfully!
+              </Typography>
+            )}
+
+            {error && (
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                fontSize={26}
+                pb={2}
+                sx={{
+                  color: "red",
+
+                }}
+
+              >
+                Something went wrong!
+              </Typography>
+            )}
+
+
+
             <Grid2 container spacing={2}>
               <Grid2 size={{ xs: 12, sm: 6 }}>
                 <TextField
