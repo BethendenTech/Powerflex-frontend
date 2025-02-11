@@ -10,13 +10,13 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
 
 // Define the validation schema using Yup
 const validationSchema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
+  first_name: yup.string().required("First Name is required"),
+  last_name: yup.string().required("Last Name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
   phone: yup
     .string()
@@ -35,8 +35,8 @@ const FormPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
       phone: "",
       subject: "",
@@ -45,9 +45,30 @@ const FormPage = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (formData: any) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/support/create-contact/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("data", data)
+      } else {
+        console.error("Failed to save user details");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container>
@@ -81,10 +102,10 @@ const FormPage = () => {
                   label="First Name"
                   variant="outlined"
                   fullWidth
-                  {...register("firstName")}
+                  {...register("first_name")}
                   InputLabelProps={{ shrink: true }}
-                  error={!!errors.firstName}
-                  helperText={errors.firstName?.message}
+                  error={!!errors.first_name}
+                  helperText={errors.first_name?.message}
                 />
               </Grid2>
               <Grid2 size={{ xs: 12, sm: 6 }}>
@@ -93,10 +114,10 @@ const FormPage = () => {
                   label="Last Name"
                   variant="outlined"
                   fullWidth
-                  {...register("lastName")}
+                  {...register("last_name")}
                   InputLabelProps={{ shrink: true }}
-                  error={!!errors.lastName}
-                  helperText={errors.lastName?.message}
+                  error={!!errors.last_name}
+                  helperText={errors.last_name?.message}
                 />
               </Grid2>
               <Grid2 size={{ xs: 12, sm: 6 }}>
