@@ -3,9 +3,11 @@ import { Box, Table, TableBody, TableRow } from "@mui/material";
 import { useStateMachine } from "little-state-machine";
 import { TableCellName } from "../form/style";
 import { renderNaira } from "@/utils/currency";
+import useQuotation from "@/hooks/quotation";
 
 export const OverviewData = () => {
     const { state } = useStateMachine({ updateAction });
+    const { quote } = useQuotation();
 
     return (
         <Box mt={2} mb={2}>
@@ -17,7 +19,7 @@ export const OverviewData = () => {
                     </TableRow>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Electricity band group</TableCellName>
-                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>{state?.price_band}</TableCellName>
+                        <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>{quote?.price_band_data?.name}</TableCellName>
                     </TableRow>
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Coverage Percentage</TableCellName>

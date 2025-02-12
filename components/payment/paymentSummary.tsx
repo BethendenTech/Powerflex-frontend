@@ -74,7 +74,7 @@ const PaymentSummaryCard = () => {
                                 fontSize: "20px",
                                 color: "#424242"
                             }}>
-                            {renderNaira(quote.total_cost_with_profit ?? 0)}
+                            {renderNaira(quote.total_cost_usd ?? 0)}
                         </Typography>
                     </Box>
                 </CardContent>

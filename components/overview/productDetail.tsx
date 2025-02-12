@@ -4,6 +4,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { TableCellName } from '../form/style';
+import { Typography } from '@mui/material';
 
 interface ProductDetailProps {
     product: {
@@ -14,6 +15,15 @@ interface ProductDetailProps {
 }
 
 const ProductDetailView: React.FC<ProductDetailProps> = ({ product }) => {
+
+    if (product === null) {
+        return (
+            <Typography variant="h6" color="error" align="center">
+                No product details available
+            </Typography>
+        );
+    }
+
     return (
         <TableContainer component={Paper}>
             <Table>
