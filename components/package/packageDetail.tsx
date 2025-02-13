@@ -1,11 +1,18 @@
 import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ShowPrice } from "./showPrice";
 
 export const PackageDetail = (props: any) => {
     const { item } = props;
+    const router = useRouter();
+
+    const handleSelect = () => {
+        router.push(`/package/${item.id}`);
+    }
+
     return (
-        <Box>
+        <Box key={`package-detail-view-${item.id}`}>
             <Card>
                 <CardHeader
                     title={item.name}
@@ -69,7 +76,7 @@ export const PackageDetail = (props: any) => {
                                     <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
                                         <Box width={200} >
                                             <ShowPrice item={item} />
-                                            <Button variant="contained" fullWidth>Buy Now</Button>
+                                            <Button variant="contained" fullWidth onClick={() => handleSelect()}>Buy Now</Button>
                                         </Box>
                                     </Box>
 

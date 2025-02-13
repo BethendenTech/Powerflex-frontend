@@ -1,7 +1,7 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Grid2, Skeleton, Typography } from "@mui/material";
 import React from "react";
-import { ShowPrice } from "./showPrice";
 import { PackageDetail } from "./packageDetail";
+import { ShowPrice } from "./showPrice";
 
 export const PackageList = () => {
     const [data, setData] = React.useState<any>();
@@ -35,10 +35,6 @@ export const PackageList = () => {
             setLoading(false);
         }
     };
-
-
-
-    console.log("data", data)
 
     return (
         <Box pt={2} pb={5}>
