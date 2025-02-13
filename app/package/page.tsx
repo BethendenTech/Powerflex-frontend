@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 
 export default function PackagePageList() {
     return (
-        <Box mt={10}>
+        <Box>
             <PackageList />
         </Box>
     )

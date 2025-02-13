@@ -1,8 +1,10 @@
 "use client";
 
+import { FinanceSelectToggle } from "@/components/financeSelectToggle";
+import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
 import { ShowPrice } from "@/components/package/showPrice";
-import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
@@ -52,7 +54,7 @@ export default function PackagePage() {
     }
 
     return (
-        <Box mt={10}>
+        <Box>
             <Button
                 variant="text"
                 startIcon={<Image
@@ -84,9 +86,10 @@ export default function PackagePage() {
                     }}
                 />
                 <CardContent>
+
                     <Box textAlign={"center"}>
                         <ShowPrice item={data} />
-                        <Typography sx={{ color: '#2755EB', fontWeight: 'bold' }}>What this package covers</Typography>
+                        <Typography sx={{ color: '#2755EB', fontWeight: 'bold', mt: 2, mb: 2 }}>What this package covers</Typography>
                     </Box>
 
 
@@ -121,6 +124,82 @@ export default function PackagePage() {
                         </Grid2>
 
                     </Grid2>
+
+
+                    <Box mt={5}>
+                        <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="left">Equipment</TableCell>
+                                    <TableCell align="left">Quantity</TableCell>
+                                    <TableCell align="right">Cost</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        12kw Hybrid inverter
+                                    </TableCellName>
+                                    <TableCellName align="left">
+                                        1
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        1,161,500.00
+                                    </TableCellName>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        10kw Lithium battery
+                                    </TableCellName>
+                                    <TableCellName align="left">
+                                        1
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        1,161,500.00
+                                    </TableCellName>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        500W solar panel
+                                    </TableCellName>
+                                    <TableCellName align="left">
+                                        1
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        1,161,500.00
+                                    </TableCellName>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        Accessories & Installation
+                                    </TableCellName>
+                                    <TableCellName align="left">
+                                        1
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        1,161,500.00
+                                    </TableCellName>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        Total Cost
+                                    </TableCellName>
+                                    <TableCellName align="left">
+
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        1,161,500.00
+                                    </TableCellName>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </Box>
+
+
+                    <Box mt={5}>
+                        <FinanceSelectToggle />
+                    </Box>
+
                 </CardContent>
             </Card>
         </Box>

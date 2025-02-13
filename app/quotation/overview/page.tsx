@@ -1,36 +1,27 @@
 "use client"; // This is a client component
 
-import { useRouter } from 'next/navigation';
-import StatusImage from '@/components/StatusImage';
-import { useStateMachine } from 'little-state-machine';
-import updateAction from '@/little-state/action';
-import { OutRightPurchase } from '@/components/overview/outright/outrightPurchase';
-import { FinancingPurchase } from '@/components/overview/financing/financing';
-import Image from 'next/image';
-import { OverviewData } from '@/components/overview/overview';
-import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
-import React from 'react';
-import { Box, Button, ToggleButton } from '@mui/material';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import CustomizedSteppers from '@/components/stepper';
+import { FinanceSelectToggle } from '@/components/financeSelectToggle';
 import { Heading } from '@/components/form/style';
+import { EstimatedEnergyRequirement } from '@/components/overview/estimatedEnergyRequirement';
+import { FinancingPurchase } from '@/components/overview/financing/financing';
+import { OutRightPurchase } from '@/components/overview/outright/outrightPurchase';
+import { OverviewData } from '@/components/overview/overview';
+import StatusImage from '@/components/StatusImage';
+import CustomizedSteppers from '@/components/stepper';
+import updateAction from '@/little-state/action';
+import { Box, Button } from '@mui/material';
+import { useStateMachine } from 'little-state-machine';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function Page() {
   const router = useRouter();
-  const { actions, state } = useStateMachine({ updateAction });
-
-  const handleToggle = (id: any) => {
-    const formData = {
-      is_finance: id
-    }
-    actions.updateAction(formData);
-  };
+  const { state } = useStateMachine({ updateAction });
 
   const onBack = () => {
     router.push(`/quotation/appliances`);
   }
-
-
 
   return (
     <Box>
@@ -68,52 +59,7 @@ export default function Page() {
 
         <EstimatedEnergyRequirement />
 
-        <ToggleButtonGroup
-          sx={{
-            boxShadow: "0px 2px 8px 0px #00000040 inset",
-            border: 'none'
-          }}
-          color="primary"
-          value={state.is_finance}
-          exclusive
-          onChange={(e, value) => handleToggle(value)}
-          fullWidth
-          size='small'
-        >
-          <ToggleButton sx={{
-            fontFamily: "'Harmonia Sans Pro', sans-serif",
-            fontWeight: 400,
-            fontSize: "15px",
-            textTransform: 'capitalize',
-            color: (theme) => (state.is_finance === false ? theme.palette.common.white : theme.palette.common.black),
-            "&.Mui-selected": {
-              color: "#FFFFFF",
-            },
-            "&:hover": {
-              background: "transparent"
-            }
-          }}
-            value={false}>
-            Outright Purchase
-          </ToggleButton>
-          <ToggleButton sx={{
-            fontFamily: "'Harmonia Sans Pro', sans-serif",
-            fontWeight: 400,
-            fontSize: "15px",
-            textTransform: 'capitalize',
-            color: (theme) => (state.is_finance === true ? theme.palette.common.white : theme.palette.common.black),
-            "&.Mui-selected": {
-              color: "#FFFFFF",
-            },
-            "&:hover": {
-              background: "transparent"
-            }
-          }}
-            value={true}
-          >
-            Financing
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <FinanceSelectToggle />
 
         {!state.is_finance && <OutRightPurchase />}
         {state.is_finance && <FinancingPurchase />}
