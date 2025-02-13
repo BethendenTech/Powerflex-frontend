@@ -10,7 +10,7 @@ export const PackageAppliance = (props) => {
                     <FormControlLabel
                         key={`package-appliance-${appliance.id}`}
                         control={
-                            <Checkbox name={appliance.id} />
+                            <Checkbox name={appliance.id} checked/>
                         }
                         label={appliance.name}
                     />
