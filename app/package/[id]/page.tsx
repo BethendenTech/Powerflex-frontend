@@ -1,6 +1,8 @@
 "use client";
 
-import { Box, Button, Card, CardContent, CardHeader } from "@mui/material";
+import { PackageAppliance } from "@/components/package/packageAppliance";
+import { ShowPrice } from "@/components/package/showPrice";
+import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
@@ -21,7 +23,7 @@ export default function PackagePage() {
         try {
             setLoading(true);
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-detail/${id}`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-detail/${id}/`,
                 {
                     method: "GET",
                     headers: {
@@ -49,8 +51,6 @@ export default function PackagePage() {
         return <div>Loading...</div>
     }
 
-    console.log("data", data)
-
     return (
         <Box mt={10}>
             <Button
@@ -72,9 +72,55 @@ export default function PackagePage() {
 
 
             <Card>
-                <CardHeader title={data?.name} />
+                <CardHeader
+                    avatar={
+                        <Typography color="#fff">{data?.name}</Typography>
+                    }
+                    title="Reliable power for your needs"
+                    titleTypographyProps={{ align: 'center', color: '#fff' }}
+                    sx={{
+                        backgroundColor: '#2755EB',
+                        color: '#fff'
+                    }}
+                />
                 <CardContent>
+                    <Box textAlign={"center"}>
+                        <ShowPrice item={data} />
+                        <Typography sx={{ color: '#2755EB', fontWeight: 'bold' }}>What this package covers</Typography>
+                    </Box>
 
+
+                    <Grid2 container spacing={2}>
+                        <Grid2 size={{
+                            xs: 12,
+                            sm: 12,
+                            md: 6,
+                            lg: 6,
+                            xl: 6,
+                        }}>
+                            <Card>
+                                <CardHeader title="Powered Appliances" />
+                                <CardContent>
+                                    <PackageAppliance appliances={data.appliances} direction="column" />
+                                </CardContent>
+                            </Card>
+                        </Grid2>
+                        <Grid2 size={{
+                            xs: 12,
+                            sm: 12,
+                            md: 6,
+                            lg: 6,
+                            xl: 6,
+                        }}>
+                            <Card>
+                                <CardHeader title="Runtime" />
+                                <CardContent>
+                                    {data?.runtime}
+                                </CardContent>
+                            </Card>
+                        </Grid2>
+
+                    </Grid2>
                 </CardContent>
             </Card>
         </Box>

@@ -1,7 +1,8 @@
-import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ShowPrice } from "./showPrice";
+import { PackageAppliance } from "./packageAppliance";
 
 export const PackageDetail = (props: any) => {
     const { item } = props;
@@ -31,20 +32,9 @@ export const PackageDetail = (props: any) => {
                                 <CardContent sx={{
                                     overflowX: 'auto',
                                     scrollBehavior: "smooth",
-                                    height: 200,
+                                    height: 300,
                                 }}>
-                                    <FormGroup>
-                                        {item?.appliances.map((appliance: any) => {
-                                            return (
-                                                <FormControlLabel
-                                                    control={
-                                                        <Checkbox name={appliance.id} />
-                                                    }
-                                                    label={appliance.name}
-                                                />
-                                            )
-                                        })}
-                                    </FormGroup>
+                                    <PackageAppliance appliances={item.appliances} direction="list"/>
                                 </CardContent>
                             </Card>
                         </Grid2>
