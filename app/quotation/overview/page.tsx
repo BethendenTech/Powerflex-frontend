@@ -17,7 +17,14 @@ import React from 'react';
 
 export default function Page() {
   const router = useRouter();
-  const { state } = useStateMachine({ updateAction });
+  const { actions, state } = useStateMachine({ updateAction });
+
+  const handleToggle = (id: any) => {
+    const formData = {
+      is_finance: id
+    }
+    actions.updateAction(formData);
+  };
 
   const onBack = () => {
     router.push(`/quotation/appliances`);
@@ -59,7 +66,7 @@ export default function Page() {
 
         <EstimatedEnergyRequirement />
 
-        <FinanceSelectToggle />
+        <FinanceSelectToggle handleChange={handleToggle} is_finance={state.is_finance} />
 
         {!state.is_finance && <OutRightPurchase />}
         {state.is_finance && <FinancingPurchase />}

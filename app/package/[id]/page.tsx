@@ -4,7 +4,9 @@ import { FinanceSelectToggle } from "@/components/financeSelectToggle";
 import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
 import { ShowPrice } from "@/components/package/showPrice";
+import updateAction from "@/little-state/action";
 import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import { useStateMachine } from "little-state-machine";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
@@ -14,6 +16,16 @@ export default function PackagePage() {
     const { id } = useParams();
     const [data, setData] = React.useState<any>();
     const [loading, setLoading] = React.useState(true);
+
+    const { actions, state } = useStateMachine({ updateAction });
+
+    const handleToggle = (id: any) => {
+        const formData = {
+            is_finance: id
+        }
+        actions.updateAction(formData);
+    };
+
 
     React.useEffect(() => {
         if (id) {
@@ -197,7 +209,7 @@ export default function PackagePage() {
 
 
                     <Box mt={5}>
-                        <FinanceSelectToggle />
+                        <FinanceSelectToggle handleChange={handleToggle} is_finance={state.is_finance} />
                     </Box>
 
                 </CardContent>

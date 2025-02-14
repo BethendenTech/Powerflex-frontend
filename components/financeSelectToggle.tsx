@@ -1,18 +1,10 @@
-"use client"; 
+"use client";
 
-import updateAction from '@/little-state/action';
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { useStateMachine } from 'little-state-machine';
 
-export const FinanceSelectToggle = () => {
-    const { actions, state } = useStateMachine({ updateAction });
+export const FinanceSelectToggle = (props) => {
+    const { is_finance, handleChange } = props;
 
-    const handleToggle = (id: any) => {
-        const formData = {
-            is_finance: id
-        }
-        actions.updateAction(formData);
-    };
     return (
         <ToggleButtonGroup
             sx={{
@@ -20,9 +12,9 @@ export const FinanceSelectToggle = () => {
                 border: 'none'
             }}
             color="primary"
-            value={state.is_finance}
+            value={is_finance}
             exclusive
-            onChange={(e, value) => handleToggle(value)}
+            onChange={(e, value) => handleChange(value)}
             fullWidth
             size='small'
         >
@@ -31,7 +23,7 @@ export const FinanceSelectToggle = () => {
                 fontWeight: 400,
                 fontSize: "15px",
                 textTransform: 'capitalize',
-                color: (theme) => (state.is_finance === false ? theme.palette.common.white : theme.palette.common.black),
+                color: (theme) => (is_finance === false ? theme.palette.common.white : theme.palette.common.black),
                 "&.Mui-selected": {
                     color: "#FFFFFF",
                 },
@@ -47,7 +39,7 @@ export const FinanceSelectToggle = () => {
                 fontWeight: 400,
                 fontSize: "15px",
                 textTransform: 'capitalize',
-                color: (theme) => (state.is_finance === true ? theme.palette.common.white : theme.palette.common.black),
+                color: (theme) => (is_finance === true ? theme.palette.common.white : theme.palette.common.black),
                 "&.Mui-selected": {
                     color: "#FFFFFF",
                 },
