@@ -1,12 +1,10 @@
 "use client";
 
 import { FinanceSelectToggle } from "@/components/financeSelectToggle";
-import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
+import { PackageTotals } from "@/components/package/packageTotal";
 import { ShowPrice } from "@/components/package/showPrice";
-import updateAction from "@/little-state/action";
-import { Box, Button, Card, CardContent, CardHeader, Checkbox, FormControlLabel, FormGroup, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import { useStateMachine } from "little-state-machine";
+import { Box, Button, Card, CardContent, CardHeader, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
@@ -17,15 +15,7 @@ export default function PackagePage() {
     const [data, setData] = React.useState<any>();
     const [loading, setLoading] = React.useState(true);
 
-    const { actions, state } = useStateMachine({ updateAction });
-
-    const handleToggle = (id: any) => {
-        const formData = {
-            is_finance: id
-        }
-        actions.updateAction(formData);
-    };
-
+    const [is_finance, setIsFinance] = React.useState(false);
 
     React.useEffect(() => {
         if (id) {
@@ -138,78 +128,11 @@ export default function PackagePage() {
                     </Grid2>
 
 
-                    <Box mt={5}>
-                        <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="left">Equipment</TableCell>
-                                    <TableCell align="left">Quantity</TableCell>
-                                    <TableCell align="right">Cost</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        12kw Hybrid inverter
-                                    </TableCellName>
-                                    <TableCellName align="left">
-                                        1
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        1,161,500.00
-                                    </TableCellName>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        10kw Lithium battery
-                                    </TableCellName>
-                                    <TableCellName align="left">
-                                        1
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        1,161,500.00
-                                    </TableCellName>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        500W solar panel
-                                    </TableCellName>
-                                    <TableCellName align="left">
-                                        1
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        1,161,500.00
-                                    </TableCellName>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        Accessories & Installation
-                                    </TableCellName>
-                                    <TableCellName align="left">
-                                        1
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        1,161,500.00
-                                    </TableCellName>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        Total Cost
-                                    </TableCellName>
-                                    <TableCellName align="left">
-
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        1,161,500.00
-                                    </TableCellName>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </Box>
+                    <PackageTotals id={id} is_finance={is_finance} />
 
 
                     <Box mt={5}>
-                        <FinanceSelectToggle handleChange={handleToggle} is_finance={state.is_finance} />
+                        <FinanceSelectToggle handleChange={setIsFinance} is_finance={is_finance} />
                     </Box>
 
                 </CardContent>
