@@ -1,10 +1,10 @@
 "use client";
 
 import { FinanceSelectToggle } from "@/components/financeSelectToggle";
+import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
-import { PackageTotals } from "@/components/package/packageTotal";
 import { ShowPrice } from "@/components/package/showPrice";
-import { Box, Button, Card, CardContent, CardHeader, Grid2, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
@@ -128,8 +128,46 @@ export default function PackagePage() {
                     </Grid2>
 
 
-                    <PackageTotals id={id} is_finance={is_finance} />
+                    <Box mt={5}>
+                        <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="left">Equipment</TableCell>
+                                    <TableCell align="left">Quantity</TableCell>
+                                    <TableCell align="right">Cost</TableCell>
+                                </TableRow>
+                            </TableHead>
 
+                            <TableBody>
+                                {data?.products?.map((item, index) => (
+                                    <TableRow key={`detail-${index}`}>
+                                        <TableCellName align="left">
+                                            {item.name}
+                                        </TableCellName>
+                                        <TableCellName align="left">
+                                            {item.quantity}
+                                        </TableCellName>
+                                        <TableCellName align="right">
+                                            {item.price}
+                                        </TableCellName>
+                                    </TableRow>
+                                ))}
+
+
+                                <TableRow>
+                                    <TableCellName align="left">
+                                        Total Cost
+                                    </TableCellName>
+                                    <TableCellName align="left">
+
+                                    </TableCellName>
+                                    <TableCellName align="right">
+                                        {data?.price}
+                                    </TableCellName>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </Box>
 
                     <Box mt={5}>
                         <FinanceSelectToggle handleChange={setIsFinance} is_finance={is_finance} />
