@@ -27,9 +27,10 @@ export const PackageDetail = (props: any) => {
                                     height: 200,
                                 }}>
                                     <FormGroup>
-                                        {item?.appliances.map((appliance: any) => {
+                                        {item?.appliances.map((appliance: any,index) => {
                                             return (
                                                 <FormControlLabel
+                                                key={index}
                                                     control={
                                                         <Checkbox name={appliance.id} />
                                                     }
