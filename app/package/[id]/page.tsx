@@ -3,7 +3,6 @@
 import { FinanceSelectToggle } from "@/components/financeSelectToggle";
 import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
-import { ShowPrice } from "@/components/package/showPrice";
 import { renderNaira } from "@/utils/currency";
 import { Box, Button, Card, CardContent, CardHeader, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import Image from "next/image";
