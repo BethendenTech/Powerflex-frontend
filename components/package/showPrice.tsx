@@ -1,3 +1,4 @@
+import { renderNaira } from "@/utils/currency";
 import { Box, Typography } from "@mui/material";
 
 export const ShowPrice = (props: any) => {
@@ -17,14 +18,14 @@ export const ShowPrice = (props: any) => {
       >
         {/* <Typography color={isSelected ? "#fff" : "#333"} sx={{ textDecoration: 'line-through' }}>₦{item.price}</Typography> */}
         <Typography color={isSelected ? "primary" : "#fff"}>
-          ₦{item.discount_price}
+          {renderNaira(item.discount_price)}
         </Typography>
       </Box>
     );
   } else {
     return (
       <Typography color={isSelected ? "#fff" : "#333"}>
-        ₦{item.price}
+        {renderNaira(item.price)}
       </Typography>
     );
   }

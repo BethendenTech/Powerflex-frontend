@@ -1,8 +1,7 @@
+import { renderNaira } from "@/utils/currency";
 import { Box, Button, Card, CardContent, CardHeader, Checkbox, Grid2, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ShowPrice } from "./showPrice";
-import { PackageAppliance } from "./packageAppliance";
 
 export const PackageDetail = (props: any) => {
     const { item } = props;
@@ -136,7 +135,7 @@ export const PackageDetail = (props: any) => {
                                     fontWeight="bold"
                                     mb={3}
                                 >
-                                    {item.price}
+                                    {renderNaira(item.price)}
                                 </Typography>
 
                                 <Button variant="contained" sx={{ borderRadius: 3, px: 5, py: 1 }} onClick={() => handleSelect()}>Buy Now</Button>

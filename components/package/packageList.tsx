@@ -5,29 +5,20 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Checkbox,
   Container,
   Grid2,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Paper,
   Skeleton,
   Typography,
 } from "@mui/material";
 import React from "react";
 import { PackageDetail } from "./packageDetail";
-import Image from "next/image";
 import { styled } from "@mui/material/styles";
 import { ShowPrice } from "./showPrice";
-// import { ShowPrice } from "./showPrice";
 
 export const PackageList = () => {
   const [data, setData] = React.useState<any>();
   const [loading, setLoading] = React.useState(true);
   const [selected, setSelected] = React.useState<any>();
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   React.useEffect(() => {
     getData();
@@ -56,28 +47,6 @@ export const PackageList = () => {
       setLoading(false);
     }
   };
-
-  console.log("data", data);
-  const DiscountBadge = styled("div")({
-    position: "absolute",
-    top: "-10px",
-    right: "-20px",
-    background: "linear-gradient(135deg, #ff007a, #ff4d4d)",
-    color: "white",
-    padding: "10px 15px",
-    borderRadius: "5px",
-    transform: "rotate(20deg)",
-    fontWeight: "bold",
-    boxShadow: "0 4px 6px rgba(0,0,0,0.3)",
-  });
-
-  const appliances = [
-    "Lighting (15 LED bulbs)",
-    "Refrigerator",
-    "2 Fans",
-    "3 Laptops",
-    "1 AC 1.5hp",
-  ];
 
   return (
     <Box pt={2} pb={5}>

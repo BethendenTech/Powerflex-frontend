@@ -4,6 +4,7 @@ import { FinanceSelectToggle } from "@/components/financeSelectToggle";
 import { TableCellName } from "@/components/form/style";
 import { PackageAppliance } from "@/components/package/packageAppliance";
 import { ShowPrice } from "@/components/package/showPrice";
+import { renderNaira } from "@/utils/currency";
 import { Box, Button, Card, CardContent, CardHeader, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -90,7 +91,7 @@ export default function PackagePage() {
                 <CardContent>
 
                     <Box textAlign={"center"}>
-                        <ShowPrice item={data} />
+                        <Typography sx={{ fontWeight: 'bold', fontSize: 30 }}>{renderNaira(data?.price)}</Typography>
                         <Typography sx={{ color: '#2755EB', fontWeight: 'bold', mt: 2, mb: 2 }}>What this package covers</Typography>
                     </Box>
 
