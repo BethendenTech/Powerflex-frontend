@@ -2,6 +2,7 @@
 
 import { FinanceSelectToggle } from "@/components/financeSelectToggle";
 import { TableCellName } from "@/components/form/style";
+import { PackageOutRightPurchase } from "@/components/package/outrightPurchase";
 import { PackageAppliance } from "@/components/package/packageAppliance";
 import { renderNaira } from "@/utils/currency";
 import { Box, Button, Card, CardContent, CardHeader, Grid2, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
@@ -148,7 +149,7 @@ export default function PackagePage() {
                                             {item.quantity}
                                         </TableCellName>
                                         <TableCellName align="right">
-                                            {item.price}
+                                            {renderNaira(item.price)}
                                         </TableCellName>
                                     </TableRow>
                                 ))}
@@ -162,7 +163,7 @@ export default function PackagePage() {
 
                                     </TableCellName>
                                     <TableCellName align="right">
-                                        {data?.price}
+                                        {renderNaira(data?.price)}
                                     </TableCellName>
                                 </TableRow>
                             </TableBody>
@@ -172,6 +173,10 @@ export default function PackagePage() {
                     <Box mt={5}>
                         <FinanceSelectToggle handleChange={setIsFinance} is_finance={is_finance} />
                     </Box>
+
+                    {!is_finance && (
+                        <PackageOutRightPurchase package_id={id} amount={data?.price}/>
+                    )}
 
                 </CardContent>
             </Card>
