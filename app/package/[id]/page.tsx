@@ -89,7 +89,12 @@ export default function PackagePage() {
                         color: '#fff'
                     }}
                 />
-                <CardContent>
+                <CardContent
+                sx={{
+                     backgroundColor: '#ccc',
+                        color: '#fff'
+                }}
+                >
 
                     <Box textAlign={"center"}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: 30 }}>{renderNaira(data?.price)}</Typography>
