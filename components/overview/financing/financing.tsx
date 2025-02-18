@@ -12,8 +12,13 @@ import { Box } from "@mui/material";
 import { FinancingTermModal } from "./financeTermModal";
 
 export const FinancingPurchase = () => {
-    const { state } = useStateMachine({ updateAction });
     const [isModalOpen, setModalOpen] = useState(false);
+
+    const { actions, state } = useStateMachine({ updateAction });
+
+    const handleToggle = (id: any) => {
+        actions.updateAction({ business_role: id });
+    };
 
     return (
         <Box>
@@ -22,7 +27,7 @@ export const FinancingPurchase = () => {
 
             {isModalOpen == true && <FinancingTermModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />}
 
-            <BusinessOrIndividualCheckBox />
+            <BusinessOrIndividualCheckBox value={state.business_role} handleToggle={handleToggle} />
 
             {state && state.business_role == "individual" && <IndividualApplicationForm />}
             {state && state.business_role == "business" && <BusinessApplicationForm />}

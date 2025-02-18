@@ -1,18 +1,12 @@
 "use client";
 
-import updateAction from '@/little-state/action';
 import { businessRoles } from '@/utils/formData';
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
-import { useStateMachine } from 'little-state-machine';
+import { Checkbox, FormControl, FormControlLabel, FormGroup } from '@mui/material';
 import React from 'react';
 import { FormTitle } from '../form/style';
 
-export const BusinessOrIndividualCheckBox = () => {
-  const { actions, state } = useStateMachine({ updateAction });
-
-  const handleToggle = (id: any) => {
-    actions.updateAction({ business_role: id });
-  };
+export const BusinessOrIndividualCheckBox = (props) => {
+  const { value, handleToggle } = props
 
   return (
     <FormControl fullWidth>
@@ -24,7 +18,7 @@ export const BusinessOrIndividualCheckBox = () => {
           <FormControlLabel
             key={`role-${index}`}
             control={
-              <Checkbox checked={role.id == state.business_role} onChange={() => handleToggle(role.id)} value={role.id} />
+              <Checkbox checked={role.id == value} onChange={() => handleToggle(role.id)} value={role.id} />
             }
             label={role.title}
             sx={{

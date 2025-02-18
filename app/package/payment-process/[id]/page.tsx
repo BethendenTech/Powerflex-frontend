@@ -7,6 +7,7 @@ import React from "react";
 import dynamic from 'next/dynamic';
 import { TableCellName } from "@/components/form/style";
 import { renderNaira } from "@/utils/currency";
+import { PackageSummary } from "@/components/package/packageSummary";
 
 const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
     ssr: false, // This ensures that the component is only rendered on the client side
@@ -124,46 +125,7 @@ export default function PackagePaymentPage() {
                 />
                 <CardContent>
 
-                    <Box mt={5}>
-                        <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="left">Equipment</TableCell>
-                                    <TableCell align="left">Quantity</TableCell>
-                                    <TableCell align="right">Cost</TableCell>
-                                </TableRow>
-                            </TableHead>
-
-                            <TableBody>
-                                {data?.package?.products?.map((item, index) => (
-                                    <TableRow key={`detail-${index}`}>
-                                        <TableCellName align="left">
-                                            {item.name}
-                                        </TableCellName>
-                                        <TableCellName align="left">
-                                            {item.quantity}
-                                        </TableCellName>
-                                        <TableCellName align="right">
-                                            {renderNaira(item.price)}
-                                        </TableCellName>
-                                    </TableRow>
-                                ))}
-
-
-                                <TableRow>
-                                    <TableCellName align="left">
-                                        Total Cost
-                                    </TableCellName>
-                                    <TableCellName align="left">
-
-                                    </TableCellName>
-                                    <TableCellName align="right">
-                                        {renderNaira(data?.package?.price)}
-                                    </TableCellName>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </Box>
+                    <PackageSummary data={data?.package} />
 
                     <Box position="sticky" bottom={0} mt={2}>
                         <Button
