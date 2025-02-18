@@ -21,7 +21,7 @@ const SentiFlexIframeComponent = dynamic(() => Promise.resolve(() => (
 )), { ssr: false });
 
 const IndividualApplicationForm = (props) => {
-    const { amount,package_id } = props
+    const { amount, package_id } = props
     const [showIframe, setShowIframe] = useState(false)
 
     // Set up react-hook-form with default values for the inputs
@@ -59,41 +59,73 @@ const IndividualApplicationForm = (props) => {
 
     // Handle form submission
     const onSubmit = async (formData: any) => {
-        formData["application_type"] = "business"
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/package/package-application/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+        try {
+            formData.package = package_id;
+            formData.total_price = amount
+            formData.name= formData.first_name
+            formData.email= formData.email
+            formData.phone_number= formData.phone_number
 
-        if (response.ok) {
-            formData["firstname"] = formData["first_name"]
-            formData["lastname"] = formData["last_name"]
-            formData["application_channel"] = "powerflex"
-            formData["device_id"] = "1856"
-            formData["quantity"] = "1"
-            formData["sentinel_sld"] = "no"
-            formData["sentinel_sap"] = "no"
-            formData["device_price"] = amount
+            const response1 = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order/`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                }
+            );
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_FINANCE_BASE_URL}/finance/prod/checkout/application/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'requestApiKey': "jOwhFfcbHGaIkTUAKo8rPSMBp3xd"
-                },
-                body: JSON.stringify(formData),
-            });
+            if (response1.ok) {
+                const data = await response1.json();
 
-            console.log("response", response)
+                formData["package_order"] = data?.order?.id
 
-            if (response.ok) {
-                setShowIframe(true)
+                formData["application_type"] = "business"
+
+                const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/package/package-application/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    formData["firstname"] = formData["first_name"]
+                    formData["lastname"] = formData["last_name"]
+                    formData["application_channel"] = "powerflex"
+                    formData["device_id"] = "1856"
+                    formData["quantity"] = "1"
+                    formData["sentinel_sld"] = "no"
+                    formData["sentinel_sap"] = "no"
+                    formData["device_price"] = amount
+
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_FINANCE_BASE_URL}/finance/prod/checkout/application/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'requestApiKey': "jOwhFfcbHGaIkTUAKo8rPSMBp3xd"
+                        },
+                        body: JSON.stringify(formData),
+                    });
+
+                    console.log("response", response)
+
+                    if (response.ok) {
+                        setShowIframe(true)
+                    }
+                }
+            } else {
+                console.error("Failed to save user details");
             }
+        } catch (error) {
+            console.error('Error:', error);
         }
+
+
     };
 
     return (
