@@ -351,29 +351,7 @@ const IndividualApplicationForm = () => {
                     />
                     <FormValidation>{errors?.applicant_id_card?.message}</FormValidation>
                 </FormControl>
-                <FormControl
-                    fullWidth
-                    error={!!errors.company_registration_document}
-                >
-                    <FileUploadComponent
-                        name="company_registration_document"
-                        label="Company Registration Document"
-                        accept={{
-                            'image/jpeg': ['.jpeg', '.jpg'],
-                            'image/png': ['.png'],
-                            'application/pdf': ['.pdf'],
-                            'video/mp4': ['.mp4'],
-                        }}
-                        maxFiles={1}
-                        maxSize={10 * 1024 * 1024}
-                        setValue={setValue}
-                        supportFormat="Accepted formats: PDF, DOC, DOCX; Max size: 10MB"
-                        acceptableText=""
-                        acceptedLabel=""
-                        subNote="Provide only the CAC Document"
-                    />
-                    <FormValidation>{errors?.company_registration_document?.message}</FormValidation>
-                </FormControl>
+                
                 <FormControl
                     fullWidth
                     error={!!errors.bank_statements}
