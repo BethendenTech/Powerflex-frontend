@@ -69,7 +69,7 @@ export default function PackagePage() {
                 />
                 <CardContent
                     sx={{
-                        backgroundColor: '#ccc',
+                        backgroundColor: '#F1F1F1',
                         color: '#fff'
                     }}
                 >
