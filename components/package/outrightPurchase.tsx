@@ -104,9 +104,6 @@ export const PackageOutRightPurchase = (props) => {
                 />
 
                 <Box position="sticky" bottom={0} mt={2}>
-
-
-
                     <NextButton
                         fullWidth
                         type="submit"
