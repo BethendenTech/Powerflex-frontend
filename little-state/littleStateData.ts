@@ -7,7 +7,6 @@ export const defaultLittleState: any = {
     additional_info: false,
     solar_load: 0,
     battery_autonomy_hours_only: 0,
-    battery_autonomy_days: 0,
     battery_autonomy_hours: 0,
     breakdowns: {},
     payment_method: 'paystack',

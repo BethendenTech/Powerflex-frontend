@@ -32,7 +32,7 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
             electricity_spend: data.electricity_spend,
             price_band: data.price_band,
             solar_load: data.solar_load,
-            battery_autonomy_hours: Number(data.battery_autonomy_hours_only) + Number(data.battery_autonomy_days * 24),
+            battery_autonomy_hours: Number(data.battery_autonomy_hours_only),
             breakdowns: breakdownArray,
             is_finance: data.is_finance,
         };
@@ -82,7 +82,6 @@ export const QuotationProvider = ({ children }: QuotationProviderProps) => {
     }, [
         state.solar_load,
         state.battery_autonomy_hours_only,
-        state.battery_autonomy_days,
         state.breakdowns,
         state.is_finance,
     ]);

@@ -26,7 +26,6 @@ export default function Summary(props: SummaryObject) {
             price_band: state.price_band,
             solar_load: state.solar_load,
             battery_autonomy_hours_only: state.battery_autonomy_hours_only,
-            battery_autonomy_days: state.battery_autonomy_days,
             battery_autonomy_hours: state.battery_autonomy_hours,
             breakdowns: breakdownArray,
             is_finance: state.is_finance,

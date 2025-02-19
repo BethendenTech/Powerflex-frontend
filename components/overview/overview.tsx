@@ -28,8 +28,6 @@ export const OverviewData = () => {
                     <TableRow>
                         <TableCellName colSpan={2} align="left" sx={{ fontSize: "14px" }}>Battery Autonomy</TableCellName>
                         <TableCellName colSpan={2} align="right" sx={{ fontWeight: "bold", fontSize: '15px' }}>
-                            {state?.battery_autonomy_days && state?.battery_autonomy_days != 0 ? `${state?.battery_autonomy_days} Day(s)` : ""}
-                            {" "}
                             {state?.battery_autonomy_hours_only && state?.battery_autonomy_hours_only != 0 ? `${state?.battery_autonomy_hours_only} Hour(s)` : ""}
 
                         </TableCellName>

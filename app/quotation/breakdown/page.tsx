@@ -27,14 +27,12 @@ export default function Page() {
       additional_info: false,
       solar_load: 50,
       battery_autonomy_hours_only: 12,
-      battery_autonomy_days: 0,
       battery_autonomy_hours: 0,
     }
   });
 
   const solar_load = watch("solar_load");
   const battery_autonomy_hours_only = watch("battery_autonomy_hours_only");
-  const battery_autonomy_days = watch("battery_autonomy_days");
   const battery_autonomy_hours = watch("battery_autonomy_hours");
 
   const onSubmit = async (formData: any) => {
@@ -63,7 +61,6 @@ export default function Page() {
     setValue("additional_info", state.additional_info || false);
     setValue("solar_load", state.solar_load || 50);
     setValue("battery_autonomy_hours_only", state.battery_autonomy_hours_only || 12);
-    setValue("battery_autonomy_days", state.battery_autonomy_days || 0);
     setValue("battery_autonomy_hours", state.battery_autonomy_hours || 0);
   }, [])
 
@@ -77,13 +74,12 @@ export default function Page() {
       price_band: state.price_band,
       solar_load: solar_load,
       battery_autonomy_hours_only: battery_autonomy_hours_only,
-      battery_autonomy_days: battery_autonomy_days,
       battery_autonomy_hours: battery_autonomy_hours,
       breakdowns: {},
       is_finance: true,
     }
     calculateQuote(filter)
-  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_days, battery_autonomy_hours])
+  }, [solar_load, battery_autonomy_hours_only, battery_autonomy_hours])
 
   return (
     <Box>
@@ -212,39 +208,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className='input-group'>
-              <FormTitle sx={{ fontSize: "14px", fontWeight: "bold" }} htmlFor="battery_autonomy_hours_only" className="label !font-bold mt-[10px]">
-                Days
-              </FormTitle>
-              <Tooltip
-                content={`${battery_autonomy_days} d`}
-                isAlwaysOpen={false}
-                left={`${((width ?? 0) - 20) * battery_autonomy_days / 5 + 20}px`}
-                position="top"
-              >
-                <div className='slider-container'>
-                  <input
-                    // ref={ref}
-                    id="battery_autonomy_days"
-                    className="input w-full slider-input"
-                    type="range"
-                    {...register('battery_autonomy_days', { required: 'Battery Autonomy Days is required' })}
-                    min="0"
-                    max="5"
-                    style={{ backgroundSize: `${100 * battery_autonomy_days / 5}% 100%` }}
-                  />
-                </div>
-              </Tooltip>
-              <div className='flex flex-row justify-between calibration-container'>
-                {Array.from({ length: 6 }, (_, i) => (
-                  <span key={`calibration-${i}`} className='text-sm text-black font-bold calibration-line-container'>{i}</span>
-                ))}
-              </div>
-            </div>
             <div className='m-auto pt-[10px] font-bold text-black'>
-              {battery_autonomy_days && battery_autonomy_days != 0 ? `${battery_autonomy_days} Day(s)` : ""}
-              {" "}
-
               {battery_autonomy_hours_only && battery_autonomy_hours_only != 0 ? `${battery_autonomy_hours_only} Hour(s)` : ""}
             </div>
           </div>

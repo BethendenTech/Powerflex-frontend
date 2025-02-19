@@ -12,7 +12,6 @@ declare module 'little-state-machine' {
         additional_info: boolean;
         solar_load: number;
         battery_autonomy_hours_only: number;
-        battery_autonomy_days: number;
         battery_autonomy_hours: number;
         breakdowns: Array;
         payment_method: string;
