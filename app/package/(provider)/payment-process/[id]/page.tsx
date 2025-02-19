@@ -1,13 +1,12 @@
 "use client";
 
-import { Box, Button, Card, CardContent, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader } from "@mui/material";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import dynamic from 'next/dynamic';
-import { TableCellName } from "@/components/form/style";
-import { renderNaira } from "@/utils/currency";
 import { PackageSummary } from "@/components/package/packageSummary";
+import usePackage from "@/hooks/package";
 
 const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
     ssr: false, // This ensures that the component is only rendered on the client side
@@ -16,38 +15,14 @@ const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.Pa
 export default function PackagePaymentPage() {
     const router = useRouter();
     const { id } = useParams();
-    const [data, setData] = React.useState<any>();
-    const [loading, setLoading] = React.useState(true);
+
+    const { data, loading, getData } = usePackage();
 
     React.useEffect(() => {
         if (id) {
-            getData();
+            getData(id);
         }
     }, [id]);
-
-    const getData = async () => {
-        try {
-            setLoading(true);
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order-detail/${id}/`,
-                {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
-
-            if (response.ok) {
-                const data = await response.json();
-                setData(data);
-                setLoading(false);
-            }
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-        }
-    };
 
     const onBack = () => {
         router.push(`/`);
@@ -125,7 +100,7 @@ export default function PackagePaymentPage() {
                 />
                 <CardContent>
 
-                    <PackageSummary data={data?.package} />
+                    <PackageSummary data={data} />
 
                     <Box position="sticky" bottom={0} mt={2}>
                         <Button

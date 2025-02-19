@@ -5,6 +5,7 @@ import { PackageFinancePurchase } from "@/components/package/financePurchase";
 import { PackageOutRightPurchase } from "@/components/package/outrightPurchase";
 import { PackageAppliance } from "@/components/package/packageAppliance";
 import { PackageSummary } from "@/components/package/packageSummary";
+import usePackage from "@/hooks/package";
 import { renderNaira } from "@/utils/currency";
 import { Box, Button, Card, CardContent, CardHeader, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
@@ -14,40 +15,17 @@ import React from "react";
 export default function PackagePage() {
     const router = useRouter();
     const { id } = useParams();
-    const [data, setData] = React.useState<any>();
-    const [loading, setLoading] = React.useState(true);
+
+    const { data, loading, getData } = usePackage();
 
     const [is_finance, setIsFinance] = React.useState(false);
 
     React.useEffect(() => {
         if (id) {
-            getData();
+            getData(id);
         }
     }, [id]);
 
-    const getData = async () => {
-        try {
-            setLoading(true);
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-detail/${id}/`,
-                {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
-
-            if (response.ok) {
-                const data = await response.json();
-                setData(data);
-                setLoading(false);
-            }
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-        }
-    };
 
     const onBack = () => {
         router.push(`/`);
@@ -90,10 +68,10 @@ export default function PackagePage() {
                     }}
                 />
                 <CardContent
-                sx={{
-                     backgroundColor: '#ccc',
+                    sx={{
+                        backgroundColor: '#ccc',
                         color: '#fff'
-                }}
+                    }}
                 >
 
                     <Box textAlign={"center"}>
