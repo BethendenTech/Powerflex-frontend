@@ -114,7 +114,7 @@ export const PackageList = () => {
           </Grid2>
         )}
 
-        <Grid2 container spacing={3}>
+        <Grid2 container spacing={3} mt={3}>
           {data &&
             data.map((item) => {
               console.log(
@@ -180,7 +180,7 @@ export const PackageList = () => {
                       </Typography>
                     </CardContent>
 
-                    <CardActions sx={{ position: "relative" ,mt:3 }}>
+                    <CardActions sx={{ position: "relative", mt: 3 }}>
                       <BannerNormalButton
                         onClick={() => setSelected(item)}
                         sx={{
@@ -227,15 +227,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
             <Grid2
               size={{
@@ -246,15 +243,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
             <Grid2
               size={{
@@ -265,15 +259,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
           </Grid2>
         )}
