@@ -22,6 +22,10 @@ export const TotalSummary = () => {
                         <TableCellName align="right">{renderNaira(quote.total_cost_naira)}</TableCellName>
                     </TableRow>
                     <TableRow>
+                        <TableCellName align="left">Services</TableCellName>
+                        <TableCellName align="right">{renderNaira(quote.profit_margin_amount)}</TableCellName>
+                    </TableRow>
+                    <TableRow>
                         <TableCellName align="left">Installation & Accessories</TableCellName>
                         <TableCellName align="right">{renderNaira(quote.installation_and_cabling)}</TableCellName>
                     </TableRow>
