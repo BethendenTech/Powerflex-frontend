@@ -42,8 +42,8 @@ export default function Page() {
     phone_number: yup
       .string()
       .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be only numbers and between 10 digits"
+        /^[0-9]{11}$/,
+        "Phone number must be only numbers and between 11 digits"
       )
       .required("Phone No. is required"),
     agree_terms: yup.boolean().required("Agree Terms is required"),
@@ -297,9 +297,9 @@ export default function Page() {
             {...register("phone_number", {
               required: "Phone number is required",
               pattern: {
-                value: /^[0-9]{10}$/,
+                value: /^[0-9]{11}$/,
                 message:
-                  "Phone number must be only numbers and between 10 digits",
+                  "Phone number must be only numbers and between 11 digits",
               },
             })}
           />
