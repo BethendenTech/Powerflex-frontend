@@ -50,7 +50,7 @@ export const PackageProvider = ({ children }: PackageProviderProps) => {
 
             if (response.ok) {
                 const data = await response.json();
-                setOrderData(data);
+                getOrder(data?.order?.id);
                 enqueueSnackbar("Order created successfully", { variant: "success" });
             } else {
                 console.error("Failed to save user details");
@@ -59,6 +59,24 @@ export const PackageProvider = ({ children }: PackageProviderProps) => {
             console.error("Error saving user details:", error);
         }
     }
+
+    const getOrder = async (id: any) => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order-detail/${id}/`,
+            )
+
+            if (response.ok) {
+                const data = await response.json();
+                setOrderData(data);
+            }
+
+        } catch (error) {
+            console.error("Error saving user details:", error);
+        }
+
+    }
+
 
     return (
         <PackageContext.Provider value={{ data, error, loading, getData, createOrder, orderData }}>

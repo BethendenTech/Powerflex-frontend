@@ -1,6 +1,7 @@
 "use client";
 
 import { NextButton } from "@/components/button/style";
+import usePackage from "@/hooks/package";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -22,7 +23,7 @@ const validationSchema = yup.object().shape({
 
 export const PackageOutRightPurchase = (props) => {
     const { package_id, amount } = props;
-
+    const { orderData, createOrder } = usePackage();
     const router = useRouter();
 
     const {
@@ -46,24 +47,10 @@ export const PackageOutRightPurchase = (props) => {
         try {
             formData.package = package_id;
             formData.total_price = amount
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order/`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
-                }
-            );
 
-            if (response.ok) {
-                const data = await response.json();
-                reset();
-                router.push(`/package/payment-process/${data?.order?.id}`);
-            } else {
-                console.error("Failed to save user details");
-            }
+            createOrder(formData)
+
+            router.push(`/package/payment-process/${package_id}`);
         } catch (error) {
             console.error('Error:', error);
         }

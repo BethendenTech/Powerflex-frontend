@@ -16,7 +16,7 @@ export default function PackagePaymentPage() {
     const router = useRouter();
     const { id } = useParams();
 
-    const { data, loading, getData } = usePackage();
+    const { data, loading, getData, orderData } = usePackage();
 
     React.useEffect(() => {
         if (id) {
@@ -34,11 +34,13 @@ export default function PackagePaymentPage() {
 
     const config = {
         reference: (new Date()).getTime().toString(),
-        email: data.email,
-        amount: Math.round(data.total_price * 100), //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        email: orderData?.email,
+        amount: Math.round(data?.price * 100), //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
         // publicKey: 'pk_live_68bf085a038d0f3e09dced6caab850db147d4c87',
         publicKey: 'pk_test_8a80005eb3a847c0a9a423d97f1c71cfe34d9215',
     };
+
+    console.log("config", config)
 
     // you can call this function anything
     const handleSuccessAction = async (reference: any) => {
@@ -49,7 +51,7 @@ export default function PackagePaymentPage() {
             "status": "paid"
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order-update/${data.id}/`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/package/package-order-update/${orderData.id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
