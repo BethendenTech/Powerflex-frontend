@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import CheckboxIcon from "@mui/icons-material/CheckBox";
 
 export const PackageDetail = (props: any) => {
   const { item } = props;
@@ -121,7 +122,7 @@ export const PackageDetail = (props: any) => {
                   {item?.appliances.map((item, index) => (
                     <ListItem key={index} sx={{ py: 0 }}>
                       <ListItemIcon>
-                        <Checkbox defaultChecked />
+                        <CheckboxIcon color="primary" />
                       </ListItemIcon>
                       <ListItemText
                         primary={item.name}
