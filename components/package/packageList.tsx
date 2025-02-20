@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import { PackageDetail } from "./packageDetail";
-import { styled } from "@mui/material/styles";
 import { ShowPrice } from "./showPrice";
+import { BannerNormalButton } from "../button/style";
 
 export const PackageList = () => {
   const [data, setData] = React.useState<any>();
@@ -52,15 +52,10 @@ export const PackageList = () => {
     <Box pt={2} pb={5}>
       <Container maxWidth="lg">
         <Box mb={5} textAlign="center">
-          <Typography
-            gutterBottom
-            variant="h3"
-            fontWeight="bold"
-            color="#2755EB"
-          >
+          <Typography variant="h3" fontWeight={700} color="#2755EB">
             Tailored Energy Solutions for Every Need!
           </Typography>
-          <Typography color="#2755EB">
+          <Typography color="#2755EB" fontWeight={400} fontSize={18}>
             Explore our packages designed to meet your energy requirements and
             help you save on costs.
           </Typography>
@@ -77,15 +72,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
             <Grid2
               size={{
@@ -96,15 +88,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
             <Grid2
               size={{
@@ -115,15 +104,12 @@ export const PackageList = () => {
                 xl: 4,
               }}
             >
-              <Card>
-                <CardContent>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardContent>
-                <CardActions>
-                  <Skeleton animation="wave" height={100} width="100%" />
-                </CardActions>
-              </Card>
+              <Skeleton
+                animation="wave"
+                height={300}
+                width="100%"
+                variant="rounded"
+              />
             </Grid2>
           </Grid2>
         )}
@@ -131,6 +117,11 @@ export const PackageList = () => {
         <Grid2 container spacing={3}>
           {data &&
             data.map((item) => {
+              console.log(
+                "sss",
+                `${process.env.NEXT_PUBLIC_BASE_URL}${item.image}`
+              );
+
               const isSelected = item.id == selected?.id;
               return (
                 <Grid2
@@ -138,51 +129,86 @@ export const PackageList = () => {
                   size={{
                     xs: 12,
                     sm: 12,
-                    md: 4,
+                    md: 6,
                     lg: 4,
                     xl: 4,
                   }}
                 >
                   <Card
-                    sx={isSelected ? { bgcolor: "#2755EB", font: "#fff" } : {}}
+                    sx={{
+                      background: isSelected
+                        ? "linear-gradient(181deg, #27CEEB, #7227EB, #2755EB)"
+                        : "#FFFFFF",
+                      borderRadius: "15px",
+                      color: isSelected ? "#FFFFFF" : "#000000",
+                      overflow: "visible",
+                    }}
                   >
                     <CardMedia
-                      sx={{ height: 150 }}
+                      component="img"
+                      sx={{
+                        height: 200,
+                        borderTopLeftRadius: "15px",
+                        borderTopRightRadius: "15px",
+                        mb: 2,
+                      }}
                       image={`${process.env.NEXT_PUBLIC_BASE_URL}${item.image}`}
                       title={item.name}
                     />
-
-                    <CardContent>
-                      <ShowPrice item={item} isSelected={isSelected} />
-
+                    <ShowPrice
+                      sx={{ position: "absolute" }}
+                      item={item}
+                      isSelected={isSelected}
+                    />
+                    <CardContent sx={{ position: "relative" }}>
                       <Typography
-                        gutterBottom
                         variant="h5"
                         component="div"
-                        fontWeight="bold"
-                        color={isSelected ? "#fff" : "#2755EB"}
+                        fontSize={23}
+                        fontWeight={700}
+                        color={isSelected ? "#FFFFFF" : "#2755EB"}
                       >
                         {item.name}
                       </Typography>
                       <Typography
                         variant="body2"
-                        color={isSelected ? "#fff" : "#333"}
+                        fontWeight={400}
+                        fontSize={16}
+                        color={isSelected ? "#FFFFFF" : "#000000"}
                       >
                         {item.description}
                       </Typography>
                     </CardContent>
 
-                    <CardActions>
-                      <Button
-                        variant="outlined"
+                    <CardActions sx={{ position: "relative" ,mt:3 }}>
+                      <BannerNormalButton
                         onClick={() => setSelected(item)}
                         sx={{
-                          color: isSelected ? "#fff" : "#333",
-                          borderColor: isSelected ? "#fff" : "#333",
+                          color: isSelected ? "#FFFFFF" : "#000000",
+                          borderColor: isSelected ? "#FFFFFF" : "#000000",
                         }}
+                        variant="outlined"
+                        color="secondary"
+                        size="small"
                       >
                         Learn More
-                      </Button>
+                      </BannerNormalButton>
+
+                      {isSelected && (
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            width: 0,
+                            height: 0,
+                            borderLeft: "25px solid transparent",
+                            borderRight: "25px solid transparent",
+                            borderTop: "25px solid  #2954EB",
+                            bottom: "-25px",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                          }}
+                        />
+                      )}
                     </CardActions>
                   </Card>
                 </Grid2>
@@ -196,7 +222,7 @@ export const PackageList = () => {
               size={{
                 xs: 12,
                 sm: 12,
-                md: 4,
+                md: 6,
                 lg: 4,
                 xl: 4,
               }}
@@ -215,7 +241,7 @@ export const PackageList = () => {
               size={{
                 xs: 12,
                 sm: 12,
-                md: 4,
+                md: 6,
                 lg: 4,
                 xl: 4,
               }}
@@ -234,7 +260,7 @@ export const PackageList = () => {
               size={{
                 xs: 12,
                 sm: 12,
-                md: 4,
+                md: 6,
                 lg: 4,
                 xl: 4,
               }}
