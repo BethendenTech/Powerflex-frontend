@@ -48,7 +48,7 @@ export default function PackagePage() {
                 onClick={() => onBack()}
                 sx={{
                     fontWeight: 'bold',
-                    color: '#AEAEAE'
+                    color: '#2755EB'
                 }}
             >
                 Back

@@ -7,7 +7,7 @@ import {
   Container,
   Grid2,
   Skeleton,
-  Typography
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { BannerNormalButton } from "../button/style";
@@ -57,11 +57,14 @@ export const PackageList = () => {
   return (
     <Box pt={2} pb={5}>
       <Container maxWidth="lg">
-        <Box mb={5} textAlign="center">
+        <Box
+          mb={5}
+          textAlign={{ lg: "center", md: "center", sm: "start", xs: "start" }}
+        >
           <Typography variant="h3" fontWeight={700} color="#2755EB">
             Tailored Energy Solutions for Every Need!
           </Typography>
-          <Typography color="#2755EB" fontWeight={400} fontSize={18}>
+          <Typography color="#2755EB" fontWeight={400} fontSize={18} pt={2}>
             Explore our packages designed to meet your energy requirements and
             help you save on costs.
           </Typography>

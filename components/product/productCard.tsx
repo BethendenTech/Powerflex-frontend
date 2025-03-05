@@ -49,9 +49,9 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
                     </Box>
                     <CardMedia
                         component="img"
-                        sx={{ width: "100%", height: "auto", borderRadius: '12px' }}
+                        sx={{ width: "100%", height: 250, borderRadius: '12px' }}
                         image={image}
-                        alt="dhsj"
+                        alt="Product-image"
                     />
                 </CardContent>
             </Card>
