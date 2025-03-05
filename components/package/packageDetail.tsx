@@ -5,13 +5,12 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Checkbox,
-  Container,
   Grid2,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Stack,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -179,47 +178,67 @@ export const PackageDetail = (props: any) => {
                 >
                   Save up to 50% on power bills
                 </Typography>
-                <Typography
-                  variant="h4"
-                  color="primary"
-                  fontWeight="600"
-                  mb={3}
-                >
-                  {renderNaira(item.price)}
-                </Typography>
-
-                <Button
-                  variant="contained"
-                  sx={{ borderRadius: 3, px: 5, py: 1 }}
-                  onClick={() => handleSelect()}
-                >
-                  Buy Now
-                </Button>
-
                 <Box
-                  display={"flex"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  mt={2}
+                  mt={{
+                    lg: 10,
+                    md: 10,
+                    sm: 0,
+                    xs: 0,
+                  }}
                 >
-                  <Box
-                    display={"flex"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
+                  <Typography
+                    variant="h4"
+                    color="primary"
+                    fontWeight="600"
+                    mb={3}
                   >
-                    <Typography gutterBottom sx={{ fontSize: 14 }}>
-                      Power up sustainably
-                    </Typography>
-                    <Image
-                      src="/images/package/green.svg"
-                      alt="solar-panel"
-                      width={50}
-                      height={50}
-                      style={{ marginLeft: 4, marginRight: 4 }}
-                    />
-                    <Typography gutterBottom sx={{ fontSize: 14 }}>
-                      cut your carbon footprint
-                    </Typography>
+                    {renderNaira(item.price)}
+                  </Typography>
+
+                  <Button
+                    variant="contained"
+                    sx={{ borderRadius: 3, px: 5, py: 1 }}
+                    onClick={() => handleSelect()}
+                  >
+                    Buy Now
+                  </Button>
+
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    mt={2}
+                  >
+                    <Stack
+                      spacing={1}
+                      direction={{
+                        lg: "row",
+                        md: "row",
+                        sm: "row",
+                        xs: "column",
+                      }}
+                      alignItems="center"
+                      justifyContent="center"
+                      // mt={{
+                      //   lg: 5,
+                      //   md: 5,
+                      //   sm: 0,
+                      //   xs: 0,
+                      // }}
+                    >
+                      <Typography gutterBottom sx={{ fontSize: 14 }}>
+                        Power up sustainably
+                      </Typography>
+                      <Image
+                        src="/images/package/green.svg"
+                        alt="solar-panel"
+                        width={50}
+                        height={50}
+                      />
+                      <Typography gutterBottom sx={{ fontSize: 14 }}>
+                        cut your carbon footprint
+                      </Typography>
+                    </Stack>
                   </Box>
                 </Box>
               </Box>
