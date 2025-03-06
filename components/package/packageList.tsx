@@ -61,7 +61,12 @@ export const PackageList = () => {
           mb={5}
           textAlign={{ lg: "center", md: "center", sm: "start", xs: "start" }}
         >
-          <Typography variant="h3" fontWeight={700} color="#2755EB">
+          <Typography
+            variant="h3"
+            fontSize="40px"
+            fontWeight={700}
+            color="#2755EB"
+          >
             Tailored Energy Solutions for Every Need!
           </Typography>
           <Typography color="#2755EB" fontWeight={400} fontSize={18} pt={2}>
@@ -237,7 +242,7 @@ export const PackageList = () => {
             )}
         </Grid2>
 
-        {loading && (
+        {/* {loading && (
           <Grid2 container spacing={3}>
             <Grid2
               size={{
@@ -288,7 +293,7 @@ export const PackageList = () => {
               />
             </Grid2>
           </Grid2>
-        )}
+        )}  */}
 
         {selected && <PackageDetail item={selected} />}
       </Container>
