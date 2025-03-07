@@ -1,85 +1,87 @@
 import { Box, Modal, Paper, Stack, Tooltip, Typography } from "@mui/material";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export const SocialIcon = () => {
-    const [open, setOpen] = useState(false);
-    const [showGif, setShowGif] = useState(false);
-    const [showTooltip, setShowTooltip] = useState(false);
-    // const CallNumber = "+2347074109549";
+//   const [open, setOpen] = useState(false);
+  const [showGif, setShowGif] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const CallNumber = "+2347074109549";
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+//   const handleOpen = () => setOpen(true);
+//   const handleClose = () => setOpen(false);
 
-    useEffect(() => {
-        const gifTimer = setTimeout(() => {
-            setShowGif(true);
-            setShowTooltip(true);
-        }, 6000);
+  useEffect(() => {
+    const gifTimer = setTimeout(() => {
+      setShowGif(true);
+      setShowTooltip(true);
+    }, 6000);
 
-        const hideGifTimer = setTimeout(() => {
-            setShowGif(false);
-            setShowTooltip(false);
-        }, 21000);
+    const hideGifTimer = setTimeout(() => {
+      setShowGif(false);
+      setShowTooltip(false);
+    }, 21000);
 
-        return () => {
-            clearTimeout(gifTimer);
-            clearTimeout(hideGifTimer);
-        };
-    }, []);
+    return () => {
+      clearTimeout(gifTimer);
+      clearTimeout(hideGifTimer);
+    };
+  }, []);
 
-    return (
-        <>
-            {/* Floating Chat Icon */}
+  return (
+    <>
+      {/* Floating Chat Icon */}
+      <Link href={`https://wa.me/${CallNumber}`}>
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: {
+              lg: 20,
+              md: 20,
+              sm: 60,
+              xs: 60,
+            },
+            right: 20,
+            zIndex: 1400,
+          }}
+        >
+          <Tooltip
+            placement="left"
+            title="How can I help you?"
+            open={showTooltip}
+            arrow
+          >
             <Box
-                sx={{
-                    position: "fixed",
-                    bottom: {
-                        lg:20,
-                        md:20,
-                        sm:60,
-                        xs:60,
-                    },
-                    right: 20,
-                    zIndex: 1400,
-                }}
+              component={Paper}
+              sx={{
+                borderRadius: "50%",
+                cursor: "pointer",
+                overflow: "hidden",
+              }}
+              // onClick={handleOpen}
             >
-                <Tooltip
-                    placement="left"
-                    title="How can I help you?"
-                    open={showTooltip}
-                    arrow
-                >
-                    <Box
-                        component={Paper}
-                        sx={{
-                            borderRadius: "50%",
-                            cursor: "pointer",
-                            overflow: "hidden",
-                        }}
-                        onClick={handleOpen}
-                    >
-                        {showGif ? (
-                            <Box
-                                component="img"
-                                src="/images/icon/typing.gif"
-                                width={50}
-                                height={50}
-                            />
-                        ) : (
-                            <Box
-                                component="img"
-                                src="/images/icon/chat-icon.png"
-                                width={50}
-                                height={50}
-                            />
-                        )}
-                    </Box>
-                </Tooltip>
+              {showGif ? (
+                <Box
+                  component="img"
+                  src="/images/icon/typing.gif"
+                  width={50}
+                  height={50}
+                />
+              ) : (
+                <Box
+                  component="img"
+                  src="/images/icon/chat-icon.png"
+                  width={50}
+                  height={50}
+                />
+              )}
             </Box>
+          </Tooltip>
+        </Box>
+      </Link>
 
-
-            {/* Bottom-Right Modal */}
-            <Modal
+      {/* Bottom-Right Modal */}
+      {/* <Modal
                 open={open}
                 onClose={handleClose}
                 sx={{
@@ -113,7 +115,7 @@ export const SocialIcon = () => {
                         Welcome to Powerflex! How can we help you?
                     </Typography>
                 </Box>
-            </Modal>
-        </>
-    );
+            </Modal> */}
+    </>
+  );
 };
