@@ -25,12 +25,12 @@ const ContactFooter = () => {
           <Grid2 container spacing={2}>
             <Grid2 size={{ sm: 6, xs: 12 }}>
               <Stack alignItems="center" p={4}>
-                <Typography pb={1} color="common.white">
+                <Typography pb={2} color="common.white">
                   Check out Packages section
                 </Typography>
-                <Typography pb={1} color="common.white">
+                {/* <Typography pb={1} color="common.white">
                   Select the button for Tailored Energy Solution For Every Need!
-                </Typography>
+                </Typography> */}
                 <BannerGlowingButton
                   variant="contained"
                   sx={{ width: "200px" }}
@@ -41,12 +41,15 @@ const ContactFooter = () => {
             </Grid2>
             <Grid2 size={{ sm: 6, xs: 12 }}>
               <Stack alignItems="center" p={4}>
-                <Typography pb={1} color="common.white">
-                  Customise your energy needs to your usage.
+                <Typography pb={2} color="common.white">
+                  Customise your energy needs 
                 </Typography>
-                <Typography pb={1} color="common.white">
+                {/* <Typography pb={1} color="common.white">
+                  Customize your energy needs to your usage.
+                </Typography> */}
+                {/* <Typography pb={1} color="common.white">
                   Select the button and lets get your home powered!
-                </Typography>
+                </Typography> */}
                 <BannerGlowingButton
                   variant="contained"
                   sx={{ width: "200px" }}

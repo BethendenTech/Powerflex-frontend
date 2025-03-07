@@ -142,8 +142,9 @@ const FormPage = () => {
               <Grid2 size={{ xs: 12, sm: 6 }}>
                 <TextField
                   size="small"
-                  label="First Name"
+                  // label="First Name"
                   variant="outlined"
+                  placeholder="First Name"
                   fullWidth
                   {...register("first_name")}
                   InputLabelProps={{ shrink: true }}
@@ -154,7 +155,8 @@ const FormPage = () => {
               <Grid2 size={{ xs: 12, sm: 6 }}>
                 <TextField
                   size="small"
-                  label="Last Name"
+                  // label="Last Name"
+                  placeholder="Last Name"
                   variant="outlined"
                   fullWidth
                   {...register("last_name")}
@@ -166,7 +168,8 @@ const FormPage = () => {
               <Grid2 size={{ xs: 12, sm: 6 }}>
                 <TextField
                   size="small"
-                  label="Email"
+                  // label="Email"
+                   placeholder="Email"
                   variant="outlined"
                   fullWidth
                   {...register("email")}
@@ -178,7 +181,8 @@ const FormPage = () => {
               <Grid2 size={{ xs: 12, sm: 6 }}>
                 <TextField
                   size="small"
-                  label="Phone No."
+                  // label="Phone No."
+                   placeholder="Phone No."
                   variant="outlined"
                   fullWidth
                   {...register("phone", {
@@ -197,7 +201,8 @@ const FormPage = () => {
               <Grid2 size={{ xs: 12, sm: 12 }}>
                 <TextField
                   size="small"
-                  label="Subject (Optional)"
+                  // label="Subject (Optional)"
+                   placeholder="Subject (Optional)"
                   variant="outlined"
                   fullWidth
                   {...register("subject")}
@@ -211,7 +216,8 @@ const FormPage = () => {
                   size="small"
                   multiline
                   rows={6}
-                  label="Message"
+                  // label="Message"
+                   placeholder="Message"
                   variant="outlined"
                   fullWidth
                   {...register("message")}
