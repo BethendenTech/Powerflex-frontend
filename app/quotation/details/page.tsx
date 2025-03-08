@@ -118,9 +118,12 @@ export default function Page() {
 
       if (response.status == 400) {
         const data: ApiError = await response.json();
-
+        const formFields = ['name', 'email', 'phone_number', 'agree_terms', 'is_finance'] as const;
+        
         Object.entries(data).forEach(([key, value]) => {
-          setError(key as keyof FormData, { type: "manual", message: value });
+          if (formFields.includes(key as typeof formFields[number])) {
+            setError(key as typeof formFields[number], { type: "manual", message: value });
+          }
         });
       }
     } catch (error) {
