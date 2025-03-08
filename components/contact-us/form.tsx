@@ -21,8 +21,8 @@ const validationSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^[0-9]{10}$/,
-      "Phone number must be only numbers and between 10 digits"
+      /^[0-9]{12}$/,
+      "Phone number must be only numbers and between 12 digits"
     )
     .required("Phone No. is required"),
   subject: yup.string().notRequired(),
@@ -188,9 +188,9 @@ const FormPage = () => {
                   {...register("phone", {
                     required: "Phone number is required",
                     pattern: {
-                      value: /^[0-9]{10}$/,
+                      value: /^[0-9]{12}$/,
                       message:
-                        "Phone number must be only numbers and between 10 digits",
+                        "Phone number must be only numbers and between 12 digits",
                     },
                   })}
                   InputLabelProps={{ shrink: true }}

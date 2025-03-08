@@ -1,3 +1,5 @@
+import theme from '@/theme/theme';
+import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 
 interface Props {
@@ -8,22 +10,37 @@ interface Props {
     showOn?: 'hover' | 'click';
     left: string;
 }
-const Tooltip = (props: Props) => {
-  
-  const { children, content, position = 'bottom', isAlwaysOpen = false, showOn = 'hover', left } = props;
 
+const Tooltip = (props: Props) => {
+  const { children, content, position = 'bottom', isAlwaysOpen = false, showOn = 'hover', left } = props;
   const [showTooltip, setShowTooltip] = useState(isAlwaysOpen);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   const handleMouseEnter = () => {
-    if (!isAlwaysOpen && showOn === 'hover') setShowTooltip(true);
+    if (!isAlwaysOpen && showOn === 'hover' && !isMobile) {
+      setShowTooltip(true);
+    }
   };
 
   const handleMouseLeave = () => {
-    if (!isAlwaysOpen && showOn === 'hover') setShowTooltip(false);
+    if (!isAlwaysOpen && showOn === 'hover' && !isMobile) {
+      setShowTooltip(false);
+    }
   };
 
   const handleClick = () => {
-    if (!isAlwaysOpen && showOn === 'click') setShowTooltip((prev) => !prev);
+    if (!isAlwaysOpen) {
+      if (isMobile) {
+        setShowTooltip(true);
+        // Hide tooltip after 3 seconds on mobile
+        setTimeout(() => {
+          setShowTooltip(false);
+        }, 3000);
+      } else if (showOn === 'click') {
+        setShowTooltip((prev) => !prev);
+      }
+    }
   };
 
   const getTooltipPosition = () => {
@@ -47,6 +64,7 @@ const Tooltip = (props: Props) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
+      onChange={handleClick}
     >
       {/* The element to which tooltip is attached */}
       {children}

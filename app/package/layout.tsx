@@ -10,7 +10,7 @@ export default function RootLayout({
 }>) {
     return (
         <DialogProvider>
-            <Box sx={{ backgroundColor: "#F1F1F1" }} pb={4}>
+            <Box sx={{ backgroundColor: "#F0F9FF" }} pb={4}>
                 <Container>
                     <Box mt={8} >
                         {children}

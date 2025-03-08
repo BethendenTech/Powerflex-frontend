@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import CheckboxIcon from "@mui/icons-material/CheckBox";
 
 export const PackageDetail = (props: any) => {
-  const { item } = props;
+  const { item, className } = props;
   const router = useRouter();
 
   const handleSelect = () => {
@@ -33,6 +33,7 @@ export const PackageDetail = (props: any) => {
         justifyContent: "center",
         margin: "50px 0px 0px 0px",
       }}
+      className={className}
     >
       <Card
         sx={{
@@ -72,6 +73,9 @@ export const PackageDetail = (props: any) => {
             alt="label"
             width={60}
             height={60}
+            style={{
+              paddingTop: "10px",
+            }}
           />
           <Typography
             fontSize={30}
@@ -79,8 +83,8 @@ export const PackageDetail = (props: any) => {
             color="#FFFFFF"
             sx={{
               position: "absolute",
-              top: "76px",
-              right: "0px",
+              top: "80px",
+              right: "4px",
               transform: "rotate(90deg)",
               zIndex: 10,
             }}

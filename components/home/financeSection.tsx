@@ -92,7 +92,7 @@ const HomeFinanceSection = () => {
             </Grid2>
           </Grid2>
 
-          <Grid2 mt={20} container spacing={4}>
+          <Grid2 mt={5} container spacing={4}>
             <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
               <Card
                 sx={{
@@ -138,11 +138,12 @@ const HomeFinanceSection = () => {
                         should be simple.
                       </Typography>
                     </Box>
-                    <Box textAlign="right">
+                    <Box textAlign="center">
                       <Button
                         variant="outlined"
                         LinkComponent={Link}
                         href="/quotation/details"
+                        className="smallBtn"
                         sx={{
                           width: 250,
                           color: "#595959",
@@ -202,11 +203,12 @@ const HomeFinanceSection = () => {
                       </Typography>
                     </Box>
 
-                    <Box textAlign="right">
+                    <Box textAlign="center">
                       <Button
                         variant="outlined"
                         LinkComponent={Link}
                         href="/quotation/details"
+                         className="smallBtn"
                         sx={{
                           width: 250,
                           color: "#595959",

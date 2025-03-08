@@ -30,6 +30,7 @@ const WorkCard: React.FC<WorkDataType> = ({ heading, title, description, image }
                 flexDirection: 'column',
                 alignItems: "center",
                 justifyContent: 'flex-start',
+                minHeight: '273px',
             }}>
                 <CardMedia
                     component="img"

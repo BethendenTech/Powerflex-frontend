@@ -114,7 +114,7 @@ export default function Page() {
       <CustomizedSteppers activeStep={2} />
 
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="outright-package-form">
 
         <FormInputField fullWidth error={!!errors.electricity_spend}>
           <FormTitle>How much do you spend on electricity each month?</FormTitle>

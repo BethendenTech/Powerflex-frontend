@@ -3,7 +3,7 @@
 import { NextButton } from "@/components/button/style";
 import usePackage from "@/hooks/package";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, TextField } from "@mui/material";
+import { Box, Grid2, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -15,8 +15,8 @@ const validationSchema = yup.object().shape({
     phone_number: yup
         .string()
         .matches(
-            /^[0-9]{10}$/,
-            "Phone number must be only numbers and between 10 digits"
+            /^[0-9]{12}$/,
+            "Phone number must be only numbers and between 12 digits"
         )
         .required("Phone No. is required"),
 });
@@ -58,38 +58,40 @@ export const PackageOutRightPurchase = (props) => {
 
     return (
         <Box mt={2}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-
-                <TextField
-                    label="Name"
-                    variant="outlined"
-                    fullWidth
-                    {...register("name")}
-                    InputLabelProps={{ shrink: true }}
-                    error={!!errors.name}
-                    helperText={errors.name?.message}
-                />
-
-                <TextField
-                    label="Email"
-                    variant="outlined"
-                    fullWidth
-                    {...register("email")}
-                    InputLabelProps={{ shrink: true }}
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                />
-
-                <TextField
-                    label="Phone Number"
-                    variant="outlined"
-                    fullWidth
-                    {...register("phone_number")}
-                    InputLabelProps={{ shrink: true }}
-                    error={!!errors.phone_number}
-                    helperText={errors.phone_number?.message}
-                />
-
+            <form onSubmit={handleSubmit(onSubmit)} className="outright-package-form">
+                <Grid2 container spacing={2}>
+                    <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            label="Name"
+                            variant="outlined"
+                            fullWidth
+                            {...register("name")}
+                            InputLabelProps={{ shrink: true }}
+                            error={!!errors.name}
+                            helperText={errors.name?.message}
+                        />
+                    </Grid2>  <Grid2 size={{ xs: 12, md: 6 }}>
+                        <TextField
+                            label="Email"
+                            variant="outlined"
+                            fullWidth
+                            {...register("email")}
+                            InputLabelProps={{ shrink: true }}
+                            error={!!errors.email}
+                            helperText={errors.email?.message}
+                        />
+                    </Grid2>  <Grid2 size={{ xs: 12, sm: 12 }}>
+                        <TextField
+                            label="Phone Number"
+                            variant="outlined"
+                            fullWidth
+                            {...register("phone_number")}
+                            InputLabelProps={{ shrink: true }}
+                            error={!!errors.phone_number}
+                            helperText={errors.phone_number?.message}
+                        />
+                    </Grid2>
+                </Grid2>
                 <Box position="sticky" bottom={0} mt={2}>
                     <NextButton
                         fullWidth

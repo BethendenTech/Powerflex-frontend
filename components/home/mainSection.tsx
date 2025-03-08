@@ -133,7 +133,7 @@ const HomeMainSection = () => {
             <BannerNormalButton
               variant="outlined"
               LinkComponent={Link}
-              href="/#products"
+              href="/#packages"
               color="secondary"
               fullWidth
             >

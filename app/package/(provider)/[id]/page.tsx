@@ -55,7 +55,13 @@ export default function PackagePage() {
             </Button>
 
 
-            <Card>
+            <Card sx={{
+                backgroundColor: '#F0F9FF',
+                color: '#fff',
+                border: '2px solid #3B4AEB',
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+                borderRadius: '9px',
+            }}>
                 <CardHeader
                     avatar={
                         <Typography color="#fff">{data?.name}</Typography>
@@ -69,8 +75,7 @@ export default function PackagePage() {
                 />
                 <CardContent
                     sx={{
-                        backgroundColor: '#F1F1F1',
-                        color: '#fff'
+                        padding: '20px 10px 5px'
                     }}
                 >
 
@@ -89,7 +94,7 @@ export default function PackagePage() {
                             xl: 6,
                         }}>
                             <Card>
-                                <CardHeader title="Powered Appliances" />
+                                <CardHeader className="blueColor" title="Powered Appliances" />
                                 <CardContent>
                                     <PackageAppliance appliances={data.appliances} direction="column" />
                                 </CardContent>
@@ -102,8 +107,10 @@ export default function PackagePage() {
                             lg: 6,
                             xl: 6,
                         }}>
-                            <Card>
-                                <CardHeader title="Runtime" />
+                            <Card sx={{
+                                textAlign: 'center',
+                            }}>
+                                <CardHeader className="blueColor" title="Runtime" />
                                 <CardContent>
                                     {data?.runtime}
                                 </CardContent>

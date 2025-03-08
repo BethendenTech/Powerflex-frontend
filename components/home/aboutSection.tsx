@@ -74,7 +74,7 @@ const HomeAboutSection = () => {
                         </Grid2>
                     </Grid2>
 
-                    <Grid2 mt={10} container spacing={2}>
+                    <Grid2 mt={4} container spacing={2}>
                         <Grid2 size={{ xs: 12, md: 6 }}>
                             <Box p={2}>
                                 <Box

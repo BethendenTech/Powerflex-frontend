@@ -44,8 +44,21 @@ export const PackageList = () => {
       );
 
       if (response.ok) {
-        const data = await response.json();
-        setData(data);
+        const responseData = await response.json();
+        // Sort the data by kVA values
+        const sortedData = responseData.sort((a: any, b: any) => {
+          const getKVA = (name: string) => {
+            const match = name.match(/(\d+)kVA/);
+            return match ? parseInt(match[1], 10) : 0;
+          };
+
+          const kvaA = getKVA(a.name);
+          const kvaB = getKVA(b.name);
+
+          return kvaA - kvaB;
+        });
+
+        setData(sortedData);
         setLoading(false);
       }
       setLoading(false);
@@ -55,7 +68,7 @@ export const PackageList = () => {
   };
 
   return (
-    <Box pt={2} pb={5}>
+    <Box pt={2} pb={5} id="packages">
       <Container maxWidth="lg">
         <Box
           mb={5}
@@ -213,6 +226,7 @@ export const PackageList = () => {
                             variant="outlined"
                             color="secondary"
                             size="small"
+                            className="smallBtn"
                           >
                             Learn More
                           </BannerNormalButton>
@@ -236,6 +250,7 @@ export const PackageList = () => {
                         </CardActions>
                       </Card>
                     </Grid2>
+                    {isSelected && <PackageDetail className="packageDetailMobile" item={selected} />}
                   </>
                 );
               }
@@ -295,7 +310,7 @@ export const PackageList = () => {
           </Grid2>
         )}  */}
 
-        {selected && <PackageDetail item={selected} />}
+        {selected && <PackageDetail className="packageDetaiDesktop" item={selected} />}
       </Container>
     </Box>
   );

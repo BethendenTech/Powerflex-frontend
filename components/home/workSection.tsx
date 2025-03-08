@@ -81,7 +81,7 @@ const HomeWorkSection = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid mt={20} container spacing={5}>
+                    <Grid mt={8} container spacing={5}>
                         <Grid size={{ xs: 12, md: 4 }}>
                             <WorkCard
                                 heading="STEP 1"

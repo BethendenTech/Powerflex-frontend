@@ -164,7 +164,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                         </Tooltip>
                     )}
                 </Box>
-                <Box sx={{ position: "relative", width: "100%" }}>
+                <Box className="upload-file-component" sx={{ position: "relative", width: "100%" }}>
                     {/* Title */}
                     <TitleContainer>
                         <Title>{label}</Title>
@@ -178,6 +178,7 @@ const FileUploadComponent = (props: ComponentProps) => {
                                 "&.MuiCheckbox-root": {
                                     color: "#257FE6",
                                 },
+                                marginTop: '5px'
                             }}
                             checked={checked}
                             onChange={(e) => {

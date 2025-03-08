@@ -1,6 +1,5 @@
-import { Box, Grid2, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid2, Stack, Typography } from "@mui/material";
 import React from "react";
-import { BannerGlowingButton } from "../button/style";
 
 const ContactFooter = () => {
   return (
@@ -16,14 +15,22 @@ const ContactFooter = () => {
         <Box
           sx={{
             bgcolor: "rgba(0, 0, 255, 0.5)",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            textAlign: "center",
+
           }}
         >
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ sm: 6, xs: 12 }}>
+          <Box
+            className="container footerPackageEnergy"
+            sx={{
+              margin: "0 auto",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              textAlign: "center",
+
+            }}
+          >
+
+            <Grid2 size={{ sm: 6, xs: 12 }} className="footerPackageEnergyCard">
               <Stack alignItems="center" p={4}>
                 <Typography pb={2} color="common.white">
                   Check out Packages section
@@ -31,18 +38,13 @@ const ContactFooter = () => {
                 {/* <Typography pb={1} color="common.white">
                   Select the button for Tailored Energy Solution For Every Need!
                 </Typography> */}
-                <BannerGlowingButton
-                  variant="contained"
-                  sx={{ width: "200px" }}
-                >
-                  Solar Packages
-                </BannerGlowingButton>
+                <Button href="/#packages" variant="contained" color="primary" sx={{ width: "200px" }}>Solar Packages</Button>
               </Stack>
             </Grid2>
             <Grid2 size={{ sm: 6, xs: 12 }}>
               <Stack alignItems="center" p={4}>
                 <Typography pb={2} color="common.white">
-                  Customise your energy needs 
+                  Customise your energy needs
                 </Typography>
                 {/* <Typography pb={1} color="common.white">
                   Customize your energy needs to your usage.
@@ -50,15 +52,11 @@ const ContactFooter = () => {
                 {/* <Typography pb={1} color="common.white">
                   Select the button and lets get your home powered!
                 </Typography> */}
-                <BannerGlowingButton
-                  variant="contained"
-                  sx={{ width: "200px" }}
-                >
-                  Get a quote
-                </BannerGlowingButton>
+                 <Button href="/quotation/details" variant="contained" color="primary" sx={{ width: "200px" }}> Get a quote</Button>
               </Stack>
             </Grid2>
-          </Grid2>
+
+          </Box>
         </Box>
       </Box>
     </>

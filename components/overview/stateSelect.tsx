@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuItem, Select, FormControl, FormHelperText, Box, FormLabel } from "@mui/material";
+import { MenuItem, Select, FormControl, FormHelperText, Box, FormLabel, Grid2 } from "@mui/material";
 import { Control, FieldErrors, UseFormWatch, UseFormSetValue, Controller } from "react-hook-form";
 import { FormInputField, FormTitle } from "../form/style";
 
@@ -1025,63 +1025,67 @@ const SelectStateComponent: React.FC<SelectStateComponentProps> = ({ control, wa
 
     return (
         <Box>
-            {/* State Dropdown */}
-            <FormInputField fullWidth error={!!errors.state} >
-                <FormTitle sx={{ fontWeight: 700 }} id="state-label">State</FormTitle>
-                <Controller
-                    name="state"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: "State is required" }}
-                    render={({ field }) => (
-                        <Select
-                            {...field}
-                            labelId="state-label"
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, md: 6 }}>
+                    {/* State Dropdown */}
+                    <FormInputField fullWidth error={!!errors.state} >
+                        <FormTitle sx={{ fontWeight: 700 }} id="state-label">State</FormTitle>
+                        <Controller
+                            name="state"
+                            control={control}
+                            defaultValue=""
+                            rules={{ required: "State is required" }}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    labelId="state-label"
 
-                            onChange={(e) => {
-                                field.onChange(e);
-                                setValue("lga", ""); // Reset LGA when state changes
-                            }}
-                        >
-                            {stateData.map((state) => (
-                                <MenuItem key={state.alias} value={state.state}>
-                                    {state.state}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    )}
-                />
-                <FormHelperText>
-                    {errors.state?.message ? String(errors.state.message) : ""}
-                </FormHelperText>
-            </FormInputField>
-
-            {/* LGA Dropdown */}
-            <FormInputField fullWidth error={!!errors.lga} margin="normal">
-                <FormTitle sx={{ fontWeight: 700 }} id="lga-label">LGA (Local Government Area)</FormTitle>
-                <Controller
-                    name="lga"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: "LGA (Local Government Area) is required" }}
-                    render={({ field }) => (
-                        <Select
-                            {...field}
-                            labelId="lga-label"
-                            disabled={!selectedState} // Disable if no state is selected
-                        >
-                            {getLgaOptions().map((lga) => (
-                                <MenuItem key={lga} value={lga}>
-                                    {lga}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    )}
-                />
-                <FormHelperText>
-                    {errors.lga?.message ? String(errors.lga.message) : ""}
-                </FormHelperText>
-            </FormInputField>
+                                    onChange={(e) => {
+                                        field.onChange(e);
+                                        setValue("lga", ""); // Reset LGA when state changes
+                                    }}
+                                >
+                                    {stateData.map((state) => (
+                                        <MenuItem key={state.alias} value={state.state}>
+                                            {state.state}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            )}
+                        />
+                        <FormHelperText>
+                            {errors.state?.message ? String(errors.state.message) : ""}
+                        </FormHelperText>
+                    </FormInputField>
+                </Grid2><Grid2 size={{ xs: 12, md: 6 }}>
+                    {/* LGA Dropdown */}
+                    <FormInputField fullWidth error={!!errors.lga} margin="normal">
+                        <FormTitle sx={{ fontWeight: 700 }} id="lga-label">LGA (Local Government Area)</FormTitle>
+                        <Controller
+                            name="lga"
+                            control={control}
+                            defaultValue=""
+                            rules={{ required: "LGA (Local Government Area) is required" }}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    labelId="lga-label"
+                                    disabled={!selectedState} // Disable if no state is selected
+                                >
+                                    {getLgaOptions().map((lga) => (
+                                        <MenuItem key={lga} value={lga}>
+                                            {lga}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            )}
+                        />
+                        <FormHelperText>
+                            {errors.lga?.message ? String(errors.lga.message) : ""}
+                        </FormHelperText>
+                    </FormInputField>
+                </Grid2>
+            </Grid2>
         </Box>
     );
 };

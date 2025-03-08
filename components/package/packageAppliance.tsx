@@ -3,7 +3,7 @@ import { Checkbox, FormControlLabel, FormGroup } from "@mui/material"
 export const PackageAppliance = (props) => {
     const { appliances, direction } = props
     return (
-        <FormGroup sx={direction == "column" ? { display: 'flex', flexDirection: 'column', height: 200 } : {}
+        <FormGroup className="packageAppliance" sx={direction == "column" ? { display: 'flex', flexDirection: 'column' } : {}
         }>
             {appliances.map((appliance: any) => {
                 return (

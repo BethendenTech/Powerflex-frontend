@@ -44,12 +44,13 @@ const HomeProductSection = () => {
           }}
         >
           <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12, md: 6 }}>
+            <Grid2 size={{ xs: 12, md: 6, }}>
               <Box
                 sx={{
                   background: "#2755EB",
                   borderTopLeftRadius: "20px",
                   borderTopRightRadius: "20px",
+                  maxWidth: "406px",
                 }}
               >
                 <Typography
@@ -67,10 +68,11 @@ const HomeProductSection = () => {
                   background: "#F1F7FE",
                   borderBottomLeftRadius: "20px",
                   borderBottomRightRadius: "20px",
+                  maxWidth: "406px",
                 }}
               >
                 <Typography
-                  component="h2"
+                  component="p"
                   fontSize={16}
                   color="#191919"
                   sx={{ px: 4, py: 2 }}
@@ -82,7 +84,7 @@ const HomeProductSection = () => {
             </Grid2>
           </Grid2>
 
-          <Grid2 mt={20} container spacing={4}>
+          <Grid2 mt={5} container spacing={4}>
             <Grid2 size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
               <ProductCard
                 title="Solar Panels"

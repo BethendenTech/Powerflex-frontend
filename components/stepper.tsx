@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -10,7 +10,14 @@ import { Check } from '@mui/icons-material';
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
-        top: 18,
+        top: 11,
+        left: 'calc(-50% + 10px)',
+        right: 'calc(50% + 10px)',
+        [theme.breakpoints.up('sm')]: {
+            top: 18,
+            left: 'calc(-50% + 21px)',
+            right: 'calc(50% + 21px)'
+        }
     },
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
@@ -23,10 +30,13 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
-        height: 6,
+        height: 4,
         border: 0,
         backgroundColor: '#979797',
         borderRadius: 1,
+        [theme.breakpoints.up('sm')]: {
+            height: 6
+        },
         ...theme.applyStyles('dark', {
             backgroundColor: theme.palette.grey[800],
         }),
@@ -39,12 +49,18 @@ const ColorlibStepIconRoot = styled('div')<{
     backgroundColor: '#979797',
     zIndex: 1,
     color: '#fff',
-    width: 42,
-    height: 42,
+    width: 25,
+    height: 25,
+    fontSize: 13,
     display: 'flex',
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
+    [theme.breakpoints.up('sm')]: {
+        width: 42,
+        height: 42,
+        fontSize: 16
+    },
     ...theme.applyStyles('dark', {
         backgroundColor: theme.palette.grey[100],
     }),
@@ -59,7 +75,6 @@ const ColorlibStepIconRoot = styled('div')<{
             props: ({ ownerState }) => ownerState.completed,
             style: {
                 backgroundColor: "#40912A"
-
             },
         },
     ],
@@ -70,9 +85,14 @@ function ColorlibStepIcon(props: StepIconProps) {
     return (
         <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
             {completed ? (
-                <Check />
+                <Check sx={{ 
+                    fontSize: {
+                        xs: '16px',
+                        sm: '24px'
+                    }
+                }} />
             ) : (
-                props.icon
+                <span style={{ fontSize: 'inherit' }}>{props.icon}</span>
             )}
         </ColorlibStepIconRoot>
     );
@@ -85,23 +105,28 @@ export interface ComponentProps {
 }
 
 export default function CustomizedSteppers({ activeStep }: ComponentProps) {
+    const theme = useTheme();
+    
     return (
         <Stack sx={{ width: '100%' }} mb={2}>
-            <Stepper alternativeLabel activeStep={activeStep - 1} connector={<ColorlibConnector />}>
+            <Stepper 
+                alternativeLabel 
+                activeStep={activeStep - 1} 
+                className='stepper-custom' 
+                connector={<ColorlibConnector />}
+                sx={{
+                    '& .MuiStepConnector-root': {
+                        marginLeft: 0,
+                        marginRight: 0
+                    }
+                }}
+            >
                 {steps.map((label) => (
                     <Step key={label} sx={{
                         '&.MuiStep-root': {
-                            paddingLeft: {
-                                lg: '8px',
-                                md: '8px',
-                                sm: '8px',
-                                xs: '4px'
-                            },
-                            paddingRight: {
-                                lg: '8px',
-                                md: '8px',
-                                sm: '8px',
-                                xs: '4px'
+                            padding: 0,
+                            [theme.breakpoints.up('sm')]: {
+                                padding: '0 8px'
                             }
                         }
                     }}>

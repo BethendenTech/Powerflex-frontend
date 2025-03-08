@@ -14,12 +14,7 @@ const gridItemStyles = {
     alignItems: "center",
     textAlign: "center",
     height: "100%",
-    minHeight: {
-        lg: "150px",
-        md: "100px",
-        sm: "0px",
-        xs: "0px",
-    }
+
 };
 
 const WebFooter = () => {
@@ -77,18 +72,10 @@ const WebFooter = () => {
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
-                                mb={2}
+                              
                                 sx={{ textDecoration: 'none' }}
                             >
                                 Products
-                            </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                            >
-                                Solar Panels Inverters Batteries
                             </Typography>
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
@@ -98,27 +85,10 @@ const WebFooter = () => {
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
-                                mb={2}
+                                
                                 sx={{ textDecoration: 'none' }}
                             >
                                 Financing
-                            </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                                mb={2}
-                            >
-                                Outright Payment
-                            </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                            >
-                                Instalment Plans
                             </Typography>
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
@@ -128,6 +98,7 @@ const WebFooter = () => {
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
+                               
                                 sx={{ textDecoration: 'none' }}
                             >
                                 How it works
@@ -135,40 +106,17 @@ const WebFooter = () => {
                         </Grid>
                         <Grid size={{ lg: 1, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
-                                component="h1"
                                 fontSize={16}
                                 color="#fff"
                                 fontWeight={400}
-                                mb={2}
+                              
+                                href='/#contact-us'
+                                component={Link}
                             >
                                 Contact Us
                             </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                            >
-                                Phone
-                            </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                            >
-                                Email
-                            </Typography>
-                            <Typography
-                                component="h1"
-                                fontSize={16}
-                                color="#fff"
-                                fontWeight={400}
-                            >
-                                Address
-                            </Typography>
                         </Grid>
-                        <Grid size={{ lg: 2, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
+                        {/* <Grid size={{ lg: 2, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Typography
                                 component="h1"
                                 fontSize={16}
@@ -177,19 +125,20 @@ const WebFooter = () => {
                             >
                                 Solar Business Suite
                             </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid size={{ lg: 2.5, md: 4, sm: 6, xs: 12 }} sx={{ ...gridItemStyles, mt: 2.5 }}>
                             <Stack direction="row" spacing={3}>
                                 <IconButton sx={{
                                     background: 'transparent',
                                     color: '#FFFFFF'
-                                }}>
+                                }}
+                                    LinkComponent={Link} href="https://www.facebook.com/share/1875UYbCMW/?mibextid=wwXIfr" target="_blank">
                                     <FacebookIcon />
                                 </IconButton>
                                 <IconButton sx={{
                                     background: 'transparent',
                                     color: '#FFFFFF'
-                                }}>
+                                }} LinkComponent={Link} href="https://www.instagram.com/powerflex_ng?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
                                     <InstagramIcon />
                                 </IconButton>
                                 <IconButton LinkComponent={Link} href={`https://wa.me/${CallNumber}`} target="_blank" sx={{

@@ -18,10 +18,9 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
             <Card sx={{
                 mt: 2,
                 height: '100%',
-                borderRadius: '12px',
                 backgroundColor: '#FFFFFF',
-                border: '1px solid #ccc',
-            }}>
+            }}
+            className="cardBox">
 
                 <CardContent sx={{
                     flex: 1,
@@ -43,8 +42,10 @@ const ProductCard: React.FC<ProductDataType> = ({ title, description, image }) =
                     </Typography>
                     <Box textAlign="center">
                         <Button
+                            className="smallBtn"
+                            href="/#contact-us"
                             variant='outlined'
-                            sx={{ mt: 2, mb: 2, width: 230, color: '#595959', borderColor: '#595959' }}>
+                            sx={{ mt: 2, mb: 2,  color: '#595959', borderColor: '#595959' }}>
                             Learn More</Button>
                     </Box>
                     <CardMedia

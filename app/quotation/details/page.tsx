@@ -27,6 +27,19 @@ import {
 import { DialogContext } from "@/contexts/dialogContext";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone_number: string;
+  agree_terms: boolean;
+  is_finance: boolean;
+  user_id?: number;
+}
+
+interface ApiError {
+  [key: string]: string;
+}
+
 export default function Page() {
   const { actions, state } = useStateMachine({ updateAction });
 
@@ -38,17 +51,21 @@ export default function Page() {
   // Define the validation schema using Yup
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name is required"),
-    email: yup.string().required("Email is required"),
+    email: yup.string().email("Invalid email").required("Email is required"),
     phone_number: yup
       .string()
       .matches(
-        /^[0-9]{11}$/,
-        "Phone number must be only numbers and between 11 digits"
+        /^[0-9]{12}$/,
+        "Phone number must be only numbers and between 12 digits"
       )
       .required("Phone No. is required"),
-    agree_terms: yup.boolean().required("Agree Terms is required"),
+    agree_terms: yup
+      .boolean()
+      .oneOf([true], "You must agree to the Terms and Conditions")
+      .required("You must agree to the Terms and Conditions"),
     is_finance: yup.boolean().required("company is required"),
   });
+
   const {
     register,
     handleSubmit,
@@ -64,6 +81,7 @@ export default function Page() {
       is_finance: true,
       agree_terms: false,
     },
+    mode: "onChange"
   });
 
   React.useEffect(() => {
@@ -74,7 +92,7 @@ export default function Page() {
     }
   }, [state]);
 
-  const onSubmit = async (formData: any) => {
+  const onSubmit = async (formData: FormData) => {
     try {
       actions.updateAction(formData);
       router.push(`/quotation/monthly-spend`);
@@ -99,10 +117,10 @@ export default function Page() {
       }
 
       if (response.status == 400) {
-        const data = await response.json();
+        const data: ApiError = await response.json();
 
-        Object.entries(data).forEach(([key, value]: any) => {
-          setError(key, { type: "manual", message: value });
+        Object.entries(data).forEach(([key, value]) => {
+          setError(key as keyof FormData, { type: "manual", message: value });
         });
       }
     } catch (error) {
@@ -271,7 +289,7 @@ export default function Page() {
 
       <CustomizedSteppers activeStep={1} />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="outright-package-form">
         <FormInputField fullWidth error={!!errors.name}>
           <FormTitle>Name</FormTitle>
           <OutlinedInput
@@ -297,9 +315,9 @@ export default function Page() {
             {...register("phone_number", {
               required: "Phone number is required",
               pattern: {
-                value: /^[0-9]{11}$/,
+                value: /^[0-9]{12}$/,
                 message:
-                  "Phone number must be only numbers and between 11 digits",
+                  "Phone number must be only numbers and between 12 digits",
               },
             })}
           />
@@ -310,9 +328,7 @@ export default function Page() {
           <FormControlLabel
             control={
               <Checkbox
-                {...register("agree_terms", {
-                  required: "You must agree to the Terms and Conditions.",
-                })}
+                {...register("agree_terms")}
                 color="primary"
               />
             }
@@ -322,7 +338,7 @@ export default function Page() {
                   fontFamily: "'Harmonia Sans Pro', sans-serif",
                   fontWeight: 400,
                   fontSize: "14px",
-                  color: "#424242",
+                  color: errors.agree_terms ? "#d32f2f" : "#424242",
                 }}
               >
                 Please check this box to confirm that you have read, understood,
@@ -338,6 +354,7 @@ export default function Page() {
                     fontFamily: "'Harmonia Sans Pro', sans-serif",
                     fontWeight: 400,
                     fontSize: "14px",
+                    color: errors.agree_terms ? "#d32f2f" : "inherit",
                   }}
                 >
                   Terms and Conditions
