@@ -15,8 +15,8 @@ const validationSchema = yup.object().shape({
     phone_number: yup
         .string()
         .matches(
-            /^[0-9]{12}$/,
-            "Phone number must be only numbers and between 12 digits"
+            /^[0-9]{11,12}$/,
+            "Phone number must be only numbers and between 11 or 12 digits"
         )
         .required("Phone No. is required"),
 });

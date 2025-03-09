@@ -143,8 +143,8 @@ const BusinessApplicationForm = () => {
                             <OutlinedInput
                                 type='text'
                                 {...register("phone_number", { required: "Phone number is required", pattern: {
-                                    value: /^[0-9]{12}$/,
-                                    message: "Phone number must be only numbers and between 12 digits",
+                                    value: /^[0-9]{11,12}$/,
+                                    message: "Phone number must be only numbers and between 11 or 12 digits",
                                 },
                                 })}
                             />

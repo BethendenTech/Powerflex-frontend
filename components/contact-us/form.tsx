@@ -21,8 +21,8 @@ const validationSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^[0-9]{12}$/,
-      "Phone number must be only numbers and between 12 digits"
+      /^[0-9]{11,12}$/,
+      "Phone number must be only numbers and between 11-12 digits"
     )
     .required("Phone No. is required"),
   subject: yup.string().notRequired(),
@@ -169,7 +169,7 @@ const FormPage = () => {
                 <TextField
                   size="small"
                   // label="Email"
-                   placeholder="Email"
+                  placeholder="Email"
                   variant="outlined"
                   fullWidth
                   {...register("email")}
@@ -182,15 +182,15 @@ const FormPage = () => {
                 <TextField
                   size="small"
                   // label="Phone No."
-                   placeholder="Phone No."
+                  placeholder="Phone No."
                   variant="outlined"
                   fullWidth
                   {...register("phone", {
                     required: "Phone number is required",
                     pattern: {
-                      value: /^[0-9]{12}$/,
+                      value: /^[0-9]{11,12}$/,
                       message:
-                        "Phone number must be only numbers and between 12 digits",
+                        "Phone number must be only numbers and between 11 or 12 digits",
                     },
                   })}
                   InputLabelProps={{ shrink: true }}
@@ -202,7 +202,7 @@ const FormPage = () => {
                 <TextField
                   size="small"
                   // label="Subject (Optional)"
-                   placeholder="Subject (Optional)"
+                  placeholder="Subject (Optional)"
                   variant="outlined"
                   fullWidth
                   {...register("subject")}
@@ -217,7 +217,7 @@ const FormPage = () => {
                   multiline
                   rows={6}
                   // label="Message"
-                   placeholder="Message"
+                  placeholder="Message"
                   variant="outlined"
                   fullWidth
                   {...register("message")}
