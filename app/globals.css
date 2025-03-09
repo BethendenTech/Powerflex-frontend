@@ -326,111 +326,111 @@ details>summary::-webkit-details-marker
 }
 
 .smallBtn {
-  font-size: 14px;
-  padding: 20px 20px;
-  line-height: 0px;
-  border-radius: 4px;
+  font-size: 14px !important;
+  padding: 20px 20px !important;
+  line-height: 0px !important;
+  border-radius: 4px !important;
 }
 .smallBtn:hover {
-  border: 1px solid;
+  border: 1px solid !important;
 }
 
 .cardBox {
-  border-radius: 4px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 20px 10px 5px;
-  transition: all 0.3s ease;
+  border-radius: 4px !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+  padding: 20px 10px 5px !important;
+  transition: all 0.3s ease !important;
 }
 .cardBox:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px) !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3) !important;
 }
 .cardBox img {
-  border-radius: 4px;
+  border-radius: 4px !important;
 }
 
 @media (min-width: 900px) {
   .packageDetailMobile {
-    display: none;
+    display: none !important;
   }
   .packageSummary {
-    padding: 0 60px;
+    padding: 0 60px !important;
   }
   .packageAppliance {
-    max-height: 200px;
+    max-height: 200px !important;
   }
 }
 
 @media (max-width: 899px) {
   .packageDetaiDesktop {
-    display: none;
+    display: none !important;
   }
   .packageSummary {
-    padding: 0;
+    padding: 0 !important;
   }
   .packageAppliance {
-    height: auto;
+    height: auto !important;
   }
 }
 
 .packageSummary th {
-  font-weight: 600;
-  padding-bottom: 20px;
-  font-size: 16px;
+  font-weight: 600 !important;
+  padding-bottom: 20px !important;
+  font-size: 16px !important;
 }
 .packageSummary td,
 .packageSummary th {
-  border: 0;
+  border: 0 !important;
 }
 .packageSummary tr:nth-child(odd) {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .packageSummary tr:nth-child(1) {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 .packageSummary tr:first-child {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .packageSummary tr:nth-child(even) {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 .packageSummaryTotal td {
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 600 !important;
+  font-size: 20px !important;
 }
 .footerPackageEnergy {
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  min-height: 300px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
 }
 
 .packagePage {
-  background-color: #f0f9ff;
+  background-color: #f0f9ff !important;
 }
 .blueColor {
-  color: #2755eb;
+  color: #2755eb !important;
 }
 .blueColor .MuiCardHeader-title {
-  color: #2755eb;
+  color: #2755eb !important;
 }
 
 .outright-package-form fieldset {
-  border: 0;
+  border: 0 !important;
 }
 .outright-package-form label {
-  font-size: 16px;
-  color: #424242;
-  font-weight: 400;
-  position: relative;
-  transform: none;
-  max-width: 100%;
-  font-family: 'Harmonia Sans Pro';
+  font-size: 16px !important;
+  color: #424242 !important;
+  font-weight: 400 !important;
+  position: relative !important;
+  transform: none !important;
+  max-width: 100% !important;
+  font-family: 'Harmonia Sans Pro' !important;
 }
 
 .outright-package-form input,.outright-package-form .MuiSelect-select {
-  padding: 10px 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  padding: 10px 10px !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 4px !important;
 }
