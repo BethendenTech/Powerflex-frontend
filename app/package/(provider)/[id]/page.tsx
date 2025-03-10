@@ -81,8 +81,8 @@ export default function PackagePage() {
                 >
 
                     <Box textAlign={"center"}>
-                        <Typography sx={{ fontWeight: 'bold', fontSize: 30 }}>{renderNaira(data?.price)}</Typography>
-                        <Typography sx={{ color: '#2755EB', fontWeight: 'bold', mt: 2, mb: 2 }}>What this package covers</Typography>
+                        <Typography sx={{ fontWeight: 'bold', fontSize: 34 }}>{renderNaira(data?.price)}</Typography>
+                        <Typography sx={{ color: '#2755EB', fontWeight: 'bold', mt: 5, mb: 4, fontSize: 22 }}>What this package covers</Typography>
                     </Box>
 
 
