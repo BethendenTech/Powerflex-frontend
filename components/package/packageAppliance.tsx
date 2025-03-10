@@ -5,7 +5,7 @@ export const PackageAppliance = (props) => {
     return (
         <FormGroup className="packageAppliance" sx={direction == "column" ? { display: 'flex', flexDirection: 'column' } : {}
         }>
-            {appliances.map((appliance: any) => {
+            {appliances.slice(0, 10).map((appliance: any) => {
                 return (
                     <FormControlLabel
                         key={`package-appliance-${appliance.id}`}

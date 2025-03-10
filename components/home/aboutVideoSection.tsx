@@ -86,7 +86,7 @@ const HomeAboutVideoSection = () => {
                                         fontSize={16}
                                         color="#191919"
                                     >
-                                        At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                                        At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experience energy.
                                     </Typography>
                                 </Grid2>
                             </Grid2>
@@ -164,7 +164,7 @@ const HomeAboutVideoSection = () => {
                                         fontSize={16}
                                         color="#191919"
                                     >
-                                        At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                                        At PowerFlexNG, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experience energy.
                                     </Typography>
                                 </Grid2>
                             </Grid2>

@@ -68,7 +68,7 @@ const HomeAboutSection = () => {
                                     color="#191919"
                                     sx={{ px: 4, py: 3 }}
                                 >
-                                    At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                                    At PowerFlex, we’re dedicated to delivering sustainable energy solutions tailored for Nigerian homes and businesses. From advanced technology to exceptional customer service. We’re redefining how you experience energy.
                                 </Typography>
                             </Box>
                         </Grid2>
@@ -209,7 +209,7 @@ const HomeAboutSection = () => {
                                 color: '#191919'
                             }}
                         >
-                            From advanced technology to exceptional customer service. We’re redefining how you experiance energy.
+                            From advanced technology to exceptional customer service. We’re redefining how you experience energy.
                         </Typography>
                     </Grid2>
                 </Grid2>
