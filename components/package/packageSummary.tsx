@@ -5,7 +5,7 @@ import { renderNaira } from "@/utils/currency"
 export const PackageSummary = (props) => {
     const { data } = props
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     const MobileView = () => (
         <Box className="packageDetailMobile">
@@ -50,7 +50,7 @@ export const PackageSummary = (props) => {
                 <TableHead>
                     <TableRow>
                         <TableCell align="left">Equipment</TableCell>
-                        <TableCell align="left">Quantity</TableCell>
+                        <TableCell align="right">Quantity</TableCell>
                         <TableCell align="right">Cost</TableCell>
                     </TableRow>
                 </TableHead>
@@ -61,7 +61,7 @@ export const PackageSummary = (props) => {
                             <TableCellName align="left">
                                 {item.name}
                             </TableCellName>
-                            <TableCellName align="left">
+                            <TableCellName align="right">
                                 {item.quantity}
                             </TableCellName>
                             <TableCellName align="right">

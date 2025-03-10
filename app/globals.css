@@ -360,6 +360,18 @@ details>summary::-webkit-details-marker
   .packageAppliance {
     max-height: 200px !important;
   }
+  .package-heading-container{
+    position: relative !important;
+  }
+  
+  .package-heading-title{
+    width: 100% !important;
+    text-align: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
 }
 
 @media (max-width: 899px) {
@@ -371,6 +383,14 @@ details>summary::-webkit-details-marker
   }
   .packageAppliance {
     height: auto !important;
+  }
+  .package-heading-container{
+    flex-direction: column !important;
+  }
+  
+  .package-heading-title{
+    width: 100% !important;
+    text-align: center !important;
   }
 }
 
@@ -434,3 +454,4 @@ details>summary::-webkit-details-marker
   border: 1px solid #e0e0e0 !important;
   border-radius: 4px !important;
 }
+

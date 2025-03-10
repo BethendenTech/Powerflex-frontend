@@ -63,16 +63,17 @@ export default function PackagePage() {
                 borderRadius: '9px',
             }}>
                 <CardHeader
+                    className="package-heading-container"
                     avatar={
                         <Typography color="#fff">{data?.name}</Typography>
                     }
-                    title="Reliable power for your needs"
-                    titleTypographyProps={{ align: 'center', color: '#fff' }}
+                    title={<Typography color="#fff" className="package-heading-title">Reliable power for your needs</Typography>}
                     sx={{
                         backgroundColor: '#2755EB',
                         color: '#fff'
                     }}
-                />
+                >
+                </CardHeader>
                 <CardContent
                     sx={{
                         padding: '20px 10px 5px'
