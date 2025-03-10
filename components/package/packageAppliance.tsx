@@ -12,7 +12,7 @@ export const PackageAppliance = (props) => {
                         control={
                             <Checkbox name={appliance.id} checked />
                         }
-                        label={appliance.name}
+                        label={`${appliance.name} x ${appliance.quantity}`}
                     />
                 )
             })}

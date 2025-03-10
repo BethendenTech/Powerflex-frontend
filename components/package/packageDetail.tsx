@@ -128,7 +128,7 @@ export const PackageDetail = (props: any) => {
                         <CheckboxIcon color="primary" />
                       </ListItemIcon>
                       <ListItemText
-                        primary={item.name}
+                        primary={`${item.name} x ${item.quantity}`}
                         sx={{ fontSize: "10px" }}
                       />
                     </ListItem>
